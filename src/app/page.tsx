@@ -59,7 +59,7 @@ const INSTALL_TABS = [
   { id: "linux", label: "Linux / macOS" },
   { id: "windows", label: "Windows" },
   { id: "source", label: "Build from source" },
-  { id: "arch", label: "Arch Linux" },
+  { id: "arch", label: "Arch/X Linux" },
 ];
 
 const INSTALL_CONTENT: Record<string, { lines: { text: string; comment: boolean }[] }> = {
@@ -131,15 +131,15 @@ const PLUGINS = [
 
 const PHASES = [
   { title: "Phase 0-3 — Foundation & modules", desc: "Core system, all info modules, 20+ example configs, install scripts, layouts, documentation.", status: "done" },
-  { title: "Phase 4 — Package manager expansion", desc: "RPM, APK (Alpine), Nix, Homebrew, Chocolatey, multi-manager detection.", status: "" },
-  { title: "Phase 5 — Network & connectivity", desc: "Local/public IP (with privacy toggle), IPv6, network interface display.", status: "" },
-  { title: "Phase 6 — Enhanced modules", desc: "Music player (MPD), Spotify, weather, timezone, user info, display resolution, theme detection.", status: "" },
-  { title: "Phase 7 — Additional layouts", desc: "Compact, horizontal, bottom, minimal (text-only).", status: "" },
-  { title: "Phase 8 — Performance", desc: "Parallel probing, caching, lazy loading, benchmarking, profiling.", status: "" },
-  { title: "Phase 9 — CI/CD & distribution", desc: "GitHub Actions, macOS/Windows binaries, Homebrew tap, AUR, changelog automation.", status: "partial" },
-  { title: "Phase 10 — Community & ecosystem", desc: "Themes registry, plugin system, community contributions, theme preview tool.", status: "partial" },
-  { title: "Phase 11 — Testing & QA", desc: "Unit/integration tests, clippy, rustfmt, platform-specific tests, coverage.", status: "partial" },
-  { title: "Phase 12 — Advanced features", desc: "Custom scripting, conditional modules, theme variables, daemon mode, hot-reload, telemetry (opt-in).", status: "" },
+  { title: "Phase 4 — Package manager expansion", desc: "RPM, APK (Alpine), Nix, Homebrew, Chocolatey, multi-manager detection, performance optimization.", status: "done" },
+  { title: "Phase 5 — Network & connectivity", desc: "Local/public IP (with privacy toggle), IPv6, network interface display.", status: "done" },
+  { title: "Phase 6 — Enhanced modules", desc: "Music player (MPD), Spotify, weather, timezone, user info, display resolution, theme detection.", status: "done" },
+  { title: "Phase 7 — Additional layouts", desc: "Compact, horizontal, bottom, minimal (text-only), layout preview documentation.", status: "done" },
+  { title: "Phase 8 — Performance", desc: "Parallel probing, caching, lazy loading, benchmarking, profiling, modularized files.", status: "done" },
+  { title: "Phase 9 — CI/CD & distribution", desc: "GitHub Actions, macOS/Windows binaries, Homebrew tap, AUR, install scripts, changelog automation.", status: "done" },
+  { title: "Phase 10 — Community & ecosystem", desc: "Themes registry, plugin system, theme download manager, community contributions, theme preview tool.", status: "done" },
+  { title: "Phase 11 — Testing & QA", desc: "Unit/integration tests, clippy, rustfmt, platform-specific tests, cross-platform suite, coverage.", status: "partial" },
+  { title: "Phase 12 — Advanced features", desc: "Custom scripting, conditional modules, theme variables, daemon mode, hot-reload, telemetry (opt-in).", status: "partial" },
   { title: "Phase 13 — Marketing", desc: "User manual, video tutorials, project website, blog posts, comparison guide, community channel.", status: "partial" },
 ];
 
@@ -208,65 +208,65 @@ export default function Home() {
   return (
     <>
       <div className="mx-auto flex min-h-screen w-full max-w-5xl flex-col px-6">
-        <div className="flex flex-col gap-[clamp(4.5rem,12vh,14rem)] pb-[clamp(4.5rem,12vh,14rem)]">
+        <div className="flex flex-col gap-[clamp(2.5rem,6vh,8rem)] pb-[clamp(2.5rem,6vh,8rem)]">
           {/* STAGE 0 - Title/Header */}
           <section data-stage={0} style={sectionStyle(0)}>
             <Hero />
           </section>
 
-          {/* STAGE 1 - Video demo */}
-          <section data-stage={1} style={sectionStyle(1)}>
-            <div className="overflow-hidden rounded-xl border border-[#22263a]/60">
+          {/* STAGE 1 - Installation */}
+          <section id="install" data-stage={1} style={sectionStyle(1)}>
+            <InstallTabs tabs={INSTALL_TABS} content={INSTALL_CONTENT} installTab={installTab} setInstallTab={setInstallTab} />
+          </section>
+
+          {/* STAGE 2 - Video demo */}
+          <section data-stage={2} style={sectionStyle(2)}>
+            <div className="overflow-hidden rounded-xl border border-bg3/60">
               <video className="block w-full h-auto" src="https://i.imgur.com/8qcIITv.mp4" autoPlay loop muted playsInline />
             </div>
           </section>
 
-          {/* STAGE 2 - Features */}
-          <section data-stage={2} style={sectionStyle(2)}>
+          {/* STAGE 3 - Features */}
+          <section id="features" data-stage={3} style={sectionStyle(3)}>
             <Features features={FEATURES} />
           </section>
 
-          {/* STAGE 3 - Terminal demo */}
-          <section data-stage={3} style={sectionStyle(3)}>
+          {/* STAGE 4 - Terminal demo */}
+          <section id="terminal" data-stage={4} style={sectionStyle(4)}>
             <TerminalDemo />
           </section>
 
-          {/* STAGE 4 - Modules reference */}
-          <section data-stage={4} style={sectionStyle(4)}>
+          {/* STAGE 5 - Modules reference */}
+          <section id="modules" data-stage={5} style={sectionStyle(5)}>
             <ModulesTable modules={MODULES} />
           </section>
 
-          {/* STAGE 5 - Layout showcase */}
-          <section data-stage={5} style={sectionStyle(5)}>
+          {/* STAGE 6 - Layout showcase */}
+          <section id="layouts" data-stage={6} style={sectionStyle(6)}>
             <LayoutShowcase layouts={LAYOUTS} />
           </section>
 
-          {/* STAGE 6 - Installation */}
-          <section data-stage={6} style={sectionStyle(6)}>
-            <InstallTabs tabs={INSTALL_TABS} content={INSTALL_CONTENT} installTab={installTab} setInstallTab={setInstallTab} />
-          </section>
-
           {/* STAGE 7 - Configuration builder */}
-          <section data-stage={7} style={sectionStyle(7)}>
+          <section id="config" data-stage={7} style={sectionStyle(7)}>
             <ConfigBuilder allModules={ALL_MODULES} selectedModules={selectedModules} toggleModule={toggleModule} configLayout={configLayout} setConfigLayout={setConfigLayout} configJson={configJson} layoutOptions={LAYOUT_OPTIONS} />
           </section>
 
           {/* STAGE 8 - Plugin system */}
-          <section data-stage={8} style={sectionStyle(8)}>
+          <section id="plugins" data-stage={8} style={sectionStyle(8)}>
             <PluginSection plugins={PLUGINS} />
           </section>
 
           {/* STAGE 9 - Usage */}
-          <section data-stage={9} style={sectionStyle(9)}>
+          <section id="usage" data-stage={9} style={sectionStyle(9)}>
             <div className="grid gap-3">
               <h2 className="m-0 text-lg font-semibold">Usage</h2>
-              <p className="m-0 max-w-[68ch] text-[#8b91a8] leading-relaxed">Simply run xfetch in your terminal:</p>
-              <pre className="m-0 overflow-x-auto border border-[#22263a]/60 bg-[#0f1117]/90 p-4 font-mono text-sm leading-relaxed whitespace-pre-wrap break-words rounded-lg"><code>xfetch</code></pre>
+              <p className="m-0 max-w-[68ch] text-fg2 leading-relaxed">Simply run xfetch in your terminal:</p>
+              <pre className="m-0 overflow-x-auto border border-bg3/60 bg-bg/90 p-4 font-mono text-sm leading-relaxed whitespace-pre-wrap break-words rounded-lg"><code>xfetch</code></pre>
             </div>
           </section>
 
           {/* STAGE 10 - Roadmap */}
-          <section data-stage={10} style={sectionStyle(10)}>
+          <section id="roadmap" data-stage={10} style={sectionStyle(10)}>
             <Roadmap phases={PHASES} />
           </section>
 
@@ -274,13 +274,20 @@ export default function Home() {
           <section data-stage={11} style={sectionStyle(11)}>
             <div className="grid gap-3">
               <h2 className="m-0 text-lg font-semibold">Uninstall</h2>
-              <h3 className="m-0 text-sm font-semibold text-[#8b91a8]">Quick uninstall</h3>
-              <pre className="m-0 overflow-x-auto border border-[#22263a]/60 bg-[#0f1117]/90 p-4 font-mono text-sm leading-relaxed whitespace-pre-wrap break-words rounded-lg"><code>curl -fsSL https://raw.githubusercontent.com/xscriptor/xfetch/main/uninstall.sh | bash</code></pre>
-              <h3 className="m-0 text-sm font-semibold text-[#8b91a8]">Manual uninstall</h3>
-              <pre className="m-0 overflow-x-auto border border-[#22263a]/60 bg-[#0f1117]/90 p-4 font-mono text-sm leading-relaxed whitespace-pre-wrap break-words rounded-lg"><code>{`rm ~/.local/bin/xfetch\nrm -rf ~/.config/xfetch`}</code></pre>
+              <h3 className="m-0 text-sm font-semibold text-fg2">Quick uninstall</h3>
+              <pre className="m-0 overflow-x-auto border border-bg3/60 bg-bg/90 p-4 font-mono text-sm leading-relaxed whitespace-pre-wrap break-words rounded-lg"><code>curl -fsSL https://raw.githubusercontent.com/xscriptor/xfetch/main/uninstall.sh | bash</code></pre>
+              <h3 className="m-0 text-sm font-semibold text-fg2">Manual uninstall</h3>
+              <pre className="m-0 overflow-x-auto border border-bg3/60 bg-bg/90 p-4 font-mono text-sm leading-relaxed whitespace-pre-wrap break-words rounded-lg"><code>{`rm ~/.local/bin/xfetch\nrm -rf ~/.config/xfetch`}</code></pre>
             </div>
             <div className="flex justify-center pt-2">
-              <a className="inline-flex items-center justify-center min-h-[2.85rem] px-7 py-3 border border-[#ffc400] text-[#1a1a1a] bg-[#ffc400] no-underline text-sm font-bold tracking-wide rounded-lg transition-all hover:opacity-90" href="https://github.com/xscriptor/xfetch" target="_blank" rel="noopener noreferrer">
+              <a className="inline-flex items-center justify-center gap-2 min-h-[2.85rem] px-7 py-3 border border-accent text-bg bg-accent no-underline text-sm font-bold tracking-wide rounded-lg transition-all hover:opacity-90" href="https://github.com/xscriptor/xfetch" target="_blank" rel="noopener noreferrer">
+                <svg width="18" height="18" viewBox="0 0 24 25" fill="currentColor">
+                  <path d="M21.0346 5.82524C21.9445 6.91709 22.3994 8.19091 22.3994 9.64671C22.3994 14.924 19.3969 16.4707 16.5763 16.9257C16.9402 17.5626 17.0312 18.2905 17.0312 19.0184V22.7489C17.0312 23.2038 16.7582 23.4768 16.3943 23.4768C16.0303 23.4768 15.6664 23.2038 15.6664 22.7489V19.0184C15.7574 18.1995 15.4844 17.4716 14.9385 16.9257L15.3934 15.7428C18.214 15.3789 21.1256 14.469 21.1256 9.55572C21.1256 8.37289 20.6707 7.28104 19.8518 6.37117L19.6698 5.64327C20.0338 4.7334 20.0338 3.73254 19.7608 2.91365C19.3059 3.00464 18.396 3.18661 16.8492 4.27846L16.3033 4.36945C14.1196 3.82352 11.9359 3.82352 9.75222 4.36945L9.2063 4.27846C7.56853 3.2776 6.65866 3.00464 6.20372 3.00464C5.93076 3.91451 5.93076 4.91537 6.29471 5.73426L6.11274 6.46215C5.20286 7.37203 4.74793 8.55486 4.74793 9.64671C4.74793 14.469 7.47754 15.4699 10.4801 15.8338L10.8441 17.0167C10.2981 17.5626 10.0252 18.2905 10.1162 19.0184V19.9283V20.0192V22.8399C10.1162 23.2038 9.84321 23.5677 9.38828 23.5677C9.02433 23.5677 8.66038 23.2948 8.66038 22.8399V20.7471C5.6578 21.3841 4.47497 19.8373 3.5651 18.6544C3.11016 18.1085 2.74621 17.6536 2.29127 17.5626C2.20029 17.4716 1.92733 17.1077 2.01831 16.7437C2.1093 16.3798 2.47325 16.1068 2.8372 16.2888C3.74707 16.4707 4.29299 17.1986 4.83892 17.8356C5.6578 18.9274 6.47669 19.9283 8.93334 19.3823V19.0184C8.84235 18.2905 9.02433 17.5626 9.38828 16.9257C6.65866 16.3798 3.47411 14.833 3.47411 9.64671C3.47411 8.19091 3.92904 6.91709 4.83892 5.82524C4.56595 4.55142 4.65694 3.18661 5.11188 2.09477L5.56681 1.73082C5.74879 1.63983 7.02261 1.36687 9.66124 3.00464C11.8449 2.45872 14.1196 2.45872 16.3033 3.00464C18.8509 1.27588 20.2158 1.54884 20.3977 1.63983L20.8527 2.00378C21.3076 3.2776 21.3986 4.55142 21.0346 5.82524Z" />
+                  <g transform="translate(0 0) scale(1.5 1.5625)">
+                    <path d="M6 11 L7 11 L10 14 L9 14 Z" />
+                    <path d="M9 11 L10 11 L7 14 L6 14 Z" />
+                  </g>
+                </svg>
                 View Source Code
               </a>
             </div>

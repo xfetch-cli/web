@@ -25,12 +25,12 @@ export default function Nav() {
     <nav
       className={`fixed top-0 z-50 flex h-14 w-full items-center justify-center transition-all duration-300 ${
         scrolled
-          ? "border-b border-white/[0.06] bg-[#0f1117]/85 backdrop-blur-xl"
+          ? "border-b border-white/[0.06] bg-bg/85 backdrop-blur-xl"
           : "bg-transparent"
       }`}
     >
       <div className="flex w-full max-w-5xl items-center gap-8 px-6">
-        <a href="#" className="font-mono font-bold text-[#dea584] text-lg shrink-0">
+        <a href="#" className="font-mono font-bold text-accent text-lg shrink-0">
           xfetch
         </a>
         <div className="hidden sm:flex items-center gap-6 ml-auto">
@@ -38,7 +38,7 @@ export default function Nav() {
             <a
               key={l.href}
               href={l.href}
-              className="text-sm text-[#8b91a8] transition-colors hover:text-[#e1e4ed]"
+              className="text-sm text-fg2 transition-colors hover:text-fg"
             >
               {l.label}
             </a>

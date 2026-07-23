@@ -16,15 +16,15 @@ export default function Features({ features }: { features: { key: string; icon: 
   return (
     <div className="grid gap-3">
       <h2 className="m-0 text-lg font-semibold">Features</h2>
-      <p className="m-0 max-w-[68ch] text-[#8b91a8] leading-relaxed">From OS detection to animated ASCII art — xfetch packs a punch in a single binary.</p>
+      <p className="m-0 max-w-[68ch] text-fg2 leading-relaxed">From OS detection to animated ASCII art — xfetch packs a punch in a single binary.</p>
       <div className="grid grid-cols-[repeat(auto-fill,minmax(16rem,1fr))] gap-3">
         {features.map((f) => {
           const t = FEATURE_TEXT[f.key];
           return (
-            <div key={f.key} className="grid gap-1.5 rounded-lg border border-[#22263a]/60 bg-[#0f1117]/90 p-4 transition-all hover:border-[#dea584]/40">
-              <span className="text-lg leading-none text-[#dea584]">{renderFeatureIcon(f.icon, 20)}</span>
+            <div key={f.key} className="grid gap-1.5 rounded-lg border border-bg3/60 bg-bg/90 p-4 transition-all hover:border-accent/40">
+              <span className="text-lg leading-none text-accent">{renderFeatureIcon(f.icon, 20)}</span>
               <h3 className="m-0 text-sm font-semibold">{t.title}</h3>
-              <p className="m-0 text-xs leading-relaxed text-[#8b91a8]">{t.desc}</p>
+              <p className="m-0 text-xs leading-relaxed text-fg2">{t.desc}</p>
             </div>
           );
         })}
