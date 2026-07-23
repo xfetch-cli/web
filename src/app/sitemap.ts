@@ -1,5 +1,7 @@
 import { getAllDocs } from "@/lib/docs";
 
+export const dynamic = "force-static";
+
 export default async function sitemap() {
   const docs = getAllDocs();
   const base = "https://xfetch-cli.github.io/web";
