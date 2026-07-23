@@ -3,18 +3,20 @@
 import { XGlassNavbar } from "@xscriptor/xcomponents/navigation";
 import type { NavLinkItem } from "@xscriptor/xcomponents/navigation";
 
+const base = process.env.NEXT_PUBLIC_BASE_PATH || "";
+
 const linksLeft: NavLinkItem[] = [
-  { url: "/#features", title: "Features" },
-  { url: "/#terminal", title: "Demo" },
-  { url: "/#install", title: "Install" },
-  { url: "/#layouts", title: "Layouts" },
+  { url: `${base}/#features`, title: "Features" },
+  { url: `${base}/#terminal`, title: "Demo" },
+  { url: `${base}/#install`, title: "Install" },
+  { url: `${base}/#layouts`, title: "Layouts" },
 ];
 
 const linksRight: NavLinkItem[] = [
-  { url: "/#config", title: "Configure" },
-  { url: "/#plugins", title: "Plugins" },
-  { url: "/#roadmap", title: "Roadmap" },
-  { url: "/docs", title: "Docs" },
+  { url: `${base}/#config`, title: "Configure" },
+  { url: `${base}/#plugins`, title: "Plugins" },
+  { url: `${base}/#roadmap`, title: "Roadmap" },
+  { url: `${base}/docs`, title: "Docs" },
 ];
 
 const SunIcon = ({ size, color }: { size: number; color?: string }) => (
