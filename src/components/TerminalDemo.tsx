@@ -55,36 +55,36 @@ export default function TerminalDemo() {
 
   return (
     <div className="grid gap-3">
-      <span className="block font-mono text-xs uppercase tracking-wide text-[#dea584]">● Live demo</span>
+      <span className="block font-mono text-xs uppercase tracking-wide text-accent">● Live demo</span>
       <h2 className="m-0 text-lg font-semibold">See it in action</h2>
-      <p className="m-0 max-w-[68ch] text-[#8b91a8] leading-relaxed">Watch xfetch display your system information in real time. This is a simulated terminal session.</p>
+      <p className="m-0 max-w-[68ch] text-fg2 leading-relaxed">Watch xfetch display your system information in real time. This is a simulated terminal session.</p>
       <div className="flex justify-center w-full">
-        <div className="overflow-hidden rounded-xl border border-[#22263a]/60 bg-[#0f1117]/94 cursor-pointer max-w-[48rem] w-full" onClick={restartTerm} role="button" tabIndex={0} onKeyDown={(e) => { if (e.key === "Enter") restartTerm(); }}>
-          <div className="flex items-center gap-[0.45rem] px-3 py-[0.55rem] border-b border-[#22263a]/40 bg-[#0f1117]/92">
+        <div className="overflow-hidden rounded-xl border border-bg3/60 bg-bg/94 cursor-pointer max-w-[48rem] w-full" onClick={restartTerm} role="button" tabIndex={0} onKeyDown={(e) => { if (e.key === "Enter") restartTerm(); }}>
+          <div className="flex items-center gap-[0.45rem] px-3 py-[0.55rem] border-b border-bg3/40 bg-bg/92">
             <span className="w-[0.6rem] h-[0.6rem] rounded-full" style={{ background: "#ff5f56" }} />
             <span className="w-[0.6rem] h-[0.6rem] rounded-full" style={{ background: "#ffbd2e" }} />
             <span className="w-[0.6rem] h-[0.6rem] rounded-full" style={{ background: "#27c93f" }} />
-            <span className="ml-auto text-xs text-[#8b91a8] font-mono">xfetch — bash</span>
+            <span className="ml-auto text-xs text-fg2 font-mono">xfetch — bash</span>
           </div>
-          <pre className="m-0 px-[0.9rem] pb-[0.9rem] pt-[0.85rem] overflow-x-auto font-mono text-xs leading-relaxed whitespace-pre min-h-[6rem] terminal-scrollbar" style={{ scrollbarWidth: "thin", scrollbarColor: "color-mix(in srgb, #22263a 50%, transparent) transparent" }}>
+          <pre className="m-0 px-[0.9rem] pb-[0.9rem] pt-[0.85rem] overflow-x-auto font-mono text-xs leading-relaxed whitespace-pre min-h-[6rem] terminal-scrollbar" style={{ scrollbarWidth: "thin", scrollbarColor: "color-mix(in srgb, var(--color-bg3) 50%, transparent) transparent" }}>
             {T_LINES.slice(0, termVisible).map((line, i) => {
               if (line.type === "empty") return <div key={i} />;
               if (line.type === "prompt") return <div key={i}><span className="text-[#78dba9]">$</span> {line.label}</div>;
-              if (line.type === "dim") return <div key={i} className="text-[#8b91a8]/50 text-[0.72rem]">{line.label}</div>;
+              if (line.type === "dim") return <div key={i} className="text-fg2/50 text-[0.72rem]">{line.label}</div>;
               if (line.type === "info") return (
                 <div key={i} className="flex gap-2 flex-wrap">
                   <span className="text-[#78dce8] inline-flex items-center gap-1 min-w-[6rem]">{line.key}</span>
-                  <span className="text-[#e1e4ed]">{line.value}</span>
+                  <span className="text-fg">{line.value}</span>
                 </div>
               );
-              if (line.type === "palette") return <div key={i} className="text-[#8b91a8]/50 tracking-wide">{palColors.map((c) => (<span key={c} style={{ color: c }}>███</span>))}</div>;
+              if (line.type === "palette") return <div key={i} className="text-fg2/50 tracking-wide">{palColors.map((c) => (<span key={c} style={{ color: c }}>███</span>))}</div>;
               return null;
             })}
             <span className="inline-block text-[#78dba9] animate-blink">█</span>
           </pre>
         </div>
       </div>
-      <p className="m-0 text-center text-xs text-[#8b91a8]">Click to replay</p>
+      <p className="m-0 text-center text-xs text-fg2">Click to replay</p>
     </div>
   );
 }

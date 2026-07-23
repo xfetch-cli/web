@@ -84,9 +84,47 @@ Ein plattformunabhangiges Systeminformations-Tool geschrieben in Rust.
    - Plugin-Presets
    - Full-Stack-Preset
 
-9. [Mitwirken](contributing.md)
-   - Aus dem Quellcode bauen
-   - Projektstruktur
-   - Plugin-Entwicklungsleitfaden
-   - Testen
-   - Pull-Request-Prozess
+9. [Themes](themes.md)
+   - Architektur und Zusammenfuhlungsreihenfolge
+   - Theme-Dateiformat
+   - Theme-Auflosung und CLI-Befehle
+   - Integrierte Themes
+
+10. [Theme Manager Plugin](theme-manager.md)
+    - Ubersicht und Installation
+    - Aktionen (liste, suche, info, installiere)
+    - Registry und benutzerdefinierte Registries
+
+11. [Mitwirken](contributing.md)
+    - Aus dem Quellcode bauen
+    - Projektstruktur
+    - Plugin-Entwicklungsleitfaden
+    - Testen
+    - Pull-Request-Prozess
+
+12. [Fahrplan](roadmap.md)
+    - Vergangene Phasen (Grundlage, Module, Layouts, Dokus)
+    - Aktuelle Phase (Tests, erweiterte Funktionen)
+    - Zukunftsplane
+
+13. [Sicherheit](security.md)
+    - Melden von Sicherheitslucken
+    - Sicherheitsempfehlungen
+    - Unterstutzte Versionen
+
+14. [Support](support.md)
+    - Hilfe erhalten
+    - Vor dem Offnen eines Issues
+    - Reaktionserwartungen
+
+15. [Anderungsprotokoll](changelog.md)
+    - Versionsgeschichte
+    - Phasenweises Anderungsprotokoll
+
+16. [Verhaltenskodex](code-of-conduct.md)
+    - Unsere Standards
+    - Inakzeptables Verhalten
+    - Melden
+
+17. [Lizenz](license.md)
+    - MIT-Lizenzbestimmungen

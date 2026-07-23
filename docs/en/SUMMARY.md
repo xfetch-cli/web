@@ -84,9 +84,47 @@ A cross-platform system information fetching tool written in Rust.
    - Plugin presets
    - Full-stack preset
 
-9. [Contributing](contributing.md)
-   - Building from source
-   - Project structure
-   - Plugin development guide
-   - Testing
-   - Pull request process
+9. [Themes](themes.md)
+   - Architecture and merge order
+   - Theme file format
+   - Theme resolution and CLI commands
+   - Built-in themes
+
+10. [Theme Manager Plugin](theme-manager.md)
+    - Overview and installation
+    - Actions (list, search, info, install)
+    - Registry and custom registries
+
+11. [Contributing](contributing.md)
+    - Building from source
+    - Project structure
+    - Plugin development guide
+    - Testing
+    - Pull request process
+
+12. [Roadmap](roadmap.md)
+    - Past phases (foundation, modules, layouts, docs)
+    - Current phase (testing, advanced features)
+    - Future plans
+
+13. [Security](security.md)
+    - Reporting vulnerabilities
+    - Security best practices
+    - Supported versions
+
+14. [Support](support.md)
+    - Getting help
+    - Before opening an issue
+    - Response expectations
+
+15. [Changelog](changelog.md)
+    - Version history
+    - Phase-by-phase changelog
+
+16. [Code of Conduct](code-of-conduct.md)
+    - Our standards
+    - Unacceptable behavior
+    - Reporting
+
+17. [License](license.md)
+    - MIT License terms

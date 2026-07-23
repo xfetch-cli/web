@@ -84,9 +84,47 @@ Una herramienta de obtención de información del sistema multiplataforma escrit
    - Predefinidos de plugins
    - Predefinido completo
 
-9. [Contribuir](contributing.md)
-   - Compilación desde el código fuente
-   - Estructura del proyecto
-   - Guía de desarrollo de plugins
-   - Pruebas
-   - Proceso de pull request
+9. [Temas](themes.md)
+   - Arquitectura y orden de fusión
+   - Formato de archivo de tema
+   - Resolución de temas y comandos CLI
+   - Temas integrados
+
+10. [Plugin Theme Manager](theme-manager.md)
+    - Descripción general e instalación
+    - Acciones (listar, buscar, info, instalar)
+    - Registro y registros personalizados
+
+11. [Contribuir](contributing.md)
+    - Compilación desde el código fuente
+    - Estructura del proyecto
+    - Guía de desarrollo de plugins
+    - Pruebas
+    - Proceso de pull request
+
+12. [Hoja de Ruta](roadmap.md)
+    - Fases anteriores (base, módulos, diseños, docs)
+    - Fase actual (pruebas, funciones avanzadas)
+    - Planes futuros
+
+13. [Seguridad](security.md)
+    - Reportar vulnerabilidades
+    - Buenas prácticas de seguridad
+    - Versiones soportadas
+
+14. [Soporte](support.md)
+    - Obtener ayuda
+    - Antes de abrir un issue
+    - Expectativas de respuesta
+
+15. [Registro de Cambios](changelog.md)
+    - Historial de versiones
+    - Registro de cambios por fase
+
+16. [Código de Conducta](code-of-conduct.md)
+    - Nuestros estándares
+    - Comportamiento inaceptable
+    - Cómo reportar
+
+17. [Licencia](license.md)
+    - Términos de la licencia MIT

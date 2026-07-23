@@ -1,7 +1,13 @@
 import type { NextConfig } from "next";
 
+const isGhPages = process.env.GITHUB_ACTIONS === "true";
+
 const nextConfig: NextConfig = {
-  /* config options here */
+  ...(isGhPages && {
+    output: "export",
+    basePath: "/web",
+    images: { unoptimized: true },
+  }),
 };
 
 export default nextConfig;
