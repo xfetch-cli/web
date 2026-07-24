@@ -38,15 +38,17 @@ function extractDescription(content: string): string {
   return "";
 }
 
-export function getAllDocs(): DocEntry[] {
+function scanDocs(dir: string, lang: string, baseSlug: string = ""): DocEntry[] {
   const docs: DocEntry[] = [];
-  for (const [lang] of Object.entries(LANG_META)) {
-    const dir = path.join(DOCS_DIR, lang);
-    if (!fs.existsSync(dir)) continue;
-    for (const file of fs.readdirSync(dir)) {
-      if (!file.endsWith(".md") || file === "SUMMARY.md") continue;
-      const content = fs.readFileSync(path.join(dir, file), "utf-8");
-      const slug = file.replace(/\.md$/, "");
+  if (!fs.existsSync(dir)) return docs;
+  for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+    if (entry.name === "SUMMARY.md") continue;
+    if (entry.isDirectory()) {
+      docs.push(...scanDocs(path.join(dir, entry.name), lang, `${baseSlug}${entry.name}/`));
+    } else if (entry.name.endsWith(".md")) {
+      const fp = path.join(dir, entry.name);
+      const content = fs.readFileSync(fp, "utf-8");
+      const slug = `${baseSlug}${entry.name.replace(/\.md$/, "")}`;
       docs.push({
         slug,
         title: extractTitle(content),
@@ -55,6 +57,14 @@ export function getAllDocs(): DocEntry[] {
         lang,
       });
     }
+  }
+  return docs;
+}
+
+export function getAllDocs(): DocEntry[] {
+  const docs: DocEntry[] = [];
+  for (const [lang] of Object.entries(LANG_META)) {
+    docs.push(...scanDocs(path.join(DOCS_DIR, lang), lang));
   }
   return docs;
 }

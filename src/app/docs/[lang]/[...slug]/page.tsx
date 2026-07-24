@@ -5,18 +5,19 @@ import { notFound } from "next/navigation";
 
 export function generateStaticParams() {
   const docs = getAllDocs();
-  return docs.map((d) => ({ lang: d.lang, slug: d.slug }));
+  return docs.map((d) => ({ lang: d.lang, slug: d.slug.split("/") }));
 }
 
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ lang: string; slug: string }>;
+  params: Promise<{ lang: string; slug: string[] }>;
 }): Promise<Metadata> {
   const { lang, slug } = await params;
+  const slugStr = slug.join("/");
   const langMeta = getLangMeta();
   if (!langMeta[lang]) return { title: "Not found" };
-  const doc = getDocBySlug(slug, lang);
+  const doc = getDocBySlug(slugStr, lang);
   if (!doc) return { title: "Not found" };
   return {
     title: `${doc.title} — xfetch docs`,
@@ -31,14 +32,15 @@ export async function generateMetadata({
 export default async function DocPage({
   params,
 }: {
-  params: Promise<{ lang: string; slug: string }>;
+  params: Promise<{ lang: string; slug: string[] }>;
 }) {
   const { lang, slug } = await params;
+  const slugStr = slug.join("/");
   const langMeta = getLangMeta();
 
   if (!langMeta[lang]) notFound();
 
-  const doc = getDocBySlug(slug, lang);
+  const doc = getDocBySlug(slugStr, lang);
   if (!doc) notFound();
 
   const allDocs = getAllDocs();
@@ -47,7 +49,7 @@ export default async function DocPage({
     <DocViewer
       content={doc.content}
       title={doc.title}
-      slug={slug}
+      slug={slugStr}
       lang={lang}
       langMeta={langMeta}
       allDocs={allDocs}
