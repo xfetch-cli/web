@@ -7,16 +7,19 @@ Das Theme-System trennt das visuelle Erscheinungsbild (Farben, Icons, Layout) vo
 Themes arbeiten auf der Konfigurationsebene, bevor eine Darstellung oder Plugin-Ausfuhrung erfolgt.
 
 ```
-config.jsonc (theme: "dracula", modules: [...])
+config.jsonc (theme: "berlin", modules: [...])
        |
        v
    Lade Standardkonfiguration
        |
        v
+   Lade config.jsonc des Benutzers
+       |
+       v
    Lade theme/<name>.jsonc
        |
        v
-   Zusammenfuhrung: defaults <- theme <- config.jsonc
+   Zusammenfuhrung: defaults <- config.jsonc <- theme
        |
        v
    Endgultige Konfiguration (vom Renderer verwendet)
@@ -24,15 +27,28 @@ config.jsonc (theme: "dracula", modules: [...])
 
 ## Merge-Reihenfolge (letzter gewinnt)
 
-Jede Ebene kann jedes visuelle Feld uberschreiben:
+Jede Ebene kann jedes visuelle Feld uberschreiben. Seit **v0.2.0** hat das Theme die hochste Prioritat:
 
 | Ebene | Quelle | Inhalt |
 |-------|--------|--------|
 | 1. Standardwerte | Fest codiert in `config.rs` | Standard-Icons, Farben, Layout |
-| 2. Theme-Datei | `themes/<name>.jsonc` | `colors`, `icons`, `layout`, `palette_style`, `logo_path`, `header_icons`, `footer_text`, `show_colors` |
-| 3. Benutzerkonfiguration | `config.jsonc` | `modules`, `info_plugins`, sowie Uberschreibungen fur jedes visuelle Feld |
+| 2. Benutzerkonfiguration | `config.jsonc` | `modules`, `info_plugins`, sowie Uberschreibungen fur jedes visuelle Feld |
+| 3. Theme-Datei | `themes/<name>.jsonc` | `colors`, `icons`, `layout`, `palette_style`, `logo_path`, `header_icons`, `footer_text`, `show_colors` |
 
-Ein Feld in `config.jsonc` gewinnt immer gegenuber demselben Feld in der Theme-Datei.
+Ein Feld in der **Theme-Datei** gewinnt immer gegenuber demselben Feld in `config.jsonc` oder den Standardwerten.
+
+### Details der Zusammenfuhrung
+
+Die Zusammenfuhrung verwendet `deep_merge()`, das Schlussel fur Schlussel arbeitet:
+
+- **Objekte:** werden rekursiv zusammengefuhrt — jeder Schlussel wird unabhangig aufgelost
+- **Strings, Zahlen, Booleans:** der Overlay ersetzt die Basis
+- **Leere Strings:** ein leerer String uberschreibt *nicht* einen nicht-leeren String (verhindert, dass Themes versehentlich Icons loschen)
+- **Leere Objekte `{}`:** keine Operation — vorhandene Schlussel bleiben erhalten
+
+> **Hinweis zur Aktualisierung (v0.1.x → v0.2.0):** In v0.1.x gewann `config.jsonc` gegenuber dem Theme.
+> Wenn du aktualisierst, kann deine vorhandene Konfiguration das Theme uberschreiben. Exportiere dein aktuelles Aussehen mit
+> `xfetch theme export my-look`, setze `"theme": "my-look"` und entferne die visuellen Felder aus `config.jsonc`.
 
 ## Theme-Dateiformat
 
@@ -58,10 +74,7 @@ Eine Theme-Datei ist ein JSONC-Dokument, das nur visuelle Felder enthalt. Sie da
         "disk": "\uf0a0",
         "shell": "\uf0e7",
         "wm": "\uf08e"
-    },
-    "logo_path": null,
-    "header_icons": null,
-    "footer_text": null
+    }
 }
 ```
 
@@ -73,7 +86,7 @@ Eine Theme-Datei ist ein JSONC-Dokument, das nur visuelle Felder enthalt. Sie da
 | `colors` | `object` | Modulspezifische Farbzuordnung |
 | `icons` | `object` | Modulspezifische Icon-Zuordnung |
 | `palette_style` | `string` oder `null` | Palettenanzeige: `squares`, `circles`, `triangles`, `lines`, `dots` |
-| `show_colors` | `boolean` | ANSI-Farbausgabe aktivieren oder deaktivieren |
+| `show_colors` | `boolean` | Inline-ANSI-Farbindikatoren ein-/ausschalten |
 | `logo_path` | `string` oder `null` | Pfad zu einer Logo-Datei |
 | `header_icons` | `array` oder `null` | Header-Icons fur Pac-Man-Layout |
 | `footer_text` | `string` oder `null` | Footer-Text fur Pac-Man-Layout |
@@ -122,7 +135,7 @@ Die exportierte Datei enthalt nur:
 Das Theme-System ist vollstandig abwartskompatibel:
 
 - **Ohne `theme`-Feld:** Alles funktioniert genau wie zuvor. Die Konfigurationsdatei enthalt alle visuellen Felder direkt.
-- **Vorhandene Konfigurationen:** Konnen durch Exportieren migriert werden: `xfetch theme export current`, danach setze `"theme": "current"" und entferne die visuellen Felder aus der Hauptkonfiguration.
+- **Vorhandene Konfigurationen:** Konnen durch Exportieren migriert werden: `xfetch theme export current`, danach setze `"theme": "current"` und entferne die visuellen Felder aus der Hauptkonfiguration.
 - **Plugin-Konfigurationen:** Plugin-Referenzen (`info_plugins`) bleiben ausschlieblich in `config.jsonc`, niemals in Theme-Dateien.
 
 ## Verzeichnisstruktur
@@ -146,10 +159,10 @@ Das offizielle Theme-Repository befindet sich unter `github.com/xfetch-cli/confi
 | Theme | Layout | Stil |
 |-------|--------|------|
 | `dracula` | section | Dunkle Magenta-, Rot- und Cyan-Palette |
-| `nord` | section | Kühle Blau- und Arktis-Cyan-Palette |
+| `nord` | section | Kuhle Blau- und Arktis-Cyan-Palette |
 | `catppuccin-mocha` | section | Warme Mokka-Pastell-Palette |
 | `retro-pacman` | pacman | Klassischer Pac-Man-Arcade-Stil mit Header-Icons und Footer-Text |
-| `berlin` | default | Monochrom: keine Farben, keine Icons |
+| `berlin` | default | Monochrom: alles wei, sauberes, minimalistisches Aussehen |
 | `tree-compact` | tree | Hierarchisches Baum-Layout |
 
 ## Implementierungsdetails
@@ -161,7 +174,7 @@ Die Zusammenfuhrung verwendet `serde_json::Value` Deep-Merge vor der Deserialisi
 1. Parse `config.jsonc` als `serde_json::Value`
 2. Deserialisiere zu `Config`, um das `theme`-Feld zu extrahieren
 3. Wenn `theme` gesetzt ist, lade die Theme-Datei als `serde_json::Value`
-4. Erstelle ein leeres `Value` und fuhre in der Reihenfolge zusammen: defaults -> theme -> config
+4. Erstelle ein leeres `Value` und fuhre in der Reihenfolge zusammen: defaults → config.jsonc → theme
 5. Deserialisiere das zusammengefuhrte Ergebnis zu `Config`
 
 ### Theme-Verwaltung (`themes/mod.rs`)

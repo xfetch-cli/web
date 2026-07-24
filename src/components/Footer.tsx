@@ -13,7 +13,7 @@ export default function Footer() {
           <a key={link.label} href={link.href} target="_blank" rel="noopener noreferrer" className="text-fg2 transition-colors hover:text-accent">{link.label}</a>
         ))}
       </div>
-      <p className="mt-6 text-xs text-fg2/60">xfetch v0.1.1 — Rust 2024 edition</p>
+      <p className="mt-6 text-xs text-fg2/60">xfetch v0.2.0 — Rust 2024 edition</p>
     </footer>
   );
 }

@@ -2,7 +2,7 @@
 
 Una herramienta de obtención de información del sistema multiplataforma escrita en Rust.
 
-- **Versión:** 0.1.1
+- **Versión:** 0.2.0
 - **Licencia:** MIT
 - **Autor:** xscriptor
 - **Repositorio:** github.com/xfetch-cli/xfetch
