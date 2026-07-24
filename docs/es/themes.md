@@ -7,32 +7,48 @@ El sistema de temas separa la apariencia visual (colores, iconos, diseño) de la
 Los temas operan en la capa de carga de configuración, antes de que ocurra cualquier renderizado o ejecución de plugins.
 
 ```
-config.jsonc (theme: "dracula", modules: [...])
+config.jsonc (theme: "berlin", modules: [...])
        |
        v
-   Load default Config
+   Cargar Config por defecto
        |
        v
-   Load theme/<name>.jsonc
+   Cargar config.jsonc del usuario
        |
        v
-   Merge: defaults <- theme <- config.jsonc
+   Cargar theme/<name>.jsonc
        |
        v
-   Final Config (used by renderer)
+   Fusión: defaults <- config.jsonc <- theme
+       |
+       v
+   Config final (usada por el renderizador)
 ```
 
 ## Orden de fusión (el último prevalece)
 
-Cada capa puede sobrescribir cualquier campo visual:
+Cada capa puede sobrescribir cualquier campo visual. Desde **v0.2.0**, el tema tiene la prioridad más alta:
 
 | Capa | Fuente | Contiene |
 |-------|--------|----------|
 | 1. Valores por defecto | Hardcodeados en `config.rs` | Iconos, colores y diseño por defecto |
-| 2. Archivo de tema | `themes/<name>.jsonc` | `colors`, `icons`, `layout`, `palette_style`, `logo_path`, `header_icons`, `footer_text`, `show_colors` |
-| 3. Config del usuario | `config.jsonc` | `modules`, `info_plugins`, más sobrescrituras para cualquier campo visual |
+| 2. Config del usuario | `config.jsonc` | `modules`, `info_plugins`, más sobrescrituras para cualquier campo visual |
+| 3. Archivo de tema | `themes/<name>.jsonc` | `colors`, `icons`, `layout`, `palette_style`, `logo_path`, `header_icons`, `footer_text`, `show_colors` |
 
-Un campo en `config.jsonc` siempre prevalece sobre el mismo campo en el archivo de tema.
+Un campo en el **archivo de tema** siempre prevalece sobre el mismo campo en `config.jsonc` o los valores por defecto.
+
+### Detalles de la fusión
+
+La fusión usa `deep_merge()` que trabaja clave por clave:
+
+- **Objetos:** se fusionan recursivamente — cada clave se resuelve independientemente
+- **Strings, números, booleanos:** el overlay reemplaza la base
+- **Strings vacíos:** un string vacío *no* sobrescribe un string no vacío (evita que los temas borren iconos accidentalmente)
+- **Objetos vacíos `{}`:** no operan — las claves existentes se conservan
+
+> **Nota de actualización (v0.1.x → v0.2.0):** En v0.1.x, `config.jsonc` ganaba sobre el tema.
+> Si actualizas, tu config existente puede sobrescribir el tema. Exporta tu aspecto actual con
+> `xfetch theme export my-look`, establece `"theme": "my-look"`, y elimina los campos visuales de `config.jsonc`.
 
 ## Formato del archivo de tema
 
@@ -58,10 +74,7 @@ Un archivo de tema es un documento JSONC que contiene únicamente campos visuale
         "disk": "\uf0a0",
         "shell": "\uf0e7",
         "wm": "\uf08e"
-    },
-    "logo_path": null,
-    "header_icons": null,
-    "footer_text": null
+    }
 }
 ```
 
@@ -73,7 +86,7 @@ Un archivo de tema es un documento JSONC que contiene únicamente campos visuale
 | `colors` | `object` | Mapeo de colores por módulo |
 | `icons` | `object` | Mapeo de iconos por módulo |
 | `palette_style` | `string` o `null` | Visualización de paleta: `squares`, `circles`, `triangles`, `lines`, `dots` |
-| `show_colors` | `boolean` | Activar o desactivar la salida de color ANSI |
+| `show_colors` | `boolean` | Activar o desactivar indicadores de color ANSI en línea |
 | `logo_path` | `string` o `null` | Ruta a un archivo de logo |
 | `header_icons` | `array` o `null` | Iconos de cabecera del diseño Pac-Man |
 | `footer_text` | `string` o `null` | Texto de pie del diseño Pac-Man |
@@ -149,7 +162,7 @@ El repositorio oficial de temas se encuentra en `github.com/xfetch-cli/configs` 
 | `nord` | section | Paleta azul frío y cian ártico |
 | `catppuccin-mocha` | section | Paleta pastel cálida mocha |
 | `retro-pacman` | pacman | Estilo arcade clásico de Pac-Man con iconos de cabecera y texto de pie |
-| `berlin` | default | Monocromático: sin colores, sin iconos |
+| `berlin` | default | Monocromático: todo blanco, aspecto limpio y minimalista |
 | `tree-compact` | tree | Diseño jerárquico en árbol |
 
 ## Detalles de implementación
@@ -161,7 +174,7 @@ La fusión usa `serde_json::Value` con fusión profunda antes de la deserializac
 1. Analizar `config.jsonc` como `serde_json::Value`
 2. Deserializar a `Config` para extraer el campo `theme`
 3. Si `theme` está establecido, cargar el archivo de tema como `serde_json::Value`
-4. Crear un `Value` vacío y fusionar en orden: defaults -> theme -> config
+4. Crear un `Value` vacío y fusionar en orden: defaults → config.jsonc → theme
 5. Deserializar el resultado fusionado a `Config`
 
 ### Gestión de temas (`themes/mod.rs`)

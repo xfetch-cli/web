@@ -7,16 +7,19 @@ The theme system separates visual appearance (colors, icons, layout) from module
 Themes operate at the config loading layer, before any rendering or plugin execution occurs.
 
 ```
-config.jsonc (theme: "dracula", modules: [...])
+config.jsonc (theme: "berlin", modules: [...])
        |
        v
    Load default Config
        |
        v
+   Load user config.jsonc
+       |
+       v
    Load theme/<name>.jsonc
        |
        v
-   Merge: defaults <- theme <- config.jsonc
+   Merge: defaults <- config.jsonc <- theme
        |
        v
    Final Config (used by renderer)
@@ -24,19 +27,32 @@ config.jsonc (theme: "dracula", modules: [...])
 
 ## Merge Order (last wins)
 
-Each layer can override any visual field:
+Each layer can override any visual field. Starting from **v0.2.0**, the theme has the highest priority:
 
 | Layer | Source | Contains |
 |-------|--------|----------|
 | 1. Core defaults | Hardcoded in `config.rs` | Default icons, colors, layout |
-| 2. Theme file | `themes/<name>.jsonc` | `colors`, `icons`, `layout`, `palette_style`, `logo_path`, `header_icons`, `footer_text`, `show_colors` |
-| 3. User config | `config.jsonc` | `modules`, `info_plugins`, plus overrides for any visual field |
+| 2. User config | `config.jsonc` | `modules`, `info_plugins`, plus overrides for any visual field |
+| 3. Theme file | `themes/<name>.jsonc` | `colors`, `icons`, `layout`, `palette_style`, `logo_path`, `header_icons`, `footer_text`, `show_colors` |
 
-A field in `config.jsonc` always wins over the same field in the theme file.
+A field in the **theme file** always wins over the same field in `config.jsonc` or defaults.
+
+### Merge details
+
+The merge uses `deep_merge()` which works key-by-key:
+
+- **Objects:** merged recursively — each key is resolved independently
+- **Strings, numbers, booleans:** overlay replaces base
+- **Empty strings:** an empty string does *not* override a non-empty string (prevents themes from accidentally clearing icons)
+- **Empty objects `{}`:** no-op — existing keys are preserved
+
+> **Upgrade note (v0.1.x → v0.2.0):** In v0.1.x, `config.jsonc` won over the theme. If you upgrade,
+> your existing config may override the theme. Export your current look with
+> `xfetch theme export my-look`, set `"theme": "my-look"`, and remove visual fields from `config.jsonc`.
 
 ## Theme File Format
 
-A theme file is a JSONC document containing only visual fields. It must NOT contain `modules` or `info_plugins`.
+A theme file is a JSONC document containing only visual fields. It should NOT contain `modules` or `info_plugins`.
 
 ```jsonc
 {
@@ -58,10 +74,7 @@ A theme file is a JSONC document containing only visual fields. It must NOT cont
         "disk": "\uf0a0",
         "shell": "\uf0e7",
         "wm": "\uf08e"
-    },
-    "logo_path": null,
-    "header_icons": null,
-    "footer_text": null
+    }
 }
 ```
 
@@ -73,7 +86,7 @@ A theme file is a JSONC document containing only visual fields. It must NOT cont
 | `colors` | `object` | Per-module color mapping |
 | `icons` | `object` | Per-module icon mapping |
 | `palette_style` | `string` or `null` | Palette display: `squares`, `circles`, `triangles`, `lines`, `dots` |
-| `show_colors` | `boolean` | Enable or disable ANSI color output |
+| `show_colors` | `boolean` | Enable or disable inline ANSI color swatches |
 | `logo_path` | `string` or `null` | Path to a logo file |
 | `header_icons` | `array` or `null` | Pac-Man layout header icons |
 | `footer_text` | `string` or `null` | Pac-Man layout footer text |
@@ -149,7 +162,7 @@ The official themes repository is located at `github.com/xfetch-cli/configs` und
 | `nord` | section | Cool blue and arctic cyan palette |
 | `catppuccin-mocha` | section | Warm mocha pastel palette |
 | `retro-pacman` | pacman | Classic Pac-Man arcade style with header icons and footer text |
-| `berlin` | default | Monochrome: no colors, no icons |
+| `berlin` | default | Monochrome: all white, clean minimal look |
 | `tree-compact` | tree | Hierarchical tree layout |
 
 ## Implementation Details
@@ -161,7 +174,7 @@ The merge uses `serde_json::Value` deep-merge before deserialization:
 1. Parse `config.jsonc` as `serde_json::Value`
 2. Deserialize to `Config` to extract the `theme` field
 3. If `theme` is set, load the theme file as `serde_json::Value`
-4. Create an empty `Value` and merge in order: defaults -> theme -> config
+4. Create an empty `Value` and merge in order: defaults → config.jsonc → theme
 5. Deserialize the merged result to `Config`
 
 ### Theme Management (`themes/mod.rs`)
