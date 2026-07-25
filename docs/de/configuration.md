@@ -77,12 +77,17 @@ JSONC erweitert standard JSON um C-Style (`//`) und C++-Style (`/* */`) Kommenta
 | `palette_style` | `string` | `"squares"` | Paletten-Anzeigestil |
 | `logo_path` | `string` oder `null` | `null` | Pfad zu einer benutzerdefinierten Logodatei |
 | `ascii` | `string` oder `null` | `null` | Pfad zu einer ASCII-Kunst-Datei (Alternative zu logo_path) |
+| `logo_width` | `number` oder `null` | `null` | Breitenbeschränkung fur Bildlogos (in Terminal-Spalten, automatisch berechnet wenn nicht gesetzt) |
+| `logo_height` | `number` oder `null` | `null` | Hohenbeschränkung fur Bildlogos (in Terminal-Zeilen) |
+| `logo_gap` | `number` oder `null` | `12` | Abstand zwischen dem Logo/Bild und dem Infotext (in Spalten) |
+| `logo_kitty` | `boolean` oder `null` | `true` (in Kitty) | Kitty natives Bildprotokoll verwenden (`true`) oder Half-Block-Rendering (`false`). Half-Block hat geringere Auflosung, vermeidet aber Layout-Probleme |
 | `header_icons` | `array` oder `null` | `null` | Icons fur den oberen Rand (Pac-Man-Layout) |
 | `footer_text` | `string` oder `null` | `null` | Text fur den unteren Rand (Pac-Man-Layout) |
 | `disable_ip_fetching` | `boolean` | `false` | Abrufen der offentlichen IP aus Datenschutzgrunden deaktivieren |
 | `disable_cache` | `boolean` | `false` | Daten-Caching deaktivieren |
 | `logo_animation` | `object` oder `null` | `null` | Logo-Animationskonfiguration |
 | `info_plugins` | `array` | `[]` | Liste der auszufuhrenden Info-Plugins |
+| `config_providers` | `array` | `[]` | Liste der Konfigurations-Provider-Erweiterungen, die nach der Themenzusammenfuhrung ausgefuhrt werden |
 
 ### Standardmodule
 
@@ -267,6 +272,37 @@ Plugin-Daten werden uber Modulschussel mit dem Prefix `plugin:` abgerufen:
     "modules": ["os", "kernel", "plugin:github-stats", "plugin:docker"]
 }
 ```
+
+### Konfigurationsanbieter
+
+Das Feld `config_providers` ermoglicht Erweiterungen auf Konfigurationsebene, die Konfiguration vor dem Rendering zu andern. Erweiterungen werden nach der Themenzusammenfuhrung in Deklarationsreihenfolge ausgefuhrt:
+
+```jsonc
+{
+    "config_providers": [
+        {
+            "extension": "config-roulette",
+            "args": {
+                "routes": "~/.config/xfetch/routes.json",
+                "strategy": "random"
+            }
+        },
+        {
+            "extension": "layout-override",
+            "args": {
+                "layout": "tree"
+            }
+        }
+    ]
+}
+```
+
+| Feld | Typ | Beschreibung |
+|-------|------|-------------|
+| `extension` | `string` | Erweiterungsname (Binardatei: `xfetch-extension-<name>`) |
+| `args` | `object` oder `null` | Beliebige JSON-Argumente, die an die Erweiterung ubergeben werden |
+
+Erweiterungen kommunizieren uber stdin/stdout JSON, empfangen die vollstandig aufgeloste Konfiguration und geben eine modifizierte Version zuruck. Siehe [Erweiterungen](extensions.md) fur Details.
 
 ## Konfigurationsdatei-Speicherorte nach Plattform
 

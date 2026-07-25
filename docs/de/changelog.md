@@ -1,5 +1,16 @@
 # Anderungsprotokoll
 
+## v0.3.0 · Bild-Rendering und Erweiterungen · 2026-07-25
+
+- **Kitty Bild-Rendering uberarbeitet:** `logo_kitty` Toggle (natives Protokoll vs Half-Block), `logo_gap` fur konfigurierbaren Bild-Text-Abstand, `logo_width`/`logo_height` fur explizite Grose, und auto-responsive Breite (28% des Terminals, clamp 12–42 Spalten)
+- **Cursor-Positionierung korrigiert:** `MoveUp`/`MoveToColumn` durch `SavePosition`/`RestorePosition` ersetzt fur korrektes Verhalten bei allen Bildprotokollen
+- **Stacked-Layout korrigiert:** `print_stacked_output()` fur reine Bildlogos (ohne ASCII-Text) repariert
+- **Erweiterungs-API:** `api/crates/extension-api/` erstellt — `ConfigProviderRequest`/`ConfigProviderResponse` Protokoll, `config_providers[]` Feld, stdin/stdout JSON-Kommunikation
+- **config-roulette Erweiterung:** Wahlt zufallige oder tagliche Konfiguration aus einer JSON-Routenliste, unterstutzt 100+ Routen
+- **layout-override Erweiterung:** Erzwingt Layout und/oder Module beim Konfigurationsladen
+- **Erweiterungs-CLI:** Befehle `xfetch extension install/list/remove` hinzugefugt
+- **100 bildbasierte Konfigurationen** fur config-roulette mit `logo_gap: 3` und `logo_kitty: true`
+
 ## Phase 0 · Grundlage und Kern
 
 - Rust-Projekt mit Abhangigkeiten initialisieren

@@ -77,12 +77,17 @@ JSONC extends standard JSON by allowing C-style (`//`) and C++-style (`/* */`) c
 | `palette_style` | `string` | `"squares"` | Palette display style |
 | `logo_path` | `string` or `null` | `null` | Path to a custom logo file |
 | `ascii` | `string` or `null` | `null` | Path to an ASCII art file (alternative to logo_path) |
+| `logo_width` | `number` or `null` | `null` | Width constraint for image logos (in terminal columns, auto-calculated if unset) |
+| `logo_height` | `number` or `null` | `null` | Height constraint for image logos (in terminal rows) |
+| `logo_gap` | `number` or `null` | `12` | Gap between the logo/image and the info text (in columns) |
+| `logo_kitty` | `boolean` or `null` | `true` (in Kitty) | Use Kitty native image protocol (`true`) or half-block rendering (`false`). Half-block gives lower resolution but avoids layout issues |
 | `header_icons` | `array` or `null` | `null` | Icons for the top border (Pac-Man layout) |
 | `footer_text` | `string` or `null` | `null` | Text for the bottom border (Pac-Man layout) |
 | `disable_ip_fetching` | `boolean` | `false` | Disable fetching public IP for privacy |
 | `disable_cache` | `boolean` | `false` | Disable data caching |
 | `logo_animation` | `object` or `null` | `null` | Logo animation configuration |
 | `info_plugins` | `array` | `[]` | List of info plugins to execute |
+| `config_providers` | `array` | `[]` | List of config provider extensions to run after theme merge |
 
 ### Default Modules
 
@@ -267,6 +272,37 @@ Plugin data is accessed via module keys prefixed with `plugin:`:
     "modules": ["os", "kernel", "plugin:github-stats", "plugin:docker"]
 }
 ```
+
+### Extension Providers
+
+The `config_providers` field allows config-level extensions to modify the configuration before rendering. Extensions run after the theme merge, in declaration order:
+
+```jsonc
+{
+    "config_providers": [
+        {
+            "extension": "config-roulette",
+            "args": {
+                "routes": "~/.config/xfetch/routes.json",
+                "strategy": "random"
+            }
+        },
+        {
+            "extension": "layout-override",
+            "args": {
+                "layout": "tree"
+            }
+        }
+    ]
+}
+```
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `extension` | `string` | Extension name (binary: `xfetch-extension-<name>`) |
+| `args` | `object` or `null` | Arbitrary JSON arguments passed to the extension |
+
+Extensions communicate via stdin/stdout JSON, receiving the fully resolved config and returning a modified version. See [Extensions](extensions.md) for details.
 
 ## Config File Locations by Platform
 

@@ -77,12 +77,17 @@ JSONC extiende JSON estándar permitiendo comentarios de estilo C (`//`) y C++ (
 | `palette_style` | `string` | `"squares"` | Estilo de visualización de la paleta |
 | `logo_path` | `string` o `null` | `null` | Ruta a un archivo de logo personalizado |
 | `ascii` | `string` o `null` | `null` | Ruta a un archivo de arte ASCII (alternativa a logo_path) |
+| `logo_width` | `number` o `null` | `null` | Ancho máximo para logos de imagen (en columnas de terminal, auto-calculado si no se establece) |
+| `logo_height` | `number` o `null` | `null` | Altura máxima para logos de imagen (en filas de terminal) |
+| `logo_gap` | `number` o `null` | `12` | Espacio entre el logo/imagen y el texto de información (en columnas) |
+| `logo_kitty` | `boolean` o `null` | `true` (en Kitty) | Usar protocolo nativo de Kitty (`true`) o renderizado half-block (`false`). Half-block da menor resolución pero evita problemas de layout |
 | `header_icons` | `array` o `null` | `null` | Iconos para el borde superior (diseño Pac-Man) |
 | `footer_text` | `string` o `null` | `null` | Texto para el borde inferior (diseño Pac-Man) |
 | `disable_ip_fetching` | `boolean` | `false` | Deshabilitar la obtención de IP pública por privacidad |
 | `disable_cache` | `boolean` | `false` | Deshabilitar el almacenamiento en caché de datos |
 | `logo_animation` | `object` o `null` | `null` | Configuración de animación del logo |
 | `info_plugins` | `array` | `[]` | Lista de plugins de información a ejecutar |
+| `config_providers` | `array` | `[]` | Lista de extensiones proveedoras de configuración a ejecutar después de la fusión del tema |
 
 ### Módulos Predeterminados
 
@@ -267,6 +272,37 @@ Los datos de plugins se acceden mediante claves de módulo con el prefijo `plugi
     "modules": ["os", "kernel", "plugin:github-stats", "plugin:docker"]
 }
 ```
+
+### Proveedores de Configuración
+
+El campo `config_providers` permite que extensiones a nivel de configuración modifiquen la configuración antes del renderizado. Las extensiones se ejecutan después de la fusión del tema, en orden de declaración:
+
+```jsonc
+{
+    "config_providers": [
+        {
+            "extension": "config-roulette",
+            "args": {
+                "routes": "~/.config/xfetch/routes.json",
+                "strategy": "random"
+            }
+        },
+        {
+            "extension": "layout-override",
+            "args": {
+                "layout": "tree"
+            }
+        }
+    ]
+}
+```
+
+| Campo | Tipo | Descripción |
+|-------|------|-------------|
+| `extension` | `string` | Nombre de la extensión (binario: `xfetch-extension-<nombre>`) |
+| `args` | `object` o `null` | Argumentos JSON arbitrarios pasados a la extensión |
+
+Las extensiones se comunican mediante stdin/stdout JSON, recibiendo la configuración completamente resuelta y devolviendo una versión modificada. Consulte [Extensiones](extensions.md) para más detalles.
 
 ## Ubicaciones del Archivo de Configuración por Plataforma
 

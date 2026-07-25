@@ -63,68 +63,80 @@ Una herramienta de obtención de información del sistema multiplataforma escrit
    - Escritura de plugins personalizados
    - Crate de API para plugins
 
-6. [Personalización](customization.md)
+6. [Extensiones](extensions.md)
+   - Resumen de la arquitectura de extensiones
+   - Configuración via config_providers
+   - Protocolo JSON wire
+   - Instalación y comandos CLI
+   - Extensiones oficiales
+     - config-roulette
+     - layout-override
+   - Escritura de extensiones personalizadas
+
+7. [Personalización](customization.md)
    - Logos ASCII y de imagen
+   - Tamaño y posicionamiento de imágenes
+   - Renderizado de imágenes en Kitty
    - Estilos de animación de logo
    - Iconos Nerd Font
    - Personalización de colores ANSI
    - Estilos de visualización de paleta
    - Configuraciones predefinidas
 
-7. [Uso Avanzado](advanced-usage.md)
+8. [Uso Avanzado](advanced-usage.md)
    - Modo de evaluación comparativa
    - Sistema de caché
    - Controles de privacidad
    - Comportamiento multiplataforma
    - Optimización de rendimiento
 
-8. [Referencia de Predefinidos](presets.md)
+9. [Referencia de Predefinidos](presets.md)
    - Predefinidos de diseño
    - Predefinidos de muestra
    - Predefinidos de plugins
    - Predefinido completo
 
-9. [Temas](themes.md)
+10. [Temas](themes.md)
    - Arquitectura y orden de fusión
    - Formato de archivo de tema
    - Resolución de temas y comandos CLI
    - Temas integrados
 
-10. [Plugin Theme Manager](theme-manager.md)
+11. [Plugin Theme Manager](theme-manager.md)
     - Descripción general e instalación
     - Acciones (listar, buscar, info, instalar)
     - Registro y registros personalizados
 
-11. [Contribuir](contributing.md)
+12. [Contribuir](contributing.md)
     - Compilación desde el código fuente
     - Estructura del proyecto
     - Guía de desarrollo de plugins
     - Pruebas
     - Proceso de pull request
 
-12. [Hoja de Ruta](roadmap.md)
+13. [Hoja de Ruta](roadmap.md)
     - Fases anteriores (base, módulos, diseños, docs)
     - Fase actual (pruebas, funciones avanzadas)
     - Planes futuros
 
-13. [Seguridad](security.md)
+14. [Seguridad](security.md)
     - Reportar vulnerabilidades
     - Buenas prácticas de seguridad
     - Versiones soportadas
 
-14. [Soporte](support.md)
+15. [Soporte](support.md)
     - Obtener ayuda
     - Antes de abrir un issue
     - Expectativas de respuesta
 
-15. [Registro de Cambios](changelog.md)
+16. [Registro de Cambios](changelog.md)
     - Historial de versiones
     - Registro de cambios por fase
 
-16. [Código de Conducta](code-of-conduct.md)
+17. [Código de Conducta](code-of-conduct.md)
     - Nuestros estándares
     - Comportamiento inaceptable
     - Cómo reportar
 
-17. [Licencia](license.md)
+18. [Licencia](license.md)
     - Términos de la licencia MIT

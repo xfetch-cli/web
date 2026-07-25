@@ -1,5 +1,16 @@
 # Changelog
 
+## v0.3.0 · Image Rendering & Extensions · 2026-07-25
+
+- **Kitty image rendering overhaul:** Added `logo_kitty` toggle (native protocol vs half-block), `logo_gap` for configurable image-text spacing, `logo_width`/`logo_height` for explicit sizing, and auto-responsive width (28% of terminal, clamped 12–42 cols)
+- **Cursor positioning fix:** Replaced `MoveUp`/`MoveToColumn` with `SavePosition`/`RestorePosition` for correct cursor behavior across all image protocols
+- **Stacked layout fix:** Fixed `print_stacked_output()` to handle image-only logos (was ignoring images without ASCII text)
+- **Extension API:** Created `api/crates/extension-api/` — `ConfigProviderRequest` / `ConfigProviderResponse` protocol, `config_providers[]` config field, stdin/stdout JSON communication
+- **config-roulette extension:** Picks a random or daily config from a JSON routes list, supports 100+ routes
+- **layout-override extension:** Forces layout and/or module set at config load time
+- **Extension CLI:** Added `xfetch extension install/list/remove` commands
+- **100 image-based configs** for config-roulette with `logo_gap: 3` and `logo_kitty: true`
+
 ## Phase 0 · Foundation & Core
 
 - Initialize Rust project with dependencies
