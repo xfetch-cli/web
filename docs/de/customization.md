@@ -68,10 +68,48 @@ xfetch kann PNG-, JPG- und SVG-Bilder als Logos mit der Bibliothek `viuer` rende
 Das Bild-Rendering verwendet das native Bildprotokoll des Terminals:
 
 - **iTerm2:** Inline-Bildprotokoll
-- **Kitty:** Kittys natives Bildprotokoll
+- **Kitty:** Kittys natives Bildprotokoll (hohe Auflosung)
 - **Sixel:** Sixel-Grafiken (kompatible Terminals wie xterm, mlterm)
 
-Wenn das Terminal keine Bildanzeige unterstützt, fallt xfetch auf ASCII zurück.
+Wenn das Terminal keine Bildanzeige unterstützt, fallt xfetch auf ASCII zuruck.
+
+#### Bildgrosse und Positionierung
+
+Steuern Sie Bildabmessungen und Abstande mit diesen Feldern:
+
+```jsonc
+{
+    "logo_path": "~/.config/xfetch/images/mein-bild.png",
+    "logo_width": 30,
+    "logo_height": null,
+    "logo_gap": 5
+}
+```
+
+| Feld | Standard | Beschreibung |
+|-------|---------|-------------|
+| `logo_width` | Auto (28% der Terminalbreite, clamp 12–42 Spalten) | Bildbreite in Terminal-Spalten |
+| `logo_height` | Auto (Seitenverhaltnis erhalten) | Bildhohe in Terminal-Zeilen |
+| `logo_gap` | 12 | Abstand in Spalten zwischen Bild und Infotext |
+
+Die automatische Breitenberechnung skaliert mit Ihrem Terminal: breitere Terminals erhalten proportional grosere Bilder.
+
+#### Kitty Terminal Bild-Rendering
+
+In Kitty-Terminals unterstutzt xfetch zwei Rendering-Modi, gesteuert durch `logo_kitty`:
+
+```jsonc
+{
+    "logo_kitty": true
+}
+```
+
+| Wert | Modus | Beschreibung |
+|-------|------|-------------|
+| `true` (Standard) | Natives Protokoll | Vollauflosende Bilder mit Kittys `\x1b_G` Grafikprotokoll. Beste Qualitat. |
+| `false` | Half-Block | Bilder gerendert mit Unicode Half-Block-Zeichen (`▄`). Geringere vertikale Auflosung, aber voll kompatibel mit allen Terminalfunktionen. |
+
+Setzen Sie `logo_kitty: false`, wenn Sie Layout-Probleme mit nativem Kitty-Rendering haben (z.B. Textuberlappung oder Fehlausrichtung). Der Half-Block-Fallback garantiert korrektes Side-by-Side-Layout auf Kosten etwas geringerer Bildtreue.
 
 ## Logo-Animation
 

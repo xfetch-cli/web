@@ -69,10 +69,48 @@ xfetch can render PNG, JPG, and SVG images as logos using the `viuer` library. T
 Image rendering uses the terminal's native image protocol:
 
 - **iTerm2:** inline image protocol
-- **Kitty:** Kitty's native image protocol
+- **Kitty:** Kitty's native image protocol (high resolution)
 - **Sixel:** Sixel graphics (compatible terminals like xterm, mlterm)
 
 If the terminal does not support image display, xfetch falls back to ASCII.
+
+#### Image Sizing and Positioning
+
+Control image dimensions and spacing with these configuration fields:
+
+```jsonc
+{
+    "logo_path": "~/.config/xfetch/images/my-image.png",
+    "logo_width": 30,
+    "logo_height": null,
+    "logo_gap": 5
+}
+```
+
+| Field | Default | Description |
+|-------|---------|-------------|
+| `logo_width` | Auto (28% of terminal width, clamped 12–42 cols) | Image width in terminal columns |
+| `logo_height` | Auto (aspect-ratio preserved) | Image height in terminal rows |
+| `logo_gap` | 12 | Gap in columns between the image and the info text |
+
+The auto-width calculation scales with your terminal: wider terminals get proportionally larger images.
+
+#### Kitty Terminal Image Rendering
+
+In Kitty terminals, xfetch supports two rendering modes controlled by `logo_kitty`:
+
+```jsonc
+{
+    "logo_kitty": true
+}
+```
+
+| Value | Mode | Description |
+|-------|------|-------------|
+| `true` (default) | Native protocol | Full-resolution images using Kitty's `\x1b_G` graphics protocol. Best quality. |
+| `false` | Half-block | Images rendered using Unicode half-block characters (`▄`). Lower vertical resolution but fully compatible with all terminal features. |
+
+Set `logo_kitty: false` if you experience layout issues with native Kitty rendering (e.g., text overlap or misalignment). The half-block fallback guarantees correct side-by-side layout at the cost of some image fidelity.
 
 ## Logo Animation
 

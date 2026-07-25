@@ -2,7 +2,7 @@
 
 Ein plattformunabhangiges Systeminformations-Tool geschrieben in Rust.
 
-- **Version:** 0.2.0
+- ****Version:** 0.3.0
 - **Lizenz:** MIT
 - **Autor:** xscriptor
 - **Repository:** github.com/xfetch-cli/xfetch
@@ -63,22 +63,34 @@ Ein plattformunabhangiges Systeminformations-Tool geschrieben in Rust.
    - Eigene Plugins schreiben
    - Plugin-API-Crate
 
-6. [Anpassung](customization.md)
+6. [Erweiterungen](extensions.md)
+   - Erweiterungsarchitektur im Uberblick
+   - Konfiguration uber config_providers
+   - JSON-Drahtprotokoll
+   - Installation und CLI-Befehle
+   - Offizielle Erweiterungen
+     - config-roulette
+     - layout-override
+   - Eigene Erweiterungen schreiben
+
+7. [Anpassung](customization.md)
    - ASCII- und Bildlogos
+   - Bildgrosse und Positionierung
+   - Kitty Terminal Bild-Rendering
    - Logo-Animationsstile
    - Nerd Font Icons
    - ANSI-Farbanpassung
    - Paletten-Anzeigestile
    - Preset-Konfigurationen
 
-7. [Fortgeschrittene Nutzung](advanced-usage.md)
+8. [Fortgeschrittene Nutzung](advanced-usage.md)
    - Benchmark-Modus
    - Cache-System
    - Datenschutzeinstellungen
    - Plattformubergreifendes Verhalten
    - Leistungsoptimierung
 
-8. [Presets-Referenz](presets.md)
+9. [Presets-Referenz](presets.md)
    - Layout-Presets
    - Showcase-Presets
    - Plugin-Presets
@@ -95,7 +107,7 @@ Ein plattformunabhangiges Systeminformations-Tool geschrieben in Rust.
     - Aktionen (liste, suche, info, installiere)
     - Registry und benutzerdefinierte Registries
 
-11. [Mitwirken](contributing.md)
+12. [Mitwirken](contributing.md)
     - Aus dem Quellcode bauen
     - Projektstruktur
     - Plugin-Entwicklungsleitfaden
@@ -107,24 +119,24 @@ Ein plattformunabhangiges Systeminformations-Tool geschrieben in Rust.
     - Aktuelle Phase (Tests, erweiterte Funktionen)
     - Zukunftsplane
 
-13. [Sicherheit](security.md)
+14. [Sicherheit](security.md)
     - Melden von Sicherheitslucken
     - Sicherheitsempfehlungen
     - Unterstutzte Versionen
 
-14. [Support](support.md)
+15. [Support](support.md)
     - Hilfe erhalten
     - Vor dem Offnen eines Issues
     - Reaktionserwartungen
 
-15. [Anderungsprotokoll](changelog.md)
+16. [Anderungsprotokoll](changelog.md)
     - Versionsgeschichte
     - Phasenweises Anderungsprotokoll
 
-16. [Verhaltenskodex](code-of-conduct.md)
+17. [Verhaltenskodex](code-of-conduct.md)
     - Unsere Standards
     - Inakzeptables Verhalten
     - Melden
 
-17. [Lizenz](license.md)
+18. [Lizenz](license.md)
     - MIT-Lizenzbestimmungen

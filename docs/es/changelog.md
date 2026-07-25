@@ -1,5 +1,16 @@
 # Registro de Cambios
 
+## v0.3.0 · Renderizado de Imágenes y Extensiones · 2026-07-25
+
+- **Renderizado de imágenes en Kitty:** Añadido toggle `logo_kitty` (protocolo nativo vs half-block), `logo_gap` para espaciado configurable entre imagen y texto, `logo_width`/`logo_height` para tamaño explícito, y ancho auto-responsive (28% de la terminal, clamp 12–42 cols)
+- **Corrección de posicionamiento del cursor:** Reemplazado `MoveUp`/`MoveToColumn` con `SavePosition`/`RestorePosition` para comportamiento correcto en todos los protocolos de imagen
+- **Corrección de layout stacked:** Arreglado `print_stacked_output()` para manejar logos de imagen sin ASCII
+- **API de extensiones:** Creado `api/crates/extension-api/` — protocolo `ConfigProviderRequest`/`ConfigProviderResponse`, campo `config_providers[]`, comunicación stdin/stdout JSON
+- **Extensión config-roulette:** Elige una configuración aleatoria o diaria de una lista JSON de rutas, soporta más de 100 rutas
+- **Extensión layout-override:** Fuerza layout y/o módulos al cargar la configuración
+- **CLI de extensiones:** Añadidos comandos `xfetch extension install/list/remove`
+- **100 configuraciones basadas en imágenes** para config-roulette con `logo_gap: 3` y `logo_kitty: true`
+
 ## Fase 0 · Base y Núcleo
 
 - Inicializar proyecto Rust con dependencias

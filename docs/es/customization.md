@@ -69,10 +69,48 @@ xfetch puede renderizar imágenes PNG, JPG y SVG como logos usando la librería 
 El renderizado de imágenes usa el protocolo nativo de imagen de la terminal:
 
 - **iTerm2:** protocolo de imagen inline
-- **Kitty:** protocolo nativo de imagen de Kitty
+- **Kitty:** protocolo nativo de imagen de Kitty (alta resolución)
 - **Sixel:** gráficos Sixel (terminales compatibles como xterm, mlterm)
 
 Si la terminal no soporta visualización de imágenes, xfetch usa ASCII como fallback.
+
+#### Tamaño y Posicionamiento de Imágenes
+
+Controle las dimensiones de la imagen y el espaciado con estos campos:
+
+```jsonc
+{
+    "logo_path": "~/.config/xfetch/images/mi-imagen.png",
+    "logo_width": 30,
+    "logo_height": null,
+    "logo_gap": 5
+}
+```
+
+| Campo | Predeterminado | Descripción |
+|-------|----------------|-------------|
+| `logo_width` | Auto (28% del ancho de terminal, clamp 12–42 cols) | Ancho de imagen en columnas de terminal |
+| `logo_height` | Auto (relación de aspecto preservada) | Altura de imagen en filas de terminal |
+| `logo_gap` | 12 | Espacio en columnas entre la imagen y el texto de información |
+
+El cálculo automático del ancho escala con su terminal: terminales más anchos obtienen imágenes proporcionalmente más grandes.
+
+#### Renderizado de Imágenes en Kitty
+
+En terminales Kitty, xfetch soporta dos modos de renderizado controlados por `logo_kitty`:
+
+```jsonc
+{
+    "logo_kitty": true
+}
+```
+
+| Valor | Modo | Descripción |
+|-------|------|-------------|
+| `true` (predeterminado) | Protocolo nativo | Imágenes de resolución completa usando el protocolo gráfico `\x1b_G` de Kitty. Mejor calidad. |
+| `false` | Half-block | Imágenes renderizadas con caracteres Unicode half-block (`▄`). Menor resolución vertical pero totalmente compatible con todas las funciones de la terminal. |
+
+Establezca `logo_kitty: false` si experimenta problemas de layout con el renderizado nativo de Kitty (como superposición de texto o desalineación). El fallback half-block garantiza un layout lado a lado correcto a costa de algo de fidelidad de imagen.
 
 ## Animación de Logo
 
