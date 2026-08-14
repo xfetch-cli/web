@@ -120,6 +120,17 @@ xfetch verwendet abgestufte Fallback-Ketten fur plattformspezifische Funktionen:
 - **ASCII-Logos:** Alle Terminals
 - **Animation:** Erfordert TTY. Fallback auf statische Anzeige in Pipes oder Nicht-TTY-Kontexten.
 
+## Daemon-Modus
+
+Der Daemon-Modus fixiert eine Animation oben im Terminal und loopt sie im Hintergrund, sodass die Shell-Eingabeaufforderung darunter nutzbar bleibt.
+
+```bash
+xfetch --daemon      # Daemon starten
+xfetch --daemon-stop # Daemon stoppen
+```
+
+Die Animation lauft nur in TTY-Terminals; bei Pipes oder Umleitungen wird das statische Logo angezeigt. Der Daemon-Modus erfordert einen `logo_animation`-Block mit einem Plugin (z. B. `animate-logo`). Im Daemon-Modus loopt die Animation unbegrenzt — `duration_ms` und `loop` werden ignoriert. Fur eine endliche Animation, die von selbst stoppt, den Daemon-Modus deaktiviert lassen.
+
 ## Leistungsoptimierung
 
 xfetch verwendet mehrere Leistungsoptimierungen:

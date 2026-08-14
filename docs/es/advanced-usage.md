@@ -120,6 +120,17 @@ xfetch usa cadenas de fallback graceful para funcionalidades específicas de pla
 - **Logos ASCII:** Todas las terminales
 - **Animación:** Requiere TTY. Usa visualización estática como fallback en pipes o contextos sin TTY.
 
+## Modo Daemon
+
+El modo daemon fija una animación en la parte superior de la terminal y la mantiene en loop en segundo plano, de modo que el prompt de la shell sigue siendo utilizable debajo.
+
+```bash
+xfetch --daemon      # iniciar el daemon
+xfetch --daemon-stop # detenerlo
+```
+
+La animación solo se ejecuta en terminales TTY; en pipes o redirecciones se muestra el logo estático. El modo daemon requiere un bloque `logo_animation` con un plugin (p. ej. `animate-logo`). En modo daemon la animación se repite indefinidamente: `duration_ms` y `loop` se ignoran. Para una animación finita que se detenga sola, mantené el modo daemon desactivado.
+
 ## Optimización de Rendimiento
 
 xfetch emplea varias optimizaciones de rendimiento:

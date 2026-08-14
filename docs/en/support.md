@@ -5,7 +5,7 @@ Need help with installation, configuration, layouts, or runtime behavior of **xf
 ## Get Help
 
 - **Issues:** [github.com/xfetch-cli/xfetch/issues](https://github.com/xfetch-cli/xfetch/issues)
-- **Documentation:** [Getting Started](getting-started.md), [Configuration](configuration.md), [Layouts](layouts.md)
+- **Documentation:** [Getting Started](getting-started), [Configuration](configuration), [Layouts](layouts)
 - **Security reports:** [x@xscriptor.com](mailto:x@xscriptor.com) (private disclosure)
 
 ## Before Opening an Issue

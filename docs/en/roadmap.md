@@ -121,19 +121,20 @@
 - [x] Implement unit tests for info module
 - [x] Implement unit tests for config module
 - [x] Implement integration tests for layouts
-- [ ] Setup linting with clippy
-- [ ] Setup code formatter (rustfmt)
-- [ ] Implement platform-specific tests for each OS
+- [x] Setup linting with clippy
+- [x] Setup code formatter (rustfmt)
+- [x] Implement platform-specific tests for each OS
 - [/] Add cross-platform testing suite
-- [ ] Setup code coverage reporting
+- [x] Setup code coverage reporting
 
 ## Phase 12 · Advanced Features
 
-- [ ] Implement custom module scripting language / support
-- [ ] Add conditional module display based on system state
-- [ ] Implement theme system with variables
+- [x] Implement custom module scripting language / support
+- [x] Add conditional module display based on system state
+- [x] Implement theme system with variables
 - [ ] Add animation support for transitional elements
-- [ ] Implement real-time stats updates / daemon mode
+- [x] Implement daemon mode (--daemon) for persistent animation rendering
+- [ ] Implement real-time stats updates in daemon mode
 - [ ] Add config hot-reload capability
 - [x] Implement telemetry (optional, privacy-respecting)
 - [ ] Add accessibility features (high contrast themes)

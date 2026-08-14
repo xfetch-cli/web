@@ -148,16 +148,16 @@ Each plugin has its own reference page with full configuration details, argument
 
 | Plugin | Kind | Description |
 |--------|------|-------------|
-| [animate-logo](plugins/animate-logo.md) | `logo_animation` | Animated ASCII logos with color effects (sweep, wave, rainbow, sparkle, breathing, frame) |
-| [docker](plugins/docker.md) | `info_provider` | Docker container statistics (total, running, paused, stopped) |
-| [github-stats](plugins/github-stats.md) | `info_provider` | GitHub profile stats (stars, repos, PRs, issues, followers) |
-| [music-player](plugins/music-player.md) | `info_provider` | Currently playing music from MPD and/or Spotify |
-| [weather](plugins/weather.md) | `info_provider` | Current weather via wttr.in (condition, temp, wind, humidity) |
-| [timezone](plugins/timezone.md) | `info_provider` | Local time, date, timezone name, and UTC offset |
-| [user-info](plugins/user-info.md) | `info_provider` | User account info (UID, GID, home, shell, groups) |
-| [display-resolution](plugins/display-resolution.md) | `info_provider` | Monitor resolution and refresh rate (cross-platform) |
-| [theme-detection](plugins/theme-detection.md) | `info_provider` | Desktop theme detection (GTK, KDE Plasma) |
-| [theme-manager](plugins/theme-manager.md) | `info_provider` | Theme registry browser and installer |
+| [animate-logo](plugins/animate-logo) | `logo_animation` | Animated ASCII logos with color effects (sweep, wave, rainbow, sparkle, breathing, frame) |
+| [docker](plugins/docker) | `info_provider` | Docker container statistics (total, running, paused, stopped) |
+| [github-stats](plugins/github-stats) | `info_provider` | GitHub profile stats (stars, repos, PRs, issues, followers) |
+| [music-player](plugins/music-player) | `info_provider` | Currently playing music from MPD and/or Spotify |
+| [weather](plugins/weather) | `info_provider` | Current weather via wttr.in (condition, temp, wind, humidity) |
+| [timezone](plugins/timezone) | `info_provider` | Local time, date, timezone name, and UTC offset |
+| [user-info](plugins/user-info) | `info_provider` | User account info (UID, GID, home, shell, groups) |
+| [display-resolution](plugins/display-resolution) | `info_provider` | Monitor resolution and refresh rate (cross-platform) |
+| [theme-detection](plugins/theme-detection) | `info_provider` | Desktop theme detection (GTK, KDE Plasma) |
+| [theme-manager](plugins/theme-manager) | `info_provider` | Theme registry browser and installer |
 
 ## Writing Custom Plugins
 

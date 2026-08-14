@@ -318,4 +318,4 @@ Plugins provide additional modules using the `plugin:<name>` key prefix:
 }
 ```
 
-Each plugin can return one or more lines of text that are displayed under its module key. See the [Plugins documentation](plugins.md) for details on all available plugin modules.
+Each plugin can return one or more lines of text that are displayed under its module key. See the [Plugins documentation](plugins) for details on all available plugin modules.

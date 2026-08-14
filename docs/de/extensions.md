@@ -111,8 +111,8 @@ Fehler sollten auf stderr ausgegeben werden. Der Prozess sollte mit einem Status
 
 | Erweiterung | Beschreibung |
 |-----------|-------------|
-| [config-roulette](extensions/config-roulette.md) | Wahlt eine zufallige (oder tagliche) Konfiguration aus einer Liste von Pfaden |
-| [layout-override](extensions/layout-override.md) | Uberschreibt das Layout und/oder die Module beim Laden der Konfiguration |
+| [config-roulette](extensions/config-roulette) | Wahlt eine zufallige (oder tagliche) Konfiguration aus einer Liste von Pfaden |
+| [layout-override](extensions/layout-override) | Uberschreibt das Layout und/oder die Module beim Laden der Konfiguration |
 
 ## Verzeichnisse
 

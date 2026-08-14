@@ -5,7 +5,7 @@ Benotigen Sie Hilfe bei Installation, Konfiguration, Layouts oder dem Laufzeitve
 ## Hilfe erhalten
 
 - **Issues:** [github.com/xfetch-cli/xfetch/issues](https://github.com/xfetch-cli/xfetch/issues)
-- **Dokumentation:** [Erste Schritte](getting-started.md), [Konfiguration](configuration.md), [Layouts](layouts.md)
+- **Dokumentation:** [Erste Schritte](getting-started), [Konfiguration](configuration), [Layouts](layouts)
 - **Sicherheitsmeldungen:** [x@xscriptor.com](mailto:x@xscriptor.com) (private Offenlegung)
 
 ## Vor dem Offnen eines Issues

@@ -318,4 +318,4 @@ Los plugins proporcionan módulos adicionales usando el prefijo `plugin:<nombre>
 }
 ```
 
-Cada plugin puede devolver una o más líneas de texto que se muestran bajo su clave de módulo. Consulte la [documentación de Plugins](plugins.md) para obtener detalles sobre todos los módulos de plugins disponibles.
+Cada plugin puede devolver una o más líneas de texto que se muestran bajo su clave de módulo. Consulte la [documentación de Plugins](plugins) para obtener detalles sobre todos los módulos de plugins disponibles.

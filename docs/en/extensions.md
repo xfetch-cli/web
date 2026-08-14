@@ -111,8 +111,8 @@ Errors should be printed to stderr. The process should exit with a non-zero stat
 
 | Extension | Description |
 |-----------|-------------|
-| [config-roulette](extensions/config-roulette.md) | Picks a random (or daily) config from a list of paths |
-| [layout-override](extensions/layout-override.md) | Overrides the layout and/or modules at config load time |
+| [config-roulette](extensions/config-roulette) | Picks a random (or daily) config from a list of paths |
+| [layout-override](extensions/layout-override) | Overrides the layout and/or modules at config load time |
 
 ## Directories
 

@@ -120,6 +120,17 @@ xfetch uses graceful fallback chains for platform-specific features:
 - **ASCII logos:** All terminals
 - **Animation:** Requires TTY. Falls back to static display in pipes or non-TTY contexts.
 
+## Daemon Mode
+
+Daemon mode pins an animated fetch at the top of the terminal and keeps looping it in the background, so the shell prompt stays usable below it.
+
+```bash
+xfetch --daemon      # start the daemon
+xfetch --daemon-stop # stop it
+```
+
+The animation only runs in TTY terminals; on pipes or redirects the static logo is shown. Daemon mode requires a `logo_animation` block with a plugin (e.g. `animate-logo`). In daemon mode the animation loops indefinitely — `duration_ms` and `loop` are ignored. To play a finite animation that stops on its own, keep daemon mode off.
+
 ## Performance Optimization
 
 xfetch employs several performance optimizations:

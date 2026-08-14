@@ -139,7 +139,7 @@ const PHASES = [
   { title: "Phase 9 — CI/CD & distribution", desc: "GitHub Actions, macOS/Windows binaries, Homebrew tap, AUR, install scripts, changelog automation.", status: "done" },
   { title: "Phase 10 — Community & ecosystem", desc: "Themes registry, plugin system, theme download manager, community contributions, theme preview tool.", status: "done" },
   { title: "Phase 11 — Testing & QA", desc: "Unit/integration tests, clippy, rustfmt, platform-specific tests, cross-platform suite, coverage.", status: "partial" },
-  { title: "Phase 12 — Advanced features", desc: "Custom scripting, conditional modules, theme variables, daemon mode, hot-reload, telemetry (opt-in).", status: "partial" },
+  { title: "Phase 12 — Advanced features", desc: "Daemon mode, custom scripting, conditional modules, theme variables, telemetry (opt-in); pending: real-time stats in daemon mode, config hot-reload, animations, accessibility.", status: "partial" },
   { title: "Phase 13 — Marketing", desc: "User manual, video tutorials, project website, blog posts, comparison guide, community channel.", status: "partial" },
 ];
 
