@@ -111,8 +111,8 @@ Los errores deben imprimirse en stderr. El proceso debe salir con un código de 
 
 | Extensión | Descripción |
 |-----------|-------------|
-| [config-roulette](extensions/config-roulette.md) | Elige una configuración aleatoria (o diaria) de una lista de rutas |
-| [layout-override](extensions/layout-override.md) | Sobrescribe el diseño y/o los módulos al cargar la configuración |
+| [config-roulette](extensions/config-roulette) | Elige una configuración aleatoria (o diaria) de una lista de rutas |
+| [layout-override](extensions/layout-override) | Sobrescribe el diseño y/o los módulos al cargar la configuración |
 
 ## Directorios
 

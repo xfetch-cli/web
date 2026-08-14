@@ -148,16 +148,16 @@ Cada plugin tiene su propia página de referencia con detalles completos de conf
 
 | Plugin | Tipo | Descripción |
 |--------|------|-------------|
-| [animate-logo](plugins/animate-logo.md) | `logo_animation` | Logos ASCII animados con efectos de color (sweep, wave, rainbow, sparkle, breathing, frame) |
-| [docker](plugins/docker.md) | `info_provider` | Estadísticas de contenedores Docker (total, running, paused, stopped) |
-| [github-stats](plugins/github-stats.md) | `info_provider` | Estadísticas de perfil de GitHub (stars, repos, PRs, issues, followers) |
-| [music-player](plugins/music-player.md) | `info_provider` | Música reproduciéndose actualmente desde MPD y/o Spotify |
-| [weather](plugins/weather.md) | `info_provider` | Clima actual vía wttr.in (condición, temp, viento, humedad) |
-| [timezone](plugins/timezone.md) | `info_provider` | Hora local, fecha, zona horaria y offset UTC |
-| [user-info](plugins/user-info.md) | `info_provider` | Información de cuenta de usuario (UID, GID, home, shell, grupos) |
-| [display-resolution](plugins/display-resolution.md) | `info_provider` | Resolución y tasa de refresco del monitor (multiplataforma) |
-| [theme-detection](plugins/theme-detection.md) | `info_provider` | Detección de tema del escritorio (GTK, KDE Plasma) |
-| [theme-manager](plugins/theme-manager.md) | `info_provider` | Explorador e instalador de temas del registro |
+| [animate-logo](plugins/animate-logo) | `logo_animation` | Logos ASCII animados con efectos de color (sweep, wave, rainbow, sparkle, breathing, frame) |
+| [docker](plugins/docker) | `info_provider` | Estadísticas de contenedores Docker (total, running, paused, stopped) |
+| [github-stats](plugins/github-stats) | `info_provider` | Estadísticas de perfil de GitHub (stars, repos, PRs, issues, followers) |
+| [music-player](plugins/music-player) | `info_provider` | Música reproduciéndose actualmente desde MPD y/o Spotify |
+| [weather](plugins/weather) | `info_provider` | Clima actual vía wttr.in (condición, temp, viento, humedad) |
+| [timezone](plugins/timezone) | `info_provider` | Hora local, fecha, zona horaria y offset UTC |
+| [user-info](plugins/user-info) | `info_provider` | Información de cuenta de usuario (UID, GID, home, shell, grupos) |
+| [display-resolution](plugins/display-resolution) | `info_provider` | Resolución y tasa de refresco del monitor (multiplataforma) |
+| [theme-detection](plugins/theme-detection) | `info_provider` | Detección de tema del escritorio (GTK, KDE Plasma) |
+| [theme-manager](plugins/theme-manager) | `info_provider` | Explorador e instalador de temas del registro |
 
 ## Escritura de Plugins Personalizados
 

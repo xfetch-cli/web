@@ -318,4 +318,4 @@ Plugins stellen zusatzliche Module mit dem Schussel-Prafix `plugin:<name>` berei
 }
 ```
 
-Jedes Plugin kann eine oder mehrere Textzeilen zuruckgeben, die unter seinem Modulschlussel angezeigt werden. Siehe die [Plugins-Dokumentation](plugins.md) fur Details zu allen verfugbaren Plugin-Modulen.
+Jedes Plugin kann eine oder mehrere Textzeilen zuruckgeben, die unter seinem Modulschlussel angezeigt werden. Siehe die [Plugins-Dokumentation](plugins) fur Details zu allen verfugbaren Plugin-Modulen.

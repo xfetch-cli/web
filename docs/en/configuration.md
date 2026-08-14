@@ -302,7 +302,7 @@ The `config_providers` field allows config-level extensions to modify the config
 | `extension` | `string` | Extension name (binary: `xfetch-extension-<name>`) |
 | `args` | `object` or `null` | Arbitrary JSON arguments passed to the extension |
 
-Extensions communicate via stdin/stdout JSON, receiving the fully resolved config and returning a modified version. See [Extensions](extensions.md) for details.
+Extensions communicate via stdin/stdout JSON, receiving the fully resolved config and returning a modified version. See [Extensions](extensions) for details.
 
 ## Config File Locations by Platform
 

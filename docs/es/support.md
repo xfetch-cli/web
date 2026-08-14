@@ -5,7 +5,7 @@
 ## Obtener Ayuda
 
 - **Issues:** [github.com/xfetch-cli/xfetch/issues](https://github.com/xfetch-cli/xfetch/issues)
-- **Documentación:** [Primeros Pasos](getting-started.md), [Configuración](configuration.md), [Diseños](layouts.md)
+- **Documentación:** [Primeros Pasos](getting-started), [Configuración](configuration), [Diseños](layouts)
 - **Reportes de seguridad:** [x@xscriptor.com](mailto:x@xscriptor.com) (divulgación privada)
 
 ## Antes de Abrir un Issue

@@ -302,7 +302,7 @@ Das Feld `config_providers` ermoglicht Erweiterungen auf Konfigurationsebene, di
 | `extension` | `string` | Erweiterungsname (Binardatei: `xfetch-extension-<name>`) |
 | `args` | `object` oder `null` | Beliebige JSON-Argumente, die an die Erweiterung ubergeben werden |
 
-Erweiterungen kommunizieren uber stdin/stdout JSON, empfangen die vollstandig aufgeloste Konfiguration und geben eine modifizierte Version zuruck. Siehe [Erweiterungen](extensions.md) fur Details.
+Erweiterungen kommunizieren uber stdin/stdout JSON, empfangen die vollstandig aufgeloste Konfiguration und geben eine modifizierte Version zuruck. Siehe [Erweiterungen](extensions) fur Details.
 
 ## Konfigurationsdatei-Speicherorte nach Plattform
 

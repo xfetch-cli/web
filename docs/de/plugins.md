@@ -148,16 +148,16 @@ Jedes Plugin hat eine eigene Referenzseite mit vollstandigen Konfigurationsdetai
 
 | Plugin | Art | Beschreibung |
 |--------|------|-------------|
-| [animate-logo](plugins/animate-logo.md) | `logo_animation` | Animierte ASCII-Logos mit Farbeffekten (sweep, wave, rainbow, sparkle, breathing, frame) |
-| [docker](plugins/docker.md) | `info_provider` | Docker-Container-Statistiken (total, running, paused, stopped) |
-| [github-stats](plugins/github-stats.md) | `info_provider` | GitHub-Profilstatistiken (stars, repos, PRs, issues, followers) |
-| [music-player](plugins/music-player.md) | `info_provider` | Aktuelle Musikwiedergabe von MPD und/oder Spotify |
-| [weather](plugins/weather.md) | `info_provider` | Aktuelles Wetter uber wttr.in (Zustand, Temp, Wind, Luftfeuchtigkeit) |
-| [timezone](plugins/timezone.md) | `info_provider` | Ortszeit, Datum, Zeitzonenname und UTC-Offset |
-| [user-info](plugins/user-info.md) | `info_provider` | Benutzerkontoinformationen (UID, GID, Home, Shell, Gruppen) |
-| [display-resolution](plugins/display-resolution.md) | `info_provider` | Monitorauflosung und Bildwiederholfrequenz (plattformubergreifend) |
-| [theme-detection](plugins/theme-detection.md) | `info_provider` | Desktop-Theme-Erkennung (GTK, KDE Plasma) |
-| [theme-manager](plugins/theme-manager.md) | `info_provider` | Theme-Registry-Browser und Installer |
+| [animate-logo](plugins/animate-logo) | `logo_animation` | Animierte ASCII-Logos mit Farbeffekten (sweep, wave, rainbow, sparkle, breathing, frame) |
+| [docker](plugins/docker) | `info_provider` | Docker-Container-Statistiken (total, running, paused, stopped) |
+| [github-stats](plugins/github-stats) | `info_provider` | GitHub-Profilstatistiken (stars, repos, PRs, issues, followers) |
+| [music-player](plugins/music-player) | `info_provider` | Aktuelle Musikwiedergabe von MPD und/oder Spotify |
+| [weather](plugins/weather) | `info_provider` | Aktuelles Wetter uber wttr.in (Zustand, Temp, Wind, Luftfeuchtigkeit) |
+| [timezone](plugins/timezone) | `info_provider` | Ortszeit, Datum, Zeitzonenname und UTC-Offset |
+| [user-info](plugins/user-info) | `info_provider` | Benutzerkontoinformationen (UID, GID, Home, Shell, Gruppen) |
+| [display-resolution](plugins/display-resolution) | `info_provider` | Monitorauflosung und Bildwiederholfrequenz (plattformubergreifend) |
+| [theme-detection](plugins/theme-detection) | `info_provider` | Desktop-Theme-Erkennung (GTK, KDE Plasma) |
+| [theme-manager](plugins/theme-manager) | `info_provider` | Theme-Registry-Browser und Installer |
 
 ## Eigene Plugins schreiben
 
