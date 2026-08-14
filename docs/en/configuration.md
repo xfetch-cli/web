@@ -234,8 +234,8 @@ The `logo_animation` field enables ASCII logo animation via a plugin:
 |-------|------|-------------|
 | `plugin` | `string` | Plugin name (e.g., `"animate-logo"`) |
 | `fps` | `number` | Frames per second (1-60) |
-| `duration_ms` | `number` | Total animation duration in milliseconds |
-| `loop` | `boolean` | Whether to loop the animation |
+| `duration_ms` | `number` | Total animation duration in milliseconds (ignored in daemon mode) |
+| `loop` | `boolean` | Whether to loop the animation (ignored in daemon mode) |
 | `style` | `string` | Animation style: `"sweep"`, `"wave"`, `"rainbow"`, `"sparkle"`, `"breathing"`, `"frame"`, `"none"` |
 | `frames_path` | `string` | Path to pre-built frame sets (for `"frame"` style). Multiple frame sets separated by `\n===\n` |
 

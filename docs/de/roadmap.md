@@ -121,19 +121,20 @@
 - [x] Unit-Tests fur das Info-Modul
 - [x] Unit-Tests fur das Konfigurationsmodul
 - [x] Integrationstests fur Layouts
-- [ ] Linting mit clippy einrichten
-- [ ] Code-Formatter (rustfmt) einrichten
-- [ ] Plattformspezifische Tests fur jedes Betriebssystem
+- [x] Linting mit clippy einrichten
+- [x] Code-Formatter (rustfmt) einrichten
+- [x] Plattformspezifische Tests fur jedes Betriebssystem
 - [/] Plattformubergreifende Testsuite
-- [ ] Codeabdeckungsbericht einrichten
+- [x] Codeabdeckungsbericht einrichten
 
 ## Phase 12 · Erweiterte Funktionen
 
-- [ ] Benutzerdefinierte Modul-Skriptsprache / Unterstutzung
-- [ ] Bedingte Modulanzeige basierend auf Systemzustand
-- [ ] Themsystem mit Variablen implementieren
+- [x] Benutzerdefinierte Modul-Skriptsprache / Unterstutzung
+- [x] Bedingte Modulanzeige basierend auf Systemzustand
+- [x] Themsystem mit Variablen implementieren
 - [ ] Animationsunterstutzung fur Ubergangselemente
-- [ ] Echtzeitaktualisierungen / Daemon-Modus
+- [x] Daemon-Modus (--daemon) fur dauerhaftes Animations-Rendering implementieren
+- [ ] Echtzeit-Statistikupdates im Daemon-Modus
 - [ ] Konfigurations-Hot-Reload-Fahigkeit
 - [x] Telemetrie (optional, datenschutzrespektierend)
 - [ ] Barrierefreiheitsfunktionen (kontrastreiche Designs)

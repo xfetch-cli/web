@@ -2,7 +2,7 @@ export default function Roadmap({ phases }: { phases: { title: string; desc: str
   return (
     <div className="grid gap-3">
       <h2 className="m-0 text-lg font-semibold">Roadmap</h2>
-      <p className="m-0 max-w-[68ch] text-fg2 leading-relaxed">What&apos;s planned for xfetch — from additional package managers to a daemon mode. Contributions welcome!</p>
+      <p className="m-0 max-w-[68ch] text-fg2 leading-relaxed">What&apos;s next for xfetch — from real-time stats in daemon mode to config hot-reload. Contributions welcome!</p>
       <div className="grid gap-4 pl-5 border-l-2 border-bg3/60">
         {phases.map((p, i) => (
           <div key={i} className="grid grid-cols-[0.75rem_1fr] gap-3 relative">

@@ -121,19 +121,20 @@
 - [x] Pruebas unitarias para el módulo de información
 - [x] Pruebas unitarias para el módulo de configuración
 - [x] Pruebas de integración para diseños
-- [ ] Configurar linting con clippy
-- [ ] Configurar formateador de código (rustfmt)
-- [ ] Implementar pruebas específicas por plataforma
+- [x] Configurar linting con clippy
+- [x] Configurar formateador de código (rustfmt)
+- [x] Implementar pruebas específicas por plataforma
 - [/ ] Añadir suite de pruebas multiplataforma
-- [ ] Configurar informe de cobertura de código
+- [x] Configurar informe de cobertura de código
 
 ## Fase 12 · Funciones Avanzadas
 
-- [ ] Implementar lenguaje de scripting / soporte para módulos personalizados
-- [ ] Añadir visualización condicional de módulos según estado del sistema
-- [ ] Implementar sistema de temas con variables
+- [x] Implementar lenguaje de scripting / soporte para módulos personalizados
+- [x] Añadir visualización condicional de módulos según estado del sistema
+- [x] Implementar sistema de temas con variables
 - [ ] Añadir soporte de animación para elementos transicionales
-- [ ] Implementar actualizaciones en tiempo real / modo daemon
+- [x] Implementar modo daemon (--daemon) para renderizado persistente de animaciones
+- [ ] Implementar actualizaciones de estadísticas en tiempo real en modo daemon
 - [ ] Añadir capacidad de recarga en caliente de configuración
 - [x] Implementar telemetría (opcional, respetuosa con la privacidad)
 - [ ] Añadir funciones de accesibilidad (temas de alto contraste)
