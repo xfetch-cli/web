@@ -44,6 +44,9 @@ Una herramienta de obtención de información del sistema multiplataforma escrit
    - Diseño compacto
    - Diseño minimalista
    - Diseños horizontal e inferior
+   - Diseños Section-box y Custom-X
+     - [Section-Box](layouts.md#section-box-layout)
+     - [Custom-X](custom-x.md)
 
 5. [Plugins](plugins.md)
    - Resumen de la arquitectura de plugins

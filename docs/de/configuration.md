@@ -81,6 +81,11 @@ JSONC erweitert standard JSON um C-Style (`//`) und C++-Style (`/* */`) Kommenta
 | `logo_height` | `number` oder `null` | `null` | Hohenbeschränkung fur Bildlogos (in Terminal-Zeilen) |
 | `logo_gap` | `number` oder `null` | `12` | Abstand zwischen dem Logo/Bild und dem Infotext (in Spalten) |
 | `logo_kitty` | `boolean` oder `null` | `true` (in Kitty) | Kitty natives Bildprotokoll verwenden (`true`) oder Half-Block-Rendering (`false`). Half-Block hat geringere Auflosung, vermeidet aber Layout-Probleme |
+| `logo_color` | `string` oder `null` | `null` | Farbe fur das ASCII-Logo: Name (`"Cyan"`), 256-Farben-Index (`"196"`) oder Hex-RGB (`"#FF0000"`) |
+| `logo_padding` | `number` oder `null` | `0` | Fuhrende Leerzeichen vor dem Logo |
+| `logo_type` | `string` oder `null` | `"auto"` | `"auto"` (nach Endung), `"ascii"` (Text erzwingen), `"image"` (Bild erzwingen) |
+| `show_keys` | `boolean` | `false` | Rendert `Schlussel: Wert` in den Icon-Layouts |
+| `key_width` | `number` oder `null` | auto | Fullt den Schlussel auf diese Spaltenbreite, um Werte auszurichten |
 | `header_icons` | `array` oder `null` | `null` | Icons fur den oberen Rand (Pac-Man-Layout) |
 | `footer_text` | `string` oder `null` | `null` | Text fur den unteren Rand (Pac-Man-Layout) |
 | `disable_ip_fetching` | `boolean` | `false` | Abrufen der offentlichen IP aus Datenschutzgrunden deaktivieren |

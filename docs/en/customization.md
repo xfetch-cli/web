@@ -56,6 +56,22 @@ Sample logos are included in the xfetch installation at `~/.config/xfetch/logos/
 | `x_logo.txt` | Cyan-to-green gradient "X" shape (9 lines) |
 | `minimal.txt` | A simple `[ xfetch ]` label (1 line) |
 
+#### ASCII Logo Options
+
+| Field | Type | Default | Description |
+|-------|------|---------|-------------|
+| `logo_color` | `string` | none | Color applied to the ASCII logo. Accepts names (`"Cyan"`), 256-color indexes (`"196"`) and hex RGB (`"#FF0000"`). Also applies to animated logos; lines that already contain ANSI codes are left untouched. |
+| `logo_padding` | `number` | `0` | Leading spaces added before the logo (and its frames when animated). |
+| `logo_type` | `string` | `"auto"` | `"auto"` detects by file extension, `"ascii"` forces text rendering, `"image"` forces image rendering. |
+
+```jsonc
+{
+    "ascii": "~/.config/xfetch/logos/arch.txt",
+    "logo_color": "#00FF87",
+    "logo_padding": 2
+}
+```
+
 ### Image Logos
 
 xfetch can render PNG, JPG, and SVG images as logos using the `viuer` library. This requires terminal support for image display (iTerm2, Kitty, or Sixel-compatible terminals):
@@ -266,6 +282,30 @@ Color output can be disabled entirely:
 {
     "show_colors": false
 }
+```
+
+### Keys
+
+By default xfetch renders each module as `icon value`. To display the module label as well, enable `show_keys`; use `key_width` to pad the labels to a fixed column count so values align vertically.
+
+| Field | Type | Default | Description |
+|-------|------|---------|-------------|
+| `show_keys` | `boolean` | `false` | Render `key: value` in the icon-style layouts (classic, section, compact, custom-x, box variants). |
+| `key_width` | `number` | auto | Pad the key to this many columns before the `:` separator. Applies wherever keys are shown, including `section` and `minimal`. |
+
+```jsonc
+{
+    "show_keys": true,
+    "key_width": 12
+}
+```
+
+Example with `show_keys` and `key_width: 12`:
+
+```
+cpu       : Apple M4 (10) @ 4.46 GHz
+memory    : 10.88 GiB / 16.00 GiB (68%)
+disk      : 152.80 GiB / 931.32 GiB (16%) - apfs
 ```
 
 ## Palette Display

@@ -81,6 +81,11 @@ JSONC extends standard JSON by allowing C-style (`//`) and C++-style (`/* */`) c
 | `logo_height` | `number` or `null` | `null` | Height constraint for image logos (in terminal rows) |
 | `logo_gap` | `number` or `null` | `12` | Gap between the logo/image and the info text (in columns) |
 | `logo_kitty` | `boolean` or `null` | `true` (in Kitty) | Use Kitty native image protocol (`true`) or half-block rendering (`false`). Half-block gives lower resolution but avoids layout issues |
+| `logo_color` | `string` or `null` | `null` | Color applied to the ASCII logo: name (`"Cyan"`), 256-color index (`"196"`) or hex RGB (`"#FF0000"`) |
+| `logo_padding` | `number` or `null` | `0` | Leading spaces added before the logo |
+| `logo_type` | `string` or `null` | `"auto"` | `"auto"` (by extension), `"ascii"` (force text), `"image"` (force image) |
+| `show_keys` | `boolean` | `false` | Render `key: value` in the icon-style layouts |
+| `key_width` | `number` or `null` | auto | Pad the key to this many columns so values align |
 | `header_icons` | `array` or `null` | `null` | Icons for the top border (Pac-Man layout) |
 | `footer_text` | `string` or `null` | `null` | Text for the bottom border (Pac-Man layout) |
 | `disable_ip_fetching` | `boolean` | `false` | Disable fetching public IP for privacy |

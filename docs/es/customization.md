@@ -58,6 +58,24 @@ Se incluyen logos de muestra en la instalación de xfetch en `~/.config/xfetch/l
 
 ### Logos de Imagen
 
+
+#### Opciones del Logo ASCII
+
+| Campo | Tipo | Default | Descripción |
+|-------|------|---------|-------------|
+| `logo_color` | `string` | ninguno | Color aplicado al logo ASCII. Acepta nombres (`"Cyan"`), índices 256-colores (`"196"`) y hex RGB (`"#FF0000"`). También aplica a logos animados; las líneas que ya contienen códigos ANSI no se modifican. |
+| `logo_padding` | `number` | `0` | Espacios a la izquierda agregados antes del logo (y sus fotogramas si está animado). |
+| `logo_type` | `string` | `"auto"` | `"auto"` detecta por extensión de archivo, `"ascii"` fuerza renderizado de texto, `"image"` fuerza renderizado de imagen. |
+
+```jsonc
+{
+    "ascii": "~/.config/xfetch/logos/arch.txt",
+    "logo_color": "#00FF87",
+    "logo_padding": 2
+}
+```
+
+
 xfetch puede renderizar imágenes PNG, JPG y SVG como logos usando la librería `viuer`. Esto requiere soporte de terminal para visualización de imágenes (iTerm2, Kitty o terminales compatibles con Sixel):
 
 ```jsonc
@@ -266,6 +284,31 @@ La salida de color se puede deshabilitar por completo:
 {
     "show_colors": false
 }
+```
+
+
+### Claves (Etiquetas)
+
+Por defecto xfetch renderiza cada módulo como `icono valor`. Para mostrar también la etiqueta del módulo, active `show_keys`; use `key_width` para rellenar las etiquetas a una cantidad fija de columnas y que los valores queden alineados verticalmente.
+
+| Campo | Tipo | Default | Descripción |
+|-------|------|---------|-------------|
+| `show_keys` | `boolean` | `false` | Renderiza `clave: valor` en los diseños con iconos (clásico, section, compact, custom-x, variantes box). |
+| `key_width` | `number` | auto | Rellena la clave hasta esta cantidad de columnas antes del separador `:`. Aplica donde se muestren claves, incluyendo `section` y `minimal`. |
+
+```jsonc
+{
+    "show_keys": true,
+    "key_width": 12
+}
+```
+
+Ejemplo con `show_keys` y `key_width: 12`:
+
+```
+cpu       : Apple M4 (10) @ 4.46 GHz
+memory    : 10.88 GiB / 16.00 GiB (68%)
+disk      : 152.80 GiB / 931.32 GiB (16%) - apfs
 ```
 
 ## Visualización de Paleta
