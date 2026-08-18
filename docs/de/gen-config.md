@@ -60,15 +60,15 @@ XFETCH_LOGOS_URL=https://raw.githubusercontent.com/<user>/logos/main xfetch --ge
 
 ## Layout (`--layout`)
 
-Das Template enthält standardmäßig das `pacman`-Layout. Mit `--layout` erzeugst du eines der integrierten Layouts:
+Das Template enthält standardmäßig das `section`-Layout (Gruppen Hardware/Software/Session). Mit `--layout` erzeugst du eines der integrierten Layouts:
 
 ```bash
-xfetch --gen-config --layout section
+xfetch --gen-config --layout pacman
 xfetch --gen-config --layout tree
 xfetch --gen-config --layout compact
 ```
 
-Verfügbare Namen: `default`, `side-block`, `tree`, `section`, `section-box`, `custom-x`, `compact`, `minimal`, `pacman`, `box`, `line`, `dots`, `bottom_line`, `horizontal`, `bottom`. Ein unbekannter Name zeigt eine Warnung und behält `pacman`.
+Verfügbare Namen: `default`, `side-block`, `tree`, `section`, `section-box`, `custom-x`, `compact`, `minimal`, `pacman`, `box`, `line`, `dots`, `bottom_line`, `horizontal`, `bottom`. Ein unbekannter Name zeigt eine Warnung und behält `section`.
 
 ## Kombiniertes Beispiel
 
