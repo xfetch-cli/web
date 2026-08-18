@@ -1,5 +1,23 @@
 # Changelog
 
+## v0.5.0 · Performance, WSL & Logo Catalog · 2026-08-18
+
+- **Package counts from databases:** `dpkg`, `pacman`, `apk` and `flatpak` are read directly from their databases (world-readable files), with automatic command fallback. New support for Void (`xbps`) and Gentoo (`portage`)
+- **PATH pre-check for binaries:** before spawning any probe the binary existence is verified, ignoring WSL Windows mounts (`/mnt/c`) — avoids expensive PATH searches on WSL
+- **Full parallelism:** `battery`, `datetime` and info plugins now run in the parallel section (the plugin protocol is unchanged); public IP hosts are queried in parallel
+- **Optimized sysinfo initialization:** only CPU/memory/swap are refreshed (no processes). Cold fetch: 8.6 s → **0.008 s**
+- **Configurable WSL presentation:** new `os_wsl_style` key (`off` / `minimal` / `full`) — e.g. `Ubuntu 24.04 x86_64 (WSL 2, WSLg)`
+- **Per-distro logo catalog:** `--gen-config` downloads the ASCII logo of the detected distro from the new [xfetch-cli/logos](https://github.com/xfetch-cli/logos) repo, with `--logo <id>` to force one and `--layout <name>` to generate with another layout
+
+## v0.4.0 · Timeouts & Platform Separation · 2026-08-15/17
+
+- **Per-command timeouts:** fixed the hang on systems with `snap` installed but snapd stopped (e.g. WSL) — every probe has its own timeout and the process is killed when it expires
+- **Platform separation:** new `src/info/platform/{linux,macos,windows}/` + `shared/` structure with a uniform per-OS contract (only the active platform is compiled)
+- **XDG_CONFIG_HOME support:** `config_dir()` prefers an absolute `XDG_CONFIG_HOME` (macOS configuration fix)
+- **Section-box layout:** new boxed section layout
+- **Local CI:** `scripts/ci.sh` / `ci.ps1` (fmt, clippy and tests without depending on GitHub Actions)
+- **Package counter speedup:** detectors now run in real parallel, without double runs, and `snap` is skipped when snapd is not running (socket pre-check)
+
 ## v0.3.0 · Image Rendering & Extensions · 2026-07-25
 
 - **Kitty image rendering overhaul:** Added `logo_kitty` toggle (native protocol vs half-block), `logo_gap` for configurable image-text spacing, `logo_width`/`logo_height` for explicit sizing, and auto-responsive width (28% of terminal, clamped 12–42 cols)
