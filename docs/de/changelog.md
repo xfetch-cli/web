@@ -1,5 +1,13 @@
 # Anderungsprotokoll
 
+## v0.7.0 · Konfigurierbare Beschriftungen und Wert-Vorlagen · 2026-08-20
+
+- **`labels`-Map:** benennt die Beschriftung jeder Zeile pro Modul um (`"cpu": "prozessor"`) oder blendet sie mit einem leeren String aus (nur Symbol) — funktioniert in jedem Layout (classic und Varianten, compact, minimal, section, section-box, tree, custom-x)
+- **`formats`-Map:** ersetzt den Wert eines Moduls durch eine Vorlage mit `{feld}`-Platzhaltern — CPU (`{brand}`/`{model}`/`{cores}`/`{freq}`), GPU (`{name}`/`{vendor}`/`{model}`/`{vram}`), memory/swap/disk (`{used}`/`{total}`/`{percent}`/`{fs}`), os (`{distro}`/`{version}`/`{arch}`/`{wsl}`), packages (ein Feld pro Manager), battery (`{percent}`/`{state}`), uptime (`{days}`/`{hours}`/`{mins}`), datetime (`{date}`/`{time}`); unbekannte Felder werden leer gerendert, `{{`/`}}` erzeugen literale Klammern
+- **Rückwärtskompatibel:** die Standardvorlage ist `{value}`, bestehende Configs und Ausgaben bleiben unverändert; die Formatierung wird einmal beim Aufbau des Render-Baums angewendet und gilt für alle Layouts und beide Daemons
+- **GPU-Felder pro Plattform:** Linux parst die `lspci`-Klammerbeschreibung, Windows den `Name`/CIM-Wert, macOS das Chipset-Modell von `system_profiler`; gemeinsame Vendor/VRAM/Modell-Regeln in `platform/shared/gpu.rs`
+- Vollständige Feldreferenz in [`submodules_configuration.md`](https://github.com/xfetch-cli/xfetch/blob/main/docs/submodules_configuration.md)
+
 ## v0.6.0 · Themes, Live-Statistik-Daemon und Plattform-Modularisierung · 2026-08-19
 
 - **Theme-Format vereinfacht:** `theme set` andert nur den `theme`-Schlussel und erhalt Kommentare und Formatierung; Themes tragen keine `icons` mehr (Schriftwahl des Benutzers, wird aus den Standardwerten befullt); neue Felder `logo_color` und `logo_colors` (pro Zeile)
