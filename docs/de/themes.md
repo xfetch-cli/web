@@ -33,7 +33,7 @@ Jede Ebene kann jedes visuelle Feld uberschreiben. Seit **v0.2.0** hat das Theme
 |-------|--------|--------|
 | 1. Standardwerte | Fest codiert in `config.rs` | Standard-Icons, Farben, Layout |
 | 2. Benutzerkonfiguration | `config.jsonc` | `modules`, `info_plugins`, sowie Uberschreibungen fur jedes visuelle Feld |
-| 3. Theme-Datei | `themes/<name>.jsonc` | `colors`, `icons`, `layout`, `palette_style`, `logo_path`, `header_icons`, `footer_text`, `show_colors` |
+| 3. Theme-Datei | `themes/<name>.jsonc` | `colors`, `layout`, `palette_style`, `logo_path`, `logo_color`, `logo_colors`, `header_icons`, `footer_text`, `show_colors` |
 
 Ein Feld in der **Theme-Datei** gewinnt immer gegenuber demselben Feld in `config.jsonc` oder den Standardwerten.
 
@@ -66,14 +66,6 @@ Eine Theme-Datei ist ein JSONC-Dokument, das nur visuelle Felder enthalt. Sie da
         "disk": "Cyan",
         "shell": "Green",
         "wm": "Blue"
-    },
-    "icons": {
-        "os": "\uf17c",
-        "cpu": "\uf2db",
-        "memory": "\ue266",
-        "disk": "\uf0a0",
-        "shell": "\uf0e7",
-        "wm": "\uf08e"
     }
 }
 ```
@@ -84,12 +76,15 @@ Eine Theme-Datei ist ein JSONC-Dokument, das nur visuelle Felder enthalt. Sie da
 |------|-----|-------------|
 | `layout` | `string` oder `null` | Name des Layout-Stils |
 | `colors` | `object` | Modulspezifische Farbzuordnung |
-| `icons` | `object` | Modulspezifische Icon-Zuordnung |
 | `palette_style` | `string` oder `null` | Palettenanzeige: `squares`, `circles`, `triangles`, `lines`, `dots` |
 | `show_colors` | `boolean` | Inline-ANSI-Farbindikatoren ein-/ausschalten |
 | `logo_path` | `string` oder `null` | Pfad zu einer Logo-Datei |
+| `logo_color` | `string` oder `null` | Farbe fur ASCII-Logos (Name, Hex oder RGB) |
+| `logo_colors` | `array` oder `null` | Farben pro Zeile fur ASCII-Logos (`Zeile i` verwendet `logo_colors[i % len]`) |
 | `header_icons` | `array` oder `null` | Header-Icons fur Pac-Man-Layout |
 | `footer_text` | `string` oder `null` | Footer-Text fur Pac-Man-Layout |
+
+Themes enthalten keine `icons` — die Icon-Wahl ist Sache der Schriftart des Benutzers; der Kern fullt Icons aus den eingebauten Standards auf.
 
 ## Theme-Auflosung
 
@@ -123,7 +118,6 @@ xfetch theme export my-theme
 Die exportierte Datei enthalt nur:
 - `layout`
 - `colors`
-- `icons`
 - `palette_style`
 - `header_icons`
 - `footer_text`
@@ -144,7 +138,7 @@ Das Theme-System ist vollstandig abwartskompatibel:
 ~/.config/xfetch/
     config.jsonc            # Module, Plugins und optionale Theme-Referenz
     themes/
-        dracula.jsonc       # Theme-Dateien: Farben, Icons, Layout
+        dracula.jsonc       # Theme-Dateien: Farben, Layout
         nord.jsonc
         catppuccin-mocha.jsonc
         retro-pacman.jsonc
@@ -154,7 +148,7 @@ Das Theme-System ist vollstandig abwartskompatibel:
 
 ## Integrierte Themes
 
-Das offizielle Theme-Repository befindet sich unter `github.com/xfetch-cli/configs` im Verzeichnis `themes/`:
+Das offizielle Theme-Repository befindet sich unter `github.com/xfetch-cli/themes`, registriert uber `index.json` mit Theme-Dateien unter `colors/`:
 
 | Theme | Layout | Stil |
 |-------|--------|------|
@@ -162,8 +156,19 @@ Das offizielle Theme-Repository befindet sich unter `github.com/xfetch-cli/confi
 | `nord` | section | Kuhle Blau- und Arktis-Cyan-Palette |
 | `catppuccin-mocha` | section | Warme Mokka-Pastell-Palette |
 | `retro-pacman` | pacman | Klassischer Pac-Man-Arcade-Stil mit Header-Icons und Footer-Text |
-| `berlin` | default | Monochrom: alles wei, sauberes, minimalistisches Aussehen |
-| `tree-compact` | tree | Hierarchisches Baum-Layout |
+| `berlin` | default | Keine Farben und keine Icons: saubere Nur-Text-Ausgabe |
+| `tree-compact` | tree | Hierarchisches Baum-Layout mit kuhlem Blau-Grun-Schema |
+| `bogota` | bottom | Unteres Layout mit warmer Rot-, Magenta- und Wei-Palette |
+| `helsinki` | line | Einzeiliges Layout mit Grun-, Blau- und Magenta-Akzentmischung |
+| `lahabana` | section | Abschnitts-Layout mit Rot-, Magenta- und Wei-Palette |
+| `london` | minimal | Minimale Graustufen-Palette (Wei und Grau) |
+| `madrid` | default | Standard-Layout mit Rot-, Grun- und Blau-Trikolore-Palette |
+| `miami` | section | Abschnitts-Layout mit Magenta-, Cyan- und Wei-Vaporwave-Palette |
+| `oslo` | compact | Kompaktes Layout mit kuhler Blau-, Cyan- und Wei-Palette |
+| `paris` | box | Box-Layout mit Rot-, Magenta- und Wei-Palette |
+| `praha` | section | Abschnitts-Layout mit Rot- und Magenta-Palette, Dreiecks-Swatches |
+| `tokio` | horizontal | Horizontales Layout mit Rot-, Wei- und Magenta-Palette |
+| `x` | section | Abschnitts-Layout mit Cyan-, Magenta- und Wei-Akzenten |
 
 ## Implementierungsdetails
 

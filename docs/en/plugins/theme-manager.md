@@ -5,7 +5,7 @@ Browses, searches, and installs themes from a remote or local registry.
 - **Kind:** `info_provider`
 - **Binary:** `xfetch-plugin-theme-manager`
 - **Dependencies:** `curl` in PATH (for remote registries)
-- **Default registry:** `https://raw.githubusercontent.com/xfetch-cli/configs/main/themes/index.json`
+- **Default registry:** `https://raw.githubusercontent.com/xfetch-cli/themes/main/index.json`
 
 ## Configuration
 
@@ -30,7 +30,7 @@ Browses, searches, and installs themes from a remote or local registry.
 | `action` | No | `"list"` | `list`, `search`, `info`, or `install` |
 | `name` | For `info`/`install` | — | Theme name |
 | `query` | For `search` | — | Search term (matches name, description, author, tags) |
-| `registry` | No | xfetch-cli/configs | Registry URL (HTTP or local path with `/` or `~`) |
+| `registry` | No | xfetch-cli/themes | Registry URL (HTTP or local path with `/` or `~`) |
 
 ## Actions
 

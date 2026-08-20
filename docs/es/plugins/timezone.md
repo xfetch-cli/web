@@ -21,6 +21,8 @@ Muestra la hora actual, fecha e información de zona horaria.
 |-------|-----------|-------------|-------------|
 | `format` | No | `%Z %z` | Cadena de formato de `date` para mostrar la zona horaria |
 
+El argumento `format` se ignora en Windows (no hay GNU `date`); solo Linux y macOS.
+
 ## Salida
 
 | Estado | Salida |

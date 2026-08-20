@@ -19,6 +19,10 @@ Muestra la música reproduciéndose actualmente desde MPD y/o Spotify.
 
 Ninguno.
 
+## Plataforma
+
+Solo Linux y macOS; en Windows responde `Music: no active player`.
+
 ## Salida
 
 | Estado | Salida |

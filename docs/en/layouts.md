@@ -12,13 +12,15 @@ xfetch supports multiple visual layouts for displaying system information. Each 
 | `"side-block"` | Two-column: icons on left, values on right |
 | `"tree"` | Hierarchical tree with branch connectors |
 | `"box"` | Rounded box around all content |
+| `"section-box"` | Like `section`, but each group is drawn as its own box with the title embedded in the top border |
+| `"custom-x"` | Fully configurable border templates (`custom_x` field) |
 | `"line"` | Classic with `---` separators every 3 items |
 | `"dots"` | Classic with `...` separators every 3 items |
 | `"bottom_line"` | Classic with a `---` line at the bottom |
 | `"compact"` | Minimal output without borders or separators |
 | `"minimal"` | Plain `key: value` format, no icons or colors |
-| `"horizontal"` | Content above logo (stacked vertically) |
-| `"bottom"` | Logo below content (stacked vertically) |
+| `"horizontal"` | Logo above content (stacked vertically) |
+| `"bottom"` | Content above logo (stacked vertically) |
 
 ## Default / Classic Layout
 
@@ -262,7 +264,7 @@ disk: 120.5 GiB / 256 GiB (47%) - ext4
 
 Variants that change the logo position relative to content:
 
-- **Horizontal:** Content displayed on top, logo below (useful for wide terminals)
-- **Bottom:** Logo displayed on top, content below (same as default but stacked vertically)
+- **Horizontal:** Logo displayed on top, content below (useful for wide terminals)
+- **Bottom:** Content displayed on top, logo below (same as default but stacked vertically)
 
 These layouts do not display the logo side-by-side. Instead, they stack the logo and content vertically.

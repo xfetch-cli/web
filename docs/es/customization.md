@@ -95,6 +95,15 @@ Controle las dimensiones de la imagen y el espaciado con estos campos:
 
 El cálculo automático del ancho escala con su terminal: terminales más anchos obtienen imágenes proporcionalmente más grandes.
 
+#### Campos del Logo ASCII
+
+| Campo | Predeterminado | Descripción |
+|-------|----------------|-------------|
+| `logo_color` | Auto | Color para logos ASCII (nombre, hex o RGB) |
+| `logo_colors` | Auto | Colores por fila para logos ASCII (array; `la fila i` usa `logo_colors[i % len]`) |
+| `logo_padding` | 0 | Relleno alrededor del logo |
+| `logo_type` | Auto | Tipo de logo: `auto`, `ascii` o `image` |
+
 #### Renderizado de Imágenes en Kitty
 
 En terminales Kitty, xfetch soporta dos modos de renderizado controlados por `logo_kitty`:
@@ -286,9 +295,19 @@ El módulo `palette` renderiza una muestra de color ANSI. El estilo se controla 
 | `circles` | Símbolos de círculo coloreados |
 | `triangles` | Símbolos de triángulo coloreados |
 | `lines` | Barras de color horizontales gruesas |
-| `dots` | Puntos pequeños coloreados |
 
 La paleta muestra 8 colores que coinciden con la paleta ANSI estándar: Black, Red, Green, Yellow, Blue, Magenta, Cyan, White.
+
+## Claves (Etiquetas)
+
+Por defecto xfetch renderiza cada módulo como `icono valor`. Para mostrar también la etiqueta del módulo, habilite `show_keys`; use `key_width` para rellenar las etiquetas a un ancho fijo de columnas y alinear los valores verticalmente.
+
+```jsonc
+{
+    "show_keys": true,
+    "key_width": 12
+}
+```
 
 ## Configuraciones Predefinidas
 

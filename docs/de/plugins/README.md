@@ -13,6 +13,8 @@ xfetch bietet eine Reihe offizieller Plugins für zusätzliche Funktionalität.
 - [display-resolution](display-resolution) — Monitorauflösung und Bildwiederholrate
 - [theme-detection](theme-detection) — Desktop-Theme-Erkennung (GTK / KDE)
 - [theme-manager](theme-manager) — Theme-Registry-Browser und -Installierer
+- [chocolatey](chocolatey) — Chocolatey-Paketzahl (Windows)
+- [temperature](temperature) — CPU/SoC-Temperatur aus den thermischen Zonen des Kernels
 
 ## Logo-Animation-Plugins
 

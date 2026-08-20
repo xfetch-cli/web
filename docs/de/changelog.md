@@ -1,5 +1,33 @@
 # Anderungsprotokoll
 
+## v0.6.0 · Themes, Live-Statistik-Daemon und Plattform-Modularisierung · 2026-08-19
+
+- **Theme-Format vereinfacht:** `theme set` andert nur den `theme`-Schlussel und erhalt Kommentare und Formatierung; Themes tragen keine `icons` mehr (Schriftwahl des Benutzers, wird aus den Standardwerten befullt); neue Felder `logo_color` und `logo_colors` (pro Zeile)
+- **Live-Statistik-Daemon (`daemon_live`):** fixiert die Ausgabe oben im Terminal und fragt alle `daemon_live_refresh` Sekunden eine leichte Teilmenge der Module neu ab; Hot Reload uber `daemon_live_reload` (uberwacht Config und Theme); Flags `--no-daemon-live`, `--daemon-live-stop`, `--daemon-live-reload`
+- **Windows:** `winget` zahlt nur uber winget installierte Pakete; Chocolatey verließ die Kern-Probes (kommt als Plugin zuruck); Shell-Erkennung lauft uber die Eltern-Prozesskette (cmd.exe wird nicht mehr als PowerShell gemeldet); Versions-zu-Logo-Zuordnung nutzt Build-Nummern
+- **Plugin- und Erweiterungs-Timeouts:** neue `subprocess.rs` mit begrenztem Pipe-Drain — Kindprozesse, die die Pipe halten, konnen xfetch nicht mehr aufhangen; optionales `timeout_secs` pro Plugin/Erweiterung in der Config; `with_timeout`-Helfer in den API-Crates
+- **Plattform-Modularisierung:** macOS und Linux spiegeln die Windows-Struktur (`platform/<os>/version.rs`, `software.rs`, `network.rs`, ...); Arch trennt `pacman` (offiziell) vom neuen `aur`-Eintrag (`pacman -Qm`); Gentoo-portage-Zahl wird angezeigt; WSL-bewusste Darstellung
+- **Effekte:** Intro-Animationen uber den neuen `effects`-Schlussel und die Befehle `xfetch effects install/list/remove`
+
+## v0.5.0 · Performance, Paketmanager und Distro-Logos · 2026-08-18
+
+- **Performance-Runden:** Paketzahlen direkt aus den Distro-Datenbanken (dpkg/pacman/apk/flatpak, Mikrosekunden statt Subprozessen); PATH-Prufung vor dem Spawnen von Probes; battery/datetime in den parallelen Abschnitt verschoben; Public-IP-Hosts parallel abgefragt; Probes erst alle spawnen, dann joinen (kalter Fetch 8.7 s → 0.05 s auf WSL)
+- **Distro-Logos in `--gen-config`:** holt das ASCII-Logo des erkannten OS/Distro aus dem neuen Katalog `xfetch-cli/logos`, mit `--logo <id>`-Override und `XFETCH_LOGOS_URL` fur Forks
+- **Neues Flag `--layout <name>`** fur `--gen-config`; der Ordner `configs/` wurde entfernt — die Vorlage ist jetzt im Binary eingebettet und die Installer erzeugen die erste Config mit `xfetch --gen-config`
+- **WSL-Darstellung:** neuer Schlussel `os_wsl_style` (`off` / `minimal` / `full`)
+- **Weitere Paketmanager:** Void (xbps-Datenbank) und Gentoo (portage) unterstutzt; unbekannte Config-Schlussel werden ignoriert
+- **Windows:** `winget`-Unterstutzung hinzugefugt; `choco list --local-only` zahlt nicht mehr falsch; `scoop list` zahlt Zeilen korrekt
+- **Parallele Plugins:** Plugins laufen in parallelen Threads — API unverandert, kein Plugin muss angepasst werden
+
+## v0.4.0 · Daemon-Modus, neue Layouts und Hang-Fixes · 2026-08-17
+
+- **Daemon-Modus (`--daemon`):** fixiert das animierte Logo in einem festen Scrollbereich und beendet sich sofort; stoppen mit `--daemon-stop`
+- **Externe Befehls-Timeouts:** `run_cmd_with_timeout()` beendet hangende Befehle — snap ohne snapd-Daemon blockiert den Fetch nicht mehr; Timeouts pro Befehl fur Paketmanager und Hardware-Probes
+- **Plattformtrennung:** neue Struktur `src/info/platform/{linux,macos,windows}/` mit gemeinsamem Vertrag und Mechanik in `shared/`
+- **Neue Layouts:** `section-box` (umrandete Boxen pro Modulgruppe) und `custom-x` (vollstandig anpassbare Rahmenvorlagen mit `{fill}`/`{title}`, Breite auto/full/fest)
+- **Neue Optionen:** `show_keys`, `key_width`, `logo_color` (Namen, 256-Farb-Indizes und Hex-RGB), `logo_padding`, `logo_type` (auto/ascii/image)
+- **XDG_CONFIG_HOME-Unterstutzung** (macOS-Fix) und lokale CI-Skripte (`scripts/ci.sh`, `scripts/ci.ps1`)
+
 ## v0.3.0 · Bild-Rendering und Erweiterungen · 2026-07-25
 
 - **Kitty Bild-Rendering uberarbeitet:** `logo_kitty` Toggle (natives Protokoll vs Half-Block), `logo_gap` fur konfigurierbaren Bild-Text-Abstand, `logo_width`/`logo_height` fur explizite Grose, und auto-responsive Breite (28% des Terminals, clamp 12–42 Spalten)

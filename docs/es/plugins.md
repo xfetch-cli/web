@@ -158,6 +158,8 @@ Cada plugin tiene su propia página de referencia con detalles completos de conf
 | [display-resolution](plugins/display-resolution) | `info_provider` | Resolución y tasa de refresco del monitor (multiplataforma) |
 | [theme-detection](plugins/theme-detection) | `info_provider` | Detección de tema del escritorio (GTK, KDE Plasma) |
 | [theme-manager](plugins/theme-manager) | `info_provider` | Explorador e instalador de temas del registro |
+| [chocolatey](plugins/chocolatey) | `info_provider` | Conteo de paquetes de Chocolatey (Windows) |
+| [temperature](plugins/temperature) | `info_provider` | Temperatura de CPU/SoC desde las zonas térmicas del kernel |
 
 ## Escritura de Plugins Personalizados
 
@@ -226,7 +228,10 @@ El crate `xfetch-plugin-api` (fuente en `github.com/xfetch-cli/api`) proporciona
 - **Tipos de protocolo:** `AnimationFrame`, `EmptyArgs`, `InfoPluginRequest`, `InfoPluginResponse`, `LogoAnimationArgs`, `LogoAnimationRequest`, `LogoAnimationResponse`, `PluginKind`
 - **Ayudantes de punto de entrada:** `read_logo_animation_request()`, `read_info_plugin_request()`, `read_info_plugin_args_or_default()`, `write_logo_animation_frames()`, `write_info_lines()`
 - **Ayudantes de E/S:** `read_json_from_stdin()`, `write_json_to_stdout()`
+- **Ayudantes de tiempo de espera:** `with_timeout()` y el error `TimedOut` — ejecutan el trabajo del plugin bajo un presupuesto de tiempo y responden con elegancia cuando se agota
 - **Tipos de error:** Enum `PluginApiError` con variantes Io, Serialize, Deserialize, InvalidProtocolVersion, InvalidPluginKind, InvalidArgs, EmptyAnimationFrames
+
+La clave de configuración opcional `timeout_secs` aplica a `info_plugins`, `logo_animation` y `config_providers` como red de seguridad en segundos: el núcleo mata el proceso del plugin si tarda más, mientras que el presupuesto `with_timeout` propio del plugin es el control principal.
 
 ### Directrices
 

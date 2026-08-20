@@ -44,14 +44,12 @@ function LangFlag({ lang, size = 16 }: { lang: string; size?: number }) {
 
 export default function DocViewer({
   content,
-  title,
   slug,
   lang,
   langMeta,
   allDocs,
 }: {
   content: string;
-  title: string;
   slug: string;
   lang: string;
   langMeta: Record<string, string>;

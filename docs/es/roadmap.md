@@ -102,7 +102,7 @@
 - [x] Lanzamientos binarios para Windows
 - [x] Paquete AUR para Arch Linux
 - [x] Homebrew tap para macOS
-- [x] Registro cargo para distribución
+- [x] Registro PyPI o cargo para distribución
 - [x] Generación automatizada de changelog
 
 ## Fase 10 · Comunidad y Ecosistema
@@ -112,7 +112,7 @@
 - [x] Crear herramienta de vista previa de temas en línea
 - [x] Establecer proceso de contribución de temas comunitarios
 - [x] Crear sistema de plugins para módulos personalizados
-- [/] Implementar validación de configuración de plugins
+- [x] Implementar validación de configuración de plugins
 - [x] Establecer plantillas de issues comunitarias
 - [x] Crear guías de contribución
 
@@ -124,7 +124,7 @@
 - [x] Configurar linting con clippy
 - [x] Configurar formateador de código (rustfmt)
 - [x] Implementar pruebas específicas por plataforma
-- [/ ] Añadir suite de pruebas multiplataforma
+- [x] Añadir suite de pruebas multiplataforma
 - [x] Configurar informe de cobertura de código
 
 ## Fase 12 · Funciones Avanzadas
@@ -132,12 +132,12 @@
 - [x] Implementar lenguaje de scripting / soporte para módulos personalizados
 - [x] Añadir visualización condicional de módulos según estado del sistema
 - [x] Implementar sistema de temas con variables
-- [ ] Añadir soporte de animación para elementos transicionales
+- [x] Añadir soporte de animación para elementos transicionales
 - [x] Implementar modo daemon (--daemon) para renderizado persistente de animaciones
-- [ ] Implementar actualizaciones de estadísticas en tiempo real en modo daemon
-- [ ] Añadir capacidad de recarga en caliente de configuración
+- [x] Implementar actualizaciones de estadísticas en tiempo real en modo daemon
+- [x] Añadir capacidad de recarga en caliente de configuración
 - [x] Implementar telemetría (opcional, respetuosa con la privacidad)
-- [ ] Añadir funciones de accesibilidad (temas de alto contraste)
+- [x] Añadir funciones de accesibilidad (temas de alto contraste)
 
 ## Fase 13 · Documentación y Marketing
 
@@ -148,4 +148,4 @@
 - [ ] Publicar artículos de blog sobre funciones
 - [/] Crear guía comparativa con herramientas similares
 - [ ] Configurar canal comunitario Discord/Slack
-- [/] Crear programa de contribución
+- [x] Crear programa de contribución

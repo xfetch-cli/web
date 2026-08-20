@@ -95,6 +95,15 @@ Control image dimensions and spacing with these configuration fields:
 
 The auto-width calculation scales with your terminal: wider terminals get proportionally larger images.
 
+#### ASCII Logo Fields
+
+| Field | Default | Description |
+|-------|---------|-------------|
+| `logo_color` | Auto | Color for ASCII logos (name, hex, or RGB) |
+| `logo_colors` | Auto | Per-row colors for ASCII logos (array; row `i` uses `logo_colors[i % len]`) |
+| `logo_padding` | 0 | Padding around the logo |
+| `logo_type` | Auto | Logo type: `auto`, `ascii`, or `image` |
+
 #### Kitty Terminal Image Rendering
 
 In Kitty terminals, xfetch supports two rendering modes controlled by `logo_kitty`:
@@ -286,9 +295,19 @@ The `palette` module renders an ANSI color swatch. The style is controlled by th
 | `circles` | Colored circle symbols |
 | `triangles` | Colored triangle symbols |
 | `lines` | Thick horizontal color bars |
-| `dots` | Small colored dots |
 
 The palette displays 8 colors matching the ANSI standard palette: Black, Red, Green, Yellow, Blue, Magenta, Cyan, White.
+
+## Keys (Labels)
+
+By default xfetch renders each module as `icon value`. To display the module label as well, enable `show_keys`; use `key_width` to pad the labels to a fixed column count so values align vertically.
+
+```jsonc
+{
+    "show_keys": true,
+    "key_width": 12
+}
+```
 
 ## Preset Configurations
 

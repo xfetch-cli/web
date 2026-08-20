@@ -88,6 +88,22 @@ JSONC erweitert standard JSON um C-Style (`//`) und C++-Style (`/* */`) Kommenta
 | `logo_animation` | `object` oder `null` | `null` | Logo-Animationskonfiguration |
 | `info_plugins` | `array` | `[]` | Liste der auszufuhrenden Info-Plugins |
 | `config_providers` | `array` | `[]` | Liste der Konfigurations-Provider-Erweiterungen, die nach der Themenzusammenfuhrung ausgefuhrt werden |
+| `theme` | `string` oder `null` | `null` | Theme-Name zum Anwenden (nur visuelle Felder) |
+| `daemon` | `boolean` | `false` | Im animierten Daemon-Modus ausfuhren (fixiert den Fetch am oberen Terminalrand) |
+| `daemon_min_rows` | `number` oder `null` | `null` | Mindestterminalzeilen fur den animierten Daemon |
+| `daemon_live` | `boolean` | `false` | Live-Statistikblock am oberen Terminalrand fixieren und Module periodisch neu abfragen |
+| `daemon_live_refresh` | `number` oder `null` | (plattformabhangig) | Aktualisierungsintervall des Live-Daemons in Sekunden |
+| `daemon_live_modules` | `array` oder `null` | (plattformabhangig) | Vom Live-Daemon angezeigte Module |
+| `daemon_live_reload` | `boolean` | `false` | Hot-Reload der Konfiguration im Live-Daemon-Modus |
+| `os_wsl_style` | `string` oder `null` | `null` | WSL-Erkennungsstil: `off`, `minimal` oder `full` |
+| `logo_color` | `string` oder `null` | `null` | Farbe fur ASCII-Logos (Name, Hex oder RGB) |
+| `logo_colors` | `array` oder `null` | `null` | Farben pro Zeile fur ASCII-Logos (`Zeile i` verwendet `logo_colors[i % len]`) |
+| `logo_padding` | `number` | `0` | Abstand um das Logo |
+| `logo_type` | `string` | `"auto"` | Logo-Typ: `auto`, `ascii` oder `image` |
+| `show_keys` | `boolean` | `false` | Modulbeschriftungen anzeigen (`Schlussel: Wert`) |
+| `key_width` | `number` oder `null` | `null` | Feste Breite fur Schlusselbeschriftungen, richtet Werte aus |
+| `custom_x` | `object` oder `null` | `null` | Rahmenvorlagen fur das `custom-x`-Layout |
+| `effects` | `object`, `array` oder `null` | `null` | Intro-Effekte, die auf die Inhaltszeilen angewendet werden |
 
 ### Standardmodule
 
@@ -200,6 +216,13 @@ Farben bilden Modulnamen auf ANSI-Farbnamen ab:
 | `Cyan` | 36 |
 | `White` | 37 |
 | `Grey` oder `Gray` | 90 |
+| `DarkGrey` oder `DarkGray` | 90 |
+| `DarkRed` | 31 |
+| `DarkGreen` | 32 |
+| `DarkYellow` | 33 |
+| `DarkBlue` | 34 |
+| `DarkMagenta` | 35 |
+| `DarkCyan` | 36 |
 
 ### Palettenstile
 
@@ -211,7 +234,6 @@ Das Modul `palette` zeigt ein Farbmuster an. Verfugbare Stile:
 | `"circles"` | Vordergrundfarbkreise |
 | `"triangles"` | Vordergrundfarbdreiecke |
 | `"lines"` | Dicke horizontale Farbbalken |
-| `"dots"` | Kleine Vordergrundfarbpunkte |
 
 ### Animationskonfiguration
 
@@ -238,6 +260,7 @@ Das Feld `logo_animation` aktiviert ASCII-Logo-Animation uber ein Plugin:
 | `loop` | `boolean` | Ob die Animation wiederholt werden soll (wird im Daemon-Modus ignoriert) |
 | `style` | `string` | Animationsstil: `"sweep"`, `"wave"`, `"rainbow"`, `"sparkle"`, `"breathing"`, `"frame"`, `"none"` |
 | `frames_path` | `string` | Pfad zu vorgebauten Frame-Sets (fur Stil `"frame"`). Mehrere Frame-Sets getrennt durch `\n===\n` |
+| `timeout_secs` | `number` | Optionale Zeituberschreitung fur das Animations-Plugin in Sekunden |
 
 ### Plugin-Integration
 
@@ -264,6 +287,7 @@ Info-Plugins werden im Array `info_plugins` konfiguriert:
 |-------|------|-------------|
 | `plugin` | `string` | Plugin-Name (installiert als `xfetch-plugin-<name>`) |
 | `args` | `object` oder `null` | Beliebige JSON-Argumente, die an das Plugin ubergeben werden |
+| `timeout_secs` | `number` oder `null` | Optionale Zeituberschreitung pro Plugin in Sekunden |
 
 Plugin-Daten werden uber Modulschussel mit dem Prefix `plugin:` abgerufen:
 
@@ -301,6 +325,7 @@ Das Feld `config_providers` ermoglicht Erweiterungen auf Konfigurationsebene, di
 |-------|------|-------------|
 | `extension` | `string` | Erweiterungsname (Binardatei: `xfetch-extension-<name>`) |
 | `args` | `object` oder `null` | Beliebige JSON-Argumente, die an die Erweiterung ubergeben werden |
+| `timeout_secs` | `number` oder `null` | Optionale Zeituberschreitung pro Erweiterung in Sekunden |
 
 Erweiterungen kommunizieren uber stdin/stdout JSON, empfangen die vollstandig aufgeloste Konfiguration und geben eine modifizierte Version zuruck. Siehe [Erweiterungen](extensions) fur Details.
 

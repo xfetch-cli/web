@@ -12,13 +12,15 @@ xfetch admite múltiples diseños visuales para mostrar información del sistema
 | `"side-block"` | Dos columnas: iconos a la izquierda, valores a la derecha |
 | `"tree"` | Árbol jerárquico con conectores de ramas |
 | `"box"` | Recuadro redondeado alrededor de todo el contenido |
+| `"section-box"` | Como `section`, pero cada grupo se dibuja como su propio recuadro con el título incrustado en el borde superior |
+| `"custom-x"` | Plantillas de borde totalmente configurables (campo `custom_x`) |
 | `"line"` | Clásico con separadores `---` cada 3 elementos |
 | `"dots"` | Clásico con separadores `...` cada 3 elementos |
 | `"bottom_line"` | Clásico con una línea `---` en la parte inferior |
 | `"compact"` | Salida mínima sin bordes ni separadores |
 | `"minimal"` | Formato `clave: valor` plano, sin iconos ni colores |
-| `"horizontal"` | Contenido encima del logo (apilado verticalmente) |
-| `"bottom"` | Logo debajo del contenido (apilado verticalmente) |
+| `"horizontal"` | Logo encima del contenido (apilado verticalmente) |
+| `"bottom"` | Contenido encima del logo (apilado verticalmente) |
 
 ## Diseño Predeterminado / Clásico
 
@@ -262,7 +264,7 @@ disk: 120.5 GiB / 256 GiB (47%) - ext4
 
 Variantes que cambian la posición del logo en relación al contenido:
 
-- **Horizontal:** Contenido mostrado arriba, logo abajo (útil para terminales anchas)
-- **Inferior:** Logo mostrado arriba, contenido abajo (igual que el predeterminado pero apilado verticalmente)
+- **Horizontal:** Logo mostrado arriba, contenido abajo (útil para terminales anchas)
+- **Inferior:** Contenido mostrado arriba, logo abajo (igual que el predeterminado pero apilado verticalmente)
 
 Estos diseños no muestran el logo lado a lado. En su lugar, apilan el logo y el contenido verticalmente.

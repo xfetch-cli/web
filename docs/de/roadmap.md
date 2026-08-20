@@ -102,7 +102,7 @@
 - [x] Binar-Releases fur Windows
 - [x] AUR-Paket fur Arch Linux
 - [x] Homebrew-Tap fur macOS
-- [x] Cargo-Registry fur den Vertrieb
+- [x] PyPI- oder Cargo-Registry fur den Vertrieb
 - [x] Automatisierte Changelog-Generierung
 
 ## Phase 10 · Gemeinschaft und Okosystem
@@ -112,7 +112,7 @@
 - [x] Online-Theme-Vorschau-Tool erstellen
 - [x] Gemeinschaftsprozess fur Theme-Beitrage einrichten
 - [x] Plugin-System fur benutzerdefinierte Module erstellen
-- [/] Plugin-Konfigurationsvalidierung implementieren
+- [x] Plugin-Konfigurationsvalidierung implementieren
 - [x] Issue-Templates fur die Gemeinschaft einrichten
 - [x] Beitragsrichtlinien erstellen
 
@@ -124,7 +124,7 @@
 - [x] Linting mit clippy einrichten
 - [x] Code-Formatter (rustfmt) einrichten
 - [x] Plattformspezifische Tests fur jedes Betriebssystem
-- [/] Plattformubergreifende Testsuite
+- [x] Plattformubergreifende Testsuite
 - [x] Codeabdeckungsbericht einrichten
 
 ## Phase 12 · Erweiterte Funktionen
@@ -132,12 +132,12 @@
 - [x] Benutzerdefinierte Modul-Skriptsprache / Unterstutzung
 - [x] Bedingte Modulanzeige basierend auf Systemzustand
 - [x] Themsystem mit Variablen implementieren
-- [ ] Animationsunterstutzung fur Ubergangselemente
+- [x] Animationsunterstutzung fur Ubergangselemente
 - [x] Daemon-Modus (--daemon) fur dauerhaftes Animations-Rendering implementieren
-- [ ] Echtzeit-Statistikupdates im Daemon-Modus
-- [ ] Konfigurations-Hot-Reload-Fahigkeit
+- [x] Echtzeit-Statistikupdates im Daemon-Modus
+- [x] Konfigurations-Hot-Reload-Fahigkeit
 - [x] Telemetrie (optional, datenschutzrespektierend)
-- [ ] Barrierefreiheitsfunktionen (kontrastreiche Designs)
+- [x] Barrierefreiheitsfunktionen (kontrastreiche Designs)
 
 ## Phase 13 · Dokumentation und Marketing
 
@@ -148,4 +148,4 @@
 - [ ] Blogbeitrage uber Funktionen veroffentlichen
 - [/] Vergleichsleitfaden mit ahnlichen Tools erstellen
 - [ ] Discord/Slack-Community-Kanal einrichten
-- [/] Beitragsprogramm erstellen
+- [x] Beitragsprogramm erstellen

@@ -48,7 +48,6 @@ export default async function DocPage({
   return (
     <DocViewer
       content={doc.content}
-      title={doc.title}
       slug={slugStr}
       lang={lang}
       langMeta={langMeta}

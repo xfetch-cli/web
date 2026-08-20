@@ -33,7 +33,7 @@ Each layer can override any visual field. Starting from **v0.2.0**, the theme ha
 |-------|--------|----------|
 | 1. Core defaults | Hardcoded in `config.rs` | Default icons, colors, layout |
 | 2. User config | `config.jsonc` | `modules`, `info_plugins`, plus overrides for any visual field |
-| 3. Theme file | `themes/<name>.jsonc` | `colors`, `icons`, `layout`, `palette_style`, `logo_path`, `header_icons`, `footer_text`, `show_colors` |
+| 3. Theme file | `themes/<name>.jsonc` | `colors`, `layout`, `palette_style`, `logo_path`, `logo_color`, `logo_colors`, `header_icons`, `footer_text`, `show_colors` |
 
 A field in the **theme file** always wins over the same field in `config.jsonc` or defaults.
 
@@ -66,14 +66,6 @@ A theme file is a JSONC document containing only visual fields. It should NOT co
         "disk": "Cyan",
         "shell": "Green",
         "wm": "Blue"
-    },
-    "icons": {
-        "os": "\uf17c",
-        "cpu": "\uf2db",
-        "memory": "\ue266",
-        "disk": "\uf0a0",
-        "shell": "\uf0e7",
-        "wm": "\uf08e"
     }
 }
 ```
@@ -84,12 +76,15 @@ A theme file is a JSONC document containing only visual fields. It should NOT co
 |-------|------|-------------|
 | `layout` | `string` or `null` | Layout style name |
 | `colors` | `object` | Per-module color mapping |
-| `icons` | `object` | Per-module icon mapping |
 | `palette_style` | `string` or `null` | Palette display: `squares`, `circles`, `triangles`, `lines`, `dots` |
 | `show_colors` | `boolean` | Enable or disable inline ANSI color swatches |
 | `logo_path` | `string` or `null` | Path to a logo file |
+| `logo_color` | `string` or `null` | Color for ASCII logos (name, hex, or RGB) |
+| `logo_colors` | `array` or `null` | Per-row colors for ASCII logos (`row i` uses `logo_colors[i % len]`) |
 | `header_icons` | `array` or `null` | Pac-Man layout header icons |
 | `footer_text` | `string` or `null` | Pac-Man layout footer text |
+
+Themes do not carry `icons` — icon choice is up to the user's font; the core fills in icons from the built-in defaults.
 
 ## Theme Resolution
 
@@ -123,7 +118,6 @@ xfetch theme export my-theme
 The exported file contains only:
 - `layout`
 - `colors`
-- `icons`
 - `palette_style`
 - `header_icons`
 - `footer_text`
@@ -144,7 +138,7 @@ The theme system is fully backward compatible:
 ~/.config/xfetch/
     config.jsonc            # Modules, plugins, and optional theme reference
     themes/
-        dracula.jsonc       # Theme files: colors, icons, layout
+        dracula.jsonc       # Theme files: colors, layout
         nord.jsonc
         catppuccin-mocha.jsonc
         retro-pacman.jsonc
@@ -154,7 +148,7 @@ The theme system is fully backward compatible:
 
 ## Built-in Themes
 
-The official themes repository is located at `github.com/xfetch-cli/configs` under `themes/`:
+The official themes repository is located at `github.com/xfetch-cli/themes`, registered via `index.json` with theme files under `colors/`:
 
 | Theme | Layout | Style |
 |-------|--------|-------|
@@ -162,8 +156,19 @@ The official themes repository is located at `github.com/xfetch-cli/configs` und
 | `nord` | section | Cool blue and arctic cyan palette |
 | `catppuccin-mocha` | section | Warm mocha pastel palette |
 | `retro-pacman` | pacman | Classic Pac-Man arcade style with header icons and footer text |
-| `berlin` | default | Monochrome: all white, clean minimal look |
-| `tree-compact` | tree | Hierarchical tree layout |
+| `berlin` | default | No colors and no icons: clean text-only output |
+| `tree-compact` | tree | Hierarchical tree layout with a cool blue-green scheme |
+| `bogota` | bottom | Bottom layout with a warm red, magenta and white palette |
+| `helsinki` | line | Single-line layout with a green, blue and magenta accent mix |
+| `lahabana` | section | Section layout with a red, magenta and white palette |
+| `london` | minimal | Minimal greyscale palette (white and grey) |
+| `madrid` | default | Default layout with a red, green and blue tricolor palette |
+| `miami` | section | Section layout with a magenta, cyan and white vaporwave palette |
+| `oslo` | compact | Compact layout with a cool blue, cyan and white palette |
+| `paris` | box | Box layout with a red, magenta and white palette |
+| `praha` | section | Section layout with a red and magenta palette, triangle swatches |
+| `tokio` | horizontal | Horizontal layout with a red, white and magenta palette |
+| `x` | section | Section layout with a cyan, magenta and white accent set |
 
 ## Implementation Details
 

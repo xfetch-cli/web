@@ -4,7 +4,7 @@ xfetch incluye una biblioteca completa de configuraciones predefinidas que demue
 
 ## Predefinidos de Diseño
 
-Ubicados en `configs/xfetch/presets/layouts/`, estos demuestran todos los estilos de diseño disponibles con conjuntos de módulos completos.
+Ubicados en `configs/xfetch/presets/layouts/`, estos cubren una selección de estilos de diseño (box, dots, pacman, section, side-block, tree) con conjuntos de módulos completos. Los archivos siguen el patrón `layout_<nombre>_full.jsonc` (p. ej. `layout_box_full.jsonc`).
 
 ### box
 
@@ -57,7 +57,7 @@ Diseño agrupado con secciones tituladas.
         },
         {
             "type": "group", "title": "Uptime/Age/DT",
-            "modules": ["uptime", "wm", "local_ip", "battery"]
+            "modules": ["uptime", "datetime", "user"]
         },
         "palette"
     ]

@@ -5,7 +5,7 @@ Durchsucht und installiert Themes aus einer entfernten oder lokalen Registry.
 - **Art:** `info_provider`
 - **Binär:** `xfetch-plugin-theme-manager`
 - **Abhängigkeiten:** `curl` im PATH (für entfernte Registries)
-- **Standard-Registry:** `https://raw.githubusercontent.com/xfetch-cli/configs/main/themes/index.json`
+- **Standard-Registry:** `https://raw.githubusercontent.com/xfetch-cli/themes/main/index.json`
 
 ## Konfiguration
 
@@ -30,7 +30,7 @@ Durchsucht und installiert Themes aus einer entfernten oder lokalen Registry.
 | `action` | Nein | `"list"` | `list`, `search`, `info` oder `install` |
 | `name` | Für `info`/`install` | — | Themenname |
 | `query` | Für `search` | — | Suchbegriff (passt auf Name, Beschreibung, Autor, Schlagwörter) |
-| `registry` | Nein | xfetch-cli/configs | Registry-URL (HTTP oder lokaler Pfad mit `/` oder `~`) |
+| `registry` | Nein | xfetch-cli/themes | Registry-URL (HTTP oder lokaler Pfad mit `/` oder `~`) |
 
 ## Aktionen
 

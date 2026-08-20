@@ -19,6 +19,10 @@ Displays currently playing music from MPD and/or Spotify.
 
 None.
 
+## Platform
+
+Linux and macOS only; on Windows it reports `Music: no active player`.
+
 ## Output
 
 | State | Output |

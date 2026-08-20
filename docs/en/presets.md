@@ -4,7 +4,7 @@ xfetch ships with a comprehensive library of preset configurations demonstrating
 
 ## Layout Presets
 
-Located in `configs/xfetch/presets/layouts/`, these demonstrate every available layout style with full module sets.
+Located in `configs/xfetch/presets/layouts/`, these cover a selection of layout styles (box, dots, pacman, section, side-block, tree) with full module sets. Files follow the `layout_<name>_full.jsonc` naming pattern (e.g. `layout_box_full.jsonc`).
 
 ### box
 
@@ -57,7 +57,7 @@ Grouped layout with titled sections.
         },
         {
             "type": "group", "title": "Uptime/Age/DT",
-            "modules": ["uptime", "wm", "local_ip", "battery"]
+            "modules": ["uptime", "datetime", "user"]
         },
         "palette"
     ]

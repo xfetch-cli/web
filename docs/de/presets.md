@@ -4,7 +4,7 @@ xfetch wird mit einer umfassenden Bibliothek von Preset-Konfigurationen ausgelie
 
 ## Layout-Presets
 
-Befindlich in `configs/xfetch/presets/layouts/`, demonstrieren diese jeden verfugbaren Layout-Stil mit vollstandigen Modulsets.
+Befindlich in `configs/xfetch/presets/layouts/`, decken diese eine Auswahl an Layout-Stilen ab (box, dots, pacman, section, side-block, tree) mit vollstandigen Modulsets. Die Dateien folgen dem Muster `layout_<name>_full.jsonc` (z. B. `layout_box_full.jsonc`).
 
 ### box
 
@@ -57,7 +57,7 @@ Gruppiertes Layout mit titelierten Abschnitten.
         },
         {
             "type": "group", "title": "Uptime/Age/DT",
-            "modules": ["uptime", "wm", "local_ip", "battery"]
+            "modules": ["uptime", "datetime", "user"]
         },
         "palette"
     ]

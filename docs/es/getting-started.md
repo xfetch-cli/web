@@ -10,7 +10,7 @@ xfetch es una herramienta de obtención de información del sistema multiplatafo
 curl -fsSL https://raw.githubusercontent.com/xfetch-cli/xfetch/main/install.sh | bash
 ```
 
-Esto instala xfetch en `~/.local/bin/`, copia las configuraciones predeterminadas a `~/.config/xfetch/` y opcionalmente añade el directorio binario a su PATH.
+Esto instala xfetch en `~/.local/bin/`, genera una primera configuración en `~/.config/xfetch/config.jsonc` con `xfetch --gen-config` y opcionalmente añade el directorio binario a su PATH.
 
 Para personalizar la ruta de instalación:
 
@@ -30,6 +30,7 @@ Banderas:
 | `--yes` | Sí automático a todas las indicaciones |
 | `--skip-config` | Omitir la copia de la configuración predeterminada |
 | `--no-cargo-install` | Usar un binario precompilado en lugar de compilar con Cargo |
+| `--install-deps` | Instalar dependencias del sistema faltantes automáticamente |
 
 ### Windows (PowerShell)
 
@@ -88,8 +89,15 @@ __  __                               OS: Arch Linux x86_64
 |---------|-------------|
 | `-c, --config <RUTA>` | Ruta a un archivo de configuración personalizado (formato JSONC) |
 | `--gen-config` | Generar un archivo de configuración predeterminado en la ruta de configuración estándar |
+| `--layout <nombre>` | Diseño a usar con `--gen-config` (predeterminado: `pacman`) |
+| `--logo <id>` | Id del logo (ej., `arch`, `windows-11`) a usar con `--gen-config` (requiere acceso de red al catálogo de logos) |
 | `--clean-cache` | Limpiar la base de datos de caché |
 | `--benchmark` | Mostrar información de tiempo para sondeos paralelos |
+| `--daemon` | Iniciar el daemon animado |
+| `--daemon-stop` | Detener el daemon |
+| `--no-daemon-live` | Deshabilitar el daemon de estadísticas en vivo aunque esté en la configuración |
+| `--daemon-live-stop` | Detener el daemon en vivo en ejecución |
+| `--daemon-live-reload` | Forzar recarga en caliente en el daemon en vivo |
 
 ### Subcomandos de Plugins
 
@@ -97,6 +105,31 @@ __  __                               OS: Arch Linux x86_64
 xfetch plugin install <nombre>     Instalar un plugin (ruta local o desde repositorio)
 xfetch plugin list                 Listar todos los plugins instalados
 xfetch plugin remove <nombre>      Eliminar un plugin instalado
+```
+
+### Subcomandos de Extensiones
+
+```
+xfetch extension install <nombre>  Instalar una extensión (ruta local o desde repositorio)
+xfetch extension list              Listar todas las extensiones instaladas
+xfetch extension remove <nombre>   Eliminar una extensión instalada
+```
+
+### Subcomandos de Temas
+
+```
+xfetch theme list                  Listar temas instalados
+xfetch theme set <nombre>          Activar un tema (establece el campo "theme" en config.jsonc)
+xfetch theme remove <nombre>       Eliminar un archivo de tema
+xfetch theme export <nombre>       Exportar la configuración visual actual como archivo de tema
+```
+
+### Subcomandos de Efectos
+
+```
+xfetch effects install <nombre>    Instalar un efecto de introducción
+xfetch effects list                Listar efectos instalados
+xfetch effects remove <nombre>     Eliminar un efecto
 ```
 
 ### Ejemplos de Uso
@@ -133,6 +166,8 @@ xfetch plugin remove docker
 |----------|-------------|
 | `XFETCH_PLUGIN_REPO` | Sobrescribir la URL del repositorio git de plugins predeterminada |
 | `XFETCH_PLUGIN_DEV_DIR` | Sobrescribir la ruta de búsqueda del directorio de desarrollo de plugins |
+| `XFETCH_LOGOS_URL` | Sobrescribir la URL del catálogo de logos (usada por `--logo` con `--gen-config`) |
+| `XFETCH_EFFECT_REPO` | Sobrescribir la URL del repositorio git de efectos |
 | `CARGO_NET_GIT_FETCH_WITH_CLI` | Usar git CLI para la obtención (se establece automáticamente durante la instalación de plugins) |
 
 ## Desinstalación
