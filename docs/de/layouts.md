@@ -12,13 +12,15 @@ xfetch unterstutzt mehrere visuelle Layouts zur Anzeige von Systeminformationen.
 | `"side-block"` | Zwei Spalten: Icons links, Werte rechts |
 | `"tree"` | Hierarchischer Baum mit Verzweigungsverbindern |
 | `"box"` | Abgerundete Box um den gesamten Inhalt |
+| `"section-box"` | Wie `section`, aber jede Gruppe wird als eigene Box mit Titel im oberen Rand gezeichnet |
+| `"custom-x"` | Vollstandig konfigurierbare Rahmenvorlagen (Feld `custom_x`) |
 | `"line"` | Klassisch mit `---`-Trennern alle 3 Elemente |
 | `"dots"` | Klassisch mit `...`-Trennern alle 3 Elemente |
 | `"bottom_line"` | Klassisch mit einer `---`-Linie am unteren Rand |
 | `"compact"` | Minimale Ausgabe ohne Rander oder Trennzeichen |
 | `"minimal"` | Reines `Schlussel: Wert`-Format, keine Icons oder Farben |
-| `"horizontal"` | Inhalt oberhalb des Logos (vertikal gestapelt) |
-| `"bottom"` | Logo unterhalb des Inhalts (vertikal gestapelt) |
+| `"horizontal"` | Logo oberhalb des Inhalts (vertikal gestapelt) |
+| `"bottom"` | Inhalt oberhalb des Logos (vertikal gestapelt) |
 
 ## Standard / Klassisches Layout
 
@@ -262,7 +264,7 @@ disk: 120.5 GiB / 256 GiB (47%) - ext4
 
 Varianten, die die Position des Logos relativ zum Inhalt andern:
 
-- **Horizontal:** Inhalt oben, Logo unten (nutzlich fur breite Terminals)
-- **Unten:** Logo oben, Inhalt unten (wie Standard, aber vertikal gestapelt)
+- **Horizontal:** Logo oben, Inhalt unten (nutzlich fur breite Terminals)
+- **Unten:** Inhalt oben, Logo unten (wie Standard, aber vertikal gestapelt)
 
 Diese Layouts zeigen das Logo nicht nebeneinander an. Stattdessen stapeln sie das Logo und den Inhalt vertikal.

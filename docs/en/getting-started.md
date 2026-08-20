@@ -10,7 +10,7 @@ xfetch is a cross-platform system information fetching tool written in Rust. It 
 curl -fsSL https://raw.githubusercontent.com/xfetch-cli/xfetch/main/install.sh | bash
 ```
 
-This installs xfetch to `~/.local/bin/`, copies default configurations to `~/.config/xfetch/`, and optionally adds the binary directory to your PATH.
+This installs xfetch to `~/.local/bin/`, generates a first configuration at `~/.config/xfetch/config.jsonc` with `xfetch --gen-config`, and optionally adds the binary directory to your PATH.
 
 To customize the installation path:
 
@@ -30,6 +30,7 @@ Flags:
 | `--yes` | Automatic yes to all prompts |
 | `--skip-config` | Skip copying default configuration |
 | `--no-cargo-install` | Use a pre-built binary instead of building with Cargo |
+| `--install-deps` | Install missing system dependencies automatically |
 
 ### Windows (PowerShell)
 
@@ -88,8 +89,15 @@ __  __                               OS: Arch Linux x86_64
 |------|-------------|
 | `-c, --config <PATH>` | Path to a custom configuration file (JSONC format) |
 | `--gen-config` | Generate a default configuration file at the standard config path |
+| `--layout <name>` | Layout to use with `--gen-config` (default: `pacman`) |
+| `--logo <id>` | Logo id (e.g. `arch`, `windows-11`) to use with `--gen-config` (requires network access to the logos catalog) |
 | `--clean-cache` | Clear the cache database |
 | `--benchmark` | Print timing information for parallel probes |
+| `--daemon` | Start the animated daemon |
+| `--daemon-stop` | Stop the daemon |
+| `--no-daemon-live` | Disable the live stats daemon even if enabled in config |
+| `--daemon-live-stop` | Stop the running live stats daemon |
+| `--daemon-live-reload` | Force hot reload in the live stats daemon |
 
 ### Plugin Subcommands
 
@@ -97,6 +105,31 @@ __  __                               OS: Arch Linux x86_64
 xfetch plugin install <name>      Install a plugin (local path or from repository)
 xfetch plugin list                List all installed plugins
 xfetch plugin remove <name>       Remove an installed plugin
+```
+
+### Extension Subcommands
+
+```
+xfetch extension install <name>   Install an extension (local path or from repository)
+xfetch extension list             List all installed extensions
+xfetch extension remove <name>    Remove an installed extension
+```
+
+### Theme Subcommands
+
+```
+xfetch theme list                 List installed themes
+xfetch theme set <name>           Activate a theme (sets the "theme" field in config.jsonc)
+xfetch theme remove <name>        Remove a theme file
+xfetch theme export <name>        Export the current visual config as a theme file
+```
+
+### Effects Subcommands
+
+```
+xfetch effects install <name>     Install an intro effect
+xfetch effects list               List installed effects
+xfetch effects remove <name>      Remove an effect
 ```
 
 ### Usage Examples
@@ -133,6 +166,8 @@ xfetch plugin remove docker
 |----------|-------------|
 | `XFETCH_PLUGIN_REPO` | Override the default plugin git repository URL |
 | `XFETCH_PLUGIN_DEV_DIR` | Override the plugin development directory search path |
+| `XFETCH_LOGOS_URL` | Override the logos catalog URL (used by `--logo` with `--gen-config`) |
+| `XFETCH_EFFECT_REPO` | Override the effects git repository URL |
 | `CARGO_NET_GIT_FETCH_WITH_CLI` | Use git CLI for fetching (set automatically during plugin install) |
 
 ## Uninstallation

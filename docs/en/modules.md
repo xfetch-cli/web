@@ -1,6 +1,6 @@
 # Modules
 
-xfetch provides 18 built-in modules and supports unlimited custom modules through its plugin system. Modules are the individual pieces of information displayed in the output.
+xfetch provides 23 built-in modules and supports unlimited custom modules through its plugin system. Modules are the individual pieces of information displayed in the output.
 
 ## Core System Modules
 
@@ -159,9 +159,9 @@ Packages: 24 (scoop)
 
 | Platform | Managers |
 |----------|----------|
-| Linux | pacman, dpkg, rpm, flatpak, snap, apk, nix-env |
+| Linux | pacman, dpkg, rpm, flatpak, snap, apk, nix-env, xbps-query, portage |
 | macOS | brew |
-| Windows | scoop, choco |
+| Windows | scoop, winget |
 
 ### Module: `packages:<name>`
 
@@ -171,6 +171,7 @@ Displays a specific package manager's count individually:
 packages:pacman  ->  657
 packages:brew    ->  128
 packages:scoop   ->  24
+packages:aur     ->  21   (AUR packages, counted via `pacman -Qm`)
 ```
 
 ### Module: `shell`

@@ -19,6 +19,10 @@ Zeigt die aktuelle Musikwiedergabe von MPD und/oder Spotify an.
 
 Keine.
 
+## Plattform
+
+Nur Linux und macOS; unter Windows meldet es `Music: no active player`.
+
 ## Ausgabe
 
 | Zustand | Ausgabe |

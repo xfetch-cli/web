@@ -1,6 +1,6 @@
 # Módulos
 
-xfetch proporciona 18 módulos integrados y admite módulos personalizados ilimitados a través de su sistema de plugins. Los módulos son las piezas individuales de información que se muestran en la salida.
+xfetch proporciona 23 módulos integrados y admite módulos personalizados ilimitados a través de su sistema de plugins. Los módulos son las piezas individuales de información que se muestran en la salida.
 
 ## Módulos Principales del Sistema
 
@@ -159,9 +159,9 @@ Packages: 24 (scoop)
 
 | Plataforma | Gestores |
 |------------|----------|
-| Linux | pacman, dpkg, rpm, flatpak, snap, apk, nix-env |
+| Linux | pacman, dpkg, rpm, flatpak, snap, apk, nix-env, xbps-query, portage |
 | macOS | brew |
-| Windows | scoop, choco |
+| Windows | scoop, winget |
 
 ### Módulo: `packages:<nombre>`
 
@@ -171,6 +171,7 @@ Muestra el conteo de un gestor de paquetes específico individualmente:
 packages:pacman  ->  657
 packages:brew    ->  128
 packages:scoop   ->  24
+packages:aur     ->  21   (paquetes AUR, contados con `pacman -Qm`)
 ```
 
 ### Módulo: `shell`

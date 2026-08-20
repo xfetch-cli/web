@@ -88,6 +88,22 @@ JSONC extends standard JSON by allowing C-style (`//`) and C++-style (`/* */`) c
 | `logo_animation` | `object` or `null` | `null` | Logo animation configuration |
 | `info_plugins` | `array` | `[]` | List of info plugins to execute |
 | `config_providers` | `array` | `[]` | List of config provider extensions to run after theme merge |
+| `theme` | `string` or `null` | `null` | Theme name to apply (visual fields only) |
+| `daemon` | `boolean` | `false` | Run in animated daemon mode (pins the fetch at the top of the terminal) |
+| `daemon_min_rows` | `number` or `null` | `null` | Minimum terminal rows required for the animated daemon |
+| `daemon_live` | `boolean` | `false` | Pin a live stats block at the top of the terminal, re-probing modules periodically |
+| `daemon_live_refresh` | `number` or `null` | (per-platform) | Live daemon refresh interval in seconds |
+| `daemon_live_modules` | `array` or `null` | (per-platform) | Modules displayed by the live daemon |
+| `daemon_live_reload` | `boolean` | `false` | Hot-reload the config in live daemon mode |
+| `os_wsl_style` | `string` or `null` | `null` | WSL detection style: `off`, `minimal`, or `full` |
+| `logo_color` | `string` or `null` | `null` | Color for ASCII logos (name, hex, or RGB) |
+| `logo_colors` | `array` or `null` | `null` | Per-row colors for ASCII logos (`row i` uses `logo_colors[i % len]`) |
+| `logo_padding` | `number` | `0` | Padding around the logo |
+| `logo_type` | `string` | `"auto"` | Logo type: `auto`, `ascii`, or `image` |
+| `show_keys` | `boolean` | `false` | Display module labels (`key: value`) |
+| `key_width` | `number` or `null` | `null` | Fixed width for key labels so values align |
+| `custom_x` | `object` or `null` | `null` | Border templates for the `custom-x` layout |
+| `effects` | `object`, `array` or `null` | `null` | Intro effects applied to the content lines |
 
 ### Default Modules
 
@@ -200,6 +216,13 @@ Colors map module names to ANSI color names:
 | `Cyan` | 36 |
 | `White` | 37 |
 | `Grey` or `Gray` | 90 |
+| `DarkGrey` or `DarkGray` | 90 |
+| `DarkRed` | 31 |
+| `DarkGreen` | 32 |
+| `DarkYellow` | 33 |
+| `DarkBlue` | 34 |
+| `DarkMagenta` | 35 |
+| `DarkCyan` | 36 |
 
 ### Palette Styles
 
@@ -211,7 +234,6 @@ The `palette` module displays a color swatch. Available styles:
 | `"circles"` | Foreground color circles |
 | `"triangles"` | Foreground color triangles |
 | `"lines"` | Thick horizontal color bars |
-| `"dots"` | Small foreground color dots |
 
 ### Animation Configuration
 
@@ -238,6 +260,7 @@ The `logo_animation` field enables ASCII logo animation via a plugin:
 | `loop` | `boolean` | Whether to loop the animation (ignored in daemon mode) |
 | `style` | `string` | Animation style: `"sweep"`, `"wave"`, `"rainbow"`, `"sparkle"`, `"breathing"`, `"frame"`, `"none"` |
 | `frames_path` | `string` | Path to pre-built frame sets (for `"frame"` style). Multiple frame sets separated by `\n===\n` |
+| `timeout_secs` | `number` | Optional timeout for the animation plugin in seconds |
 
 ### Plugin Integration
 
@@ -264,6 +287,7 @@ Info plugins are configured in the `info_plugins` array:
 |-------|------|-------------|
 | `plugin` | `string` | Plugin name (installed as `xfetch-plugin-<name>`) |
 | `args` | `object` or `null` | Arbitrary JSON arguments passed to the plugin |
+| `timeout_secs` | `number` or `null` | Optional per-plugin timeout in seconds |
 
 Plugin data is accessed via module keys prefixed with `plugin:`:
 
@@ -301,6 +325,7 @@ The `config_providers` field allows config-level extensions to modify the config
 |-------|------|-------------|
 | `extension` | `string` | Extension name (binary: `xfetch-extension-<name>`) |
 | `args` | `object` or `null` | Arbitrary JSON arguments passed to the extension |
+| `timeout_secs` | `number` or `null` | Optional per-extension timeout in seconds |
 
 Extensions communicate via stdin/stdout JSON, receiving the fully resolved config and returning a modified version. See [Extensions](extensions) for details.
 

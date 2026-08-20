@@ -25,6 +25,7 @@ None.
 |-------------|--------|
 | GNOME/GTK | ` GTK Theme: Adwaita-dark (dark)` / `   Icons: Adwaita` / `   Cursor: Adwaita` / `   Font: Cantarell 11` |
 | KDE Plasma | ` GTK: Breeze (light)` / `   Plasma: breeze-dark` / `   Colors: BreezeDark` |
+| Windows | `  Windows Theme: Dark` / `  Accent: #00B9FF` |
 | Not detected | ` Theme: not detected` |
 
 ## Detection Sources
@@ -33,3 +34,4 @@ None.
 |-------------|--------|
 | GTK (GNOME, Budgie, Cinnamon) | `gsettings get org.gnome.desktop.interface` |
 | KDE Plasma | `~/.config/plasmarc` and `~/.config/kdeglobals` |
+| Windows | Registry `AppsUseLightTheme` + `DWM\ColorizationColor` |

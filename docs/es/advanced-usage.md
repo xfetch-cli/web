@@ -97,9 +97,9 @@ xfetch se adapta automáticamente al sistema operativo.
 |--------|-------|-------|---------|
 | GPU | `lspci -mm` | `system_profiler SPDisplaysDataType` | `wmic` o PowerShell |
 | Batería | `/sys/class/power_supply/BAT*` | `pmset -g batt` | `wmic path Win32_Battery` |
-| Shell | `$SHELL` | `$SHELL` | Verificación de `$PSModulePath` |
+| Shell | `$SHELL` | `$SHELL` | Recorrido de la cadena de procesos padre |
 | Fecha/Hora | Comando `date` | Comando `date` | PowerShell |
-| Paquetes | pacman, dpkg, rpm, flatpak, snap, apk, nix-env | brew | scoop, choco |
+| Paquetes | pacman, dpkg, rpm, flatpak, snap, apk, nix-env | brew | scoop, winget |
 | Ruta de configuración | `~/.config/xfetch/` | `~/Library/Application Support/xfetch/` | `%APPDATA%/xfetch/` |
 | Ruta de caché | `~/.cache/xfetch/` | `~/Library/Caches/xfetch/` | `%LOCALAPPDATA%/xfetch/` |
 | Nombre de binario | `xfetch-plugin-<nombre>` | `xfetch-plugin-<nombre>` | `xfetch-plugin-<nombre>.exe` |
@@ -130,6 +130,36 @@ xfetch --daemon-stop # detenerlo
 ```
 
 La animación solo se ejecuta en terminales TTY; en pipes o redirecciones se muestra el logo estático. El modo daemon requiere un bloque `logo_animation` con un plugin (p. ej. `animate-logo`). En modo daemon la animación se repite indefinidamente: `duration_ms` y `loop` se ignoran. Para una animación finita que se detenga sola, mantené el modo daemon desactivado.
+
+### Daemon de Estadísticas en Vivo
+
+El daemon de estadísticas en vivo (`daemon_live`) fija un bloque de fetch en la parte superior de la terminal y re-consulta un subconjunto ligero de módulos cada `daemon_live_refresh` segundos. Es un complemento del daemon animado anterior: el daemon animado existente no se toca. Claves de configuración: `daemon_live`, `daemon_live_refresh`, `daemon_live_modules`, `daemon_live_reload` (recarga en caliente de la configuración y del tema activo).
+
+```bash
+xfetch --no-daemon-live     # deshabilitar el daemon en vivo aunque esté en la configuración
+xfetch --daemon-live-stop   # detener el daemon en vivo en ejecución
+xfetch --daemon-live-reload # forzar recarga en caliente
+```
+
+## Presentación WSL
+
+En el Subsistema de Windows para Linux, la línea del SO se puede decorar con detalles de WSL mediante `os_wsl_style` (solo Linux):
+
+| Valor | Comportamiento |
+|-------|----------------|
+| `off` | Nombre del SO sin decoración |
+| `minimal` | Agrega `(WSL)` (predeterminado) |
+| `full` | Agrega la versión de WSL y WSLg si está presente |
+
+## Efectos de Introducción
+
+`xfetch effects` instala, lista y elimina efectos de introducción que animan las líneas de contenido cuando arranca el fetch. La clave de configuración `effects` (un efecto o una lista) selecciona qué efectos se reproducen y en qué orden:
+
+```bash
+xfetch effects install <nombre>   # instalar un efecto
+xfetch effects list               # listar efectos instalados
+xfetch effects remove <nombre>    # eliminar un efecto
+```
 
 ## Optimización de Rendimiento
 

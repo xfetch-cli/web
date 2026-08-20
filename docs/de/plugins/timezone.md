@@ -21,6 +21,8 @@ Zeigt aktuelle Uhrzeit, Datum und Zeitzoneninformationen an.
 |------|-------------|----------|-------------|
 | `format` | Nein | `%Z %z` | `date`-Formatzeichenkette für die Zeitzonenanzeige |
 
+Das `format`-Argument wird unter Windows ignoriert (kein GNU `date`); nur Linux und macOS.
+
 ## Ausgabe
 
 | Zustand | Ausgabe |

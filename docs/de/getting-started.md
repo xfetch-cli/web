@@ -10,7 +10,7 @@ xfetch ist ein plattformunabhangiges Systeminformations-Tool geschrieben in Rust
 curl -fsSL https://raw.githubusercontent.com/xfetch-cli/xfetch/main/install.sh | bash
 ```
 
-Dies installiert xfetch nach `~/.local/bin/`, kopiert Standardkonfigurationen nach `~/.config/xfetch/` und fugt optional das Binarbildverzeichnis zu Ihrem PATH hinzu.
+Dies installiert xfetch nach `~/.local/bin/`, generiert eine erste Konfiguration unter `~/.config/xfetch/config.jsonc` mit `xfetch --gen-config` und fugt optional das Binarbildverzeichnis zu Ihrem PATH hinzu.
 
 So passen Sie den Installationspfad an:
 
@@ -30,6 +30,7 @@ Flags:
 | `--yes` | Automatische Bestatigung aller Eingabeaufforderungen |
 | `--skip-config` | Kopieren der Standardkonfiguration uberspringen |
 | `--no-cargo-install` | Ein vorgebautes Binary anstelle von Cargo-Build verwenden |
+| `--install-deps` | Fehlende Systemabhangigkeiten automatisch installieren |
 
 ### Windows (PowerShell)
 
@@ -88,8 +89,15 @@ __  __                               OS: Arch Linux x86_64
 |------|-------------|
 | `-c, --config <PFAD>` | Pfad zu einer benutzerdefinierten Konfigurationsdatei (JSONC-Format) |
 | `--gen-config` | Standardkonfigurationsdatei am Standard-Konfigurationspfad generieren |
+| `--layout <name>` | Layout fur `--gen-config` (Standard: `pacman`) |
+| `--logo <id>` | Logo-Id (z. B. `arch`, `windows-11`) fur `--gen-config` (erfordert Netzwerkzugriff auf den Logo-Katalog) |
 | `--clean-cache` | Die Cache-Datenbank leeren |
 | `--benchmark` | Zeitinformationen fur parallele Proben anzeigen |
+| `--daemon` | Den animierten Daemon starten |
+| `--daemon-stop` | Den Daemon stoppen |
+| `--no-daemon-live` | Den Live-Statistik-Daemon deaktivieren, auch wenn er in der Konfiguration aktiviert ist |
+| `--daemon-live-stop` | Den laufenden Live-Statistik-Daemon stoppen |
+| `--daemon-live-reload` | Hot-Reload im Live-Statistik-Daemon erzwingen |
 
 ### Plugin-Unterbefehle
 
@@ -97,6 +105,31 @@ __  __                               OS: Arch Linux x86_64
 xfetch plugin install <name>      Ein Plugin installieren (lokaler Pfad oder aus Repository)
 xfetch plugin list                Alle installierten Plugins auflisten
 xfetch plugin remove <name>       Ein installiertes Plugin entfernen
+```
+
+### Erweiterungs-Unterbefehle
+
+```
+xfetch extension install <name>   Eine Erweiterung installieren (lokaler Pfad oder aus Repository)
+xfetch extension list             Alle installierten Erweiterungen auflisten
+xfetch extension remove <name>    Eine installierte Erweiterung entfernen
+```
+
+### Theme-Unterbefehle
+
+```
+xfetch theme list                 Installierte Themes auflisten
+xfetch theme set <name>           Ein Theme aktivieren (setzt das Feld "theme" in config.jsonc)
+xfetch theme remove <name>        Eine Theme-Datei entfernen
+xfetch theme export <name>        Aktuelle visuelle Konfiguration als Theme-Datei exportieren
+```
+
+### Effekt-Unterbefehle
+
+```
+xfetch effects install <name>     Ein Intro-Effekt installieren
+xfetch effects list               Installierte Effekte auflisten
+xfetch effects remove <name>      Einen Effekt entfernen
 ```
 
 ### Nutzungsbeispiele
@@ -133,6 +166,8 @@ xfetch plugin remove docker
 |----------|-------------|
 | `XFETCH_PLUGIN_REPO` | Die Standard-Plugin-Git-Repository-URL uberschreiben |
 | `XFETCH_PLUGIN_DEV_DIR` | Den Suchpfad fur das Plugin-Entwicklungsverzeichnis uberschreiben |
+| `XFETCH_LOGOS_URL` | Die URL des Logo-Katalogs uberschreiben (verwendet von `--logo` mit `--gen-config`) |
+| `XFETCH_EFFECT_REPO` | Die URL des Effekt-Git-Repositorys uberschreiben |
 | `CARGO_NET_GIT_FETCH_WITH_CLI` | Git CLI zum Abrufen verwenden (wird bei Plugin-Installation automatisch gesetzt) |
 
 ## Deinstallation

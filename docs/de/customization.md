@@ -94,6 +94,15 @@ Steuern Sie Bildabmessungen und Abstande mit diesen Feldern:
 
 Die automatische Breitenberechnung skaliert mit Ihrem Terminal: breitere Terminals erhalten proportional grosere Bilder.
 
+#### ASCII-Logo-Felder
+
+| Feld | Standard | Beschreibung |
+|-------|---------|-------------|
+| `logo_color` | Auto | Farbe fur ASCII-Logos (Name, Hex oder RGB) |
+| `logo_colors` | Auto | Farben pro Zeile fur ASCII-Logos (Array; `Zeile i` verwendet `logo_colors[i % len]`) |
+| `logo_padding` | 0 | Abstand um das Logo |
+| `logo_type` | Auto | Logo-Typ: `auto`, `ascii` oder `image` |
+
 #### Kitty Terminal Bild-Rendering
 
 In Kitty-Terminals unterstutzt xfetch zwei Rendering-Modi, gesteuert durch `logo_kitty`:
@@ -285,9 +294,19 @@ Das Modul `palette` rendert ein ANSI-Farbmuster. Der Stil wird durch das Feld `p
 | `circles` | Farbige Kreissymbole |
 | `triangles` | Farbige Dreiecksymbole |
 | `lines` | Dicke horizontale Farbbalken |
-| `dots` | Kleine farbige Punkte |
 
 Die Palette zeigt 8 Farben entsprechend der ANSI-Standardpalette: Schwarz, Rot, Grun, Gelb, Blau, Magenta, Cyan, Wei.
+
+## Schlussel (Beschriftungen)
+
+Standardmaig rendert xfetch jedes Modul als `Icon Wert`. Um zusatzlich die Modulbeschriftung anzuzeigen, aktivieren Sie `show_keys`; verwenden Sie `key_width`, um die Beschriftungen auf eine feste Spaltenbreite aufzufullen, sodass Werte vertikal ausgerichtet werden.
+
+```jsonc
+{
+    "show_keys": true,
+    "key_width": 12
+}
+```
 
 ## Preset-Konfigurationen
 

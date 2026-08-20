@@ -65,6 +65,7 @@ Fugen Sie Erweiterungen uber das Feld `config_providers` zu Ihrer Konfiguration 
 |-------|------|-------------|
 | `extension` | `string` | Erweiterungsname (Binardatei: `xfetch-extension-<name>`) |
 | `args` | `object` oder `null` | Beliebige JSON-Argumente, die an die Erweiterung ubergeben werden |
+| `timeout_secs` | `number` oder `null` | Optionale Zeituberschreitung in Sekunden fur die Erweiterung |
 
 ## Protokoll
 

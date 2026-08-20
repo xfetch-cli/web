@@ -4,6 +4,7 @@ export default function Hero() {
   return (
     <header className="mx-auto grid w-full max-w-5xl gap-3 px-6 pt-16 pb-0">
       <div className="flex justify-center">
+        {/* eslint-disable-next-line @next/next/no-img-element -- remote SVG banner; next/image requires remotePatterns + dangerouslyAllowSVG */}
         <img
           src="https://raw.githubusercontent.com/xfetch-cli/assets/main/logo/banner/xfetch.svg"
           alt="xfetch banner"

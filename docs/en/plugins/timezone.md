@@ -21,6 +21,8 @@ Displays current time, date, and timezone information.
 |-------|----------|---------|-------------|
 | `format` | No | `%Z %z` | `date` format string for timezone display |
 
+The `format` arg is ignored on Windows (no GNU `date`); Linux and macOS only.
+
 ## Output
 
 | State | Output |

@@ -1,5 +1,33 @@
 # Changelog
 
+## v0.6.0 · Themes, Live Stats Daemon & Per-Platform Modularization · 2026-08-19
+
+- **Theme format simplified:** `theme set` edits only the `theme` key, preserving comments and formatting; themes no longer carry `icons` (a per-user font choice, filled from defaults); new `logo_color` and `logo_colors` (per-row) fields
+- **Live stats daemon (`daemon_live`):** pins the fetch at the top of the terminal and re-probes a lightweight module subset every `daemon_live_refresh` seconds; hot reload via `daemon_live_reload` (config and theme watched); flags `--no-daemon-live`, `--daemon-live-stop`, `--daemon-live-reload`
+- **Windows:** `winget` counts only packages installed via winget; Chocolatey left the core probes (returns as a plugin); shell detection walks the parent process chain (cmd.exe is no longer reported as PowerShell); version-to-logo mapping uses build numbers
+- **Plugin and extension timeouts:** new `subprocess.rs` with bounded pipe drains — grandchildren holding the pipe can no longer hang xfetch; optional per-plugin/per-extension `timeout_secs` in the config; `with_timeout` helper in the API crates
+- **Per-platform modularization:** macOS and Linux mirror the Windows layout (`platform/<os>/version.rs`, `software.rs`, `network.rs`, ...); Arch splits `pacman` (official) from a new `aur` entry (`pacman -Qm`); Gentoo portage count surfaced; WSL-aware presentation
+- **Effects:** intro animations via the new `effects` config key and `xfetch effects install/list/remove` commands
+
+## v0.5.0 · Performance, Package Managers & Distro Logos · 2026-08-18
+
+- **Performance rounds:** package counts read directly from distro databases (dpkg/pacman/apk/flatpak, microseconds instead of subprocesses); PATH pre-check before spawning probes; battery/datetime moved into the parallel section; public IP hosts queried in parallel; probes spawned all-then-join (cold fetch 8.7 s → 0.05 s on WSL)
+- **Distro logos in `--gen-config`:** fetches the ASCII logo of the detected OS/distro from the new `xfetch-cli/logos` catalog, with `--logo <id>` override and `XFETCH_LOGOS_URL` for forks
+- **New `--layout <name>` flag** for `--gen-config`; the `configs/` folder was removed — the template is now embedded in the binary and installers generate the first config with `xfetch --gen-config`
+- **WSL presentation:** new `os_wsl_style` key (`off` / `minimal` / `full`)
+- **More package managers:** Void (xbps database) and Gentoo (portage) support; unknown config keys are ignored
+- **Windows:** `winget` support added; `choco list --local-only` no longer miscounts; `scoop list` counts rows properly
+- **Parallel plugins:** plugins run in parallel threads — API untouched, no plugin changes needed
+
+## v0.4.0 · Daemon Mode, New Layouts & Hang Fixes · 2026-08-17
+
+- **Daemon mode (`--daemon`):** pins the animated logo in a fixed scroll region and exits immediately; stop it with `--daemon-stop`
+- **External command timeouts:** `run_cmd_with_timeout()` kills hanging commands — snap without the snapd daemon no longer blocks the fetch; per-command timeouts for package managers and hardware probes
+- **Platform separation:** new `src/info/platform/{linux,macos,windows}/` structure with a shared contract and `shared/` machinery
+- **New layouts:** `section-box` (bordered boxes per module group) and `custom-x` (fully customizable border templates with `{fill}`/`{title}`, width auto/full/fixed)
+- **New options:** `show_keys`, `key_width`, `logo_color` (names, 256-color indexes and hex RGB), `logo_padding`, `logo_type` (auto/ascii/image)
+- **XDG_CONFIG_HOME support** (macOS fix) and local CI scripts (`scripts/ci.sh`, `scripts/ci.ps1`)
+
 ## v0.3.0 · Image Rendering & Extensions · 2026-07-25
 
 - **Kitty image rendering overhaul:** Added `logo_kitty` toggle (native protocol vs half-block), `logo_gap` for configurable image-text spacing, `logo_width`/`logo_height` for explicit sizing, and auto-responsive width (28% of terminal, clamped 12–42 cols)

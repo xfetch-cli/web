@@ -1,7 +1,6 @@
 "use client";
 
-import { useEffect, useState, useRef } from "react";
-import Image from "next/image";
+import { useEffect, useState } from "react";
 import Hero from "@/components/Hero";
 import TerminalDemo from "@/components/TerminalDemo";
 import Features from "@/components/Features";

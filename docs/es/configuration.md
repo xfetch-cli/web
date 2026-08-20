@@ -88,6 +88,22 @@ JSONC extiende JSON estándar permitiendo comentarios de estilo C (`//`) y C++ (
 | `logo_animation` | `object` o `null` | `null` | Configuración de animación del logo |
 | `info_plugins` | `array` | `[]` | Lista de plugins de información a ejecutar |
 | `config_providers` | `array` | `[]` | Lista de extensiones proveedoras de configuración a ejecutar después de la fusión del tema |
+| `theme` | `string` o `null` | `null` | Nombre del tema a aplicar (solo campos visuales) |
+| `daemon` | `boolean` | `false` | Ejecutar en modo daemon animado (fija el fetch en la parte superior de la terminal) |
+| `daemon_min_rows` | `number` o `null` | `null` | Filas mínimas de terminal requeridas para el daemon animado |
+| `daemon_live` | `boolean` | `false` | Fijar un bloque de estadísticas en vivo en la parte superior de la terminal, re-consultando módulos periódicamente |
+| `daemon_live_refresh` | `number` o `null` | (por plataforma) | Intervalo de actualización del daemon en vivo en segundos |
+| `daemon_live_modules` | `array` o `null` | (por plataforma) | Módulos mostrados por el daemon en vivo |
+| `daemon_live_reload` | `boolean` | `false` | Recarga en caliente de la configuración en modo daemon en vivo |
+| `os_wsl_style` | `string` o `null` | `null` | Estilo de detección WSL: `off`, `minimal` o `full` |
+| `logo_color` | `string` o `null` | `null` | Color para logos ASCII (nombre, hex o RGB) |
+| `logo_colors` | `array` o `null` | `null` | Colores por fila para logos ASCII (`la fila i` usa `logo_colors[i % len]`) |
+| `logo_padding` | `number` | `0` | Relleno alrededor del logo |
+| `logo_type` | `string` | `"auto"` | Tipo de logo: `auto`, `ascii` o `image` |
+| `show_keys` | `boolean` | `false` | Mostrar las etiquetas de módulo (`clave: valor`) |
+| `key_width` | `number` o `null` | `null` | Ancho fijo para las etiquetas de clave, alineando los valores |
+| `custom_x` | `object` o `null` | `null` | Plantillas de borde para el diseño `custom-x` |
+| `effects` | `object`, `array` o `null` | `null` | Efectos de introducción aplicados a las líneas de contenido |
 
 ### Módulos Predeterminados
 
@@ -200,6 +216,13 @@ Los colores asignan nombres de módulos a nombres de colores ANSI:
 | `Cyan` | 36 |
 | `White` | 37 |
 | `Grey` o `Gray` | 90 |
+| `DarkGrey` o `DarkGray` | 90 |
+| `DarkRed` | 31 |
+| `DarkGreen` | 32 |
+| `DarkYellow` | 33 |
+| `DarkBlue` | 34 |
+| `DarkMagenta` | 35 |
+| `DarkCyan` | 36 |
 
 ### Estilos de Paleta
 
@@ -211,7 +234,6 @@ El módulo `palette` muestra una muestra de color. Estilos disponibles:
 | `"circles"` | Círculos de color de primer plano |
 | `"triangles"` | Triángulos de color de primer plano |
 | `"lines"` | Barras de color horizontales gruesas |
-| `"dots"` | Puntos pequeños de color de primer plano |
 
 ### Configuración de Animación
 
@@ -238,6 +260,7 @@ El campo `logo_animation` habilita la animación del logo ASCII mediante un plug
 | `loop` | `boolean` | Si se debe repetir la animación en bucle (ignorado en modo daemon) |
 | `style` | `string` | Estilo de animación: `"sweep"`, `"wave"`, `"rainbow"`, `"sparkle"`, `"breathing"`, `"frame"`, `"none"` |
 | `frames_path` | `string` | Ruta a conjuntos de fotogramas preconstruidos (para estilo `"frame"`). Varios conjuntos separados por `\n===\n` |
+| `timeout_secs` | `number` | Tiempo de espera opcional para el plugin de animación en segundos |
 
 ### Integración de Plugins
 
@@ -264,6 +287,7 @@ Los plugins de información se configuran en el array `info_plugins`:
 |-------|------|-------------|
 | `plugin` | `string` | Nombre del plugin (instalado como `xfetch-plugin-<nombre>`) |
 | `args` | `object` o `null` | Argumentos JSON arbitrarios pasados al plugin |
+| `timeout_secs` | `number` o `null` | Tiempo de espera opcional por plugin en segundos |
 
 Los datos de plugins se acceden mediante claves de módulo con el prefijo `plugin:`:
 
@@ -301,6 +325,7 @@ El campo `config_providers` permite que extensiones a nivel de configuración mo
 |-------|------|-------------|
 | `extension` | `string` | Nombre de la extensión (binario: `xfetch-extension-<nombre>`) |
 | `args` | `object` o `null` | Argumentos JSON arbitrarios pasados a la extensión |
+| `timeout_secs` | `number` o `null` | Tiempo de espera opcional por extensión en segundos |
 
 Las extensiones se comunican mediante stdin/stdout JSON, recibiendo la configuración completamente resuelta y devolviendo una versión modificada. Consulte [Extensiones](extensions) para más detalles.
 

@@ -33,7 +33,7 @@ Cada capa puede sobrescribir cualquier campo visual. Desde **v0.2.0**, el tema t
 |-------|--------|----------|
 | 1. Valores por defecto | Hardcodeados en `config.rs` | Iconos, colores y diseño por defecto |
 | 2. Config del usuario | `config.jsonc` | `modules`, `info_plugins`, más sobrescrituras para cualquier campo visual |
-| 3. Archivo de tema | `themes/<name>.jsonc` | `colors`, `icons`, `layout`, `palette_style`, `logo_path`, `header_icons`, `footer_text`, `show_colors` |
+| 3. Archivo de tema | `themes/<name>.jsonc` | `colors`, `layout`, `palette_style`, `logo_path`, `logo_color`, `logo_colors`, `header_icons`, `footer_text`, `show_colors` |
 
 Un campo en el **archivo de tema** siempre prevalece sobre el mismo campo en `config.jsonc` o los valores por defecto.
 
@@ -66,14 +66,6 @@ Un archivo de tema es un documento JSONC que contiene únicamente campos visuale
         "disk": "Cyan",
         "shell": "Green",
         "wm": "Blue"
-    },
-    "icons": {
-        "os": "\uf17c",
-        "cpu": "\uf2db",
-        "memory": "\ue266",
-        "disk": "\uf0a0",
-        "shell": "\uf0e7",
-        "wm": "\uf08e"
     }
 }
 ```
@@ -84,12 +76,15 @@ Un archivo de tema es un documento JSONC que contiene únicamente campos visuale
 |-------|------|-------------|
 | `layout` | `string` o `null` | Nombre del estilo de diseño |
 | `colors` | `object` | Mapeo de colores por módulo |
-| `icons` | `object` | Mapeo de iconos por módulo |
 | `palette_style` | `string` o `null` | Visualización de paleta: `squares`, `circles`, `triangles`, `lines`, `dots` |
 | `show_colors` | `boolean` | Activar o desactivar indicadores de color ANSI en línea |
 | `logo_path` | `string` o `null` | Ruta a un archivo de logo |
+| `logo_color` | `string` o `null` | Color para logos ASCII (nombre, hex o RGB) |
+| `logo_colors` | `array` o `null` | Colores por fila para logos ASCII (`la fila i` usa `logo_colors[i % len]`) |
 | `header_icons` | `array` o `null` | Iconos de cabecera del diseño Pac-Man |
 | `footer_text` | `string` o `null` | Texto de pie del diseño Pac-Man |
+
+Los temas no llevan `icons`: la elección de iconos es decisión de la fuente del usuario; el núcleo los rellena desde los valores internos predeterminados.
 
 ## Resolución de temas
 
@@ -123,7 +118,6 @@ xfetch theme export my-theme
 El archivo exportado contiene únicamente:
 - `layout`
 - `colors`
-- `icons`
 - `palette_style`
 - `header_icons`
 - `footer_text`
@@ -144,7 +138,7 @@ El sistema de temas es completamente compatible hacia atrás:
 ~/.config/xfetch/
     config.jsonc            # Módulos, plugins y referencia opcional a tema
     themes/
-        dracula.jsonc       # Archivos de tema: colores, iconos, diseño
+        dracula.jsonc       # Archivos de tema: colores, diseño
         nord.jsonc
         catppuccin-mocha.jsonc
         retro-pacman.jsonc
@@ -154,7 +148,7 @@ El sistema de temas es completamente compatible hacia atrás:
 
 ## Temas incorporados
 
-El repositorio oficial de temas se encuentra en `github.com/xfetch-cli/configs` bajo `themes/`:
+El repositorio oficial de temas se encuentra en `github.com/xfetch-cli/themes`, registrado mediante `index.json` con los archivos de tema en `colors/`:
 
 | Tema | Diseño | Estilo |
 |-------|--------|-------|
@@ -162,8 +156,19 @@ El repositorio oficial de temas se encuentra en `github.com/xfetch-cli/configs` 
 | `nord` | section | Paleta azul frío y cian ártico |
 | `catppuccin-mocha` | section | Paleta pastel cálida mocha |
 | `retro-pacman` | pacman | Estilo arcade clásico de Pac-Man con iconos de cabecera y texto de pie |
-| `berlin` | default | Monocromático: todo blanco, aspecto limpio y minimalista |
-| `tree-compact` | tree | Diseño jerárquico en árbol |
+| `berlin` | default | Sin colores y sin iconos: salida limpia solo de texto |
+| `tree-compact` | tree | Diseño jerárquico en árbol con esquema azul-verdoso frío |
+| `bogota` | bottom | Diseño inferior con paleta cálida roja, magenta y blanca |
+| `helsinki` | line | Diseño de una sola línea con mezcla de acentos verde, azul y magenta |
+| `lahabana` | section | Diseño de sección con paleta roja, magenta y blanca |
+| `london` | minimal | Paleta grisácea minimalista (blanco y gris) |
+| `madrid` | default | Diseño predeterminado con paleta tricolor roja, verde y azul |
+| `miami` | section | Diseño de sección con paleta vaporwave magenta, cian y blanca |
+| `oslo` | compact | Diseño compacto con paleta azul, cian y blanca fría |
+| `paris` | box | Diseño de recuadro con paleta roja, magenta y blanca |
+| `praha` | section | Diseño de sección con paleta roja y magenta, muestras de triángulo |
+| `tokio` | horizontal | Diseño horizontal con paleta roja, blanca y magenta |
+| `x` | section | Diseño de sección con acentos cian, magenta y blanco |
 
 ## Detalles de implementación
 

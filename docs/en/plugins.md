@@ -158,6 +158,8 @@ Each plugin has its own reference page with full configuration details, argument
 | [display-resolution](plugins/display-resolution) | `info_provider` | Monitor resolution and refresh rate (cross-platform) |
 | [theme-detection](plugins/theme-detection) | `info_provider` | Desktop theme detection (GTK, KDE Plasma) |
 | [theme-manager](plugins/theme-manager) | `info_provider` | Theme registry browser and installer |
+| [chocolatey](plugins/chocolatey) | `info_provider` | Chocolatey package count (Windows) |
+| [temperature](plugins/temperature) | `info_provider` | CPU/SoC temperature from kernel thermal zones |
 
 ## Writing Custom Plugins
 
@@ -226,7 +228,10 @@ The `xfetch-plugin-api` crate (source at `github.com/xfetch-cli/api`) provides a
 - **Protocol types:** `AnimationFrame`, `EmptyArgs`, `InfoPluginRequest`, `InfoPluginResponse`, `LogoAnimationArgs`, `LogoAnimationRequest`, `LogoAnimationResponse`, `PluginKind`
 - **Entrypoint helpers:** `read_logo_animation_request()`, `read_info_plugin_request()`, `read_info_plugin_args_or_default()`, `write_logo_animation_frames()`, `write_info_lines()`
 - **IO helpers:** `read_json_from_stdin()`, `write_json_to_stdout()`
+- **Timeout helpers:** `with_timeout()` and the `TimedOut` error — run plugin work under a time budget and respond gracefully when it elapses
 - **Error types:** `PluginApiError` enum with variants for Io, Serialize, Deserialize, InvalidProtocolVersion, InvalidPluginKind, InvalidArgs, EmptyAnimationFrames
+
+The optional `timeout_secs` config key applies to `info_plugins`, `logo_animation`, and `config_providers` as a safety net in seconds: the core kills the plugin process if it runs longer, while the plugin's own `with_timeout` budget is the primary control.
 
 ### Guidelines
 

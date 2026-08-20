@@ -1,5 +1,33 @@
 # Registro de Cambios
 
+## v0.6.0 · Temas, Daemon de Estadísticas en Vivo y Modularización por Plataforma · 2026-08-19
+
+- **Formato de temas simplificado:** `theme set` edita solo la clave `theme`, conservando comentarios y formato; los temas ya no incluyen `icons` (elección de fuente del usuario, se rellenan desde los defaults); nuevos campos `logo_color` y `logo_colors` (por fila)
+- **Daemon de estadísticas en vivo (`daemon_live`):** fija la salida arriba de la terminal y vuelve a sondear un subconjunto ligero de módulos cada `daemon_live_refresh` segundos; hot reload mediante `daemon_live_reload` (observa config y tema); flags `--no-daemon-live`, `--daemon-live-stop`, `--daemon-live-reload`
+- **Windows:** `winget` cuenta solo paquetes instalados vía winget; Chocolatey salió de las sondas del núcleo (vuelve como plugin); la detección de shell recorre la cadena de procesos padre (cmd.exe ya no se reporta como PowerShell); el mapeo versión→logo usa números de build
+- **Timeouts de plugins y extensiones:** nuevo `subprocess.rs` con drenaje acotado de pipes — los procesos hijos que retienen el pipe ya no pueden colgar xfetch; `timeout_secs` opcional por plugin/extensión en la config; helper `with_timeout` en los crates de la API
+- **Modularización por plataforma:** macOS y Linux replican la estructura de Windows (`platform/<os>/version.rs`, `software.rs`, `network.rs`, ...); Arch separa `pacman` (oficial) de la nueva entrada `aur` (`pacman -Qm`); se muestra el conteo de portage en Gentoo; presentación consciente de WSL
+- **Efectos:** animaciones de introducción mediante la clave `effects` y los comandos `xfetch effects install/list/remove`
+
+## v0.5.0 · Rendimiento, Gestores de Paquetes y Logos por Distribución · 2026-08-18
+
+- **Rondas de rendimiento:** los conteos de paquetes se leen directamente de las bases de datos de las distros (dpkg/pacman/apk/flatpak, microsegundos en lugar de subprocesos); pre-chequeo de PATH antes de lanzar sondas; battery/datetime movidos a la sección paralela; hosts de IP pública consultados en paralelo; sondas lanzadas todas y luego unidas (fetch en frío 8.7 s → 0.05 s en WSL)
+- **Logos por distribución en `--gen-config`:** obtiene el logo ASCII del OS/distro detectado del nuevo catálogo `xfetch-cli/logos`, con override `--logo <id>` y `XFETCH_LOGOS_URL` para forks
+- **Nuevo flag `--layout <name>`** para `--gen-config`; se eliminó la carpeta `configs/` — la plantilla ahora va embebida en el binario y los instaladores generan el primer config con `xfetch --gen-config`
+- **Presentación WSL:** nueva clave `os_wsl_style` (`off` / `minimal` / `full`)
+- **Más gestores de paquetes:** soporte de Void (base de datos xbps) y Gentoo (portage); las claves de config desconocidas se ignoran
+- **Windows:** soporte de `winget` añadido; `choco list --local-only` ya no cuenta de más; `scoop list` cuenta filas correctamente
+- **Plugins en paralelo:** los plugins corren en hilos paralelos — API intacta, ningún plugin necesita cambios
+
+## v0.4.0 · Modo Daemon, Nuevos Layouts y Corrección de Cuelgues · 2026-08-17
+
+- **Modo daemon (`--daemon`):** fija el logo animado en una región de scroll fija y sale de inmediato; detenelo con `--daemon-stop`
+- **Timeouts de comandos externos:** `run_cmd_with_timeout()` mata comandos colgados — snap sin el daemon snapd ya no bloquea el fetch; timeouts por comando para gestores de paquetes y sondas de hardware
+- **Separación por plataforma:** nueva estructura `src/info/platform/{linux,macos,windows}/` con contrato compartido y maquinaria en `shared/`
+- **Nuevos layouts:** `section-box` (cajas con borde por grupo de módulos) y `custom-x` (plantillas de borde totalmente configurables con `{fill}`/`{title}`, ancho auto/full/fijo)
+- **Nuevas opciones:** `show_keys`, `key_width`, `logo_color` (nombres, índices 256 y hex RGB), `logo_padding`, `logo_type` (auto/ascii/image)
+- **Soporte de XDG_CONFIG_HOME** (corrección para macOS) y scripts de CI local (`scripts/ci.sh`, `scripts/ci.ps1`)
+
 ## v0.3.0 · Renderizado de Imágenes y Extensiones · 2026-07-25
 
 - **Renderizado de imágenes en Kitty:** Añadido toggle `logo_kitty` (protocolo nativo vs half-block), `logo_gap` para espaciado configurable entre imagen y texto, `logo_width`/`logo_height` para tamaño explícito, y ancho auto-responsive (28% de la terminal, clamp 12–42 cols)

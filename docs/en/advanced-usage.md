@@ -97,9 +97,9 @@ xfetch automatically adapts to the operating system.
 |--------|-------|-------|---------|
 | GPU | `lspci -mm` | `system_profiler SPDisplaysDataType` | `wmic` or PowerShell |
 | Battery | `/sys/class/power_supply/BAT*` | `pmset -g batt` | `wmic path Win32_Battery` |
-| Shell | `$SHELL` | `$SHELL` | `$PSModulePath` check |
+| Shell | `$SHELL` | `$SHELL` | Parent process chain walk |
 | Datetime | `date` command | `date` command | PowerShell |
-| Packages | pacman, dpkg, rpm, flatpak, snap, apk, nix-env | brew | scoop, choco |
+| Packages | pacman, dpkg, rpm, flatpak, snap, apk, nix-env | brew | scoop, winget |
 | Config path | `~/.config/xfetch/` | `~/Library/Application Support/xfetch/` | `%APPDATA%/xfetch/` |
 | Cache path | `~/.cache/xfetch/` | `~/Library/Caches/xfetch/` | `%LOCALAPPDATA%/xfetch/` |
 | Binary name | `xfetch-plugin-<name>` | `xfetch-plugin-<name>` | `xfetch-plugin-<name>.exe` |
@@ -130,6 +130,36 @@ xfetch --daemon-stop # stop it
 ```
 
 The animation only runs in TTY terminals; on pipes or redirects the static logo is shown. Daemon mode requires a `logo_animation` block with a plugin (e.g. `animate-logo`). In daemon mode the animation loops indefinitely — `duration_ms` and `loop` are ignored. To play a finite animation that stops on its own, keep daemon mode off.
+
+### Live Stats Daemon
+
+The live stats daemon (`daemon_live`) pins a fetch block at the top of the terminal and re-probes a lightweight module subset every `daemon_live_refresh` seconds. It is a sibling of the animated daemon above — the existing animated daemon is untouched. Config keys: `daemon_live`, `daemon_live_refresh`, `daemon_live_modules`, `daemon_live_reload` (hot-reload the config and the active theme).
+
+```bash
+xfetch --no-daemon-live     # disable the live daemon even if enabled in config
+xfetch --daemon-live-stop   # stop the running live daemon
+xfetch --daemon-live-reload # force hot reload
+```
+
+## WSL Presentation
+
+On Windows Subsystem for Linux, the OS line can be decorated with WSL details via `os_wsl_style` (Linux only):
+
+| Value | Behavior |
+|-------|----------|
+| `off` | Plain OS name, no decoration |
+| `minimal` | Appends `(WSL)` (default) |
+| `full` | Appends the WSL version and WSLg if present |
+
+## Intro Effects
+
+`xfetch effects` installs, lists, and removes intro effects that animate the content lines when the fetch starts. The `effects` config key (a single effect or a list) selects which effects play and in what order:
+
+```bash
+xfetch effects install <name>   # install an effect
+xfetch effects list             # list installed effects
+xfetch effects remove <name>    # remove an effect
+```
 
 ## Performance Optimization
 

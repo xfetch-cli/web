@@ -4,7 +4,7 @@ El plugin theme-manager permite navegar, buscar, inspeccionar e instalar temas d
 
 ## Descripcion general
 
-A diferencia de otros plugins info que muestran datos del sistema, theme-manager interactua con el registro de temas en `github.com/xfetch-cli/configs` para descubrir y descargar archivos de tema.
+A diferencia de otros plugins info que muestran datos del sistema, theme-manager interactua con el registro de temas en `github.com/xfetch-cli/themes` para descubrir y descargar archivos de tema.
 
 | Propiedad | Valor |
 |-----------|-------|
@@ -108,7 +108,7 @@ Despues de la instalacion, active el tema con `xfetch theme set <nombre>` o anad
 ### Salida de list
 
 ```
-Theme Manager -- 6 themes available
+Theme Manager -- 17 themes available
 
   dracula  xscriptor  section  (#dark #dracula #popular)
        Dark magenta, red, and cyan palette inspired by the Dracula color scheme.
@@ -146,7 +146,7 @@ Or add to config.jsonc: "theme": "dracula"
 La URL del registro predeterminado es:
 
 ```
-https://raw.githubusercontent.com/xfetch-cli/configs/main/themes/index.json
+https://raw.githubusercontent.com/xfetch-cli/themes/main/index.json
 ```
 
 El registro es un archivo JSON que contiene metadatos de todos los temas disponibles. Cada entrada de tema incluye:

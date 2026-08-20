@@ -5,7 +5,7 @@ Navega, busca e instala temas desde un registro remoto o local.
 - **Tipo:** `info_provider`
 - **Binario:** `xfetch-plugin-theme-manager`
 - **Dependencias:** `curl` en PATH (para registros remotos)
-- **Registro predeterminado:** `https://raw.githubusercontent.com/xfetch-cli/configs/main/themes/index.json`
+- **Registro predeterminado:** `https://raw.githubusercontent.com/xfetch-cli/themes/main/index.json`
 
 ## Configuración
 
@@ -30,7 +30,7 @@ Navega, busca e instala temas desde un registro remoto o local.
 | `action` | No | `"list"` | `list`, `search`, `info` o `install` |
 | `name` | Para `info`/`install` | — | Nombre del tema |
 | `query` | Para `search` | — | Término de búsqueda (coincide con nombre, descripción, autor, etiquetas) |
-| `registry` | No | xfetch-cli/configs | URL del registro (HTTP o ruta local con `/` o `~`) |
+| `registry` | No | xfetch-cli/themes | URL del registro (HTTP o ruta local con `/` o `~`) |
 
 ## Acciones
 

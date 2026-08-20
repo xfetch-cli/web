@@ -65,6 +65,7 @@ Add extensions to your config via the `config_providers` field:
 |-------|------|-------------|
 | `extension` | `string` | Extension name (binary: `xfetch-extension-<name>`) |
 | `args` | `object` or `null` | Arbitrary JSON arguments passed to the extension |
+| `timeout_secs` | `number` or `null` | Optional timeout in seconds for the extension |
 
 ## Protocol
 
