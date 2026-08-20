@@ -7,8 +7,7 @@ on:
     paths-ignore:
       - README.md
       - .gitignore
-      - eslint.config.mjs
-      - next-env.d.ts
+  workflow_dispatch:
 
 permissions:
   contents: read
