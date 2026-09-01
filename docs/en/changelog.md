@@ -16,15 +16,6 @@
 - **Battery fix (Linux):** peripheral batteries (e.g. Logitech HID++) are no longer counted as system batteries
 - 141 tests, clippy clean
 
-
-## v0.7.0 · Configurable Labels & Value Formats · 2026-08-20
-
-- **`labels` map:** rename the row key per module (`"cpu": "processor"`) or hide it with an empty string (icon-only row) — works in every layout (classic and variants, compact, minimal, section, section-box, tree, custom-x)
-- **`formats` map:** replace a module's value with a template of `{field}` placeholders — CPU (`{brand}`/`{model}`/`{cores}`/`{freq}`), GPU (`{name}`/`{vendor}`/`{model}`/`{vram}`), memory/swap/disk (`{used}`/`{total}`/`{percent}`/`{fs}`), os (`{distro}`/`{version}`/`{arch}`/`{wsl}`), packages (one field per manager), battery (`{percent}`/`{state}`), uptime (`{days}`/`{hours}`/`{mins}`), datetime (`{date}`/`{time}`); unknown fields render empty, `{{`/`}}` escape literal braces
-- **Backwards compatible:** the default template is `{value}`, so existing configs and output are unchanged; formatting applies once at render-tree build time, shared by all layouts and both daemons
-- **GPU fields per platform:** Linux parses the `lspci` bracket description, Windows the `Name`/CIM value, macOS the `system_profiler` chipset model; shared vendor/VRAM/model rules in `platform/shared/gpu.rs`
-- See [`submodules_configuration.md`](https://github.com/xfetch-cli/xfetch/blob/main/docs/submodules_configuration.md) for the full field reference
-
 ## v0.6.0 · Themes, Live Stats Daemon & Per-Platform Modularization · 2026-08-19
 
 - **Theme format simplified:** `theme set` edits only the `theme` key, preserving comments and formatting; themes no longer carry `icons` (a per-user font choice, filled from defaults); new `logo_color` and `logo_colors` (per-row) fields
@@ -52,24 +43,6 @@
 - **New layouts:** `section-box` (bordered boxes per module group) and `custom-x` (fully customizable border templates with `{fill}`/`{title}`, width auto/full/fixed)
 - **New options:** `show_keys`, `key_width`, `logo_color` (names, 256-color indexes and hex RGB), `logo_padding`, `logo_type` (auto/ascii/image)
 - **XDG_CONFIG_HOME support** (macOS fix) and local CI scripts (`scripts/ci.sh`, `scripts/ci.ps1`)
-
-## v0.5.0 · Performance, WSL & Logo Catalog · 2026-08-18
-
-- **Package counts from databases:** `dpkg`, `pacman`, `apk` and `flatpak` are read directly from their databases (world-readable files), with automatic command fallback. New support for Void (`xbps`) and Gentoo (`portage`)
-- **PATH pre-check for binaries:** before spawning any probe the binary existence is verified, ignoring WSL Windows mounts (`/mnt/c`) — avoids expensive PATH searches on WSL
-- **Full parallelism:** `battery`, `datetime` and info plugins now run in the parallel section (the plugin protocol is unchanged); public IP hosts are queried in parallel
-- **Optimized sysinfo initialization:** only CPU/memory/swap are refreshed (no processes). Cold fetch: 8.6 s → **0.008 s**
-- **Configurable WSL presentation:** new `os_wsl_style` key (`off` / `minimal` / `full`) — e.g. `Ubuntu 24.04 x86_64 (WSL 2, WSLg)`
-- **Per-distro logo catalog:** `--gen-config` downloads the ASCII logo of the detected distro from the new [xfetch-cli/logos](https://github.com/xfetch-cli/logos) repo, with `--logo <id>` to force one and `--layout <name>` to generate with another layout
-
-## v0.4.0 · Timeouts & Platform Separation · 2026-08-15/17
-
-- **Per-command timeouts:** fixed the hang on systems with `snap` installed but snapd stopped (e.g. WSL) — every probe has its own timeout and the process is killed when it expires
-- **Platform separation:** new `src/info/platform/{linux,macos,windows}/` + `shared/` structure with a uniform per-OS contract (only the active platform is compiled)
-- **XDG_CONFIG_HOME support:** `config_dir()` prefers an absolute `XDG_CONFIG_HOME` (macOS configuration fix)
-- **Section-box layout:** new boxed section layout
-- **Local CI:** `scripts/ci.sh` / `ci.ps1` (fmt, clippy and tests without depending on GitHub Actions)
-- **Package counter speedup:** detectors now run in real parallel, without double runs, and `snap` is skipped when snapd is not running (socket pre-check)
 
 ## v0.3.0 · Image Rendering & Extensions · 2026-07-25
 
