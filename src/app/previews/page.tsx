@@ -9,17 +9,45 @@ export const metadata: Metadata = {
 const base = process.env.NEXT_PUBLIC_BASE_PATH || "";
 
 const LINUX_STILLS = [
-  { src: "preview-linux-2.webp", alt: "xfetch on Linux, default layout" },
-  { src: "preview-linux-3.webp", alt: "xfetch on Linux, custom layout" },
-  { src: "preview-linux-4.webp", alt: "xfetch on Linux, palette module" },
-  { src: "preview-linux-5.webp", alt: "xfetch on Linux, logo animation" },
-  { src: "preview-linux-6.webp", alt: "xfetch on Linux, full desktop capture" },
+  {
+    src: "preview-linux-2.webp",
+    alt: "xfetch on Linux, default layout",
+  },
+  {
+    src: "preview-linux-3.webp",
+    alt: "xfetch on Linux, custom layout",
+  },
+  {
+    src: "preview-linux-4.webp",
+    alt: "xfetch on Linux, palette module",
+  },
+  {
+    src: "preview-linux-5.webp",
+    alt: "xfetch on Linux, logo animation",
+  },
+];
+
+const LINUX_NOTES = [
+  "The default side-by-side layout: ASCII logo on the left, system modules on the right — OS, kernel, uptime, packages, shell, CPU, GPU, memory and disk at a glance. Next to it, a custom layout and color scheme from the same config file — xfetch reads config.jsonc at startup, so changing layout, icons or colors is a matter of editing text.",
+  "The ANSI color palette module rendered as squares — handy to verify your terminal colors match the theme you picked. And a frame of the logo animation, showing the sweep and rainbow effects the animate-logo plugin cycles through.",
 ];
 
 const WINDOWS_STILLS = [
-  { src: "preview-windows-1.webp", alt: "xfetch on Windows, PowerShell" },
-  { src: "preview-windows-2.webp", alt: "xfetch on Windows, alternate layout" },
-  { src: "preview-windows-3.webp", alt: "xfetch on Windows, full desktop capture" },
+  {
+    src: "preview-windows-1.webp",
+    alt: "xfetch on Windows, PowerShell",
+    text: "The classic side-by-side layout inside Windows Terminal: ASCII logo on the left, system modules on the right, package count detected via scoop and chocolatey.",
+  },
+  {
+    src: "preview-windows-2.webp",
+    alt: "xfetch on Windows, alternate layout",
+    text: "A different layout and color scheme on the same machine — layouts, colors and icons are fully driven by config.jsonc, no rebuilds needed.",
+  },
+  {
+    src: "preview-windows-3.webp",
+    alt: "xfetch on Windows, full desktop capture",
+    text: "Full desktop capture: xfetch sitting next to the Windows explorer, showing the ANSI palette, GPU info and swap usage.",
+  },
 ];
 
 function PreviewImage({ src, alt }: { src: string; alt: string }) {
@@ -53,7 +81,7 @@ export default function PreviewsPage() {
           <section className="grid gap-3">
             <h2 className="m-0 text-lg font-semibold">The main demo</h2>
             <p className="m-0 max-w-[68ch] leading-relaxed text-fg2">
-              A quick look at xfetch in action: system modules on the left, ASCII logo on the
+              A quick look at xfetch in action: ASCII logo on the left, system modules on the
               right, colors from the active theme palette. Everything is configurable through
               <code className="mx-1 rounded bg-bg/90 px-1.5 py-0.5 text-xs">config.jsonc</code> —
               modules, icons, logos, layouts, and colors.
@@ -82,10 +110,27 @@ export default function PreviewsPage() {
                 className="block h-auto w-full"
               />
             </div>
-            <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-              {LINUX_STILLS.map((img) => (
-                <PreviewImage key={img.src} {...img} />
-              ))}
+            <p className="m-0 max-w-[68ch] leading-relaxed text-fg2">
+              Watch the ASCII logo animate in the recording above: sweep and rainbow effects
+              cycled by the animate-logo plugin, speaking JSON over stdin/stdout.
+            </p>
+            <div className="grid gap-6">
+              <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+                {LINUX_STILLS.slice(0, 2).map((img) => (
+                  <div key={img.src} className="overflow-hidden rounded-xl border border-bg3/60">
+                    <PreviewImage src={img.src} alt={img.alt} />
+                  </div>
+                ))}
+              </div>
+              <p className="m-0 max-w-[68ch] leading-relaxed text-fg2">{LINUX_NOTES[0]}</p>
+              <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+                {LINUX_STILLS.slice(2).map((img) => (
+                  <div key={img.src} className="overflow-hidden rounded-xl border border-bg3/60">
+                    <PreviewImage src={img.src} alt={img.alt} />
+                  </div>
+                ))}
+              </div>
+              <p className="m-0 max-w-[68ch] leading-relaxed text-fg2">{LINUX_NOTES[1]}</p>
             </div>
           </section>
 
@@ -97,9 +142,14 @@ export default function PreviewsPage() {
               Terminal with full module detection — OS, kernel, shell, packages via
               scoop/chocolatey, and the color palette rendered from the Windows console.
             </p>
-            <div className="grid grid-cols-1 gap-3 lg:grid-cols-2">
+            <div className="grid gap-6">
               {WINDOWS_STILLS.map((img) => (
-                <PreviewImage key={img.src} {...img} />
+                <div key={img.src} className="grid gap-3">
+                  <div className="overflow-hidden rounded-xl border border-bg3/60">
+                    <PreviewImage src={img.src} alt={img.alt} />
+                  </div>
+                  <p className="m-0 max-w-[68ch] leading-relaxed text-fg2">{img.text}</p>
+                </div>
               ))}
             </div>
           </section>
