@@ -27,7 +27,7 @@ Das `format`-Argument wird unter Windows ignoriert (kein GNU `date`); nur Linux 
 
 | Zustand | Ausgabe |
 |---------|---------|
-| Normal | ` Mittwoch, 23. Juli 2026  14:30` / `   America/New York (EST -05:00)` |
-| Nicht erkannt | ` Zeitzone: unbekannt` |
+| Normal | ` Wednesday, 23 July 2026  14:30` / `   America/New York (EST -05:00)` |
+| Nicht erkannt | ` Timezone: unknown` |
 
 Die Zeitzone wird aus `/etc/timezone` > `/etc/localtime`-Symlink > `timedatectl` ermittelt.

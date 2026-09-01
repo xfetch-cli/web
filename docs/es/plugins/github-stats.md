@@ -35,10 +35,10 @@ Obtiene estadísticas del perfil de usuario de GitHub.
 
 | # | Línea |
 |---|-------|
-| 1 | ` Nombre (@usuario)` |
-| 2 | ` N estrellas` |
+| 1 | ` Name (@username)` |
+| 2 | ` N stars` |
 | 3 | ` N repos` |
 | 4 | ` N PRs` |
 | 5 | ` N issues` |
-| 6 | ` N seguidores` |
-| 7 | ` N siguiendo` |
+| 6 | ` N followers` |
+| 7 | ` N following` |

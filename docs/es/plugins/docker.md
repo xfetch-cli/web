@@ -23,6 +23,6 @@ Ninguno.
 
 | Estado | Salida |
 |--------|--------|
-| Demonio ejecutándose | ` Contenedores: 15 total`, `  ▶ 3 ejecutándose`, `  ⏸ 1 pausado`, `  ⏹ 11 detenidos` |
-| Demonio no ejecutándose | ` Docker: demonio no ejecutándose` |
-| CLI no encontrado | ` Docker: no encontrado` |
+| Demonio ejecutándose | ` Containers: 15 total`, `  ▶ 3 running`, `  ⏸ 1 paused`, `  ⏹ 11 stopped` |
+| Demonio no ejecutándose | ` Docker: daemon not running` |
+| CLI no encontrado | ` Docker: not found` |

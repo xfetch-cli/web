@@ -2,7 +2,7 @@
 
 Ein plattformunabhangiges Systeminformations-Tool geschrieben in Rust.
 
-- ****Version:** 0.3.0
+- **Version:** 0.8.0
 - **Lizenz:** MIT
 - **Autor:** xscriptor
 - **Repository:** github.com/xfetch-cli/xfetch
@@ -60,6 +60,12 @@ Ein plattformunabhangiges Systeminformations-Tool geschrieben in Rust.
      - user-info
      - display-resolution
      - theme-detection
+     - chocolatey
+     - temperature
+     - theme-manager
+     - chocolatey
+     - temperature
+     - theme-manager
    - Eigene Plugins schreiben
    - Plugin-API-Crate
 
@@ -104,7 +110,7 @@ Ein plattformunabhangiges Systeminformations-Tool geschrieben in Rust.
 
 10. [Theme Manager Plugin](theme-manager.md)
     - Ubersicht und Installation
-    - Aktionen (liste, suche, info, installiere)
+    - Aktionen (list, search, info, install)
     - Registry und benutzerdefinierte Registries
 
 12. [Mitwirken](contributing.md)

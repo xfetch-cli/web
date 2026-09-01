@@ -2,9 +2,9 @@
 
 El plugin theme-manager permite navegar, buscar, inspeccionar e instalar temas de xfetch desde el registro remoto de temas.
 
-## Descripcion general
+## Descripción general
 
-A diferencia de otros plugins info que muestran datos del sistema, theme-manager interactua con el registro de temas en `github.com/xfetch-cli/themes` para descubrir y descargar archivos de tema.
+A diferencia de otros plugins info que muestran datos del sistema, theme-manager interactúa con el registro de temas en `github.com/xfetch-cli/themes` para descubrir y descargar archivos de tema.
 
 | Propiedad | Valor |
 |-----------|-------|
@@ -12,7 +12,7 @@ A diferencia de otros plugins info que muestran datos del sistema, theme-manager
 | Binario | `xfetch-plugin-theme-manager` |
 | Dependencias | CLI `curl` (para el registro remoto) |
 
-## Instalacion
+## Instalación
 
 ```bash
 xfetch plugin install theme-manager
@@ -56,7 +56,7 @@ Filtra temas por nombre, descripcion, autor o etiquetas:
 
 ### info
 
-Muestra informacion detallada sobre un tema especifico:
+Muestra información detallada sobre un tema especifico:
 
 ```jsonc
 {
@@ -92,7 +92,7 @@ Descarga un archivo de tema desde el registro y lo guarda en `~/.config/xfetch/t
 }
 ```
 
-Despues de la instalacion, active el tema con `xfetch theme set <nombre>` o anadiendo `"theme": "<nombre>"` a su `config.jsonc`.
+Después de la instalación, active el tema con `xfetch theme set <nombre>` o añadiendo `"theme": "<nombre>"` a su `config.jsonc`.
 
 ## Argumentos
 
@@ -100,7 +100,7 @@ Despues de la instalacion, active el tema con `xfetch theme set <nombre>` o anad
 |-------|------|-----------|-------------|
 | `action` | `string` | No | Uno de `list` (predeterminado), `search`, `info`, `install` |
 | `name` | `string` | Para `info` y `install` | Identificador del tema (ej., `dracula`, `nord`) |
-| `query` | `string` | Para `search` | Termino de busqueda que coincide con nombre, descripcion, autor o etiquetas |
+| `query` | `string` | Para `search` | Término de búsqueda que coincide con nombre, descripcion, autor o etiquetas |
 | `registry` | `string` | No | URL de registro personalizada o ruta de archivo local |
 
 ## Ejemplos de salida
@@ -155,9 +155,9 @@ El registro es un archivo JSON que contiene metadatos de todos los temas disponi
 |-------|-------------|
 | `name` | Identificador del tema usado en `"theme": "<nombre>"` |
 | `author` | Creador del tema |
-| `version` | Version semantica |
-| `description` | Descripcion breve del tema |
-| `layout` | Diseno predeterminado del tema |
+| `version` | Versión semántica |
+| `description` | Descripción breve del tema |
+| `layout` | Diseño predeterminado del tema |
 | `palette_style` | Estilo de visualizacion de paleta predeterminado |
 | `tags` | Palabras clave para busqueda |
 | `source` | URL para descargar el archivo JSONC del tema |
@@ -177,11 +177,11 @@ Puede usar un registro autogestionado o local:
 
 Las rutas locales (que comienzan con `/` o `~`) se leen directamente del sistema de archivos. Las URL remotas se obtienen mediante `curl`.
 
-## Como funciona
+## Cómo funciona
 
 1. xfetch envia una solicitud JSON con `kind: "info_provider"` y los argumentos configurados.
 2. El plugin lee el archivo de registro (ruta local o URL remota mediante `curl`).
-3. Segun el campo `action`, el plugin filtra o muestra informacion del tema.
+3. Según el campo `action`, el plugin filtra o muestra informacion del tema.
 4. Para `install`, el archivo JSONC del tema se descarga y guarda en el directorio de temas.
 5. El plugin devuelve las lineas formateadas como una respuesta JSON.
 6. xfetch las muestra bajo la clave de modulo `plugin:theme-manager`.
@@ -191,4 +191,4 @@ Las rutas locales (que comienzan con `/` o `~`) se leen directamente del sistema
 - Requiere `curl` para acceder al registro remoto. Las rutas de archivo locales funcionan sin curl.
 - Se necesita conectividad de red para operaciones con el registro remoto.
 - El argumento `registry` permite apuntar a un registro personalizado o reflejado.
-- Despues de instalar un tema, activelo usando el comando principal `xfetch theme set` o editando `config.jsonc` directamente.
+- Despues de instalar un tema, actívelo usando el comando principal `xfetch theme set` o editando `config.jsonc` directamente.

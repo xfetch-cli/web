@@ -1,4 +1,21 @@
 # Changelog
+# Changelog
+
+## v0.8.0 · Crates.io Install, Slimmer Dependencies & HTTPS Public IP · 2026-08-21
+
+- **crates.io:** `cargo install xfetch-cli` is now supported
+- **Dependency tree slimming:** removed the AVIF encoder chain (`ravif`/`rav1e`/`rayon`) — 196 → 133 crates, zero vulnerabilities; `image` codecs limited to what the logo renderer uses; API crates pinned to a fixed commit
+- **Public IP over HTTPS:** public IP probes now use TLS (Mozilla roots) with strict `IpAddr` validation, a 64-byte body cap and no redirects
+- **Logo catalog hardening:** fetched logo art rejects ANSI escape sequences and control characters, falling back to the default logo
+- 147 tests, clippy clean
+
+## v0.7.0 · Configurable Labels and Value Formats · 2026-08-20
+
+- **`labels` config map:** renames the key shown per module in every layout; an empty string hides the key (icon-only row); colors keep using the raw module key
+- **`formats` config map:** value templates with `{field}` placeholders per module — CPU `{brand}`/`{model}`/`{cores}`/`{freq}`, GPU `{name}`/`{vendor}`/`{model}`/`{vram}`, memory/swap `{used}`/`{total}`/`{percent}`, disk `{fs}`, os `{distro}`/`{version}`/`{arch}`/`{wsl}`, packages one field per manager plus `{count}`/`{manager}`/`{managers}`, battery `{percent}`/`{state}`, uptime `{days}`/`{hours}`/`{mins}`, datetime `{date}`/`{time}`; unknown fields render empty, `{{`/`}}` escape literal braces
+- **Battery fix (Linux):** peripheral batteries (e.g. Logitech HID++) are no longer counted as system batteries
+- 141 tests, clippy clean
+
 
 ## v0.6.0 · Themes, Live Stats Daemon & Per-Platform Modularization · 2026-08-19
 

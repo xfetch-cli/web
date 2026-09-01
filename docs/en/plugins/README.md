@@ -19,3 +19,18 @@ xfetch provides a set of official plugins for additional functionality.
 ## Logo Animation Plugins
 
 - [animate-logo](animate-logo) — Animated ASCII logos with color effects
+
+## Install a Plugin
+
+From the default remote repository:
+
+```bash
+xfetch plugin install animate-logo
+```
+
+By default, `xfetch plugin install <name>` fetches plugins from `https://github.com/xfetch-cli/plugins.git`.
+
+Installed binaries live in `~/.config/xfetch/plugins/` (Linux/macOS) or `%APPDATA%/xfetch/plugins/` (Windows).
+
+See [Platform Compatibility](https://github.com/xfetch-cli/plugins/blob/main/docs/compatibility.md) for which plugins work on Linux, macOS and Windows.
+

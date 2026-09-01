@@ -27,8 +27,8 @@ Nur Linux und macOS; unter Windows meldet es `Music: no active player`.
 
 | Zustand | Ausgabe |
 |---------|---------|
-| MPD spielt | ` MPD: Song - Künstler` / `  ▶ spielt` |
-| Spotify spielt | ` Spotify: Künstler - Song` |
-| Spotify pausiert | ` Spotify: pausiert` |
-| Beide aktiv | ` Musik-Player:` / `   MPD: ...` / `   Spotify: ...` |
-| Kein Player | ` Musik: kein aktiver Player` |
+| MPD spielt | ` MPD: Song Title - Artist` / `  ▶ playing` |
+| Spotify spielt | ` Spotify: Artist - Song Title` |
+| Spotify pausiert | ` Spotify: paused` |
+| Beide aktiv | ` Music Players:` / `   MPD: ...` / `   Spotify: ...` |
+| Kein Player | ` Music: no active player` |

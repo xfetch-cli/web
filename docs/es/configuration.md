@@ -77,7 +77,7 @@ JSONC extiende JSON estándar permitiendo comentarios de estilo C (`//`) y C++ (
 | `palette_style` | `string` | `"squares"` | Estilo de visualización de la paleta |
 | `logo_path` | `string` o `null` | `null` | Ruta a un archivo de logo personalizado |
 | `ascii` | `string` o `null` | `null` | Ruta a un archivo de arte ASCII (alternativa a logo_path) |
-| `logo_width` | `number` o `null` | `null` | Ancho máximo para logos de imagen (en columnas de terminal, auto-calculado si no se establece) |
+| `logo_width` | `number` o `null` | `auto` (28% del ancho de la terminal, limitado 12-42) | Ancho máximo para logos de imagen (en columnas de terminal, auto-calculado si no se establece) |
 | `logo_height` | `number` o `null` | `null` | Altura máxima para logos de imagen (en filas de terminal) |
 | `logo_gap` | `number` o `null` | `12` | Espacio entre el logo/imagen y el texto de información (en columnas) |
 | `logo_kitty` | `boolean` o `null` | `true` (en Kitty) | Usar protocolo nativo de Kitty (`true`) o renderizado half-block (`false`). Half-block da menor resolución pero evita problemas de layout |
@@ -90,18 +90,18 @@ JSONC extiende JSON estándar permitiendo comentarios de estilo C (`//`) y C++ (
 | `config_providers` | `array` | `[]` | Lista de extensiones proveedoras de configuración a ejecutar después de la fusión del tema |
 | `theme` | `string` o `null` | `null` | Nombre del tema a aplicar (solo campos visuales) |
 | `daemon` | `boolean` | `false` | Ejecutar en modo daemon animado (fija el fetch en la parte superior de la terminal) |
-| `daemon_min_rows` | `number` o `null` | `null` | Filas mínimas de terminal requeridas para el daemon animado |
+| `daemon_min_rows` | `number` | `6` | Filas mínimas de terminal requeridas para el daemon animado |
 | `daemon_live` | `boolean` | `false` | Fijar un bloque de estadísticas en vivo en la parte superior de la terminal, re-consultando módulos periódicamente |
 | `daemon_live_refresh` | `number` o `null` | (por plataforma) | Intervalo de actualización del daemon en vivo en segundos |
 | `daemon_live_modules` | `array` o `null` | (por plataforma) | Módulos mostrados por el daemon en vivo |
 | `daemon_live_reload` | `boolean` | `false` | Recarga en caliente de la configuración en modo daemon en vivo |
-| `os_wsl_style` | `string` o `null` | `null` | Estilo de detección WSL: `off`, `minimal` o `full` |
+| `os_wsl_style` | `string` | `"minimal"` | Estilo de detección WSL: `off`, `minimal` o `full` |
 | `logo_color` | `string` o `null` | `null` | Color para logos ASCII (nombre, hex o RGB) |
 | `logo_colors` | `array` o `null` | `null` | Colores por fila para logos ASCII (`la fila i` usa `logo_colors[i % len]`) |
 | `logo_padding` | `number` | `0` | Relleno alrededor del logo |
 | `logo_type` | `string` | `"auto"` | Tipo de logo: `auto`, `ascii` o `image` |
 | `show_keys` | `boolean` | `false` | Mostrar las etiquetas de módulo (`clave: valor`) |
-| `key_width` | `number` o `null` | `null` | Ancho fijo para las etiquetas de clave, alineando los valores |
+| `key_width` | `number` | `auto` | Ancho fijo para las etiquetas de clave, alineando los valores |
 | `custom_x` | `object` o `null` | `null` | Plantillas de borde para el diseño `custom-x` |
 | `effects` | `object`, `array` o `null` | `null` | Efectos de introducción aplicados a las líneas de contenido |
 
@@ -234,6 +234,8 @@ El módulo `palette` muestra una muestra de color. Estilos disponibles:
 | `"circles"` | Círculos de color de primer plano |
 | `"triangles"` | Triángulos de color de primer plano |
 | `"lines"` | Barras de color horizontales gruesas |
+| `"dots"` | Símbolos de puntos pequeños |
+| `"dots"` | Símbolos de puntos pequeños |
 
 ### Configuración de Animación
 

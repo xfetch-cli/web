@@ -171,7 +171,7 @@ Zeigt die Anzahl eines bestimmten Paketmanagers einzeln an:
 packages:pacman  ->  657
 packages:brew    ->  128
 packages:scoop   ->  24
-packages:aur     ->  21   (AUR-Pakete, gezahlt uber `pacman -Qm`)
+packages:aur     ->  21   (AUR packages, counted via `pacman -Qm`)
 ```
 
 ### Modul: `shell`

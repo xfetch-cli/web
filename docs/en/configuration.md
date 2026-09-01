@@ -77,7 +77,7 @@ JSONC extends standard JSON by allowing C-style (`//`) and C++-style (`/* */`) c
 | `palette_style` | `string` | `"squares"` | Palette display style |
 | `logo_path` | `string` or `null` | `null` | Path to a custom logo file |
 | `ascii` | `string` or `null` | `null` | Path to an ASCII art file (alternative to logo_path) |
-| `logo_width` | `number` or `null` | `null` | Width constraint for image logos (in terminal columns, auto-calculated if unset) |
+| `logo_width` | `number` or `null` | `auto` (28% of terminal width, clamped 12-42) | Width constraint for image logos (in terminal columns, auto-calculated if unset) |
 | `logo_height` | `number` or `null` | `null` | Height constraint for image logos (in terminal rows) |
 | `logo_gap` | `number` or `null` | `12` | Gap between the logo/image and the info text (in columns) |
 | `logo_kitty` | `boolean` or `null` | `true` (in Kitty) | Use Kitty native image protocol (`true`) or half-block rendering (`false`). Half-block gives lower resolution but avoids layout issues |
@@ -90,18 +90,18 @@ JSONC extends standard JSON by allowing C-style (`//`) and C++-style (`/* */`) c
 | `config_providers` | `array` | `[]` | List of config provider extensions to run after theme merge |
 | `theme` | `string` or `null` | `null` | Theme name to apply (visual fields only) |
 | `daemon` | `boolean` | `false` | Run in animated daemon mode (pins the fetch at the top of the terminal) |
-| `daemon_min_rows` | `number` or `null` | `null` | Minimum terminal rows required for the animated daemon |
+| `daemon_min_rows` | `number` | `6` | Minimum terminal rows required for the animated daemon |
 | `daemon_live` | `boolean` | `false` | Pin a live stats block at the top of the terminal, re-probing modules periodically |
 | `daemon_live_refresh` | `number` or `null` | (per-platform) | Live daemon refresh interval in seconds |
 | `daemon_live_modules` | `array` or `null` | (per-platform) | Modules displayed by the live daemon |
 | `daemon_live_reload` | `boolean` | `false` | Hot-reload the config in live daemon mode |
-| `os_wsl_style` | `string` or `null` | `null` | WSL detection style: `off`, `minimal`, or `full` |
+| `os_wsl_style` | `string` | `"minimal"` | WSL detection style: `off`, `minimal`, or `full` |
 | `logo_color` | `string` or `null` | `null` | Color for ASCII logos (name, hex, or RGB) |
 | `logo_colors` | `array` or `null` | `null` | Per-row colors for ASCII logos (`row i` uses `logo_colors[i % len]`) |
 | `logo_padding` | `number` | `0` | Padding around the logo |
 | `logo_type` | `string` | `"auto"` | Logo type: `auto`, `ascii`, or `image` |
 | `show_keys` | `boolean` | `false` | Display module labels (`key: value`) |
-| `key_width` | `number` or `null` | `null` | Fixed width for key labels so values align |
+| `key_width` | `number` | `auto` | Fixed width for key labels so values align |
 | `custom_x` | `object` or `null` | `null` | Border templates for the `custom-x` layout |
 | `effects` | `object`, `array` or `null` | `null` | Intro effects applied to the content lines |
 
@@ -115,7 +115,7 @@ When no modules are specified, xfetch uses:
 
 ### Module Groups
 
-Modules can be organized into titled groups for the `section`, `tree`, and `side-block` layouts:
+Modules can be organized into titled groups for the `section` and `tree` layouts:
 
 ```jsonc
 {
@@ -234,6 +234,8 @@ The `palette` module displays a color swatch. Available styles:
 | `"circles"` | Foreground color circles |
 | `"triangles"` | Foreground color triangles |
 | `"lines"` | Thick horizontal color bars |
+| `"dots"` | Small dot symbols |
+| `"dots"` | Small dot symbols |
 
 ### Animation Configuration
 

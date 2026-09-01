@@ -23,10 +23,10 @@ Keine.
 
 | Umgebung | Ausgabe |
 |----------|---------|
-| GNOME/GTK | ` GTK-Theme: Adwaita-dark (dunkel)` / `   Symbole: Adwaita` / `   Mauszeiger: Adwaita` / `   Schriftart: Cantarell 11` |
-| KDE Plasma | ` GTK: Breeze (hell)` / `   Plasma: breeze-dark` / `   Farben: BreezeDark` |
+| GNOME/GTK | ` GTK Theme: Adwaita-dark (dark)` / `   Icons: Adwaita` / `   Cursor: Adwaita` / `   Font: Cantarell 11` |
+| KDE Plasma | ` GTK: Breeze (light)` / `   Plasma: breeze-dark` / `   Colors: BreezeDark` |
 | Windows | `  Windows Theme: Dark` / `  Accent: #00B9FF` |
-| Nicht erkannt | ` Theme: nicht erkannt` |
+| Nicht erkannt | ` Theme: not detected` |
 
 ## Erkennungsquellen
 

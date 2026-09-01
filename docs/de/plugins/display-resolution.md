@@ -32,6 +32,6 @@ Keine.
 
 | Zustand | Ausgabe |
 |---------|---------|
-| Ein Monitor | ` DP-1: 1920x1080 @ 144.00 Hz (primär)` |
-| Mehrere Monitore | ` eDP-1: ... (primär)` / `   HDMI-1: ...` |
-| Nicht erkannt | ` Anzeige: unbekannt` |
+| Ein Monitor | ` DP-1: 1920x1080 @ 144.00 Hz (primary)` |
+| Mehrere Monitore | ` eDP-1: ... (primary)` / `   HDMI-1: ...` |
+| Nicht erkannt | ` Display: unknown` |

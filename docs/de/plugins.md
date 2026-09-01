@@ -1,10 +1,10 @@
 # Plugins
 
-xfetch hat ein Plugin-System, das die Erweiterung der Funktionalitat durch eigenstandige ausfuhrbare Programme ermoglicht. Plugins kommunizieren mit dem Kern uber ein JSON-Protokoll uber stdin/stdout.
+xfetch hat ein Plugin-System, das die Erweiterung der Funktionalität durch eigenständige ausführbare Programme ermoglicht. Plugins kommunizieren mit dem Kern über ein JSON-Protokoll über stdin/stdout.
 
 ## Architektur-Ubersicht
 
-Plugins sind eigenstandige ausfuhrbare Programme namens `xfetch-plugin-<name>` (oder `xfetch-plugin-<name>.exe` unter Windows). Sie werden als untergeordnete Prozesse vom xfetch-Kern gestartet.
+Plugins sind eigenständige ausführbare Programme namens `xfetch-plugin-<name>` (oder `xfetch-plugin-<name>.exe` unter Windows). Sie werden als untergeordnete Prozesse vom xfetch-Kern gestartet.
 
 ```
 xfetch core  --->  stdin (JSON request)     --->  plugin process
@@ -19,7 +19,7 @@ Es gibt zwei Arten von Plugins:
 | Art | Identifikator | Zweck |
 |------|------------|---------|
 | Logo-Animation | `logo_animation` | Animiert ASCII-Logos mit Farbeffekten |
-| Info-Anbieter | `info_provider` | Gibt System- oder externe Informationszeilen zuruck |
+| Info-Anbieter | `info_provider` | Gibt System- oder externe Informationszeilen zurück |
 
 ## JSON-Drahtprotokoll
 
@@ -40,7 +40,7 @@ Anfrage:
 }
 ```
 
-Das Feld `args` enthalt pluginspezifische Argumente aus der Konfiguration. Wenn keine Argumente konfiguriert sind, ist `args` `null`.
+Das Feld `args` enthält pluginspezifische Argumente aus der Konfiguration. Wenn keine Argumente konfiguriert sind, ist `args` `null`.
 
 Antwort:
 
@@ -80,7 +80,7 @@ Anfrage:
 }
 ```
 
-Das Feld `lines` enthalt das aktuelle ASCII-Logo. Das Feld `frames` enthalt optionale vorab geladene Frame-Sets. Das Feld `args` enthalt Animationsparameter.
+Das Feld `lines` enthält das aktuelle ASCII-Logo. Das Feld `frames` enthält optionale vorab geladene Frame-Sets. Das Feld `args` enthält Animationsparameter.
 
 Antwort:
 
@@ -105,11 +105,11 @@ Plugins mussen Fehlermeldungen auf stderr schreiben und bei Fehlern mit einem St
 
 Bei der Ausfuhrung eines Plugins durchsucht xfetch das Binary in dieser Reihenfolge:
 
-1. **Expliziter Pfad:** Wenn der Plugin-Name einen Pfadtrenner enthalt, wird er als direkter Dateipfad verwendet
+1. **Expliziter Pfad:** Wenn der Plugin-Name einen Pfadtrenner enthält, wird er als direkter Dateipfad verwendet
 2. **PATH:** Durchsucht `$PATH` nach `xfetch-plugin-<name>`
 3. **Benutzer-Plugin-Verzeichnis:** `~/.config/xfetch/plugins/` (Linux/macOS) oder `%APPDATA%/xfetch/plugins/` (Windows)
-4. **Workspace-Zielverzeichnisse:** Verschiedene Pfade relativ zum aktuellen Arbeitsverzeichnis, einschlieelich `./plugins/<name>/target/release/`
-5. **Entwicklungsverzeichnisse:** Durchsucht ubergeordnete Verzeichnisse fur Entwicklungssetups
+4. **Workspace-Zielverzeichnisse:** Verschiedene Pfade relativ zum aktuellen Arbeitsverzeichnis, einschließlich `./plugins/<name>/target/release/`
+5. **Entwicklungsverzeichnisse:** Durchsucht übergeordnete Verzeichnisse fur Entwicklungssetups
 
 ## Plugin-Installation
 
@@ -128,7 +128,7 @@ xfetch plugin install my-plugin --repo https://github.com/user/plugins.git
 
 1. Wenn der Plugin-Name ein lokaler Pfad ist, direkt verwenden
 2. Andernfalls lokal in `./<name>/`, `./plugins/<name>/` oder `./plugins/plugins/<name>/` suchen
-3. Wenn nicht lokal gefunden, das Plugin-Repository klonen (`https://github.com/xfetch-cli/plugins.git` standardmaig)
+3. Wenn nicht lokal gefunden, das Plugin-Repository klonen (`https://github.com/xfetch-cli/plugins.git` standardmäßig)
 4. `cargo build --release` im Plugin-Verzeichnis ausfuhren
 5. Das erstellte Binary nach `~/.config/xfetch/plugins/xfetch-plugin-<name>` kopieren
 
@@ -144,7 +144,7 @@ xfetch plugin remove animate-logo
 
 ## Offizielle Plugins
 
-Jedes Plugin hat eine eigene Referenzseite mit vollstandigen Konfigurationsdetails, Argumenten und Ausgabebeispielen.
+Jedes Plugin hat eine eigene Referenzseite mit vollständigen Konfigurationsdetails, Argumenten und Ausgabebeispielen.
 
 | Plugin | Art | Beschreibung |
 |--------|------|-------------|
@@ -152,10 +152,10 @@ Jedes Plugin hat eine eigene Referenzseite mit vollstandigen Konfigurationsdetai
 | [docker](plugins/docker) | `info_provider` | Docker-Container-Statistiken (total, running, paused, stopped) |
 | [github-stats](plugins/github-stats) | `info_provider` | GitHub-Profilstatistiken (stars, repos, PRs, issues, followers) |
 | [music-player](plugins/music-player) | `info_provider` | Aktuelle Musikwiedergabe von MPD und/oder Spotify |
-| [weather](plugins/weather) | `info_provider` | Aktuelles Wetter uber wttr.in (Zustand, Temp, Wind, Luftfeuchtigkeit) |
+| [weather](plugins/weather) | `info_provider` | Aktuelles Wetter über wttr.in (Zustand, Temp, Wind, Luftfeuchtigkeit) |
 | [timezone](plugins/timezone) | `info_provider` | Ortszeit, Datum, Zeitzonenname und UTC-Offset |
 | [user-info](plugins/user-info) | `info_provider` | Benutzerkontoinformationen (UID, GID, Home, Shell, Gruppen) |
-| [display-resolution](plugins/display-resolution) | `info_provider` | Monitorauflosung und Bildwiederholfrequenz (plattformubergreifend) |
+| [display-resolution](plugins/display-resolution) | `info_provider` | Monitorauflösung und Bildwiederholfrequenz (plattformübergreifend) |
 | [theme-detection](plugins/theme-detection) | `info_provider` | Desktop-Theme-Erkennung (GTK, KDE Plasma) |
 | [theme-manager](plugins/theme-manager) | `info_provider` | Theme-Registry-Browser und Installer |
 | [chocolatey](plugins/chocolatey) | `info_provider` | Chocolatey-Paketzahl (Windows) |

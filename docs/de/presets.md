@@ -26,7 +26,7 @@ Klassisches Layout mit `...`-Trennern alle 3 Elemente. Verschiedene Farbthemen p
 
 ### pacman
 
-Gerahmtes Layout mit Pac-Man-thematischen Kopf-Icons und FuRtext.
+Gerahmtes Layout mit Pac-Man-thematischen Kopf-Icons und Fußtext.
 
 ```jsonc
 {
@@ -221,7 +221,7 @@ Demonstriert alle sechs Phase-6-erweiterten Module in einem gruppierten Layout:
 
 ```bash
 # Mit einem beliebigen Preset ausfuhren
-xfetch --config /pfad/zu/preset.jsonc
+xfetch --config /path/to/preset.jsonc
 
 # Ein Preset als Standard verwenden
 cp configs/xfetch/presets/showcase/neon_hardware_compact.jsonc ~/.config/xfetch/config.jsonc

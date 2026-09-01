@@ -1,4 +1,21 @@
 # Anderungsprotokoll
+# Anderungsprotokoll
+
+## v0.8.0 · Crates.io-Installation, schlankere Abhängigkeiten und HTTPS-Public-IP · 2026-08-21
+
+- **crates.io:** `cargo install xfetch-cli` wird jetzt unterstützt
+- **Verschlankter Abhängigkeitsbaum:** die AVIF-Encoder-Kette (`ravif`/`rav1e`/`rayon`) wurde entfernt — von 196 auf 133 Crates, null Schwachstellen; `image`-Codecs auf die vom Logo-Renderer genutzten beschränkt; API-Crates auf einen festen Commit gepinnt
+- **Public IP über HTTPS:** die Public-IP-Sonden verwenden jetzt TLS (Mozilla-Roots) mit strenger `IpAddr`-Validierung, 64-Byte-Limit und ohne Redirects
+- **Härtung des Logo-Katalogs:** heruntergeladene Logo-Grafiken lehnen ANSI-Escape-Sequenzen und Steuerzeichen ab und fallen auf das Standardlogo zurück
+- 147 Tests, Clippy sauber
+
+## v0.7.0 · Konfigurierbare Labels und Wertformate · 2026-08-20
+
+- **`labels`-Konfigurationsmap:** benennt den pro Modul angezeigten Schlüssel in jedem Layout um; eine leere Zeichenkette verbirgt den Schlüssel (nur-Icon-Zeile); Farben verwenden weiterhin den rohen Modulschlüssel
+- **`formats`-Konfigurationsmap:** Wertvorlagen mit `{feld}`-Platzhaltern pro Modul — CPU `{brand}`/`{model}`/`{cores}`/`{freq}`, GPU `{name}`/`{vendor}`/`{model}`/`{vram}`, Speicher/Swap `{used}`/`{total}`/`{percent}`, Disk `{fs}`, os `{distro}`/`{version}`/`{arch}`/`{wsl}`, packages ein Feld pro Manager plus `{count}`/`{manager}`/`{managers}`, Akku `{percent}`/`{state}`, Uptime `{days}`/`{hours}`/`{mins}`, datetime `{date}`/`{time}`; unbekannte Felder werden leer gerendert, `{{`/`}}` escapen geschweifte Klammern
+- **Akku-Fix (Linux):** Peripherie-Akkus (z. B. Logitech HID++) werden nicht mehr als Systemakkus gezählt
+- 141 Tests, Clippy sauber
+
 
 ## v0.6.0 · Themes, Live-Statistik-Daemon und Plattform-Modularisierung · 2026-08-19
 

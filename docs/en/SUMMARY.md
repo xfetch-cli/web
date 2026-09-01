@@ -2,7 +2,7 @@
 
 A cross-platform system information fetching tool written in Rust.
 
-- ****Version:** 0.3.0
+- **Version:** 0.8.0
 - **License:** MIT
 - **Author:** xscriptor
 - **Repository:** github.com/xfetch-cli/xfetch
@@ -60,6 +60,12 @@ A cross-platform system information fetching tool written in Rust.
      - user-info
      - display-resolution
      - theme-detection
+     - chocolatey
+     - temperature
+     - theme-manager
+     - chocolatey
+     - temperature
+     - theme-manager
    - Writing custom plugins
    - Plugin API crate
 

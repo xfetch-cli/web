@@ -120,7 +120,7 @@ Errors should be printed to stderr. The process should exit with a non-zero stat
 | Platform | Extensions Path |
 |----------|----------------|
 | Linux | `~/.config/xfetch/extensions/` |
-| macOS | `~/Library/Application Support/xfetch/extensions/` |
+| macOS | `~/.config/xfetch/extensions/` |
 | Windows | `%APPDATA%\xfetch\extensions\` |
 
 ## Writing Custom Extensions

@@ -5,7 +5,7 @@ Elige una configuración aleatoria (o diaria) de una lista de rutas y la carga. 
 ## Instalación
 
 ```bash
-cp xfetch-extension-config-roulette ~/.config/xfetch/extensions/
+cp target/release/xfetch-extension-config-roulette ~/.config/xfetch/extensions/
 ```
 
 O mediante CLI:
@@ -61,4 +61,4 @@ Cada ruta apunta a un archivo de configuración completo de xfetch. El campo `_n
 - Ver un estilo visual diferente cada vez que abre una terminal
 - Probar todas sus configuraciones automáticamente sin ejecutarlas manualmente
 - Temas diarios — mismo aspecto todo el día, nuevo aspecto mañana
-- Rotar a través de cientos de configuraciones de una colección
+- Rotar a través de 300+ configuraciones de la suite de pruebas

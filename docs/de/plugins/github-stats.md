@@ -36,9 +36,9 @@ Ruft GitHub-Benutzerprofilstatistiken ab.
 | # | Zeile |
 |---|-------|
 | 1 | ` Name (@username)` |
-| 2 | ` N Sterne` |
-| 3 | ` N Repos` |
+| 2 | ` N stars` |
+| 3 | ` N repos` |
 | 4 | ` N PRs` |
-| 5 | ` N Issues` |
-| 6 | ` N Follower` |
-| 7 | ` N folgt` |
+| 5 | ` N issues` |
+| 6 | ` N followers` |
+| 7 | ` N following` |

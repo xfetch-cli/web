@@ -23,9 +23,9 @@ Flags:
 | Flag | Beschreibung |
 |------|-------------|
 | `--local` | Das lokale Repository anstelle von Klonen verwenden |
-| `--prefix <verz>` | Installationspraefix (Standard: `~/.local`) |
-| `--bin-dir <verz>` | Binarbildverzeichnis (Standard: `~/.local/bin`) |
-| `--config-dir <verz>` | Konfigurationsverzeichnis (Standard: `~/.config/xfetch`) |
+| `--prefix <dir>` | Installationspraefix (Standard: `~/.local`) |
+| `--bin-dir <dir>` | Binarbildverzeichnis (Standard: `~/.local/bin`) |
+| `--config-dir <dir>` | Konfigurationsverzeichnis (Standard: `~/.config/xfetch`) |
 | `--no-modify-path` | Das Binardir nicht zum PATH in der Shell-RC hinzufugen |
 | `--yes` | Automatische Bestatigung aller Eingabeaufforderungen |
 | `--skip-config` | Kopieren der Standardkonfiguration uberspringen |
@@ -56,6 +56,30 @@ git clone https://aur.archlinux.org/xfetch-git.git
 cd xfetch-git
 makepkg -si
 ```
+### Paketmanager
+
+xfetch ist über Homebrew verfügbar:
+
+```bash
+brew tap xfetch-cli/tap
+brew install xfetch
+```
+
+Von crates.io:
+
+```bash
+cargo install xfetch-cli
+```
+
+Aus dem PKGBUILD des Repositories:
+
+```bash
+git clone https://github.com/xfetch-cli/xfetch.git
+cd xfetch
+makepkg -si
+```
+
+
 
 ## Erster Start
 
@@ -87,9 +111,9 @@ __  __                               OS: Arch Linux x86_64
 
 | Flag | Beschreibung |
 |------|-------------|
-| `-c, --config <PFAD>` | Pfad zu einer benutzerdefinierten Konfigurationsdatei (JSONC-Format) |
+| `-c, --config <PATH>` | Pfad zu einer benutzerdefinierten Konfigurationsdatei (JSONC-Format) |
 | `--gen-config` | Standardkonfigurationsdatei am Standard-Konfigurationspfad generieren |
-| `--layout <name>` | Layout fur `--gen-config` (Standard: `pacman`) |
+| `--layout <name>` | Layout fur `--gen-config` (Standard: `section`) |
 | `--logo <id>` | Logo-Id (z. B. `arch`, `windows-11`) fur `--gen-config` (erfordert Netzwerkzugriff auf den Logo-Katalog) |
 | `--clean-cache` | Die Cache-Datenbank leeren |
 | `--benchmark` | Zeitinformationen fur parallele Proben anzeigen |

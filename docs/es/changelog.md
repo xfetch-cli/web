@@ -1,4 +1,21 @@
 # Registro de Cambios
+# Registro de Cambios
+
+## v0.8.0 · Instalación con crates.io, Dependencias más Ligeras e IP Pública por HTTPS · 2026-08-21
+
+- **crates.io:** ahora se admite `cargo install xfetch-cli`
+- **Adelgazamiento del árbol de dependencias:** eliminada la cadena del codificador AVIF (`ravif`/`rav1e`/`rayon`) — de 196 a 133 crates, cero vulnerabilidades; códecs de `image` limitados a los que usa el renderizador de logos; crates de API fijadas a un commit concreto
+- **IP pública por HTTPS:** las sondas de IP pública ahora usan TLS (raíces de Mozilla) con validación estricta de `IpAddr`, tope de 64 bytes y sin redirecciones
+- **Endurecimiento del catálogo de logos:** el arte descargado rechaza secuencias de escape ANSI y caracteres de control, cayendo al logo por defecto
+- 147 tests, clippy limpio
+
+## v0.7.0 · Etiquetas y Formatos de Valor Configurables · 2026-08-20
+
+- **Mapa de config `labels`:** renombra la clave mostrada por módulo en todos los layouts; una cadena vacía oculta la clave (fila solo-icono); los colores siguen usando la clave original del módulo
+- **Mapa de config `formats`:** plantillas de valor con placeholders `{campo}` por módulo — CPU `{brand}`/`{model}`/`{cores}`/`{freq}`, GPU `{name}`/`{vendor}`/`{model}`/`{vram}`, memoria/swap `{used}`/`{total}`/`{percent}`, disco `{fs}`, os `{distro}`/`{version}`/`{arch}`/`{wsl}`, packages un campo por gestor más `{count}`/`{manager}`/`{managers}`, batería `{percent}`/`{state}`, uptime `{days}`/`{hours}`/`{mins}`, datetime `{date}`/`{time}`; los campos desconocidos se muestran vacíos y `{{`/`}}` escapan llaves literales
+- **Corrección de batería (Linux):** las baterías de periféricos (p. ej. Logitech HID++) ya no se cuentan como baterías del sistema
+- 141 tests, clippy limpio
+
 
 ## v0.6.0 · Temas, Daemon de Estadísticas en Vivo y Modularización por Plataforma · 2026-08-19
 
@@ -21,7 +38,7 @@
 
 ## v0.4.0 · Modo Daemon, Nuevos Layouts y Corrección de Cuelgues · 2026-08-17
 
-- **Modo daemon (`--daemon`):** fija el logo animado en una región de scroll fija y sale de inmediato; detenelo con `--daemon-stop`
+- **Modo daemon (`--daemon`):** fija el logo animado en una región de scroll fija y sale de inmediato; deténgalo con `--daemon-stop`
 - **Timeouts de comandos externos:** `run_cmd_with_timeout()` mata comandos colgados — snap sin el daemon snapd ya no bloquea el fetch; timeouts por comando para gestores de paquetes y sondas de hardware
 - **Separación por plataforma:** nueva estructura `src/info/platform/{linux,macos,windows}/` con contrato compartido y maquinaria en `shared/`
 - **Nuevos layouts:** `section-box` (cajas con borde por grupo de módulos) y `custom-x` (plantillas de borde totalmente configurables con `{fill}`/`{title}`, ancho auto/full/fijo)

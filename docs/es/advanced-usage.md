@@ -129,7 +129,7 @@ xfetch --daemon      # iniciar el daemon
 xfetch --daemon-stop # detenerlo
 ```
 
-La animación solo se ejecuta en terminales TTY; en pipes o redirecciones se muestra el logo estático. El modo daemon requiere un bloque `logo_animation` con un plugin (p. ej. `animate-logo`). En modo daemon la animación se repite indefinidamente: `duration_ms` y `loop` se ignoran. Para una animación finita que se detenga sola, mantené el modo daemon desactivado.
+La animación solo se ejecuta en terminales TTY; en pipes o redirecciones se muestra el logo estático. El modo daemon requiere un bloque `logo_animation` con un plugin (p. ej. `animate-logo`). En modo daemon la animación se repite indefinidamente: `duration_ms` y `loop` se ignoran. Para una animación finita que se detenga sola, mantenga el modo daemon desactivado.
 
 ### Daemon de Estadísticas en Vivo
 
