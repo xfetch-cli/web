@@ -57,6 +57,24 @@ Beispiel-Logos sind in der xfetch-Installation unter `~/.config/xfetch/logos/` e
 
 ### Bildlogos
 
+
+#### Optionen für ASCII-Logos
+
+| Feld | Typ | Standard | Beschreibung |
+|------|-----|----------|--------------|
+| `logo_color` | `string` | keine | Farbe für das ASCII-Logo. Akzeptiert Namen (`"Cyan"`), 256-Farben-Indizes (`"196"`) und Hex-RGB (`"#FF0000"`). Gilt auch für animierte Logos; Zeilen, die bereits ANSI-Codes enthalten, werden nicht verändert. |
+| `logo_padding` | `number` | `0` | Führende Leerzeichen vor dem Logo (und seinen Frames bei Animation). |
+| `logo_type` | `string` | `"auto"` | `"auto"` erkennt anhand der Dateiendung, `"ascii"` erzwingt Text-Rendering, `"image"` erzwingt Bild-Rendering. |
+
+```jsonc
+{
+    "ascii": "~/.config/xfetch/logos/arch.txt",
+    "logo_color": "#00FF87",
+    "logo_padding": 2
+}
+```
+
+
 xfetch kann PNG-, JPG- und SVG-Bilder als Logos mit der Bibliothek `viuer` rendern. Dies erfordert Terminalunterstützung für Bildanzeige (iTerm2, Kitty oder Sixel-kompatible Terminals):
 
 ```jsonc
@@ -273,6 +291,31 @@ Die Farbausgabe kann vollstandig deaktiviert werden:
 ```jsonc
 {
     "show_colors": false
+
+
+### Schlussel (Labels)
+
+StandardmaBig rendert xfetch jedes Modul als `Icon Wert`. Um auch das Modul-Label anzuzeigen, aktiviere `show_keys`; mit `key_width` werden die Labels auf eine feste Spaltenbreite aufgefullt, sodass die Werte vertikal ausgerichtet sind.
+
+| Feld | Typ | Standard | Beschreibung |
+|------|-----|----------|--------------|
+| `show_keys` | `boolean` | `false` | Rendert `Schlussel: Wert` in den Icon-Layouts (classic, section, compact, custom-x, Box-Varianten). |
+| `key_width` | `number` | auto | Fullt den Schlussel auf diese Spaltenbreite vor dem `:`-Trennzeichen. Gilt uberall, wo Schlussel angezeigt werden, einschlieBlich `section` und `minimal`. |
+
+```jsonc
+{
+    "show_keys": true,
+    "key_width": 12
+}
+```
+
+Beispiel mit `show_keys` und `key_width: 12`:
+
+```
+cpu       : Apple M4 (10) @ 4.46 GHz
+memory    : 10.88 GiB / 16.00 GiB (68%)
+disk      : 152.80 GiB / 931.32 GiB (16%) - apfs
+```
 }
 ```
 

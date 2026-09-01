@@ -44,6 +44,9 @@ Ein plattformunabhangiges Systeminformations-Tool geschrieben in Rust.
    - Kompaktes Layout
    - Minimales Layout
    - Horizontales und Unteres Layout
+   - Section-box- und Custom-X-Layouts
+     - [Section-Box](layouts.md#section-box-layout)
+     - [Custom-X](custom-x.md)
 
 5. [Plugins](plugins.md)
    - Plugin-Architektur im Uberblick

@@ -44,6 +44,9 @@ A cross-platform system information fetching tool written in Rust.
    - Compact layout
    - Minimal layout
    - Horizontal and Bottom layouts
+   - Section-box and Custom-X layouts
+     - [Section-Box](layouts.md#section-box-layout)
+     - [Custom-X](custom-x.md)
 
 5. [Plugins](plugins.md)
    - Plugin architecture overview
