@@ -17,6 +17,14 @@
 - 141 tests, clippy limpio
 
 
+## v0.7.0 · Etiquetas y Formatos de Valor Configurables · 2026-08-20
+
+- **Mapa `labels`:** renombra la clave de cada fila por módulo (`"cpu": "procesador"`) o la oculta con un string vacío (fila solo con ícono) — funciona en todos los layouts (classic y variantes, compact, minimal, section, section-box, tree, custom-x)
+- **Mapa `formats`:** reemplaza el valor de un módulo con una plantilla de placeholders `{campo}` — CPU (`{brand}`/`{model}`/`{cores}`/`{freq}`), GPU (`{name}`/`{vendor}`/`{model}`/`{vram}`), memory/swap/disk (`{used}`/`{total}`/`{percent}`/`{fs}`), os (`{distro}`/`{version}`/`{arch}`/`{wsl}`), packages (un campo por gestor), battery (`{percent}`/`{state}`), uptime (`{days}`/`{hours}`/`{mins}`), datetime (`{date}`/`{time}`); los campos desconocidos se renderizan vacíos y `{{`/`}}` escapan llaves literales
+- **Compatible hacia atrás:** la plantilla predeterminada es `{value}`, así que los configs y la salida existentes no cambian; el formateo se aplica una sola vez al construir el árbol de render y lo comparten todos los layouts y ambos daemons
+- **Campos de GPU por plataforma:** Linux parsea la descripción entre corchetes de `lspci`, Windows el valor `Name`/CIM y macOS el modelo de chipset de `system_profiler`; reglas compartidas de vendor/VRAM/modelo en `platform/shared/gpu.rs`
+- Referencia completa de campos en [`submodules_configuration.md`](https://github.com/xfetch-cli/xfetch/blob/main/docs/submodules_configuration.md)
+
 ## v0.6.0 · Temas, Daemon de Estadísticas en Vivo y Modularización por Plataforma · 2026-08-19
 
 - **Formato de temas simplificado:** `theme set` edita solo la clave `theme`, conservando comentarios y formato; los temas ya no incluyen `icons` (elección de fuente del usuario, se rellenan desde los defaults); nuevos campos `logo_color` y `logo_colors` (por fila)

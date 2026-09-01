@@ -309,6 +309,47 @@ Standardmaig rendert xfetch jedes Modul als `Icon Wert`. Um zusatzlich die Modul
 }
 ```
 
+## Schlüssel umbenennen: `labels`
+
+Die `labels`-Map benennt die Beschriftung um, die für ein Modul angezeigt wird — in jedem Layout (classic und Varianten, compact, minimal, section, section-box, tree, custom-x). Ein leerer String blendet die Beschriftung aus (nur `Symbol Wert`). Module ohne Eintrag behalten ihren Namen.
+
+```jsonc
+{
+    "labels": {
+        "cpu": "prozessor",
+        "gpu": ""
+    }
+}
+```
+
+## Wert-Vorlagen: `formats`
+
+Die `formats`-Map ersetzt den Wert eines Moduls durch eine Vorlage. Platzhalter `{feld}` werden durch die Felder des Moduls ersetzt; unbekannte Platzhalter werden leer gerendert, und `{{` / `}}` erzeugen literale geschweifte Klammern. Module ohne Eintrag behalten ihre Standardausgabe.
+
+| Modul | Felder | Beispiel |
+|-------|--------|----------|
+| jedes Modul | `{value}` (aktuelle Ausgabe), `{key}` (Modulname) | `"os": "System: {value}"` |
+| `cpu` | `{brand}` (roh), `{model}` (bereinigt), `{cores}`, `{freq}` | `"cpu": "{model} · {cores} Kerne · {freq}"` |
+| `gpu` | `{name}`, `{vendor}`, `{model}`, `{vram}` | `"gpu": "{vendor} {model}"` |
+| `memory`, `swap` | `{used}`, `{total}` (mit Einheit), `{percent}` | `"memory": "{used} / {total} ({percent}%)"` |
+| `disk` | Felder von memory plus `{fs}` | `"disk": "{used} auf {fs}"` |
+| `os` | `{distro}`, `{version}`, `{arch}`, `{wsl}` | `"os": "{distro} {version} ({arch})"` |
+| `packages` | ein Feld pro Paketmanager (`{pacman}`, `{aur}`, ...), plus `{count}`, `{manager}`, `{managers}` | `"packages": "pkg: {pacman} · aur: {aur}"` |
+| `battery` | `{percent}`, `{state}` | `"battery": "{percent}% [{state}]"` |
+| `uptime` | `{days}`, `{hours}`, `{mins}` | `"uptime": "{days}d {hours}h {mins}m"` |
+| `datetime` | `{date}`, `{time}` | `"datetime": "{date} | {time}"` |
+
+So wird zum Beispiel `Intel(R) Core(TM) i5-7400 CPU @ 3.00GHz (4) @ 3.00 GHz` mit `{model}` zu `Intel Core i5-7400` und `NVIDIA GeForce GTX 1060 6GB` mit `{vendor} {model}` zu `NVIDIA GTX 1060`.
+
+```jsonc
+{
+    "formats": {
+        "cpu": "{model} ({cores}) @ {freq}",
+        "gpu": "{vendor} {model}"
+    }
+}
+```
+
 ## Preset-Konfigurationen
 
 xfetch wird mit zahlreichen Preset-Konfigurationen ausgeliefert, die verschiedene visuelle Stile demonstrieren.

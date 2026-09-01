@@ -310,6 +310,47 @@ Por defecto xfetch renderiza cada módulo como `icono valor`. Para mostrar tambi
 }
 ```
 
+## Renombrar Claves: `labels`
+
+El mapa `labels` renombra la clave que se muestra para cualquier módulo, en todos los layouts (classic y variantes, compact, minimal, section, section-box, tree, custom-x). Un string vacío oculta la clave — la fila muestra solo `icono valor`. Los módulos sin entrada conservan su nombre.
+
+```jsonc
+{
+    "labels": {
+        "cpu": "procesador",
+        "gpu": ""
+    }
+}
+```
+
+## Plantillas de Valor: `formats`
+
+El mapa `formats` reemplaza el valor de un módulo con una plantilla. Los placeholders `{campo}` se sustituyen con los campos del módulo; los placeholders desconocidos se renderizan vacíos y `{{` / `}}` escapan llaves literales. Los módulos sin entrada conservan su salida predeterminada.
+
+| Módulo | Campos | Ejemplo |
+|--------|--------|---------|
+| todos los módulos | `{value}` (salida actual), `{key}` (nombre del módulo) | `"os": "Sistema: {value}"` |
+| `cpu` | `{brand}` (crudo), `{model}` (limpio), `{cores}`, `{freq}` | `"cpu": "{model} · {cores} núcleos · {freq}"` |
+| `gpu` | `{name}`, `{vendor}`, `{model}`, `{vram}` | `"gpu": "{vendor} {model}"` |
+| `memory`, `swap` | `{used}`, `{total}` (con unidad), `{percent}` | `"memory": "{used} / {total} ({percent}%)"` |
+| `disk` | campos de memory más `{fs}` | `"disk": "{used} en {fs}"` |
+| `os` | `{distro}`, `{version}`, `{arch}`, `{wsl}` | `"os": "{distro} {version} ({arch})"` |
+| `packages` | un campo por gestor (`{pacman}`, `{aur}`, ...), más `{count}`, `{manager}`, `{managers}` | `"packages": "pkg: {pacman} · aur: {aur}"` |
+| `battery` | `{percent}`, `{state}` | `"battery": "{percent}% [{state}]"` |
+| `uptime` | `{days}`, `{hours}`, `{mins}` | `"uptime": "{days}d {hours}h {mins}m"` |
+| `datetime` | `{date}`, `{time}` | `"datetime": "{date} | {time}"` |
+
+Por ejemplo, `Intel(R) Core(TM) i5-7400 CPU @ 3.00GHz (4) @ 3.00 GHz` se convierte en `Intel Core i5-7400` con `{model}`, y `NVIDIA GeForce GTX 1060 6GB` en `NVIDIA GTX 1060` con `{vendor} {model}`.
+
+```jsonc
+{
+    "formats": {
+        "cpu": "{model} ({cores}) @ {freq}",
+        "gpu": "{vendor} {model}"
+    }
+}
+```
+
 ## Configuraciones Predefinidas
 
 xfetch incluye numerosas configuraciones predefinidas que demuestran diferentes estilos visuales.

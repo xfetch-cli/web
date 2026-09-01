@@ -17,6 +17,14 @@
 - 141 tests, clippy clean
 
 
+## v0.7.0 · Configurable Labels & Value Formats · 2026-08-20
+
+- **`labels` map:** rename the row key per module (`"cpu": "processor"`) or hide it with an empty string (icon-only row) — works in every layout (classic and variants, compact, minimal, section, section-box, tree, custom-x)
+- **`formats` map:** replace a module's value with a template of `{field}` placeholders — CPU (`{brand}`/`{model}`/`{cores}`/`{freq}`), GPU (`{name}`/`{vendor}`/`{model}`/`{vram}`), memory/swap/disk (`{used}`/`{total}`/`{percent}`/`{fs}`), os (`{distro}`/`{version}`/`{arch}`/`{wsl}`), packages (one field per manager), battery (`{percent}`/`{state}`), uptime (`{days}`/`{hours}`/`{mins}`), datetime (`{date}`/`{time}`); unknown fields render empty, `{{`/`}}` escape literal braces
+- **Backwards compatible:** the default template is `{value}`, so existing configs and output are unchanged; formatting applies once at render-tree build time, shared by all layouts and both daemons
+- **GPU fields per platform:** Linux parses the `lspci` bracket description, Windows the `Name`/CIM value, macOS the `system_profiler` chipset model; shared vendor/VRAM/model rules in `platform/shared/gpu.rs`
+- See [`submodules_configuration.md`](https://github.com/xfetch-cli/xfetch/blob/main/docs/submodules_configuration.md) for the full field reference
+
 ## v0.6.0 · Themes, Live Stats Daemon & Per-Platform Modularization · 2026-08-19
 
 - **Theme format simplified:** `theme set` edits only the `theme` key, preserving comments and formatting; themes no longer carry `icons` (a per-user font choice, filled from defaults); new `logo_color` and `logo_colors` (per-row) fields

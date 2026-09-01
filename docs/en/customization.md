@@ -311,6 +311,47 @@ By default xfetch renders each module as `icon value`. To display the module lab
 }
 ```
 
+## Renaming Keys: `labels`
+
+The `labels` map renames the key shown for any module, in every layout (classic and variants, compact, minimal, section, section-box, tree, custom-x). An empty string hides the key — the row shows `icon value` only. Modules without an entry keep their name.
+
+```jsonc
+{
+    "labels": {
+        "cpu": "processor",
+        "gpu": ""
+    }
+}
+```
+
+## Value Templates: `formats`
+
+The `formats` map replaces a module's value with a template. Placeholders `{field}` are substituted with the module's fields; unknown placeholders render empty, and `{{` / `}}` escape literal braces. Modules without an entry keep their default output.
+
+| Module | Fields | Example |
+|--------|--------|---------|
+| every module | `{value}` (current output), `{key}` (module name) | `"os": "System: {value}"` |
+| `cpu` | `{brand}` (raw), `{model}` (cleaned), `{cores}`, `{freq}` | `"cpu": "{model} · {cores} cores · {freq}"` |
+| `gpu` | `{name}`, `{vendor}`, `{model}`, `{vram}` | `"gpu": "{vendor} {model}"` |
+| `memory`, `swap` | `{used}`, `{total}` (with unit), `{percent}` | `"memory": "{used} / {total} ({percent}%)"` |
+| `disk` | memory fields plus `{fs}` | `"disk": "{used} on {fs}"` |
+| `os` | `{distro}`, `{version}`, `{arch}`, `{wsl}` | `"os": "{distro} {version} ({arch})"` |
+| `packages` | one field per manager (`{pacman}`, `{aur}`, ...), plus `{count}`, `{manager}`, `{managers}` | `"packages": "pkg: {pacman} · aur: {aur}"` |
+| `battery` | `{percent}`, `{state}` | `"battery": "{percent}% [{state}]"` |
+| `uptime` | `{days}`, `{hours}`, `{mins}` | `"uptime": "{days}d {hours}h {mins}m"` |
+| `datetime` | `{date}`, `{time}` | `"datetime": "{date} | {time}"` |
+
+For example, `Intel(R) Core(TM) i5-7400 CPU @ 3.00GHz (4) @ 3.00 GHz` becomes `Intel Core i5-7400` with `{model}`, and `NVIDIA GeForce GTX 1060 6GB` becomes `NVIDIA GTX 1060` with `{vendor} {model}`.
+
+```jsonc
+{
+    "formats": {
+        "cpu": "{model} ({cores}) @ {freq}",
+        "gpu": "{vendor} {model}"
+    }
+}
+```
+
 ## Preset Configurations
 
 xfetch ships with numerous preset configurations demonstrating different visual styles.
