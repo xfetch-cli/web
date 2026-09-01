@@ -53,6 +53,24 @@
 - **Neue Optionen:** `show_keys`, `key_width`, `logo_color` (Namen, 256-Farb-Indizes und Hex-RGB), `logo_padding`, `logo_type` (auto/ascii/image)
 - **XDG_CONFIG_HOME-Unterstutzung** (macOS-Fix) und lokale CI-Skripte (`scripts/ci.sh`, `scripts/ci.ps1`)
 
+## v0.5.0 · Leistung, WSL und Logo-Katalog · 2026-08-18
+
+- **Paketzahl aus Datenbanken:** `dpkg`, `pacman`, `apk` und `flatpak` werden direkt aus ihren Datenbanken gelesen (weltlesbare Dateien), mit automatischem Befehls-Fallback. Neue Unterstützung für Void (`xbps`) und Gentoo (`portage`)
+- **PATH-Vorprüfung für Binärdateien:** vor jedem Probe-Aufruf wird die Existenz des Binärs geprüft, unter Auslassung der WSL-Windows-Mounts (`/mnt/c`) — vermeidet teure PATH-Suchen unter WSL
+- **Volle Parallelisierung:** `battery`, `datetime` und Info-Plugins laufen jetzt im parallelen Abschnitt (das Plugin-Protokoll ist unverändert); Public-IP-Hosts werden parallel abgefragt
+- **Optimierte sysinfo-Initialisierung:** es werden nur CPU/Speicher/Swap aktualisiert (ohne Prozesse). Kalter Fetch: 8,6 s → **0,008 s**
+- **Konfigurierbare WSL-Darstellung:** neuer Schlüssel `os_wsl_style` (`off` / `minimal` / `full`) — z. B. `Ubuntu 24.04 x86_64 (WSL 2, WSLg)`
+- **Logo-Katalog pro Distro:** `--gen-config` lädt das ASCII-Logo der erkannten Distro aus dem neuen Repo [xfetch-cli/logos](https://github.com/xfetch-cli/logos), mit `--logo <id>` zum Erzwingen eines Logos und `--layout <name>` für ein anderes Layout
+
+## v0.4.0 · Timeouts und Plattform-Trennung · 2026-08-15/17
+
+- **Timeouts pro Befehl:** behob das Hängen auf Systemen mit installiertem `snap`, aber gestopptem snapd (z. B. WSL) — jeder Probe hat sein eigenes Timeout, das Prozess wird bei Ablauf beendet
+- **Plattform-Trennung:** neue Struktur `src/info/platform/{linux,macos,windows}/` + `shared/` mit einheitlichem Vertrag pro OS (nur die aktive Plattform wird kompiliert)
+- **XDG_CONFIG_HOME-Unterstützung:** `config_dir()` bevorzugt ein absolutes `XDG_CONFIG_HOME` (macOS-Konfigurationsfix)
+- **Section-Box-Layout:** neues eingerahmtes Abschnitts-Layout
+- **Lokale CI:** `scripts/ci.sh` / `ci.ps1` (fmt, clippy und Tests ohne GitHub Actions)
+- **Paketzähler-Beschleunigung:** Detektoren laufen jetzt echt parallel, ohne Doppelläufe, und `snap` wird übersprungen, wenn snapd nicht läuft (Socket-Vorprüfung)
+
 ## v0.3.0 · Bild-Rendering und Erweiterungen · 2026-07-25
 
 - **Kitty Bild-Rendering uberarbeitet:** `logo_kitty` Toggle (natives Protokoll vs Half-Block), `logo_gap` fur konfigurierbaren Bild-Text-Abstand, `logo_width`/`logo_height` fur explizite Grose, und auto-responsive Breite (28% des Terminals, clamp 12–42 Spalten)

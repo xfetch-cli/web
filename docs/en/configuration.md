@@ -90,6 +90,7 @@ JSONC extends standard JSON by allowing C-style (`//`) and C++-style (`/* */`) c
 | `footer_text` | `string` or `null` | `null` | Text for the bottom border (Pac-Man layout) |
 | `disable_ip_fetching` | `boolean` | `false` | Disable fetching public IP for privacy |
 | `disable_cache` | `boolean` | `false` | Disable data caching |
+| `os_wsl_style` | `string` | `"minimal"` | WSL OS presentation (Linux only): `off` (plain name), `minimal` (appends `(WSL)`), `full` (appends WSL version and WSLg) |
 | `logo_animation` | `object` or `null` | `null` | Logo animation configuration |
 | `info_plugins` | `array` | `[]` | List of info plugins to execute |
 | `config_providers` | `array` | `[]` | List of config provider extensions to run after theme merge |

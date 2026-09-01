@@ -17,7 +17,11 @@ Una herramienta de obtención de información del sistema multiplataforma escrit
    - Resumen de la interfaz de línea de comandos
    - Variables de entorno
 
-2. [Configuración](configuration.md)
+2. [Generación de Configuración](gen-config.md)
+   - `--gen-config` básico
+   - Logo de distro (`--logo`) y layout (`--layout`)
+   - Fallbacks offline
+3. [Configuración](configuration.md)
    - Formato de archivo JSONC
    - Todos los campos de configuración
    - Grupos de módulos
@@ -25,7 +29,7 @@ Una herramienta de obtención de información del sistema multiplataforma escrit
    - Integración de plugins
    - Configuración de animación
 
-3. [Módulos](modules.md)
+4. [Módulos](modules.md)
    - Módulos principales del sistema (SO, kernel, hostname, uptime)
    - Módulos de hardware (CPU, GPU, memoria, swap, disco, batería)
    - Módulos de software (paquetes, shell, terminal, WM/DE)
@@ -34,7 +38,7 @@ Una herramienta de obtención de información del sistema multiplataforma escrit
    - Módulos especiales (paleta, cabecera, separador)
    - Referencias a módulos de plugins
 
-4. [Diseños](layouts.md)
+5. [Diseños](layouts.md)
    - Diseño clásico lado a lado
    - Diseño de sección con grupos
    - Diseño Pac-Man
@@ -48,7 +52,7 @@ Una herramienta de obtención de información del sistema multiplataforma escrit
      - [Section-Box](layouts.md#section-box-layout)
      - [Custom-X](custom-x.md)
 
-5. [Plugins](plugins.md)
+6. [Plugins](plugins.md)
    - Resumen de la arquitectura de plugins
    - Protocolo JSON wire
    - Tipos de plugins (proveedor de información, animación de logo)
@@ -72,7 +76,7 @@ Una herramienta de obtención de información del sistema multiplataforma escrit
    - Escritura de plugins personalizados
    - Crate de API para plugins
 
-6. [Extensiones](extensions.md)
+7. [Extensiones](extensions.md)
    - Resumen de la arquitectura de extensiones
    - Configuración via config_providers
    - Protocolo JSON wire
@@ -82,7 +86,7 @@ Una herramienta de obtención de información del sistema multiplataforma escrit
      - layout-override
    - Escritura de extensiones personalizadas
 
-7. [Personalización](customization.md)
+8. [Personalización](customization.md)
    - Logos ASCII y de imagen
    - Tamaño y posicionamiento de imágenes
    - Renderizado de imágenes en Kitty
@@ -92,60 +96,60 @@ Una herramienta de obtención de información del sistema multiplataforma escrit
    - Estilos de visualización de paleta
    - Configuraciones predefinidas
 
-8. [Uso Avanzado](advanced-usage.md)
+9. [Uso Avanzado](advanced-usage.md)
    - Modo de evaluación comparativa
    - Sistema de caché
    - Controles de privacidad
    - Comportamiento multiplataforma
    - Optimización de rendimiento
 
-9. [Referencia de Predefinidos](presets.md)
+10. [Referencia de Predefinidos](presets.md)
    - Predefinidos de diseño
    - Predefinidos de muestra
    - Predefinidos de plugins
    - Predefinido completo
 
-10. [Temas](themes.md)
+11. [Temas](themes.md)
    - Arquitectura y orden de fusión
    - Formato de archivo de tema
    - Resolución de temas y comandos CLI
    - Temas integrados
 
-11. [Plugin Theme Manager](theme-manager.md)
+12. [Plugin Theme Manager](theme-manager.md)
     - Descripción general e instalación
     - Acciones (listar, buscar, info, instalar)
     - Registro y registros personalizados
 
-12. [Contribuir](contributing.md)
+13. [Contribuir](contributing.md)
     - Compilación desde el código fuente
     - Estructura del proyecto
     - Guía de desarrollo de plugins
     - Pruebas
     - Proceso de pull request
 
-13. [Hoja de Ruta](roadmap.md)
+14. [Hoja de Ruta](roadmap.md)
     - Fases anteriores (base, módulos, diseños, docs)
     - Fase actual (pruebas, funciones avanzadas)
     - Planes futuros
 
-14. [Seguridad](security.md)
+15. [Seguridad](security.md)
     - Reportar vulnerabilidades
     - Buenas prácticas de seguridad
     - Versiones soportadas
 
-15. [Soporte](support.md)
+16. [Soporte](support.md)
     - Obtener ayuda
     - Antes de abrir un issue
     - Expectativas de respuesta
 
-16. [Registro de Cambios](changelog.md)
+17. [Registro de Cambios](changelog.md)
     - Historial de versiones
     - Registro de cambios por fase
 
-17. [Código de Conducta](code-of-conduct.md)
+18. [Código de Conducta](code-of-conduct.md)
     - Nuestros estándares
     - Comportamiento inaceptable
     - Cómo reportar
 
-18. [Licencia](license.md)
+19. [Licencia](license.md)
     - Términos de la licencia MIT

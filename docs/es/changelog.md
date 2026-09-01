@@ -53,6 +53,24 @@
 - **Nuevas opciones:** `show_keys`, `key_width`, `logo_color` (nombres, índices 256 y hex RGB), `logo_padding`, `logo_type` (auto/ascii/image)
 - **Soporte de XDG_CONFIG_HOME** (corrección para macOS) y scripts de CI local (`scripts/ci.sh`, `scripts/ci.ps1`)
 
+## v0.5.0 · Rendimiento, WSL y Catálogo de Logos · 2026-08-18
+
+- **Conteo de paquetes desde bases de datos:** `dpkg`, `pacman`, `apk` y `flatpak` se leen directamente de sus bases (archivos world-readable), con fallback automático a los comandos. Nuevo soporte para Void (`xbps`) y Gentoo (`portage`)
+- **Pre-check de binarios en PATH:** antes de lanzar cualquier sondeo se verifica que el binario exista, ignorando los mounts de Windows de WSL (`/mnt/c`) — evita búsquedas PATH costosas en WSL
+- **Paralelismo completo:** `battery`, `datetime` y los plugins de información ahora corren en el bloque paralelo (el protocolo de plugins no cambió); los hosts de IP pública se consultan en paralelo
+- **Inicialización sysinfo optimizada:** se refrescan solo CPU/memoria/swap (sin procesos). Fetch frío: 8.6 s → **0.008 s**
+- **Presentación WSL configurable:** nueva clave `os_wsl_style` (`off` / `minimal` / `full`) — p. ej. `Ubuntu 24.04 x86_64 (WSL 2, WSLg)`
+- **Catálogo de logos por distro:** `--gen-config` descarga el logo ASCII de la distro detectada desde el nuevo repo [xfetch-cli/logos](https://github.com/xfetch-cli/logos), con la flag `--logo <id>` para forzar uno y `--layout <nombre>` para generar con otro layout
+
+## v0.4.0 · Timeouts y Separación por Plataforma · 2026-08-15/17
+
+- **Timeouts por comando:** fix del cuelgue en sistemas con `snap` instalado pero snapd detenido (p. ej. WSL) — cada sondeo tiene su propio timeout y se termina el proceso si expira
+- **Separación por plataforma:** nueva estructura `src/info/platform/{linux,macos,windows}/` + `shared/` con contrato uniforme por OS (solo se compila la plataforma activa)
+- **Soporte XDG_CONFIG_HOME:** `config_dir()` prefiere un `XDG_CONFIG_HOME` absoluto (fix de configuración en macOS)
+- **Layout section-box:** nuevo diseño de sección con cajas
+- **CI local:** `scripts/ci.sh` / `ci.ps1` (fmt, clippy y tests sin depender de GitHub Actions)
+- **Speedup del contador de paquetes:** los detectores corren en paralelo real, sin doble corrida, y se omite `snap` cuando snapd no está corriendo (socket pre-check)
+
 ## v0.3.0 · Renderizado de Imágenes y Extensiones · 2026-07-25
 
 - **Renderizado de imágenes en Kitty:** Añadido toggle `logo_kitty` (protocolo nativo vs half-block), `logo_gap` para espaciado configurable entre imagen y texto, `logo_width`/`logo_height` para tamaño explícito, y ancho auto-responsive (28% de la terminal, clamp 12–42 cols)

@@ -90,6 +90,7 @@ JSONC extiende JSON estándar permitiendo comentarios de estilo C (`//`) y C++ (
 | `footer_text` | `string` o `null` | `null` | Texto para el borde inferior (diseño Pac-Man) |
 | `disable_ip_fetching` | `boolean` | `false` | Deshabilitar la obtención de IP pública por privacidad |
 | `disable_cache` | `boolean` | `false` | Deshabilitar el almacenamiento en caché de datos |
+| `os_wsl_style` | `string` | `"minimal"` | Presentación del SO en WSL (solo Linux): `off` (nombre simple), `minimal` (añade `(WSL)`), `full` (añade versión de WSL y WSLg) |
 | `logo_animation` | `object` o `null` | `null` | Configuración de animación del logo |
 | `info_plugins` | `array` | `[]` | Lista de plugins de información a ejecutar |
 | `config_providers` | `array` | `[]` | Lista de extensiones proveedoras de configuración a ejecutar después de la fusión del tema |
