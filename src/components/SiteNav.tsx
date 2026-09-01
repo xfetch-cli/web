@@ -16,6 +16,7 @@ const linksRight: NavLinkItem[] = [
   { url: `${base}/#config`, title: "Configure" },
   { url: `${base}/#plugins`, title: "Plugins" },
   { url: `${base}/#roadmap`, title: "Roadmap" },
+  { url: `${base}/previews`, title: "Previews" },
   { url: `${base}/docs`, title: "Docs" },
 ];
 
