@@ -32,6 +32,19 @@ const LINUX_NOTES = [
   "The ANSI color palette module rendered as squares — handy to verify your terminal colors match the theme you picked. And a frame of the logo animation, showing the sweep and rainbow effects the animate-logo plugin cycles through.",
 ];
 
+const MACOS_STILLS = [
+  {
+    src: "macos-preview-2.webp",
+    alt: "xfetch on macOS, default layout",
+    text: "The side-by-side layout on macOS: ASCII logo on the left, system modules on the right, Homebrew package detection.",
+  },
+  {
+    src: "macos-preview-3.webp",
+    alt: "xfetch on macOS, full desktop capture",
+    text: "Full desktop capture: xfetch in Terminal alongside Finder, showing the ANSI palette and GPU info.",
+  },
+];
+
 const WINDOWS_STILLS = [
   {
     src: "preview-windows-1.webp",
@@ -168,16 +181,13 @@ export default function PreviewsPage() {
                 className="block h-auto w-full"
               />
             </div>
-            <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-              {["macos-preview-2", "macos-preview-3"].map((name) => (
-                <div
-                  key={name}
-                  className="grid aspect-video place-items-center rounded-lg border border-dashed border-accent/40 bg-bg/50"
-                >
-                  <div className="grid gap-1 text-center">
-                    <span className="text-sm font-semibold text-accent">{name}</span>
-                    <span className="text-xs text-fg2">placeholder — preview macos</span>
+            <div className="grid gap-6">
+              {MACOS_STILLS.map((img) => (
+                <div key={img.src} className="grid gap-3">
+                  <div className="overflow-hidden rounded-xl border border-bg3/60">
+                    <PreviewImage src={img.src} alt={img.alt} />
                   </div>
+                  <p className="m-0 max-w-[68ch] leading-relaxed text-fg2">{img.text}</p>
                 </div>
               ))}
             </div>
