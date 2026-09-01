@@ -76,7 +76,7 @@ Eine Theme-Datei ist ein JSONC-Dokument, das nur visuelle Felder enthalt. Sie da
 |------|-----|-------------|
 | `layout` | `string` oder `null` | Name des Layout-Stils |
 | `colors` | `object` | Modulspezifische Farbzuordnung |
-| `palette_style` | `string` oder `null` | Palettenanzeige: `squares`, `circles`, `triangles`, `lines`, `dots` |
+| `palette_style` | `string` oder `null` | Palettenanzeige: `squares`, `circles`, `triangles`, `lines` |
 | `show_colors` | `boolean` | Inline-ANSI-Farbindikatoren ein-/ausschalten |
 | `logo_path` | `string` oder `null` | Pfad zu einer Logo-Datei |
 | `logo_color` | `string` oder `null` | Farbe fur ASCII-Logos (Name, Hex oder RGB) |

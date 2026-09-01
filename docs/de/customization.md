@@ -316,8 +316,6 @@ cpu       : Apple M4 (10) @ 4.46 GHz
 memory    : 10.88 GiB / 16.00 GiB (68%)
 disk      : 152.80 GiB / 931.32 GiB (16%) - apfs
 ```
-}
-```
 
 ## Palettenanzeige
 
@@ -337,20 +335,8 @@ Das Modul `palette` rendert ein ANSI-Farbmuster. Der Stil wird durch das Feld `p
 | `circles` | Farbige Kreissymbole |
 | `triangles` | Farbige Dreiecksymbole |
 | `lines` | Dicke horizontale Farbbalken |
-| `dots` | Kleine Punktsymbole |
 
 Die Palette zeigt 8 Farben entsprechend der ANSI-Standardpalette: Schwarz, Rot, Grun, Gelb, Blau, Magenta, Cyan, Wei.
-
-## Schlussel (Beschriftungen)
-
-Standardmaig rendert xfetch jedes Modul als `Icon Wert`. Um zusatzlich die Modulbeschriftung anzuzeigen, aktivieren Sie `show_keys`; verwenden Sie `key_width`, um die Beschriftungen auf eine feste Spaltenbreite aufzufullen, sodass Werte vertikal ausgerichtet werden.
-
-```jsonc
-{
-    "show_keys": true,
-    "key_width": 12
-}
-```
 
 ## Schlüssel umbenennen: `labels`
 

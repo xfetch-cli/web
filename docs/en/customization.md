@@ -335,21 +335,8 @@ The `palette` module renders an ANSI color swatch. The style is controlled by th
 | `circles` | Colored circle symbols |
 | `triangles` | Colored triangle symbols |
 | `lines` | Thick horizontal color bars |
-| `dots` | Small dot symbols |
-| `dots` | Small dot symbols |
 
 The palette displays 8 colors matching the ANSI standard palette: Black, Red, Green, Yellow, Blue, Magenta, Cyan, White.
-
-## Keys (Labels)
-
-By default xfetch renders each module as `icon value`. To display the module label as well, enable `show_keys`; use `key_width` to pad the labels to a fixed column count so values align vertically.
-
-```jsonc
-{
-    "show_keys": true,
-    "key_width": 12
-}
-```
 
 ## Renaming Keys: `labels`
 
@@ -405,7 +392,7 @@ Located in `configs/xfetch/presets/showcase/`, these presets demonstrate various
 | `arch_compact_cyan.jsonc` | classic | Arch logo, all Cyan |
 | `arch_full_blue.jsonc` | classic | Arch logo, all Blue |
 | `green_chevrons_core.jsonc` | classic | `>>` icons, all Green |
-| `minimal_plus_monochrome.jsonc` | classic | Minimal logo, `+` icons, DarkGrey |
+| `minimal_plus_monochrome.jsonc` | classic | Minimal logo, `+` icons, Grey |
 | `minimal_red_compact.jsonc` | classic | Text icons like "OS:", all Red |
 | `monochrome_no_icons.jsonc` | classic | No icons, all White |
 | `neon_hardware_compact.jsonc` | classic | Cyan+Magenta neon theme |

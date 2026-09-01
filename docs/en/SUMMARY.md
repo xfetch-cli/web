@@ -70,9 +70,6 @@ A cross-platform system information fetching tool written in Rust.
      - chocolatey
      - temperature
      - theme-manager
-     - chocolatey
-     - temperature
-     - theme-manager
    - Writing custom plugins
    - Plugin API crate
 
@@ -86,7 +83,15 @@ A cross-platform system information fetching tool written in Rust.
      - layout-override
    - Writing custom extensions
 
-8. [Customization](customization.md)
+8. [Effects](effects.md)
+   - Architecture overview
+   - Installation and CLI commands
+   - Configuration and fields
+   - JSON wire protocol
+   - Official effects
+   - Writing custom effects
+
+9. [Customization](customization.md)
    - ASCII and image logos
    - Image sizing and positioning
    - Kitty terminal image rendering
@@ -96,60 +101,60 @@ A cross-platform system information fetching tool written in Rust.
    - Palette display styles
    - Preset configurations
 
-9. [Advanced Usage](advanced-usage.md)
+10. [Advanced Usage](advanced-usage.md)
    - Benchmark mode
    - Cache system
    - Privacy controls
    - Cross-platform behavior
    - Performance optimization
 
-10. [Presets Reference](presets.md)
+11. [Presets Reference](presets.md)
    - Layout presets
    - Showcase presets
    - Plugin presets
    - Full-stack preset
 
-11. [Themes](themes.md)
+12. [Themes](themes.md)
    - Architecture and merge order
    - Theme file format
    - Theme resolution and CLI commands
    - Built-in themes
 
-12. [Theme Manager Plugin](theme-manager.md)
+13. [Theme Manager Plugin](theme-manager.md)
     - Overview and installation
     - Actions (list, search, info, install)
     - Registry and custom registries
 
-13. [Contributing](contributing.md)
+14. [Contributing](contributing.md)
     - Building from source
     - Project structure
     - Plugin development guide
     - Testing
     - Pull request process
 
-14. [Roadmap](roadmap.md)
+15. [Roadmap](roadmap.md)
     - Past phases (foundation, modules, layouts, docs)
     - Current phase (testing, advanced features)
     - Future plans
 
-15. [Security](security.md)
+16. [Security](security.md)
     - Reporting vulnerabilities
     - Security best practices
     - Supported versions
 
-16. [Support](support.md)
+17. [Support](support.md)
     - Getting help
     - Before opening an issue
     - Response expectations
 
-17. [Changelog](changelog.md)
+18. [Changelog](changelog.md)
     - Version history
     - Phase-by-phase changelog
 
-18. [Code of Conduct](code-of-conduct.md)
+19. [Code of Conduct](code-of-conduct.md)
     - Our standards
     - Unacceptable behavior
     - Reporting
 
-19. [License](license.md)
+20. [License](license.md)
     - MIT License terms

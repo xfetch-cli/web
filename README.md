@@ -33,25 +33,19 @@
 <h2 align="center">Related Repos</h2>
 
 <ul>
-  <li><a href="https://github.com/xfetch-cli/xfetch">xfetch</a> <img src="https://xscriptor.github.io/icons/icons/code/product-design/xsvg/git-fetch.svg"/></li>
-  <li><a href="https://github.com/xfetch-cli/configs">Configs</a> <img src="https://xscriptor.github.io/icons/icons/code/product-design/xsvg/symbol-key.svg"/></li>
-  <li><a href="https://github.com/xfetch-cli/plugins">Plugins</a> <img src="https://xscriptor.github.io/icons/icons/code/product-design/xsvg/extensions.svg"/></li>
+  <li><a href="https://github.com/xfetch-cli/xfetch">xfetch</a></li>
+  <li><a href="https://github.com/xfetch-cli/configs">Configs</a></li>
+  <li><a href="https://github.com/xfetch-cli/plugins">Plugins</a></li>
 </ul>
 
 
 <div align="center">
 <h2>X</h2>
 
-<a href="https://dev.xscriptor.com">
-  <img src="https://xscriptor.github.io/icons/icons/code/product-design/xsvg/verified-filled.svg" width="24" alt="X Web" />
-</a>
+<a href="https://xscriptor.io">Dev</a>
  & 
-<a href="https://github.com/xscriptor">
-  <img src="https://xscriptor.github.io/icons/icons/code/product-design/xsvg/github.svg" width="24" alt="X Github Profile" />
-</a>
+<a href="https://github.com/xscriptor">Git</a>
  & 
-<a href="https://www.xscriptor.com">
-  <img src="https://xscriptor.github.io/icons/icons/code/product-design/xsvg/quotes.svg" width="24" alt="Xscriptor web" />
-</a>
+<a href="https://www.xscriptor.com">X</a>
 
 </div>

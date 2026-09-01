@@ -95,6 +95,45 @@ Configuración:
 }
 ```
 
+## Diseño Section-Box
+
+Cada grupo de módulos se dibuja como su propio recuadro redondeado, con el título del grupo incrustado en el borde superior. Combina la agrupación de `section` con el aspecto enmarcado de `box`.
+
+```
+╭─── Hardware ─────────────────────╮
+│ hostname thinkpad-x1             │
+│ cpu      Intel i5-7400 @ 3.00GHz │
+│ gpu      NVIDIA GeForce RTX 3060 │
+│ memory   3.10 GiB / 7.74 GiB     │
+╰──────────────────────────────────╯
+╭─── Software ─────────────────────╮
+│ os       Arch Linux x86_64       │
+│ kernel   6.6.87.2-arch1-1        │
+│ shell    zsh                     │
+│ terminal WezTerm                 │
+╰──────────────────────────────────╯
+```
+
+Configuración:
+
+```jsonc
+{
+    "layout": "section-box",
+    "modules": [
+        {
+            "type": "group",
+            "title": "Hardware",
+            "modules": ["hostname", "cpu", "gpu", "memory"]
+        },
+        {
+            "type": "group",
+            "title": "Software",
+            "modules": ["os", "kernel", "shell", "terminal"]
+        }
+    ]
+}
+```
+
 ## Diseño Pac-Man
 
 Un diseño encuadrado con un borde superior decorativo que recuerda a Pac-Man, iconos de cabecera configurables, un borde inferior con texto de pie y contenido en medio.

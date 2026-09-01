@@ -131,6 +131,8 @@ xfetch --daemon-stop # detenerlo
 
 La animación solo se ejecuta en terminales TTY; en pipes o redirecciones se muestra el logo estático. El modo daemon requiere un bloque `logo_animation` con un plugin (p. ej. `animate-logo`). En modo daemon la animación se repite indefinidamente: `duration_ms` y `loop` se ignoran. Para una animación finita que se detenga sola, mantenga el modo daemon desactivado.
 
+> **Nota:** Tanto el daemon animado como el daemon de estadísticas en vivo son **solo Unix** (Linux/macOS). En Windows no son compatibles y muestran un mensaje de error.
+
 ### Daemon de Estadísticas en Vivo
 
 El daemon de estadísticas en vivo (`daemon_live`) fija un bloque de fetch en la parte superior de la terminal y re-consulta un subconjunto ligero de módulos cada `daemon_live_refresh` segundos. Es un complemento del daemon animado anterior: el daemon animado existente no se toca. Claves de configuración: `daemon_live`, `daemon_live_refresh`, `daemon_live_modules`, `daemon_live_reload` (recarga en caliente de la configuración y del tema activo).
@@ -160,6 +162,18 @@ xfetch effects install <nombre>   # instalar un efecto
 xfetch effects list               # listar efectos instalados
 xfetch effects remove <nombre>    # eliminar un efecto
 ```
+
+```jsonc
+{
+    "effects": {
+        "plugin": "decrypt",
+        "duration_ms": 1500,
+        "fps": 30
+    }
+}
+```
+
+Consulte la página [Efectos](effects.md) para conocer el protocolo completo, los campos de configuración y cómo escribir efectos personalizados.
 
 ## Optimización de Rendimiento
 

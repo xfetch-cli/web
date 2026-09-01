@@ -70,9 +70,6 @@ Ein plattformunabhangiges Systeminformations-Tool geschrieben in Rust.
      - chocolatey
      - temperature
      - theme-manager
-     - chocolatey
-     - temperature
-     - theme-manager
    - Eigene Plugins schreiben
    - Plugin-API-Crate
 
@@ -86,7 +83,15 @@ Ein plattformunabhangiges Systeminformations-Tool geschrieben in Rust.
      - layout-override
    - Eigene Erweiterungen schreiben
 
-8. [Anpassung](customization.md)
+8. [Effekte](effects.md)
+   - Architektur im Uberblick
+   - Installation und CLI-Befehle
+   - Konfiguration und Felder
+   - JSON-Drahtprotokoll
+   - Offizielle Effekte
+   - Eigene Effekte schreiben
+
+9. [Anpassung](customization.md)
    - ASCII- und Bildlogos
    - Bildgrosse und Positionierung
    - Kitty Terminal Bild-Rendering
@@ -96,60 +101,60 @@ Ein plattformunabhangiges Systeminformations-Tool geschrieben in Rust.
    - Paletten-Anzeigestile
    - Preset-Konfigurationen
 
-9. [Fortgeschrittene Nutzung](advanced-usage.md)
+10. [Fortgeschrittene Nutzung](advanced-usage.md)
    - Benchmark-Modus
    - Cache-System
    - Datenschutzeinstellungen
    - Plattformubergreifendes Verhalten
    - Leistungsoptimierung
 
-10. [Presets-Referenz](presets.md)
+11. [Presets-Referenz](presets.md)
    - Layout-Presets
    - Showcase-Presets
    - Plugin-Presets
    - Full-Stack-Preset
 
-10. [Themes](themes.md)
+12. [Themes](themes.md)
    - Architektur und Zusammenfuhlungsreihenfolge
    - Theme-Dateiformat
    - Theme-Auflosung und CLI-Befehle
    - Integrierte Themes
 
-11. [Theme Manager Plugin](theme-manager.md)
+13. [Theme Manager Plugin](theme-manager.md)
     - Ubersicht und Installation
     - Aktionen (list, search, info, install)
     - Registry und benutzerdefinierte Registries
 
-13. [Mitwirken](contributing.md)
+14. [Mitwirken](contributing.md)
     - Aus dem Quellcode bauen
     - Projektstruktur
     - Plugin-Entwicklungsleitfaden
     - Testen
     - Pull-Request-Prozess
 
-13. [Fahrplan](roadmap.md)
+15. [Fahrplan](roadmap.md)
     - Vergangene Phasen (Grundlage, Module, Layouts, Dokus)
     - Aktuelle Phase (Tests, erweiterte Funktionen)
     - Zukunftsplane
 
-15. [Sicherheit](security.md)
+16. [Sicherheit](security.md)
     - Melden von Sicherheitslucken
     - Sicherheitsempfehlungen
     - Unterstutzte Versionen
 
-16. [Support](support.md)
+17. [Support](support.md)
     - Hilfe erhalten
     - Vor dem Offnen eines Issues
     - Reaktionserwartungen
 
-17. [Anderungsprotokoll](changelog.md)
+18. [Anderungsprotokoll](changelog.md)
     - Versionsgeschichte
     - Phasenweises Anderungsprotokoll
 
-18. [Verhaltenskodex](code-of-conduct.md)
+19. [Verhaltenskodex](code-of-conduct.md)
     - Unsere Standards
     - Inakzeptables Verhalten
     - Melden
 
-19. [Lizenz](license.md)
+20. [Lizenz](license.md)
     - MIT-Lizenzbestimmungen

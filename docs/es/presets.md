@@ -83,7 +83,7 @@ Ubicados en `configs/xfetch/presets/showcase/`, estos 23 predefinidos demuestran
 | `arch_compact_cyan.jsonc` | `arch.txt` | predeterminados | Todo Cyan | 4 (os, kernel, uptime, packages) |
 | `arch_full_blue.jsonc` | `arch.txt` | predeterminados | Todo Blue | 13 (sistema completo) |
 | `green_chevrons_core.jsonc` | ninguno | `>>` | Todo Green | 5 (núcleo) |
-| `minimal_plus_monochrome.jsonc` | `minimal.txt` | `+` | DarkGrey | 6 |
+| `minimal_plus_monochrome.jsonc` | `minimal.txt` | `+` | Grey | 6 |
 | `minimal_red_compact.jsonc` | `minimal.txt` | `OS:`, `K:`, etc. | Todo Red | 4 |
 | `monochrome_no_icons.jsonc` | ninguno | `""` (vacío) | Todo White | 4 |
 | `neon_hardware_compact.jsonc` | ninguno | Nerd Fonts | Cyan + Magenta | 4 |
@@ -150,7 +150,7 @@ Demuestra todas las funcionalidades juntas: animación, múltiples plugins de in
         "frames_path": "~/.config/xfetch/logos/decryptfull.txt"
     },
     "info_plugins": [
-        { "plugin": "github-stats", "args": { "username": "xscriptor", "max-lines": 4 } },
+        { "plugin": "github-stats", "args": { "username": "xscriptor", "max_lines": 4 } },
         { "plugin": "docker" }
     ],
     "modules": [
@@ -216,6 +216,38 @@ Demuestra los seis módulos mejorados de la Fase 6 en un diseño agrupado:
 ```
 
 **Plugins requeridos:** `music-player`, `weather`, `timezone`, `user-info`, `display-resolution`, `theme-detection`
+
+### Ejemplo de Ruleta de Animaciones
+
+Archivo: `configs/plugins/roulette-animation-example/`
+
+Un setup completo que rota aleatoriamente entre 6 figuras ASCII animadas (fox, cat, kitty, blackhole, matrix, decrypt) en cada ejecución. Combina la extensión `config-roulette` (estrategia aleatoria) con el plugin `animate-logo` y configs de daemon por figura.
+
+Copie la carpeta `xfetch/` a su directorio de configuración manteniendo la estructura:
+
+```bash
+cp -r xfetch/* ~/.config/xfetch/
+```
+
+La configuración principal habilita la ruleta:
+
+```jsonc
+{
+    "config_providers": [
+        {
+            "extension": "config-roulette",
+            "args": {
+                "routes": "~/.config/xfetch/routes-anim.json",
+                "strategy": "random"
+            }
+        }
+    ]
+}
+```
+
+`routes-anim.json` lista las 6 configuraciones de figuras bajo `fetchs/animations/<nombre>/config.jsonc`; cada una es una config de daemon (`"daemon": true`) que referencia su archivo de frames en `logos/animations/` (frames separados por `===`, consumidos por el plugin `animate-logo`).
+
+**Requerido:** plugin `animate-logo` y extensión `config-roulette`. Detenga una figura en ejecución con `xfetch --daemon-stop`.
 
 ## Uso de Predefinidos
 

@@ -95,6 +95,45 @@ Konfiguration:
 }
 ```
 
+## Section-Box-Layout
+
+Jede Modulgruppe wird als eigene abgerundete Box gezeichnet, mit dem Gruppentitel im oberen Rand. Dies kombiniert die Gruppierung von `section` mit dem umrahmten Look von `box`.
+
+```
+╭─── Hardware ─────────────────────╮
+│ hostname thinkpad-x1             │
+│ cpu      Intel i5-7400 @ 3.00GHz │
+│ gpu      NVIDIA GeForce RTX 3060 │
+│ memory   3.10 GiB / 7.74 GiB     │
+╰──────────────────────────────────╯
+╭─── Software ─────────────────────╮
+│ os       Arch Linux x86_64       │
+│ kernel   6.6.87.2-arch1-1        │
+│ shell    zsh                     │
+│ terminal WezTerm                 │
+╰──────────────────────────────────╯
+```
+
+Konfiguration:
+
+```jsonc
+{
+    "layout": "section-box",
+    "modules": [
+        {
+            "type": "group",
+            "title": "Hardware",
+            "modules": ["hostname", "cpu", "gpu", "memory"]
+        },
+        {
+            "type": "group",
+            "title": "Software",
+            "modules": ["os", "kernel", "shell", "terminal"]
+        }
+    ]
+}
+```
+
 ## Pac-Man-Layout
 
 Ein gerahmtes Layout mit einem dekorativen oberen Rand, der Pac-Man ahnelt, konfigurierbaren Kopf-Icons, einem unteren Rand mit Fusstext und Inhalt dazwischen.

@@ -86,6 +86,8 @@ JSONC extiende JSON estándar permitiendo comentarios de estilo C (`//`) y C++ (
 | `logo_type` | `string` o `null` | `"auto"` | `"auto"` (por extensión), `"ascii"` (fuerza texto), `"image"` (fuerza imagen) |
 | `show_keys` | `boolean` | `false` | Renderiza `clave: valor` en los diseños con iconos |
 | `key_width` | `number` o `null` | auto | Rellena la clave hasta esta cantidad de columnas para alinear los valores |
+| `labels` | `object` o `null` | `{}` | Renombra la clave de cada fila por módulo; un string vacío oculta la clave |
+| `formats` | `object` o `null` | `{}` | Plantillas de valor con placeholders `{campo}` por módulo |
 | `header_icons` | `array` o `null` | `null` | Iconos para el borde superior (diseño Pac-Man) |
 | `footer_text` | `string` o `null` | `null` | Texto para el borde inferior (diseño Pac-Man) |
 | `disable_ip_fetching` | `boolean` | `false` | Deshabilitar la obtención de IP pública por privacidad |
@@ -101,13 +103,6 @@ JSONC extiende JSON estándar permitiendo comentarios de estilo C (`//`) y C++ (
 | `daemon_live_refresh` | `number` o `null` | (por plataforma) | Intervalo de actualización del daemon en vivo en segundos |
 | `daemon_live_modules` | `array` o `null` | (por plataforma) | Módulos mostrados por el daemon en vivo |
 | `daemon_live_reload` | `boolean` | `false` | Recarga en caliente de la configuración en modo daemon en vivo |
-| `os_wsl_style` | `string` | `"minimal"` | Estilo de detección WSL: `off`, `minimal` o `full` |
-| `logo_color` | `string` o `null` | `null` | Color para logos ASCII (nombre, hex o RGB) |
-| `logo_colors` | `array` o `null` | `null` | Colores por fila para logos ASCII (`la fila i` usa `logo_colors[i % len]`) |
-| `logo_padding` | `number` | `0` | Relleno alrededor del logo |
-| `logo_type` | `string` | `"auto"` | Tipo de logo: `auto`, `ascii` o `image` |
-| `show_keys` | `boolean` | `false` | Mostrar las etiquetas de módulo (`clave: valor`) |
-| `key_width` | `number` | `auto` | Ancho fijo para las etiquetas de clave, alineando los valores |
 | `custom_x` | `object` o `null` | `null` | Plantillas de borde para el diseño `custom-x` |
 | `effects` | `object`, `array` o `null` | `null` | Efectos de introducción aplicados a las líneas de contenido |
 
@@ -222,13 +217,8 @@ Los colores asignan nombres de módulos a nombres de colores ANSI:
 | `Cyan` | 36 |
 | `White` | 37 |
 | `Grey` o `Gray` | 90 |
-| `DarkGrey` o `DarkGray` | 90 |
-| `DarkRed` | 31 |
-| `DarkGreen` | 32 |
-| `DarkYellow` | 33 |
-| `DarkBlue` | 34 |
-| `DarkMagenta` | 35 |
-| `DarkCyan` | 36 |
+
+Los nombres de color no distinguen mayúsculas/minúsculas. También se aceptan índices 256-colores (`"196"`) y hex RGB (`"#FF0000"`).
 
 ### Estilos de Paleta
 
@@ -240,8 +230,6 @@ El módulo `palette` muestra una muestra de color. Estilos disponibles:
 | `"circles"` | Círculos de color de primer plano |
 | `"triangles"` | Triángulos de color de primer plano |
 | `"lines"` | Barras de color horizontales gruesas |
-| `"dots"` | Símbolos de puntos pequeños |
-| `"dots"` | Símbolos de puntos pequeños |
 
 ### Configuración de Animación
 
