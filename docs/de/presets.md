@@ -150,7 +150,7 @@ Demonstriert alle Funktionen zusammen: Animation, mehrere Info-Plugins, gruppier
         "frames_path": "~/.config/xfetch/logos/decryptfull.txt"
     },
     "info_plugins": [
-        { "plugin": "github-stats", "args": { "username": "xscriptor", "max-lines": 4 } },
+        { "plugin": "github-stats", "args": { "username": "xscriptor", "max_lines": 4 } },
         { "plugin": "docker" }
     ],
     "modules": [
@@ -216,6 +216,38 @@ Demonstriert alle sechs Phase-6-erweiterten Module in einem gruppierten Layout:
 ```
 
 **Erforderliche Plugins:** `music-player`, `weather`, `timezone`, `user-info`, `display-resolution`, `theme-detection`
+
+### Roulette-Animation-Beispiel
+
+Datei: `configs/plugins/roulette-animation-example/`
+
+Ein vollständiges Setup, das bei jedem Lauf zwischen 6 animierten ASCII-Figuren (fox, cat, kitty, blackhole, matrix, decrypt) rotiert. Es kombiniert die Erweiterung `config-roulette` (Zufallsstrategie) mit dem Plugin `animate-logo` und Daemon-Konfigurationen pro Figur.
+
+Kopieren Sie den Ordner `xfetch/` in Ihr Konfigurationsverzeichnis und behalten Sie die Struktur bei:
+
+```bash
+cp -r xfetch/* ~/.config/xfetch/
+```
+
+Die Hauptkonfiguration aktiviert die Roulette:
+
+```jsonc
+{
+    "config_providers": [
+        {
+            "extension": "config-roulette",
+            "args": {
+                "routes": "~/.config/xfetch/routes-anim.json",
+                "strategy": "random"
+            }
+        }
+    ]
+}
+```
+
+`routes-anim.json` listet die 6 Figuren-Konfigurationen unter `fetchs/animations/<name>/config.jsonc`; jede ist eine Daemon-Konfiguration (`"daemon": true`), die ihre Framedatei in `logos/animations/` referenziert (Frames durch `===` getrennt, vom Plugin `animate-logo` verarbeitet).
+
+**Erforderlich:** Plugin `animate-logo` und Erweiterung `config-roulette`. Eine laufende Figur stoppen Sie mit `xfetch --daemon-stop`.
 
 ## Presets verwenden
 

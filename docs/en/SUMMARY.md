@@ -17,7 +17,11 @@ A cross-platform system information fetching tool written in Rust.
    - Command-line interface overview
    - Environment variables
 
-2. [Configuration](configuration.md)
+2. [Config Generation](gen-config.md)
+   - Basic `--gen-config` usage
+   - Distro logo (`--logo`) and layout (`--layout`)
+   - Offline fallbacks
+3. [Configuration](configuration.md)
    - JSONC config file format
    - All configuration fields
    - Module groups
@@ -25,7 +29,7 @@ A cross-platform system information fetching tool written in Rust.
    - Plugin integration
    - Animation configuration
 
-3. [Modules](modules.md)
+4. [Modules](modules.md)
    - Core system modules (OS, kernel, hostname, uptime)
    - Hardware modules (CPU, GPU, memory, swap, disk, battery)
    - Software modules (packages, shell, terminal, WM/DE)
@@ -34,7 +38,7 @@ A cross-platform system information fetching tool written in Rust.
    - Special modules (palette, header, separator)
    - Plugin module references
 
-4. [Layouts](layouts.md)
+5. [Layouts](layouts.md)
    - Classic side-by-side layout
    - Section layout with groups
    - Pac-Man layout
@@ -44,8 +48,11 @@ A cross-platform system information fetching tool written in Rust.
    - Compact layout
    - Minimal layout
    - Horizontal and Bottom layouts
+   - Section-box and Custom-X layouts
+     - [Section-Box](layouts.md#section-box-layout)
+     - [Custom-X](custom-x.md)
 
-5. [Plugins](plugins.md)
+6. [Plugins](plugins.md)
    - Plugin architecture overview
    - JSON wire protocol
    - Plugin kinds (info provider, logo animation)
@@ -63,13 +70,10 @@ A cross-platform system information fetching tool written in Rust.
      - chocolatey
      - temperature
      - theme-manager
-     - chocolatey
-     - temperature
-     - theme-manager
    - Writing custom plugins
    - Plugin API crate
 
-6. [Extensions](extensions.md)
+7. [Extensions](extensions.md)
    - Extension architecture overview
    - Configuration via config_providers
    - JSON wire protocol
@@ -79,7 +83,15 @@ A cross-platform system information fetching tool written in Rust.
      - layout-override
    - Writing custom extensions
 
-7. [Customization](customization.md)
+8. [Effects](effects.md)
+   - Architecture overview
+   - Installation and CLI commands
+   - Configuration and fields
+   - JSON wire protocol
+   - Official effects
+   - Writing custom effects
+
+9. [Customization](customization.md)
    - ASCII and image logos
    - Image sizing and positioning
    - Kitty terminal image rendering
@@ -89,60 +101,60 @@ A cross-platform system information fetching tool written in Rust.
    - Palette display styles
    - Preset configurations
 
-8. [Advanced Usage](advanced-usage.md)
+10. [Advanced Usage](advanced-usage.md)
    - Benchmark mode
    - Cache system
    - Privacy controls
    - Cross-platform behavior
    - Performance optimization
 
-9. [Presets Reference](presets.md)
+11. [Presets Reference](presets.md)
    - Layout presets
    - Showcase presets
    - Plugin presets
    - Full-stack preset
 
-10. [Themes](themes.md)
+12. [Themes](themes.md)
    - Architecture and merge order
    - Theme file format
    - Theme resolution and CLI commands
    - Built-in themes
 
-11. [Theme Manager Plugin](theme-manager.md)
+13. [Theme Manager Plugin](theme-manager.md)
     - Overview and installation
     - Actions (list, search, info, install)
     - Registry and custom registries
 
-12. [Contributing](contributing.md)
+14. [Contributing](contributing.md)
     - Building from source
     - Project structure
     - Plugin development guide
     - Testing
     - Pull request process
 
-13. [Roadmap](roadmap.md)
+15. [Roadmap](roadmap.md)
     - Past phases (foundation, modules, layouts, docs)
     - Current phase (testing, advanced features)
     - Future plans
 
-14. [Security](security.md)
+16. [Security](security.md)
     - Reporting vulnerabilities
     - Security best practices
     - Supported versions
 
-15. [Support](support.md)
+17. [Support](support.md)
     - Getting help
     - Before opening an issue
     - Response expectations
 
-16. [Changelog](changelog.md)
+18. [Changelog](changelog.md)
     - Version history
     - Phase-by-phase changelog
 
-17. [Code of Conduct](code-of-conduct.md)
+19. [Code of Conduct](code-of-conduct.md)
     - Our standards
     - Unacceptable behavior
     - Reporting
 
-18. [License](license.md)
+20. [License](license.md)
     - MIT License terms

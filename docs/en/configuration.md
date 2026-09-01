@@ -81,10 +81,18 @@ JSONC extends standard JSON by allowing C-style (`//`) and C++-style (`/* */`) c
 | `logo_height` | `number` or `null` | `null` | Height constraint for image logos (in terminal rows) |
 | `logo_gap` | `number` or `null` | `12` | Gap between the logo/image and the info text (in columns) |
 | `logo_kitty` | `boolean` or `null` | `true` (in Kitty) | Use Kitty native image protocol (`true`) or half-block rendering (`false`). Half-block gives lower resolution but avoids layout issues |
+| `logo_color` | `string` or `null` | `null` | Color applied to the ASCII logo: name (`"Cyan"`), 256-color index (`"196"`) or hex RGB (`"#FF0000"`) |
+| `logo_padding` | `number` or `null` | `0` | Leading spaces added before the logo |
+| `logo_type` | `string` or `null` | `"auto"` | `"auto"` (by extension), `"ascii"` (force text), `"image"` (force image) |
+| `show_keys` | `boolean` | `false` | Render `key: value` in the icon-style layouts |
+| `key_width` | `number` or `null` | auto | Pad the key to this many columns so values align |
+| `labels` | `object` or `null` | `{}` | Rename a row key per module; an empty string hides the key |
+| `formats` | `object` or `null` | `{}` | Value templates with `{field}` placeholders per module |
 | `header_icons` | `array` or `null` | `null` | Icons for the top border (Pac-Man layout) |
 | `footer_text` | `string` or `null` | `null` | Text for the bottom border (Pac-Man layout) |
 | `disable_ip_fetching` | `boolean` | `false` | Disable fetching public IP for privacy |
 | `disable_cache` | `boolean` | `false` | Disable data caching |
+| `os_wsl_style` | `string` | `"minimal"` | WSL OS presentation (Linux only): `off` (plain name), `minimal` (appends `(WSL)`), `full` (appends WSL version and WSLg) |
 | `logo_animation` | `object` or `null` | `null` | Logo animation configuration |
 | `info_plugins` | `array` | `[]` | List of info plugins to execute |
 | `config_providers` | `array` | `[]` | List of config provider extensions to run after theme merge |
@@ -95,13 +103,6 @@ JSONC extends standard JSON by allowing C-style (`//`) and C++-style (`/* */`) c
 | `daemon_live_refresh` | `number` or `null` | (per-platform) | Live daemon refresh interval in seconds |
 | `daemon_live_modules` | `array` or `null` | (per-platform) | Modules displayed by the live daemon |
 | `daemon_live_reload` | `boolean` | `false` | Hot-reload the config in live daemon mode |
-| `os_wsl_style` | `string` | `"minimal"` | WSL detection style: `off`, `minimal`, or `full` |
-| `logo_color` | `string` or `null` | `null` | Color for ASCII logos (name, hex, or RGB) |
-| `logo_colors` | `array` or `null` | `null` | Per-row colors for ASCII logos (`row i` uses `logo_colors[i % len]`) |
-| `logo_padding` | `number` | `0` | Padding around the logo |
-| `logo_type` | `string` | `"auto"` | Logo type: `auto`, `ascii`, or `image` |
-| `show_keys` | `boolean` | `false` | Display module labels (`key: value`) |
-| `key_width` | `number` | `auto` | Fixed width for key labels so values align |
 | `custom_x` | `object` or `null` | `null` | Border templates for the `custom-x` layout |
 | `effects` | `object`, `array` or `null` | `null` | Intro effects applied to the content lines |
 
@@ -216,13 +217,8 @@ Colors map module names to ANSI color names:
 | `Cyan` | 36 |
 | `White` | 37 |
 | `Grey` or `Gray` | 90 |
-| `DarkGrey` or `DarkGray` | 90 |
-| `DarkRed` | 31 |
-| `DarkGreen` | 32 |
-| `DarkYellow` | 33 |
-| `DarkBlue` | 34 |
-| `DarkMagenta` | 35 |
-| `DarkCyan` | 36 |
+
+Color names are case-insensitive. 256-color indexes (`"196"`) and hex RGB (`"#FF0000"`) are also accepted.
 
 ### Palette Styles
 
@@ -234,8 +230,6 @@ The `palette` module displays a color swatch. Available styles:
 | `"circles"` | Foreground color circles |
 | `"triangles"` | Foreground color triangles |
 | `"lines"` | Thick horizontal color bars |
-| `"dots"` | Small dot symbols |
-| `"dots"` | Small dot symbols |
 
 ### Animation Configuration
 

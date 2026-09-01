@@ -56,6 +56,22 @@ Sample logos are included in the xfetch installation at `~/.config/xfetch/logos/
 | `x_logo.txt` | Cyan-to-green gradient "X" shape (9 lines) |
 | `minimal.txt` | A simple `[ xfetch ]` label (1 line) |
 
+#### ASCII Logo Options
+
+| Field | Type | Default | Description |
+|-------|------|---------|-------------|
+| `logo_color` | `string` | none | Color applied to the ASCII logo. Accepts names (`"Cyan"`), 256-color indexes (`"196"`) and hex RGB (`"#FF0000"`). Also applies to animated logos; lines that already contain ANSI codes are left untouched. |
+| `logo_padding` | `number` | `0` | Leading spaces added before the logo (and its frames when animated). |
+| `logo_type` | `string` | `"auto"` | `"auto"` detects by file extension, `"ascii"` forces text rendering, `"image"` forces image rendering. |
+
+```jsonc
+{
+    "ascii": "~/.config/xfetch/logos/arch.txt",
+    "logo_color": "#00FF87",
+    "logo_padding": 2
+}
+```
+
 ### Image Logos
 
 xfetch can render PNG, JPG, and SVG images as logos using the `viuer` library. This requires terminal support for image display (iTerm2, Kitty, or Sixel-compatible terminals):
@@ -277,6 +293,30 @@ Color output can be disabled entirely:
 }
 ```
 
+### Keys
+
+By default xfetch renders each module as `icon value`. To display the module label as well, enable `show_keys`; use `key_width` to pad the labels to a fixed column count so values align vertically.
+
+| Field | Type | Default | Description |
+|-------|------|---------|-------------|
+| `show_keys` | `boolean` | `false` | Render `key: value` in the icon-style layouts (classic, section, compact, custom-x, box variants). |
+| `key_width` | `number` | auto | Pad the key to this many columns before the `:` separator. Applies wherever keys are shown, including `section` and `minimal`. |
+
+```jsonc
+{
+    "show_keys": true,
+    "key_width": 12
+}
+```
+
+Example with `show_keys` and `key_width: 12`:
+
+```
+cpu       : Apple M4 (10) @ 4.46 GHz
+memory    : 10.88 GiB / 16.00 GiB (68%)
+disk      : 152.80 GiB / 931.32 GiB (16%) - apfs
+```
+
 ## Palette Display
 
 The `palette` module renders an ANSI color swatch. The style is controlled by the `palette_style` field:
@@ -295,19 +335,47 @@ The `palette` module renders an ANSI color swatch. The style is controlled by th
 | `circles` | Colored circle symbols |
 | `triangles` | Colored triangle symbols |
 | `lines` | Thick horizontal color bars |
-| `dots` | Small dot symbols |
-| `dots` | Small dot symbols |
 
 The palette displays 8 colors matching the ANSI standard palette: Black, Red, Green, Yellow, Blue, Magenta, Cyan, White.
 
-## Keys (Labels)
+## Renaming Keys: `labels`
 
-By default xfetch renders each module as `icon value`. To display the module label as well, enable `show_keys`; use `key_width` to pad the labels to a fixed column count so values align vertically.
+The `labels` map renames the key shown for any module, in every layout (classic and variants, compact, minimal, section, section-box, tree, custom-x). An empty string hides the key — the row shows `icon value` only. Modules without an entry keep their name.
 
 ```jsonc
 {
-    "show_keys": true,
-    "key_width": 12
+    "labels": {
+        "cpu": "processor",
+        "gpu": ""
+    }
+}
+```
+
+## Value Templates: `formats`
+
+The `formats` map replaces a module's value with a template. Placeholders `{field}` are substituted with the module's fields; unknown placeholders render empty, and `{{` / `}}` escape literal braces. Modules without an entry keep their default output.
+
+| Module | Fields | Example |
+|--------|--------|---------|
+| every module | `{value}` (current output), `{key}` (module name) | `"os": "System: {value}"` |
+| `cpu` | `{brand}` (raw), `{model}` (cleaned), `{cores}`, `{freq}` | `"cpu": "{model} · {cores} cores · {freq}"` |
+| `gpu` | `{name}`, `{vendor}`, `{model}`, `{vram}` | `"gpu": "{vendor} {model}"` |
+| `memory`, `swap` | `{used}`, `{total}` (with unit), `{percent}` | `"memory": "{used} / {total} ({percent}%)"` |
+| `disk` | memory fields plus `{fs}` | `"disk": "{used} on {fs}"` |
+| `os` | `{distro}`, `{version}`, `{arch}`, `{wsl}` | `"os": "{distro} {version} ({arch})"` |
+| `packages` | one field per manager (`{pacman}`, `{aur}`, ...), plus `{count}`, `{manager}`, `{managers}` | `"packages": "pkg: {pacman} · aur: {aur}"` |
+| `battery` | `{percent}`, `{state}` | `"battery": "{percent}% [{state}]"` |
+| `uptime` | `{days}`, `{hours}`, `{mins}` | `"uptime": "{days}d {hours}h {mins}m"` |
+| `datetime` | `{date}`, `{time}` | `"datetime": "{date} | {time}"` |
+
+For example, `Intel(R) Core(TM) i5-7400 CPU @ 3.00GHz (4) @ 3.00 GHz` becomes `Intel Core i5-7400` with `{model}`, and `NVIDIA GeForce GTX 1060 6GB` becomes `NVIDIA GTX 1060` with `{vendor} {model}`.
+
+```jsonc
+{
+    "formats": {
+        "cpu": "{model} ({cores}) @ {freq}",
+        "gpu": "{vendor} {model}"
+    }
 }
 ```
 
@@ -324,7 +392,7 @@ Located in `configs/xfetch/presets/showcase/`, these presets demonstrate various
 | `arch_compact_cyan.jsonc` | classic | Arch logo, all Cyan |
 | `arch_full_blue.jsonc` | classic | Arch logo, all Blue |
 | `green_chevrons_core.jsonc` | classic | `>>` icons, all Green |
-| `minimal_plus_monochrome.jsonc` | classic | Minimal logo, `+` icons, DarkGrey |
+| `minimal_plus_monochrome.jsonc` | classic | Minimal logo, `+` icons, Grey |
 | `minimal_red_compact.jsonc` | classic | Text icons like "OS:", all Red |
 | `monochrome_no_icons.jsonc` | classic | No icons, all White |
 | `neon_hardware_compact.jsonc` | classic | Cyan+Magenta neon theme |

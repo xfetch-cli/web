@@ -16,7 +16,6 @@
 - **Battery fix (Linux):** peripheral batteries (e.g. Logitech HID++) are no longer counted as system batteries
 - 141 tests, clippy clean
 
-
 ## v0.6.0 · Themes, Live Stats Daemon & Per-Platform Modularization · 2026-08-19
 
 - **Theme format simplified:** `theme set` edits only the `theme` key, preserving comments and formatting; themes no longer carry `icons` (a per-user font choice, filled from defaults); new `logo_color` and `logo_colors` (per-row) fields

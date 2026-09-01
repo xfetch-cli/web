@@ -131,6 +131,8 @@ xfetch --daemon-stop # Daemon stoppen
 
 Die Animation lauft nur in TTY-Terminals; bei Pipes oder Umleitungen wird das statische Logo angezeigt. Der Daemon-Modus erfordert einen `logo_animation`-Block mit einem Plugin (z. B. `animate-logo`). Im Daemon-Modus loopt die Animation unbegrenzt — `duration_ms` und `loop` werden ignoriert. Fur eine endliche Animation, die von selbst stoppt, den Daemon-Modus deaktiviert lassen.
 
+> **Hinweis:** Sowohl der animierte Daemon als auch der Live-Statistik-Daemon sind **nur unter Unix** (Linux/macOS) verfugbar. Auf Windows werden sie nicht unterstutzt und geben eine Fehlermeldung aus.
+
 ### Live-Statistik-Daemon
 
 Der Live-Statistik-Daemon (`daemon_live`) fixiert einen Fetch-Block am oberen Terminalrand und fragt alle `daemon_live_refresh` Sekunden eine leichte Modul-Teilmenge neu ab. Er ist ein Geschwister des obigen animierten Daemons — der vorhandene animierte Daemon bleibt unverandert. Konfigurationsschlussel: `daemon_live`, `daemon_live_refresh`, `daemon_live_modules`, `daemon_live_reload` (Hot-Reload der Konfiguration und des aktiven Themes).
@@ -160,6 +162,18 @@ xfetch effects install <name>   # Effekt installieren
 xfetch effects list             # installierte Effekte auflisten
 xfetch effects remove <name>    # Effekt entfernen
 ```
+
+```jsonc
+{
+    "effects": {
+        "plugin": "decrypt",
+        "duration_ms": 1500,
+        "fps": 30
+    }
+}
+```
+
+Siehe die Seite [Effekte](effects.md) für das vollständige Protokoll, die Konfigurationsfelder und das Schreiben eigener Effekte.
 
 ## Leistungsoptimierung
 

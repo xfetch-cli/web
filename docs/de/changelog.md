@@ -16,7 +16,6 @@
 - **Akku-Fix (Linux):** Peripherie-Akkus (z. B. Logitech HID++) werden nicht mehr als Systemakkus gezählt
 - 141 Tests, Clippy sauber
 
-
 ## v0.6.0 · Themes, Live-Statistik-Daemon und Plattform-Modularisierung · 2026-08-19
 
 - **Theme-Format vereinfacht:** `theme set` andert nur den `theme`-Schlussel und erhalt Kommentare und Formatierung; Themes tragen keine `icons` mehr (Schriftwahl des Benutzers, wird aus den Standardwerten befullt); neue Felder `logo_color` und `logo_colors` (pro Zeile)

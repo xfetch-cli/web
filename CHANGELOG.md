@@ -1,5 +1,15 @@
 # Changelog
 
+## 2026-08-20 — v0.7.0 documentation sync
+
+- Docs updated to match **xfetch v0.7.0** across English, Spanish and German:
+  - `customization` documents the new `labels` map (rename or hide the row key
+    per module, in every layout) and the `formats` map (value templates with
+    `{field}` placeholders)
+  - Field reference per module: CPU (`{brand}`/`{model}`/`{cores}`/`{freq}`),
+    GPU (`{name}`/`{vendor}`/`{model}`/`{vram}`), memory/swap/disk, os,
+    packages (per-manager fields), battery, uptime, datetime
+
 ## 2026-08-20 — v0.6.0 documentation sync
 
 - Docs updated to match **xfetch v0.6.0** across English, Spanish and German:

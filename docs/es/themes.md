@@ -76,7 +76,7 @@ Un archivo de tema es un documento JSONC que contiene únicamente campos visuale
 |-------|------|-------------|
 | `layout` | `string` o `null` | Nombre del estilo de diseño |
 | `colors` | `object` | Mapeo de colores por módulo |
-| `palette_style` | `string` o `null` | Visualización de paleta: `squares`, `circles`, `triangles`, `lines`, `dots` |
+| `palette_style` | `string` o `null` | Visualización de paleta: `squares`, `circles`, `triangles`, `lines` |
 | `show_colors` | `boolean` | Activar o desactivar indicadores de color ANSI en línea |
 | `logo_path` | `string` o `null` | Ruta a un archivo de logo |
 | `logo_color` | `string` o `null` | Color para logos ASCII (nombre, hex o RGB) |

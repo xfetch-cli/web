@@ -76,7 +76,7 @@ A theme file is a JSONC document containing only visual fields. It should NOT co
 |-------|------|-------------|
 | `layout` | `string` or `null` | Layout style name |
 | `colors` | `object` | Per-module color mapping |
-| `palette_style` | `string` or `null` | Palette display: `squares`, `circles`, `triangles`, `lines`, `dots` |
+| `palette_style` | `string` or `null` | Palette display: `squares`, `circles`, `triangles`, `lines` |
 | `show_colors` | `boolean` | Enable or disable inline ANSI color swatches |
 | `logo_path` | `string` or `null` | Path to a logo file |
 | `logo_color` | `string` or `null` | Color for ASCII logos (name, hex, or RGB) |

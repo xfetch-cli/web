@@ -16,7 +16,6 @@
 - **Corrección de batería (Linux):** las baterías de periféricos (p. ej. Logitech HID++) ya no se cuentan como baterías del sistema
 - 141 tests, clippy limpio
 
-
 ## v0.6.0 · Temas, Daemon de Estadísticas en Vivo y Modularización por Plataforma · 2026-08-19
 
 - **Formato de temas simplificado:** `theme set` edita solo la clave `theme`, conservando comentarios y formato; los temas ya no incluyen `icons` (elección de fuente del usuario, se rellenan desde los defaults); nuevos campos `logo_color` y `logo_colors` (por fila)

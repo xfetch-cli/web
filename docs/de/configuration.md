@@ -81,10 +81,18 @@ JSONC erweitert standard JSON um C-Style (`//`) und C++-Style (`/* */`) Kommenta
 | `logo_height` | `number` oder `null` | `null` | Hohenbeschränkung fur Bildlogos (in Terminal-Zeilen) |
 | `logo_gap` | `number` oder `null` | `12` | Abstand zwischen dem Logo/Bild und dem Infotext (in Spalten) |
 | `logo_kitty` | `boolean` oder `null` | `true` (in Kitty) | Kitty natives Bildprotokoll verwenden (`true`) oder Half-Block-Rendering (`false`). Half-Block hat geringere Auflosung, vermeidet aber Layout-Probleme |
+| `logo_color` | `string` oder `null` | `null` | Farbe fur das ASCII-Logo: Name (`"Cyan"`), 256-Farben-Index (`"196"`) oder Hex-RGB (`"#FF0000"`) |
+| `logo_padding` | `number` oder `null` | `0` | Fuhrende Leerzeichen vor dem Logo |
+| `logo_type` | `string` oder `null` | `"auto"` | `"auto"` (nach Endung), `"ascii"` (Text erzwingen), `"image"` (Bild erzwingen) |
+| `show_keys` | `boolean` | `false` | Rendert `Schlussel: Wert` in den Icon-Layouts |
+| `key_width` | `number` oder `null` | auto | Fullt den Schlussel auf diese Spaltenbreite, um Werte auszurichten |
+| `labels` | `object` oder `null` | `{}` | Benennt den Schlussel einer Zeile pro Modul um; ein leerer String blendet den Schlussel aus |
+| `formats` | `object` oder `null` | `{}` | Wertvorlagen mit `{feld}`-Platzhaltern pro Modul |
 | `header_icons` | `array` oder `null` | `null` | Icons fur den oberen Rand (Pac-Man-Layout) |
 | `footer_text` | `string` oder `null` | `null` | Text fur den unteren Rand (Pac-Man-Layout) |
 | `disable_ip_fetching` | `boolean` | `false` | Abrufen der offentlichen IP aus Datenschutzgrunden deaktivieren |
 | `disable_cache` | `boolean` | `false` | Daten-Caching deaktivieren |
+| `os_wsl_style` | `string` | `"minimal"` | WSL-OS-Darstellung (nur Linux): `off` (einfacher Name), `minimal` (fugt `(WSL)` hinzu), `full` (fugt WSL-Version und WSLg hinzu) |
 | `logo_animation` | `object` oder `null` | `null` | Logo-Animationskonfiguration |
 | `info_plugins` | `array` | `[]` | Liste der auszufuhrenden Info-Plugins |
 | `config_providers` | `array` | `[]` | Liste der Konfigurations-Provider-Erweiterungen, die nach der Themenzusammenfuhrung ausgefuhrt werden |
@@ -95,13 +103,6 @@ JSONC erweitert standard JSON um C-Style (`//`) und C++-Style (`/* */`) Kommenta
 | `daemon_live_refresh` | `number` oder `null` | (plattformabhangig) | Aktualisierungsintervall des Live-Daemons in Sekunden |
 | `daemon_live_modules` | `array` oder `null` | (plattformabhangig) | Vom Live-Daemon angezeigte Module |
 | `daemon_live_reload` | `boolean` | `false` | Hot-Reload der Konfiguration im Live-Daemon-Modus |
-| `os_wsl_style` | `string` | `"minimal"` | WSL-Erkennungsstil: `off`, `minimal` oder `full` |
-| `logo_color` | `string` oder `null` | `null` | Farbe fur ASCII-Logos (Name, Hex oder RGB) |
-| `logo_colors` | `array` oder `null` | `null` | Farben pro Zeile fur ASCII-Logos (`Zeile i` verwendet `logo_colors[i % len]`) |
-| `logo_padding` | `number` | `0` | Abstand um das Logo |
-| `logo_type` | `string` | `"auto"` | Logo-Typ: `auto`, `ascii` oder `image` |
-| `show_keys` | `boolean` | `false` | Modulbeschriftungen anzeigen (`key: value`) |
-| `key_width` | `number` | `auto` | Feste Breite fur Schlusselbeschriftungen, richtet Werte aus |
 | `custom_x` | `object` oder `null` | `null` | Rahmenvorlagen fur das `custom-x`-Layout |
 | `effects` | `object`, `array` oder `null` | `null` | Intro-Effekte, die auf die Inhaltszeilen angewendet werden |
 
@@ -216,13 +217,8 @@ Farben bilden Modulnamen auf ANSI-Farbnamen ab:
 | `Cyan` | 36 |
 | `White` | 37 |
 | `Grey` oder `Gray` | 90 |
-| `DarkGrey` oder `DarkGray` | 90 |
-| `DarkRed` | 31 |
-| `DarkGreen` | 32 |
-| `DarkYellow` | 33 |
-| `DarkBlue` | 34 |
-| `DarkMagenta` | 35 |
-| `DarkCyan` | 36 |
+
+Farbnamen sind unabhängig von der Groß-/Kleinschreibung. Auch 256-Farben-Indizes (`"196"`) und Hex-RGB (`"#FF0000"`) werden akzeptiert.
 
 ### Palettenstile
 
@@ -234,8 +230,6 @@ Das Modul `palette` zeigt ein Farbmuster an. Verfugbare Stile:
 | `"circles"` | Vordergrundfarbkreise |
 | `"triangles"` | Vordergrundfarbdreiecke |
 | `"lines"` | Dicke horizontale Farbbalken |
-| `"dots"` | Kleine Punktsymbole |
-| `"dots"` | Kleine Punktsymbole |
 
 ### Animationskonfiguration
 

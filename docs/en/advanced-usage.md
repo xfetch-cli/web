@@ -131,6 +131,8 @@ xfetch --daemon-stop # stop it
 
 The animation only runs in TTY terminals; on pipes or redirects the static logo is shown. Daemon mode requires a `logo_animation` block with a plugin (e.g. `animate-logo`). In daemon mode the animation loops indefinitely — `duration_ms` and `loop` are ignored. To play a finite animation that stops on its own, keep daemon mode off.
 
+> **Note:** Both the animated daemon and the live stats daemon are **Unix-only** (Linux/macOS). On Windows they are not supported and print an error message.
+
 ### Live Stats Daemon
 
 The live stats daemon (`daemon_live`) pins a fetch block at the top of the terminal and re-probes a lightweight module subset every `daemon_live_refresh` seconds. It is a sibling of the animated daemon above — the existing animated daemon is untouched. Config keys: `daemon_live`, `daemon_live_refresh`, `daemon_live_modules`, `daemon_live_reload` (hot-reload the config and the active theme).
@@ -160,6 +162,18 @@ xfetch effects install <name>   # install an effect
 xfetch effects list             # list installed effects
 xfetch effects remove <name>    # remove an effect
 ```
+
+```jsonc
+{
+    "effects": {
+        "plugin": "decrypt",
+        "duration_ms": 1500,
+        "fps": 30
+    }
+}
+```
+
+See the [Effects](effects.md) page for the full protocol, configuration fields, and how to write custom effects.
 
 ## Performance Optimization
 
