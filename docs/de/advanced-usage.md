@@ -148,8 +148,8 @@ Unter dem Windows-Subsystem fur Linux kann die OS-Zeile uber `os_wsl_style` (nur
 | Wert | Verhalten |
 |-------|----------|
 | `off` | Schlichter OS-Name, keine Dekoration |
-| `minimal` | Fgt `(WSL)` an (Standard) |
-| `full` | Fgt die WSL-Version und WSLg (falls vorhanden) an |
+| `minimal` | Fügt `(WSL)` an (Standard) |
+| `full` | Fügt die WSL-Version und WSLg (falls vorhanden) an |
 
 ## Intro-Effekte
 

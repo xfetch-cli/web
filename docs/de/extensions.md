@@ -1,14 +1,14 @@
 # Erweiterungen
 
-Erweiterungen sind eigenständige Binardateien, die in den xfetch-Lebenszyklus auf Konfigurationsebene eingreifen. Anders als Plugins (die Infozeilen bereitstellen oder Logos animieren), empfangen Erweiterungen die vollständig aufgelöste Konfiguration uber stdin, modifizieren sie und geben eine modifizierte Version uber stdout zuruck.
+Erweiterungen sind eigenständige Binardateien, die in den xfetch-Lebenszyklus auf Konfigurationsebene eingreifen. Anders als Plugins (die Infozeilen bereitstellen oder Logos animieren), empfangen Erweiterungen die vollständig aufgelöste Konfiguration über stdin, modifizieren sie und geben eine modifizierte Version über stdout zurück.
 
 ## Architektur
 
 ```
 xfetch core
   │
-  ├─ Ladt config.jsonc
-  ├─ Fugt Thema zusammen (falls gesetzt)
+  ├─ Lädt config.jsonc
+  ├─ Fügt Thema zusammen (falls gesetzt)
   │
   ├─ extension-1 (stdin/stdout JSON)  ← modifiziert Konfiguration
   ├─ extension-2 (stdin/stdout JSON)  ← modifiziert Konfiguration
@@ -30,7 +30,7 @@ cp xfetch-extension-<name> ~/.config/xfetch/extensions/
 Oder per CLI:
 
 ```bash
-xfetch extension install ./pfad/zum/binar
+xfetch extension install ./path/to/extension-binary
 xfetch extension list
 xfetch extension remove <name>
 ```
@@ -39,7 +39,7 @@ Erweiterungsbinardateien folgen der Namenskonvention `xfetch-extension-<name>` (
 
 ## Konfiguration
 
-Fugen Sie Erweiterungen uber das Feld `config_providers` zu Ihrer Konfiguration hinzu:
+Fügen Sie Erweiterungen über das Feld `config_providers` zu Ihrer Konfiguration hinzu:
 
 ```jsonc
 {
@@ -64,12 +64,12 @@ Fugen Sie Erweiterungen uber das Feld `config_providers` zu Ihrer Konfiguration 
 | Feld | Typ | Beschreibung |
 |-------|------|-------------|
 | `extension` | `string` | Erweiterungsname (Binardatei: `xfetch-extension-<name>`) |
-| `args` | `object` oder `null` | Beliebige JSON-Argumente, die an die Erweiterung ubergeben werden |
-| `timeout_secs` | `number` oder `null` | Optionale Zeituberschreitung in Sekunden fur die Erweiterung |
+| `args` | `object` oder `null` | Beliebige JSON-Argumente, die an die Erweiterung übergeben werden |
+| `timeout_secs` | `number` oder `null` | Optionale Zeitüberschreitung in Sekunden fur die Erweiterung |
 
 ## Protokoll
 
-Erweiterungen kommunizieren uber stdin/stdout mit dem JSON-Protokoll, das in `xfetch-extension-api` definiert ist.
+Erweiterungen kommunizieren über stdin/stdout mit dem JSON-Protokoll, das in `xfetch-extension-api` definiert ist.
 
 ### Anfrage (stdin)
 
@@ -88,7 +88,7 @@ Erweiterungen kommunizieren uber stdin/stdout mit dem JSON-Protokoll, das in `xf
 }
 ```
 
-Das Feld `config` enthalt die vollstandig aufgeloste xfetch-Konfiguration nach Zusammenfuhrung von Standardwerten, Konfigurationsdatei und ggf. Thema.
+Das Feld `config` enthält die vollständig aufgelöste xfetch-Konfiguration nach Zusammenführung von Standardwerten, Konfigurationsdatei und ggf. Thema.
 
 ### Antwort (stdout)
 
@@ -102,17 +102,17 @@ Das Feld `config` enthalt die vollstandig aufgeloste xfetch-Konfiguration nach Z
 }
 ```
 
-Die Erweiterung gibt die gesamte modifizierte Konfiguration zuruck. Unveranderte Felder sollten unverandert erhalten bleiben.
+Die Erweiterung gibt die gesamte modifizierte Konfiguration zurück. Unveränderte Felder sollten unverandert erhalten bleiben.
 
 ### Fehlerbehandlung
 
-Fehler sollten auf stderr ausgegeben werden. Der Prozess sollte mit einem Status ungleich null beendet werden. xfetch uberspringt die Erweiterung und fahrt mit der aktuellen Konfiguration fort, wenn ein Fehler auftritt.
+Fehler sollten auf stderr ausgegeben werden. Der Prozess sollte mit einem Status ungleich null beendet werden. xfetch überspringt die Erweiterung und fahrt mit der aktuellen Konfiguration fort, wenn ein Fehler auftritt.
 
 ## Verfugbare Erweiterungen
 
 | Erweiterung | Beschreibung |
 |-----------|-------------|
-| [config-roulette](extensions/config-roulette) | Wahlt eine zufallige (oder tagliche) Konfiguration aus einer Liste von Pfaden |
+| [config-roulette](extensions/config-roulette) | Wählt eine zufällige (oder tägliche) Konfiguration aus einer Liste von Pfaden |
 | [layout-override](extensions/layout-override) | Uberschreibt das Layout und/oder die Module beim Laden der Konfiguration |
 
 ## Verzeichnisse
@@ -120,7 +120,7 @@ Fehler sollten auf stderr ausgegeben werden. Der Prozess sollte mit einem Status
 | Plattform | Erweiterungspfad |
 |----------|----------------|
 | Linux | `~/.config/xfetch/extensions/` |
-| macOS | `~/Library/Application Support/xfetch/extensions/` |
+| macOS | `~/.config/xfetch/extensions/` |
 | Windows | `%APPDATA%\xfetch\extensions\` |
 
 ## Eigene Erweiterungen schreiben

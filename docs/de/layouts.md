@@ -18,7 +18,7 @@ xfetch unterstutzt mehrere visuelle Layouts zur Anzeige von Systeminformationen.
 | `"dots"` | Klassisch mit `...`-Trennern alle 3 Elemente |
 | `"bottom_line"` | Klassisch mit einer `---`-Linie am unteren Rand |
 | `"compact"` | Minimale Ausgabe ohne Rander oder Trennzeichen |
-| `"minimal"` | Reines `Schlussel: Wert`-Format, keine Icons oder Farben |
+| `"minimal"` | Reines `key: value`-Format, keine Icons oder Farben |
 | `"horizontal"` | Logo oberhalb des Inhalts (vertikal gestapelt) |
 | `"bottom"` | Inhalt oberhalb des Logos (vertikal gestapelt) |
 
@@ -45,7 +45,7 @@ Dies ist die Standardeinstellung, wenn kein Feld `layout` angegeben ist oder wen
 
 ## Abschnitts-Layout
 
-Gruppiert Module unter titelierten Abschnitten. Verwendet `------ Titel ------`-Uberschriften undruckt Inhalte mit einem senkrechten Strich.
+Gruppiert Module unter titelierten Abschnitten. Verwendet `------ Title ------`-Uberschriften und rückt Inhalte ein mit einem senkrechten Strich.
 
 ```
 ------ Hardware ------

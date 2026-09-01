@@ -2,7 +2,7 @@
 
 Una herramienta de obtención de información del sistema multiplataforma escrita en Rust.
 
-- **Versión:** 0.2.0
+- **Versión:** 0.8.0
 - **Licencia:** MIT
 - **Autor:** xscriptor
 - **Repositorio:** github.com/xfetch-cli/xfetch
@@ -60,6 +60,12 @@ Una herramienta de obtención de información del sistema multiplataforma escrit
      - user-info
      - display-resolution
      - theme-detection
+     - chocolatey
+     - temperature
+     - theme-manager
+     - chocolatey
+     - temperature
+     - theme-manager
    - Escritura de plugins personalizados
    - Crate de API para plugins
 

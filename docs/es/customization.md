@@ -99,7 +99,7 @@ El cálculo automático del ancho escala con su terminal: terminales más anchos
 
 | Campo | Predeterminado | Descripción |
 |-------|----------------|-------------|
-| `logo_color` | Auto | Color para logos ASCII (nombre, hex o RGB) |
+| `logo_color` | none | Color para logos ASCII (nombre, hex o RGB) |
 | `logo_colors` | Auto | Colores por fila para logos ASCII (array; `la fila i` usa `logo_colors[i % len]`) |
 | `logo_padding` | 0 | Relleno alrededor del logo |
 | `logo_type` | Auto | Tipo de logo: `auto`, `ascii` o `image` |
@@ -295,6 +295,7 @@ El módulo `palette` renderiza una muestra de color ANSI. El estilo se controla 
 | `circles` | Símbolos de círculo coloreados |
 | `triangles` | Símbolos de triángulo coloreados |
 | `lines` | Barras de color horizontales gruesas |
+| `dots` | Símbolos de puntos pequeños |
 
 La paleta muestra 8 colores que coinciden con la paleta ANSI estándar: Black, Red, Green, Yellow, Blue, Magenta, Cyan, White.
 

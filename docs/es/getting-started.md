@@ -56,6 +56,30 @@ git clone https://aur.archlinux.org/xfetch-git.git
 cd xfetch-git
 makepkg -si
 ```
+### Gestores de Paquetes
+
+xfetch está disponible mediante Homebrew:
+
+```bash
+brew tap xfetch-cli/tap
+brew install xfetch
+```
+
+Desde crates.io:
+
+```bash
+cargo install xfetch-cli
+```
+
+Desde el PKGBUILD del repositorio:
+
+```bash
+git clone https://github.com/xfetch-cli/xfetch.git
+cd xfetch
+makepkg -si
+```
+
+
 
 ## Primera Ejecución
 
@@ -89,7 +113,7 @@ __  __                               OS: Arch Linux x86_64
 |---------|-------------|
 | `-c, --config <RUTA>` | Ruta a un archivo de configuración personalizado (formato JSONC) |
 | `--gen-config` | Generar un archivo de configuración predeterminado en la ruta de configuración estándar |
-| `--layout <nombre>` | Diseño a usar con `--gen-config` (predeterminado: `pacman`) |
+| `--layout <nombre>` | Diseño a usar con `--gen-config` (predeterminado: `section`) |
 | `--logo <id>` | Id del logo (ej., `arch`, `windows-11`) a usar con `--gen-config` (requiere acceso de red al catálogo de logos) |
 | `--clean-cache` | Limpiar la base de datos de caché |
 | `--benchmark` | Mostrar información de tiempo para sondeos paralelos |

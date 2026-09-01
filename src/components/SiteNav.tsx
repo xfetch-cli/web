@@ -10,6 +10,7 @@ const linksLeft: NavLinkItem[] = [
   { url: `${base}/#terminal`, title: "Demo" },
   { url: `${base}/#install`, title: "Install" },
   { url: `${base}/#layouts`, title: "Layouts" },
+  { url: `${base}/previews`, title: "Previews" },
 ];
 
 const linksRight: NavLinkItem[] = [

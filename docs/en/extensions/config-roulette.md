@@ -5,7 +5,7 @@ Picks a random (or daily) configuration from a list of paths and loads it. Every
 ## Installation
 
 ```bash
-cp xfetch-extension-config-roulette ~/.config/xfetch/extensions/
+cp target/release/xfetch-extension-config-roulette ~/.config/xfetch/extensions/
 ```
 
 Or via CLI:
@@ -61,4 +61,4 @@ Each route points to a complete xfetch config file. The `_name` field is optiona
 - See a different visual style every time you open a terminal
 - Test all your configs automatically without running them manually
 - Daily themes — same look all day, new look tomorrow
-- Rotate through hundreds of configs from a collection
+- Rotate through 300+ configs from the test suite

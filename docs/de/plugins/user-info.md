@@ -28,8 +28,8 @@ Zeigt Benutzerkontoinformationen an.
 
 | # | Zeile |
 |---|-------|
-| 1 | ` Vollständiger Name (benutzername)` |
+| 1 | ` Full Name (username)` |
 | 2 | `   uid: N  gid: N` |
-| 3 | `   /home/benutzer` |
+| 3 | `   /home/user` |
 | 4 | `   shell` |
-| 5 (falls Gruppen) | `   Gruppen: wheel, users, docker` |
+| 5 (falls Gruppen) | `   groups: wheel, users, docker` |

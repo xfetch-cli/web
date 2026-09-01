@@ -56,6 +56,30 @@ git clone https://aur.archlinux.org/xfetch-git.git
 cd xfetch-git
 makepkg -si
 ```
+### Package Managers
+
+xfetch is available through Homebrew:
+
+```bash
+brew tap xfetch-cli/tap
+brew install xfetch
+```
+
+From crates.io:
+
+```bash
+cargo install xfetch-cli
+```
+
+From the repository PKGBUILD:
+
+```bash
+git clone https://github.com/xfetch-cli/xfetch.git
+cd xfetch
+makepkg -si
+```
+
+
 
 ## First Run
 
@@ -89,7 +113,7 @@ __  __                               OS: Arch Linux x86_64
 |------|-------------|
 | `-c, --config <PATH>` | Path to a custom configuration file (JSONC format) |
 | `--gen-config` | Generate a default configuration file at the standard config path |
-| `--layout <name>` | Layout to use with `--gen-config` (default: `pacman`) |
+| `--layout <name>` | Layout to use with `--gen-config` (default: `section`) |
 | `--logo <id>` | Logo id (e.g. `arch`, `windows-11`) to use with `--gen-config` (requires network access to the logos catalog) |
 | `--clean-cache` | Clear the cache database |
 | `--benchmark` | Print timing information for parallel probes |

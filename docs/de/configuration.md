@@ -77,7 +77,7 @@ JSONC erweitert standard JSON um C-Style (`//`) und C++-Style (`/* */`) Kommenta
 | `palette_style` | `string` | `"squares"` | Paletten-Anzeigestil |
 | `logo_path` | `string` oder `null` | `null` | Pfad zu einer benutzerdefinierten Logodatei |
 | `ascii` | `string` oder `null` | `null` | Pfad zu einer ASCII-Kunst-Datei (Alternative zu logo_path) |
-| `logo_width` | `number` oder `null` | `null` | Breitenbeschränkung fur Bildlogos (in Terminal-Spalten, automatisch berechnet wenn nicht gesetzt) |
+| `logo_width` | `number` oder `null` | `auto` (28% der Terminalbreite, begrenzt 12-42) | Breitenbeschränkung fur Bildlogos (in Terminal-Spalten, automatisch berechnet wenn nicht gesetzt) |
 | `logo_height` | `number` oder `null` | `null` | Hohenbeschränkung fur Bildlogos (in Terminal-Zeilen) |
 | `logo_gap` | `number` oder `null` | `12` | Abstand zwischen dem Logo/Bild und dem Infotext (in Spalten) |
 | `logo_kitty` | `boolean` oder `null` | `true` (in Kitty) | Kitty natives Bildprotokoll verwenden (`true`) oder Half-Block-Rendering (`false`). Half-Block hat geringere Auflosung, vermeidet aber Layout-Probleme |
@@ -90,18 +90,18 @@ JSONC erweitert standard JSON um C-Style (`//`) und C++-Style (`/* */`) Kommenta
 | `config_providers` | `array` | `[]` | Liste der Konfigurations-Provider-Erweiterungen, die nach der Themenzusammenfuhrung ausgefuhrt werden |
 | `theme` | `string` oder `null` | `null` | Theme-Name zum Anwenden (nur visuelle Felder) |
 | `daemon` | `boolean` | `false` | Im animierten Daemon-Modus ausfuhren (fixiert den Fetch am oberen Terminalrand) |
-| `daemon_min_rows` | `number` oder `null` | `null` | Mindestterminalzeilen fur den animierten Daemon |
+| `daemon_min_rows` | `number` | `6` | Mindestterminalzeilen fur den animierten Daemon |
 | `daemon_live` | `boolean` | `false` | Live-Statistikblock am oberen Terminalrand fixieren und Module periodisch neu abfragen |
 | `daemon_live_refresh` | `number` oder `null` | (plattformabhangig) | Aktualisierungsintervall des Live-Daemons in Sekunden |
 | `daemon_live_modules` | `array` oder `null` | (plattformabhangig) | Vom Live-Daemon angezeigte Module |
 | `daemon_live_reload` | `boolean` | `false` | Hot-Reload der Konfiguration im Live-Daemon-Modus |
-| `os_wsl_style` | `string` oder `null` | `null` | WSL-Erkennungsstil: `off`, `minimal` oder `full` |
+| `os_wsl_style` | `string` | `"minimal"` | WSL-Erkennungsstil: `off`, `minimal` oder `full` |
 | `logo_color` | `string` oder `null` | `null` | Farbe fur ASCII-Logos (Name, Hex oder RGB) |
 | `logo_colors` | `array` oder `null` | `null` | Farben pro Zeile fur ASCII-Logos (`Zeile i` verwendet `logo_colors[i % len]`) |
 | `logo_padding` | `number` | `0` | Abstand um das Logo |
 | `logo_type` | `string` | `"auto"` | Logo-Typ: `auto`, `ascii` oder `image` |
-| `show_keys` | `boolean` | `false` | Modulbeschriftungen anzeigen (`Schlussel: Wert`) |
-| `key_width` | `number` oder `null` | `null` | Feste Breite fur Schlusselbeschriftungen, richtet Werte aus |
+| `show_keys` | `boolean` | `false` | Modulbeschriftungen anzeigen (`key: value`) |
+| `key_width` | `number` | `auto` | Feste Breite fur Schlusselbeschriftungen, richtet Werte aus |
 | `custom_x` | `object` oder `null` | `null` | Rahmenvorlagen fur das `custom-x`-Layout |
 | `effects` | `object`, `array` oder `null` | `null` | Intro-Effekte, die auf die Inhaltszeilen angewendet werden |
 
@@ -234,6 +234,8 @@ Das Modul `palette` zeigt ein Farbmuster an. Verfugbare Stile:
 | `"circles"` | Vordergrundfarbkreise |
 | `"triangles"` | Vordergrundfarbdreiecke |
 | `"lines"` | Dicke horizontale Farbbalken |
+| `"dots"` | Kleine Punktsymbole |
+| `"dots"` | Kleine Punktsymbole |
 
 ### Animationskonfiguration
 

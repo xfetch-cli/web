@@ -23,6 +23,6 @@ Keine.
 
 | Zustand | Ausgabe |
 |---------|---------|
-| Daemon läuft | ` Container: 15 gesamt`, `  ▶ 3 laufen`, `  ⏸ 1 pausiert`, `  ⏹ 11 gestoppt` |
-| Daemon läuft nicht | ` Docker: Daemon läuft nicht` |
-| CLI nicht gefunden | ` Docker: nicht gefunden` |
+| Daemon läuft | ` Containers: 15 total`, `  ▶ 3 running`, `  ⏸ 1 paused`, `  ⏹ 11 stopped` |
+| Daemon läuft nicht | ` Docker: daemon not running` |
+| CLI nicht gefunden | ` Docker: not found` |

@@ -120,7 +120,7 @@ Los errores deben imprimirse en stderr. El proceso debe salir con un código de 
 | Plataforma | Ruta de Extensiones |
 |------------|---------------------|
 | Linux | `~/.config/xfetch/extensions/` |
-| macOS | `~/Library/Application Support/xfetch/extensions/` |
+| macOS | `~/.config/xfetch/extensions/` |
 | Windows | `%APPDATA%\xfetch\extensions\` |
 
 ## Escribir Extensiones Personalizadas

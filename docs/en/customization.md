@@ -99,7 +99,7 @@ The auto-width calculation scales with your terminal: wider terminals get propor
 
 | Field | Default | Description |
 |-------|---------|-------------|
-| `logo_color` | Auto | Color for ASCII logos (name, hex, or RGB) |
+| `logo_color` | none | Color for ASCII logos (name, hex, or RGB) |
 | `logo_colors` | Auto | Per-row colors for ASCII logos (array; row `i` uses `logo_colors[i % len]`) |
 | `logo_padding` | 0 | Padding around the logo |
 | `logo_type` | Auto | Logo type: `auto`, `ascii`, or `image` |
@@ -295,6 +295,8 @@ The `palette` module renders an ANSI color swatch. The style is controlled by th
 | `circles` | Colored circle symbols |
 | `triangles` | Colored triangle symbols |
 | `lines` | Thick horizontal color bars |
+| `dots` | Small dot symbols |
+| `dots` | Small dot symbols |
 
 The palette displays 8 colors matching the ANSI standard palette: Black, Red, Green, Yellow, Blue, Magenta, Cyan, White.
 

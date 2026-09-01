@@ -79,7 +79,7 @@ Steuern Sie Bildabmessungen und Abstande mit diesen Feldern:
 
 ```jsonc
 {
-    "logo_path": "~/.config/xfetch/images/mein-bild.png",
+    "logo_path": "~/.config/xfetch/images/my-image.png",
     "logo_width": 30,
     "logo_height": null,
     "logo_gap": 5
@@ -98,7 +98,7 @@ Die automatische Breitenberechnung skaliert mit Ihrem Terminal: breitere Termina
 
 | Feld | Standard | Beschreibung |
 |-------|---------|-------------|
-| `logo_color` | Auto | Farbe fur ASCII-Logos (Name, Hex oder RGB) |
+| `logo_color` | none | Farbe fur ASCII-Logos (Name, Hex oder RGB) |
 | `logo_colors` | Auto | Farben pro Zeile fur ASCII-Logos (Array; `Zeile i` verwendet `logo_colors[i % len]`) |
 | `logo_padding` | 0 | Abstand um das Logo |
 | `logo_type` | Auto | Logo-Typ: `auto`, `ascii` oder `image` |
@@ -294,6 +294,7 @@ Das Modul `palette` rendert ein ANSI-Farbmuster. Der Stil wird durch das Feld `p
 | `circles` | Farbige Kreissymbole |
 | `triangles` | Farbige Dreiecksymbole |
 | `lines` | Dicke horizontale Farbbalken |
+| `dots` | Kleine Punktsymbole |
 
 Die Palette zeigt 8 Farben entsprechend der ANSI-Standardpalette: Schwarz, Rot, Grun, Gelb, Blau, Magenta, Cyan, Wei.
 
@@ -359,7 +360,7 @@ Befindlich in `configs/xfetch/presets/layouts/`:
 
 ```bash
 # Mit einem bestimmten Preset ausfuhren
-xfetch --config /pfad/zu/presets/showcase/arch_compact_cyan.jsonc
+xfetch --config /path/to/presets/showcase/arch_compact_cyan.jsonc
 ```
 
 Oder kopieren Sie ein Preset, um es als Standard zu verwenden:
