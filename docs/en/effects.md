@@ -133,6 +133,13 @@ Effects must write errors to stderr and exit with a non-zero status code. xfetch
 | `decrypt` | Reveals each line from scrambled glyphs to its real text (smooth decode). Defaults: `duration_ms` 1500, `fps` 30. |
 | `glitch` | Stuttery scrambled flicker with corruption bursts, horizontal slices and dropped rows. Defaults: `duration_ms` 800, `fps` 30. Keeps ANSI escape sequences intact. |
 
+### WebAssembly Effects
+
+`wasm-matrix` (Rust) and `wasm-python-pulse` (Python component) are
+WebAssembly effects that produce frames exactly like the native ones; their
+manifests declare the runtime limits. See the WebAssembly guests reference in
+the xfetch repository (`docs/WASM.md`).
+
 ## Writing Custom Effects
 
 ### Binary Naming Convention

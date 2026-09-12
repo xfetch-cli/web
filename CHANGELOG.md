@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-09-12 — weather docs glyphs
+
+- Replaced the emoji condition icons in the weather plugin docs (English, Spanish and German) with the Nerd Font glyphs the plugin actually renders (U+E30D, U+E302, U+E315, U+E318, U+E31A, U+E376, U+E312).
+
 ## 2026-08-20 — v0.7.0 documentation sync
 
 - Docs updated to match **xfetch v0.7.0** across English, Spanish and German:

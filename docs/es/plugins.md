@@ -161,6 +161,24 @@ Cada plugin tiene su propia página de referencia con detalles completos de conf
 | [chocolatey](plugins/chocolatey) | `info_provider` | Conteo de paquetes de Chocolatey (Windows) |
 | [temperature](plugins/temperature) | `info_provider` | Temperatura de CPU/SoC desde las zonas térmicas del kernel |
 
+### Plugins WebAssembly
+
+Los siguientes plugins de referencia están compilados a WebAssembly y se
+ejecutan en un sandbox con capacidades declaradas en su manifiesto:
+
+| Plugin | Lenguaje | Descripción |
+|--------|----------|-------------|
+| `wasm-crypto` | Rust | Precios de criptomonedas mediante la API de Coinbase permitida |
+| `wasm-ip-geo` | Componente Python | IP pública, ubicación, red y zona horaria vía ipapi.co |
+| `wasm-pacman` | Go | Paquetes de repositorio y AUR mediante `pacman` permitido |
+| `wasm-proc` | C | Carga media, uptime y memoria desde `/proc` en solo lectura |
+
+Los invitados wasm reutilizan el mismo protocolo JSON y admiten llamadas al
+host (HTTP, procesos, archivos, entorno) y límites por invitado. Consulta la
+referencia de invitados WebAssembly en el repositorio xfetch
+(`docs/WASM.md`) para el esquema del manifiesto y las herramientas
+`xfetch wasm`.
+
 ## Escritura de Plugins Personalizados
 
 ### Convención de Nomenclatura de Binarios
@@ -231,7 +249,7 @@ El crate `xfetch-plugin-api` (fuente en `github.com/xfetch-cli/api`) proporciona
 - **Ayudantes de tiempo de espera:** `with_timeout()` y el error `TimedOut` — ejecutan el trabajo del plugin bajo un presupuesto de tiempo y responden con elegancia cuando se agota
 - **Tipos de error:** Enum `PluginApiError` con variantes Io, Serialize, Deserialize, InvalidProtocolVersion, InvalidPluginKind, InvalidArgs, EmptyAnimationFrames
 
-La clave de configuración opcional `timeout_secs` aplica a `info_plugins`, `logo_animation` y `config_providers` como red de seguridad en segundos: el núcleo mata el proceso del plugin si tarda más, mientras que el presupuesto `with_timeout` propio del plugin es el control principal.
+La clave de configuración opcional `timeout_secs` aplica a `info_plugins`, `logo_animation` y `config_providers` como red de seguridad en segúndos: el núcleo mata el proceso del plugin si tarda más, mientras que el presupuesto `with_timeout` propio del plugin es el control principal.
 
 ### Directrices
 

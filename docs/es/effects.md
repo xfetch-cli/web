@@ -73,10 +73,10 @@ Varios efectos se reproducen uno tras otro:
 |-------|------|-------------|
 | `plugin` | `string` | Nombre del efecto (instalado como `xfetch-effect-<nombre>`) |
 | `style` | `string` o `null` | Sugerencia de estilo específica del efecto |
-| `duration_ms` | `number` o `null` | Duración total de la animación en milisegundos |
-| `fps` | `number` o `null` | Frames por segundo |
+| `duration_ms` | `number` o `null` | Duración total de la animación en milisegúndos |
+| `fps` | `number` o `null` | Frames por segúndo |
 | `args` | `object` o `null` | Argumentos libres específicos del efecto |
-| `timeout_secs` | `number` o `null` | Red de seguridad en segundos: el núcleo termina el proceso del efecto si tarda más |
+| `timeout_secs` | `number` o `null` | Red de seguridad en segúndos: el núcleo termina el proceso del efecto si tarda más |
 
 ## Protocolo JSON wire
 
@@ -132,6 +132,13 @@ Los efectos deben escribir los errores en stderr y salir con un código de estad
 |--------|-------------|
 | `decrypt` | Revela cada línea desde glifos codificados hasta su texto real (decodificación suave). Valores por defecto: `duration_ms` 1500, `fps` 30. |
 | `glitch` | Parpadeo codificado entrecortado con ráfagas de corrupción, franjas horizontales y filas caídas. Valores por defecto: `duration_ms` 800, `fps` 30. Mantiene intactas las secuencias de escape ANSI. |
+
+### Efectos WebAssembly
+
+`wasm-matrix` (Rust) y `wasm-python-pulse` (componente Python) son efectos
+WebAssembly que generan fotogramas igual que los nativos; sus manifiestos
+declaran los limites de ejecución. Consulta la referencia de invitados
+WebAssembly en el repositorio xfetch (`docs/WASM.md`).
 
 ## Escritura de Efectos Personalizados
 

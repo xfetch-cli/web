@@ -115,6 +115,14 @@ Fehler sollten auf stderr ausgegeben werden. Der Prozess sollte mit einem Status
 | [config-roulette](extensions/config-roulette) | Wählt eine zufällige (oder tägliche) Konfiguration aus einer Liste von Pfaden |
 | [layout-override](extensions/layout-override) | Uberschreibt das Layout und/oder die Module beim Laden der Konfiguration |
 
+### WebAssembly-Erweiterungen
+
+| Erweiterung | Sprache | Beschreibung |
+|-------------|---------|--------------|
+| `wasm-night-mode` | Rust | Deaktiviert Farben ausserhalb des Tagesfensters |
+| `wasm-updates-footer` | Go | Hängt die Anzahl ausstehender Updates an die Fusszeile an |
+| `wasm-lang-labels` | Python-Komponente | Übersetzt Modul-Labels anhand von `LANG`/`LC_ALL` |
+
 ## Verzeichnisse
 
 | Plattform | Erweiterungspfad |

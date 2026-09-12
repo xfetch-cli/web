@@ -1,6 +1,17 @@
 # Anderungsprotokoll
 # Anderungsprotokoll
 
+## v0.9.0 · WebAssembly-Gaeste, Host-Aufrufe und nützliche Beispiele · 2026-09-12
+
+- **Sandboxed WebAssembly Runtime:** Plugins, Effekte und Erweiterungen können `.wasm`-Artefakte (Core-Module und Komponenten) sein, ausgeführt von wasmtime mit im Manifest deklarierten, standardmäßig verweigerten Fähigkeiten (HTTP, Exec, Dateisystem, Umgebung) und Limits für Zeit, Speicher und Ausgabe
+- **Dasselbe Protokoll:** Core-Module behalten den JSON-Vertrag über stdin/stdout; Komponenten exportieren `run` aus der WIT-Welt `xfetch:runtime` mit typisierten Host-Imports
+- **Werkzeuge:** `xfetch wasm inspect`, `xfetch wasm run` und `xfetch wasm wit`; die Installer akzeptieren vorgebaute Artefakte, `build`-Befehle, `artifact_url` oder direkte URLs
+- **Neues Crate `xfetch-guest-api`** für Rust-Core-Gäste und wasm-kompatibles `with_timeout` in allen API-Crates
+- **Nuetzliche Beispiele in vier Sprachen:** Krypto-Preise, IP-Geolokation, Pacman-Paketzahlen und `/proc`-Werte, dazu die Erweiterungen Nachtmodus, Update-Fusszeile und lokalisierte Labels
+- Der `swap`-Glyph generierter Konfigurationen wurde korrigiert und restliche Emojis aus Presets und Wetter-Dokumentation entfernt
+- Gast-Logs werden standardmäßig gefiltert (nur `warn`/`error` werden gezeigt); `XFETCH_WASM_LOG_LEVEL` (`off`..`debug`) steuert die Schwelle
+- 195 Tests plus CLI-End-to-End-Wasm-Tests, clippy sauber
+
 ## v0.8.0 · Crates.io-Installation, schlankere Abhängigkeiten und HTTPS-Public-IP · 2026-08-21
 
 - **crates.io:** `cargo install xfetch-cli` wird jetzt unterstützt

@@ -192,6 +192,7 @@ xfetch plugin remove docker
 | `XFETCH_PLUGIN_DEV_DIR` | Sobrescribir la ruta de búsqueda del directorio de desarrollo de plugins |
 | `XFETCH_LOGOS_URL` | Sobrescribir la URL del catálogo de logos (usada por `--logo` con `--gen-config`) |
 | `XFETCH_EFFECT_REPO` | Sobrescribir la URL del repositorio git de efectos |
+| `XFETCH_WASM_LOG_LEVEL` | Umbral de logs de invitados WebAssembly: `off`, `error`, `warn` (por defecto), `info`, `debug` |
 | `CARGO_NET_GIT_FETCH_WITH_CLI` | Usar git CLI para la obtención (se establece automáticamente durante la instalación de plugins) |
 
 ## Desinstalación

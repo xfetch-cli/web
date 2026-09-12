@@ -161,6 +161,23 @@ Each plugin has its own reference page with full configuration details, argument
 | [chocolatey](plugins/chocolatey) | `info_provider` | Chocolatey package count (Windows) |
 | [temperature](plugins/temperature) | `info_provider` | CPU/SoC temperature from kernel thermal zones |
 
+### WebAssembly Plugins
+
+The following reference plugins are compiled to WebAssembly and run in a
+sandbox with capabilities declared in their manifest:
+
+| Plugin | Language | Description |
+|--------|----------|-------------|
+| `wasm-crypto` | Rust | Crypto spot prices through the allowlisted Coinbase API |
+| `wasm-ip-geo` | Python component | Public IP, location, network and timezone via ipapi.co |
+| `wasm-pacman` | Go | Repository and AUR package counts through allowlisted `pacman` |
+| `wasm-proc` | C | Load average, uptime and memory from a read-only `/proc` |
+
+Wasm guests reuse the same JSON protocol and support host calls (HTTP,
+processes, files, environment) plus per-guest limits. See the WebAssembly
+guests reference in the xfetch repository (`docs/WASM.md`) for the manifest
+schema and the `xfetch wasm` tooling.
+
 ## Writing Custom Plugins
 
 ### Binary Naming Convention

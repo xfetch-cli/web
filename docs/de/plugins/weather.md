@@ -33,8 +33,8 @@ Zeigt aktuelle Wetterbedingungen via wttr.in an.
 
 | Zustand | Ausgabe |
 |---------|---------|
-| Wetter abgerufen | `☀ +15°C Clear` / `   Humidity: 60%` / `   Wind: ↑15 km/h` / `   Precipitation: 0%` |
+| Wetter abgerufen | ` +15°C Clear` / `   Humidity: 60%` / `   Wind: ↑15 km/h` / `   Precipitation: 0%` |
 | Netzwerkfehler | ` Weather: could not fetch` |
 | Keine Daten | ` Weather: no data` |
 
-Icons werden automatisch basierend auf der Bedingung ausgewählt: Clear/Sunny (`☀`), Cloudy (`☁`), Rain (`🌧`), Snow (`❄️`), Thunder (`⛈`), Fog (`🌫`), Partly (`⛅`).
+Icons werden automatisch basierend auf der Bedingung ausgewählt: Clear/Sunny (``), Cloudy (``), Rain (``), Snow (``), Thunder (``), Fog (``), Partly (``).

@@ -192,6 +192,7 @@ xfetch plugin remove docker
 | `XFETCH_PLUGIN_DEV_DIR` | Override the plugin development directory search path |
 | `XFETCH_LOGOS_URL` | Override the logos catalog URL (used by `--logo` with `--gen-config`) |
 | `XFETCH_EFFECT_REPO` | Override the effects git repository URL |
+| `XFETCH_WASM_LOG_LEVEL` | WebAssembly guest log threshold: `off`, `error`, `warn` (default), `info`, `debug` |
 | `CARGO_NET_GIT_FETCH_WITH_CLI` | Use git CLI for fetching (set automatically during plugin install) |
 
 ## Uninstallation

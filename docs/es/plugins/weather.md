@@ -33,8 +33,8 @@ Muestra las condiciones climáticas actuales vía wttr.in.
 
 | Estado | Salida |
 |--------|--------|
-| Clima obtenido | `☀ +15°C Clear` / `   Humidity: 60%` / `   Wind: ↑15 km/h` / `   Precipitation: 0%` |
+| Clima obtenido | ` +15°C Clear` / `   Humidity: 60%` / `   Wind: ↑15 km/h` / `   Precipitation: 0%` |
 | Error de red | ` Weather: could not fetch` |
 | Sin datos | ` Weather: no data` |
 
-Los iconos se seleccionan automáticamente según la condición: Clear/Sunny (`☀`), Cloudy (`☁`), Rain (`🌧`), Snow (`❄️`), Thunder (`⛈`), Fog (`🌫`), Partly (`⛅`).
+Los iconos se seleccionan automáticamente según la condición: Clear/Sunny (``), Cloudy (``), Rain (``), Snow (``), Thunder (``), Fog (``), Partly (``).

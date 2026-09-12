@@ -115,6 +115,14 @@ Errors should be printed to stderr. The process should exit with a non-zero stat
 | [config-roulette](extensions/config-roulette) | Picks a random (or daily) config from a list of paths |
 | [layout-override](extensions/layout-override) | Overrides the layout and/or modules at config load time |
 
+### WebAssembly Extensions
+
+| Extension | Language | Description |
+|-----------|----------|-------------|
+| `wasm-night-mode` | Rust | Disables colors outside the daytime window |
+| `wasm-updates-footer` | Go | Appends the pending package-update count to the footer |
+| `wasm-lang-labels` | Python component | Localizes module labels from `LANG`/`LC_ALL` |
+
 ## Directories
 
 | Platform | Extensions Path |
