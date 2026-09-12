@@ -33,8 +33,8 @@ Displays current weather conditions via wttr.in.
 
 | State | Output |
 |-------|--------|
-| Weather fetched | `☀ +15°C Clear` / `   Humidity: 60%` / `   Wind: ↑15 km/h` / `   Precipitation: 0%` |
+| Weather fetched | ` +15°C Clear` / `   Humidity: 60%` / `   Wind: ↑15 km/h` / `   Precipitation: 0%` |
 | Network error | ` Weather: could not fetch` |
 | No data | ` Weather: no data` |
 
-Icons auto-select based on condition: Clear/Sunny (`☀`), Cloudy (`☁`), Rain (`🌧`), Snow (`❄️`), Thunder (`⛈`), Fog (`🌫`), Partly (`⛅`).
+Icons auto-select based on condition: Clear/Sunny (``), Cloudy (``), Rain (``), Snow (``), Thunder (``), Fog (``), Partly (``).

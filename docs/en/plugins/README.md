@@ -20,6 +20,15 @@ xfetch provides a set of official plugins for additional functionality.
 
 - [animate-logo](animate-logo) — Animated ASCII logos with color effects
 
+## WebAssembly Plugins
+
+Sandboxed guests compiled to WebAssembly, each with a manifest that declares its capabilities and limits; see [WebAssembly Guests](../wasm.md).
+
+- [wasm-crypto](wasm-crypto) — Crypto spot prices via the allowlisted Coinbase API (Rust)
+- [wasm-ip-geo](wasm-ip-geo) — Public IP, location, network and timezone (Python component)
+- [wasm-pacman](wasm-pacman) — Repository and AUR package counts (Go)
+- [wasm-proc](wasm-proc) — Load average, memory and uptime from /proc (C)
+
 ## Install a Plugin
 
 From the default remote repository:

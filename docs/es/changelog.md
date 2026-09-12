@@ -1,6 +1,19 @@
 # Registro de Cambios
 # Registro de Cambios
 
+## v0.9.0 · Invitados WebAssembly, llamadas al host y ejemplos utiles · 2026-09-12
+
+- **Runtime WebAssembly con sandbox:** plugins, efectos y extensiones pueden ser artefactos `.wasm` (módulos core y componentes) ejecutados por wasmtime con capacidades declaradas en el manifiesto y denegadas por defecto (HTTP, ejecución, sistema de archivos, entorno) y limites de tiempo, memoria y salida
+- **Mismo protocolo:** los módulos core mantienen el contrato JSON por stdin/stdout; los componentes exportan `run` desde el mundo WIT `xfetch:runtime` con imports tipados
+- **Herramientas:** `xfetch wasm inspect`, `xfetch wasm run` y `xfetch wasm wit`; los instaladores aceptan artefactos precompilados, comandos `build`, `artifact_url` o URLs directas
+- **Nuevo crate `xfetch-guest-api`** para invitados Rust de modulo core y `with_timeout` compatible con wasm en todos los crates de API
+- **Ejemplos utiles en cuatro lenguajes:** precios de cripto, geolocalización de IP, conteo de paquetes pacman y estadisticas de `/proc`, además de las extensiones de modo nocturno, footer de actualizaciones y etiquetas localizadas
+- Corregido el glifo `swap` de las configs generadas y eliminados los emojis restantes de presets y docs del clima
+- Los logs de los invitados se filtran por defecto (solo se muestran `warn`/`error`); `XFETCH_WASM_LOG_LEVEL` (`off`..`debug`) controla el umbral
+- Nuevo comando `xfetch update`: comprueba los releases de GitHub, verifica las descargas prebuilt con SHA256 y solo sustituye instalaciones prebuilt reconocidas (las de `cargo install` y gestores de paquetes no se tocan)
+- Paginas de wiki para el runtime WebAssembly y los nuevos invitados en ingles, espanol y aleman
+- 195 tests mas pruebas e2e del CLI para wasm, clippy limpio
+
 ## v0.8.0 · Instalación con crates.io, Dependencias más Ligeras e IP Pública por HTTPS · 2026-08-21
 
 - **crates.io:** ahora se admite `cargo install xfetch-cli`
@@ -19,7 +32,7 @@
 ## v0.6.0 · Temas, Daemon de Estadísticas en Vivo y Modularización por Plataforma · 2026-08-19
 
 - **Formato de temas simplificado:** `theme set` edita solo la clave `theme`, conservando comentarios y formato; los temas ya no incluyen `icons` (elección de fuente del usuario, se rellenan desde los defaults); nuevos campos `logo_color` y `logo_colors` (por fila)
-- **Daemon de estadísticas en vivo (`daemon_live`):** fija la salida arriba de la terminal y vuelve a sondear un subconjunto ligero de módulos cada `daemon_live_refresh` segundos; hot reload mediante `daemon_live_reload` (observa config y tema); flags `--no-daemon-live`, `--daemon-live-stop`, `--daemon-live-reload`
+- **Daemon de estadísticas en vivo (`daemon_live`):** fija la salida arriba de la terminal y vuelve a sondear un subconjunto ligero de módulos cada `daemon_live_refresh` segúndos; hot reload mediante `daemon_live_reload` (observa config y tema); flags `--no-daemon-live`, `--daemon-live-stop`, `--daemon-live-reload`
 - **Windows:** `winget` cuenta solo paquetes instalados vía winget; Chocolatey salió de las sondas del núcleo (vuelve como plugin); la detección de shell recorre la cadena de procesos padre (cmd.exe ya no se reporta como PowerShell); el mapeo versión→logo usa números de build
 - **Timeouts de plugins y extensiones:** nuevo `subprocess.rs` con drenaje acotado de pipes — los procesos hijos que retienen el pipe ya no pueden colgar xfetch; `timeout_secs` opcional por plugin/extensión en la config; helper `with_timeout` en los crates de la API
 - **Modularización por plataforma:** macOS y Linux replican la estructura de Windows (`platform/<os>/version.rs`, `software.rs`, `network.rs`, ...); Arch separa `pacman` (oficial) de la nueva entrada `aur` (`pacman -Qm`); se muestra el conteo de portage en Gentoo; presentación consciente de WSL
@@ -27,7 +40,7 @@
 
 ## v0.5.0 · Rendimiento, Gestores de Paquetes y Logos por Distribución · 2026-08-18
 
-- **Rondas de rendimiento:** los conteos de paquetes se leen directamente de las bases de datos de las distros (dpkg/pacman/apk/flatpak, microsegundos en lugar de subprocesos); pre-chequeo de PATH antes de lanzar sondas; battery/datetime movidos a la sección paralela; hosts de IP pública consultados en paralelo; sondas lanzadas todas y luego unidas (fetch en frío 8.7 s → 0.05 s en WSL)
+- **Rondas de rendimiento:** los conteos de paquetes se leen directamente de las bases de datos de las distros (dpkg/pacman/apk/flatpak, microsegúndos en lugar de subprocesos); pre-chequeo de PATH antes de lanzar sondas; battery/datetime movidos a la sección paralela; hosts de IP pública consultados en paralelo; sondas lanzadas todas y luego unidas (fetch en frío 8.7 s → 0.05 s en WSL)
 - **Logos por distribución en `--gen-config`:** obtiene el logo ASCII del OS/distro detectado del nuevo catálogo `xfetch-cli/logos`, con override `--logo <id>` y `XFETCH_LOGOS_URL` para forks
 - **Nuevo flag `--layout <name>`** para `--gen-config`; se eliminó la carpeta `configs/` — la plantilla ahora va embebida en el binario y los instaladores generan el primer config con `xfetch --gen-config`
 - **Presentación WSL:** nueva clave `os_wsl_style` (`off` / `minimal` / `full`)

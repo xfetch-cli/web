@@ -2,7 +2,7 @@
 
 A cross-platform system information fetching tool written in Rust.
 
-- **Version:** 0.8.0
+- **Version:** 0.9.0
 - **License:** MIT
 - **Author:** xscriptor
 - **Repository:** github.com/xfetch-cli/xfetch
@@ -15,6 +15,7 @@ A cross-platform system information fetching tool written in Rust.
    - Installation methods (quick install, manual, package managers)
    - First run
    - Command-line interface overview
+   - Updating xfetch
    - Environment variables
 
 2. [Config Generation](gen-config.md)
@@ -70,8 +71,14 @@ A cross-platform system information fetching tool written in Rust.
      - chocolatey
      - temperature
      - theme-manager
+     - wasm-crypto
+     - wasm-ip-geo
+     - wasm-pacman
+     - wasm-proc
+   - WebAssembly plugins (manifest capabilities and host calls)
    - Writing custom plugins
    - Plugin API crate
+   - WebAssembly guests ([wasm.md](wasm.md))
 
 7. [Extensions](extensions.md)
    - Extension architecture overview
@@ -81,6 +88,9 @@ A cross-platform system information fetching tool written in Rust.
    - Official extensions
      - config-roulette
      - layout-override
+     - wasm-night-mode
+     - wasm-updates-footer
+     - wasm-lang-labels
    - Writing custom extensions
 
 8. [Effects](effects.md)
@@ -89,6 +99,7 @@ A cross-platform system information fetching tool written in Rust.
    - Configuration and fields
    - JSON wire protocol
    - Official effects
+   - WebAssembly effects (wasm-matrix, wasm-python-pulse)
    - Writing custom effects
 
 9. [Customization](customization.md)

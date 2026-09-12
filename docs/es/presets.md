@@ -249,6 +249,17 @@ La configuración principal habilita la ruleta:
 
 **Requerido:** plugin `animate-logo` y extensión `config-roulette`. Detenga una figura en ejecución con `xfetch --daemon-stop`.
 
+### Predefinidos de Invitados WebAssembly
+
+El [repositorio de configs](https://github.com/xfetch-cli/configs) incluye `plugins/wasm-guests/` con dos predefinidos que combinan los plugins y efectos wasm:
+
+```bash
+xfetch --config plugins/wasm-guests/presets/wasm_showcase.jsonc
+xfetch --config plugins/wasm-guests/presets/wasm_minimal.jsonc
+```
+
+`wasm_showcase.jsonc` muestra precios de cripto, geolocalizacion de IP, conteo de paquetes y estadisticas de /proc ademas de ambos efectos wasm; `wasm_minimal.jsonc` combina el invitado C de /proc con el efecto matrix.
+
 ## Uso de Predefinidos
 
 ```bash

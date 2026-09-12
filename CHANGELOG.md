@@ -1,5 +1,16 @@
 # Changelog
 
+## 2026-09-12 — WebAssembly docs and home demo fix
+
+- Added wiki pages for the WebAssembly runtime, the four wasm plugins and the three wasm extensions in English, Spanish and German; plugin index, presets and summary updated
+- Fixed the home page demo: the GIF was rendered inside a `<video>` element, which never plays it; it is now an `<img>` with the GitHub Pages base path applied
+- Documented the new `xfetch update` command in Getting Started (English, Spanish and German)
+
+
+## 2026-09-12 — weather docs glyphs
+
+- Replaced the emoji condition icons in the weather plugin docs (English, Spanish and German) with the Nerd Font glyphs the plugin actually renders (U+E30D, U+E302, U+E315, U+E318, U+E31A, U+E376, U+E312).
+
 ## 2026-08-20 — v0.7.0 documentation sync
 
 - Docs updated to match **xfetch v0.7.0** across English, Spanish and German:

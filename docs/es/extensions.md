@@ -65,7 +65,7 @@ Agregue extensiones a su configuración mediante el campo `config_providers`:
 |-------|------|-------------|
 | `extension` | `string` | Nombre de la extensión (binario: `xfetch-extension-<nombre>`) |
 | `args` | `object` o `null` | Argumentos JSON arbitrarios pasados a la extensión |
-| `timeout_secs` | `number` o `null` | Tiempo de espera opcional en segundos para la extensión |
+| `timeout_secs` | `number` o `null` | Tiempo de espera opcional en segúndos para la extensión |
 
 ## Protocolo
 
@@ -114,6 +114,14 @@ Los errores deben imprimirse en stderr. El proceso debe salir con un código de 
 |-----------|-------------|
 | [config-roulette](extensions/config-roulette) | Elige una configuración aleatoria (o diaria) de una lista de rutas |
 | [layout-override](extensions/layout-override) | Sobrescribe el diseño y/o los módulos al cargar la configuración |
+
+### Extensiones WebAssembly
+
+| Extension | Lenguaje | Descripción |
+|-----------|----------|-------------|
+| `wasm-night-mode` | Rust | Desactiva los colores fuera de la ventana diurna |
+| `wasm-updates-footer` | Go | Añade el número de actualizaciones pendientes al footer |
+| `wasm-lang-labels` | Componente Python | Traduce las etiquetas de módulos según `LANG`/`LC_ALL` |
 
 ## Directorios
 

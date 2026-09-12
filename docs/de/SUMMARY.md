@@ -2,7 +2,7 @@
 
 Ein plattformunabhangiges Systeminformations-Tool geschrieben in Rust.
 
-- **Version:** 0.8.0
+- **Version:** 0.9.0
 - **Lizenz:** MIT
 - **Autor:** xscriptor
 - **Repository:** github.com/xfetch-cli/xfetch
@@ -15,6 +15,7 @@ Ein plattformunabhangiges Systeminformations-Tool geschrieben in Rust.
    - Installationsmethoden (Schnellinstallation, manuell, Paketmanager)
    - Erster Start
    - Befehlszeilen-Schnittstelle im Uberblick
+   - xfetch aktualisieren
    - Umgebungsvariablen
 
 2. [Konfigurationsgenerierung](gen-config.md)
@@ -70,8 +71,14 @@ Ein plattformunabhangiges Systeminformations-Tool geschrieben in Rust.
      - chocolatey
      - temperature
      - theme-manager
+     - wasm-crypto
+     - wasm-ip-geo
+     - wasm-pacman
+     - wasm-proc
+   - WebAssembly-Plugins (Manifest-Fahigkeiten und Host-Aufrufe)
    - Eigene Plugins schreiben
    - Plugin-API-Crate
+   - WebAssembly guests ([wasm.md](wasm.md))
 
 7. [Erweiterungen](extensions.md)
    - Erweiterungsarchitektur im Uberblick
@@ -81,6 +88,9 @@ Ein plattformunabhangiges Systeminformations-Tool geschrieben in Rust.
    - Offizielle Erweiterungen
      - config-roulette
      - layout-override
+     - wasm-night-mode
+     - wasm-updates-footer
+     - wasm-lang-labels
    - Eigene Erweiterungen schreiben
 
 8. [Effekte](effects.md)
@@ -89,6 +99,7 @@ Ein plattformunabhangiges Systeminformations-Tool geschrieben in Rust.
    - Konfiguration und Felder
    - JSON-Drahtprotokoll
    - Offizielle Effekte
+   - WebAssembly-Effekte (wasm-matrix, wasm-python-pulse)
    - Eigene Effekte schreiben
 
 9. [Anpassung](customization.md)

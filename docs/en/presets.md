@@ -249,6 +249,17 @@ The main config enables the roulette:
 
 **Required:** `animate-logo` plugin and `config-roulette` extension. Stop a running figure with `xfetch --daemon-stop`.
 
+### WebAssembly Guest Presets
+
+The [configs repository](https://github.com/xfetch-cli/configs) ships `plugins/wasm-guests/` with two presets that combine the wasm plugins and effects:
+
+```bash
+xfetch --config plugins/wasm-guests/presets/wasm_showcase.jsonc
+xfetch --config plugins/wasm-guests/presets/wasm_minimal.jsonc
+```
+
+`wasm_showcase.jsonc` shows crypto prices, IP geolocation, package counts and /proc stats plus both wasm effects; `wasm_minimal.jsonc` pairs the C /proc guest with the matrix effect.
+
 ## Using Presets
 
 ```bash

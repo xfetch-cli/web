@@ -12,6 +12,8 @@ import PluginSection from "@/components/PluginSection";
 import Roadmap from "@/components/Roadmap";
 import Footer from "@/components/Footer";
 
+const base = process.env.NEXT_PUBLIC_BASE_PATH || "";
+
 const FEATURES = [
   { key: "sysinfo", icon: "sysinfo" as const },
   { key: "crossplatform", icon: "crossplatform" as const },
@@ -221,7 +223,12 @@ export default function Home() {
           {/* STAGE 2 - Video demo */}
           <section data-stage={2} style={sectionStyle(2)}>
             <div className="overflow-hidden rounded-xl border border-bg3/60">
-              <video className="block w-full h-auto" src="https://i.imgur.com/8qcIITv.mp4" autoPlay loop muted playsInline />
+              <img
+                className="block h-auto w-full"
+                src={`${base}/previews/xfetch-demo.gif`}
+                alt="xfetch demo running in a terminal"
+                decoding="async"
+              />
             </div>
           </section>
 

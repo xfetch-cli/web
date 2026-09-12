@@ -1,6 +1,19 @@
 # Changelog
 # Changelog
 
+## v0.9.0 · WebAssembly Guests, Host Calls & Useful Examples · 2026-09-12
+
+- **Sandboxed WebAssembly runtime:** plugins, effects and extensions can be `.wasm` artifacts (core modules and components) executed by wasmtime with manifest-declared, deny-by-default capabilities (HTTP, exec, filesystem, environment) and limits for time, memory and output
+- **Same protocol:** core modules keep the JSON stdin/stdout contract; components export `run` from the `xfetch:runtime` WIT world with typed host imports
+- **Guest tooling:** `xfetch wasm inspect`, `xfetch wasm run` and `xfetch wasm wit`; installers accept prebuilt artifacts, `build` commands, `artifact_url` or direct URLs
+- **New `xfetch-guest-api` crate** for Rust core-module guests, and wasm-compatible `with_timeout` in all API crates
+- **Useful examples in four languages:** crypto prices, IP geolocation, pacman package counts and `/proc` stats, plus night mode, update footer and localized labels extensions
+- Fixed the `swap` glyph in generated configs and removed the remaining emoji from presets and weather docs
+- Guest logs are filtered by default (only `warn`/`error` print); `XFETCH_WASM_LOG_LEVEL` (`off`..`debug`) controls the threshold
+- New `xfetch update` command: checks GitHub releases, verifies prebuilt downloads with SHA256 and only replaces recognized prebuilt installs (`cargo install` and package-manager installs are never touched)
+- Wiki pages for the WebAssembly runtime and the new guests in English, Spanish and German
+- 195 tests plus CLI end-to-end wasm tests, clippy clean
+
 ## v0.8.0 · Crates.io Install, Slimmer Dependencies & HTTPS Public IP · 2026-08-21
 
 - **crates.io:** `cargo install xfetch-cli` is now supported

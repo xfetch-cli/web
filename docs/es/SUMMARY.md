@@ -2,7 +2,7 @@
 
 Una herramienta de obtención de información del sistema multiplataforma escrita en Rust.
 
-- **Versión:** 0.8.0
+- **Versión:** 0.9.0
 - **Licencia:** MIT
 - **Autor:** xscriptor
 - **Repositorio:** github.com/xfetch-cli/xfetch
@@ -15,6 +15,7 @@ Una herramienta de obtención de información del sistema multiplataforma escrit
    - Métodos de instalación (instalación rápida, manual, gestores de paquetes)
    - Primera ejecución
    - Resumen de la interfaz de línea de comandos
+   - Actualización de xfetch
    - Variables de entorno
 
 2. [Generación de Configuración](gen-config.md)
@@ -70,8 +71,14 @@ Una herramienta de obtención de información del sistema multiplataforma escrit
      - chocolatey
      - temperature
      - theme-manager
+     - wasm-crypto
+     - wasm-ip-geo
+     - wasm-pacman
+     - wasm-proc
+   - Plugins WebAssembly (capacidades del manifiesto y llamadas al host)
    - Escritura de plugins personalizados
    - Crate de API para plugins
+   - WebAssembly guests ([wasm.md](wasm.md))
 
 7. [Extensiones](extensions.md)
    - Resumen de la arquitectura de extensiones
@@ -81,6 +88,9 @@ Una herramienta de obtención de información del sistema multiplataforma escrit
    - Extensiones oficiales
      - config-roulette
      - layout-override
+     - wasm-night-mode
+     - wasm-updates-footer
+     - wasm-lang-labels
    - Escritura de extensiones personalizadas
 
 8. [Efectos](effects.md)
@@ -89,6 +99,7 @@ Una herramienta de obtención de información del sistema multiplataforma escrit
    - Configuración y campos
    - Protocolo JSON wire
    - Efectos oficiales
+   - Efectos WebAssembly (wasm-matrix, wasm-python-pulse)
    - Escritura de efectos personalizados
 
 9. [Personalización](customization.md)

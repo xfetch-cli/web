@@ -133,6 +133,13 @@ Effekte müssen Fehler auf stderr schreiben und mit einem Nicht-Null-Statuscode 
 | `decrypt` | Deckt jede Zeile von verschlüsselten Glyphen zum echten Text auf (sanftes Decodieren). Standard: `duration_ms` 1500, `fps` 30. |
 | `glitch` | Ruckartiges verschlüsseltes Flackern mit Korruptionsausbrüchen, horizontalen Streifen und fallengelassenen Zeilen. Standard: `duration_ms` 800, `fps` 30. Erhält ANSI-Escape-Sequenzen intakt. |
 
+### WebAssembly-Effekte
+
+`wasm-matrix` (Rust) und `wasm-python-pulse` (Python-Komponente) sind
+WebAssembly-Effekte, die Frames genau wie die nativen erzeugen; ihre
+Manifeste deklarieren die Laufzeitlimits. Siehe die Referenz für
+WebAssembly-Gäste im xfetch-Repository (`docs/WASM.md`).
+
 ## Eigene Effekte schreiben
 
 ### Benennungskonvention der Binärdatei
