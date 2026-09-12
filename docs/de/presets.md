@@ -249,6 +249,17 @@ Die Hauptkonfiguration aktiviert die Roulette:
 
 **Erforderlich:** Plugin `animate-logo` und Erweiterung `config-roulette`. Eine laufende Figur stoppen Sie mit `xfetch --daemon-stop`.
 
+### WebAssembly-Gast-Presets
+
+Das [configs-Repository](https://github.com/xfetch-cli/configs) enthaelt `plugins/wasm-guests/` mit zwei Presets, die die wasm-Plugins und -Effekte kombinieren:
+
+```bash
+xfetch --config plugins/wasm-guests/presets/wasm_showcase.jsonc
+xfetch --config plugins/wasm-guests/presets/wasm_minimal.jsonc
+```
+
+`wasm_showcase.jsonc` zeigt Krypto-Preise, IP-Geolokation, Paketzahlen und /proc-Werte plus beide wasm-Effekte; `wasm_minimal.jsonc` kombiniert den C-/proc-Gast mit dem Matrix-Effekt.
+
 ## Presets verwenden
 
 ```bash

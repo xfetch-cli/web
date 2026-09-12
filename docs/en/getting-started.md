@@ -156,6 +156,16 @@ xfetch effects list               List installed effects
 xfetch effects remove <name>      Remove an effect
 ```
 
+### Update Subcommand
+
+```
+xfetch update                     Check for and install a newer release
+xfetch update --check             Only report; exit 1 when an update exists
+xfetch update --prebuilt          Force the in-place prebuilt update (Unix)
+xfetch update --bin-dir <dir>     Directory holding the binary with --prebuilt
+xfetch update --yes               Skip the confirmation prompt
+```
+
 ### Usage Examples
 
 ```bash
@@ -182,6 +192,12 @@ xfetch plugin list
 
 # Remove a plugin
 xfetch plugin remove docker
+
+# Check for a newer release
+xfetch update --check
+
+# Update to the latest release
+xfetch update
 ```
 
 ## Environment Variables
@@ -193,7 +209,26 @@ xfetch plugin remove docker
 | `XFETCH_LOGOS_URL` | Override the logos catalog URL (used by `--logo` with `--gen-config`) |
 | `XFETCH_EFFECT_REPO` | Override the effects git repository URL |
 | `XFETCH_WASM_LOG_LEVEL` | WebAssembly guest log threshold: `off`, `error`, `warn` (default), `info`, `debug` |
+| `XFETCH_UPDATE_API` | Override the GitHub API endpoint used by `xfetch update` (mirrors) |
 | `CARGO_NET_GIT_FETCH_WITH_CLI` | Use git CLI for fetching (set automatically during plugin install) |
+
+## Updating
+
+xfetch can check for and install newer releases itself:
+
+```bash
+xfetch update --check   # only report; exits 1 when a newer release exists
+xfetch update           # install the newest release
+xfetch update --yes     # skip the confirmation prompt
+```
+
+The command detects how the binary was installed first:
+
+- Prebuilt installs (`install-prebuilt.sh`, usually `~/.local/bin`): the release asset is downloaded, verified against `SHA256SUMS`, extracted and moved over the current executable atomically. A single `xfetch.bak` keeps the previous binary.
+- `cargo install` binaries: updated with `cargo install xfetch-cli --force --locked`.
+- Package-manager installs and local builds: never replaced; the command prints the right command instead.
+
+`xfetch update --prebuilt --bin-dir <dir>` forces the in-place update of `<dir>/xfetch` (Unix only). On Windows the prebuilt path is not available yet; use `cargo install xfetch-cli --force`.
 
 ## Uninstallation
 

@@ -15,6 +15,7 @@ Ein plattformunabhangiges Systeminformations-Tool geschrieben in Rust.
    - Installationsmethoden (Schnellinstallation, manuell, Paketmanager)
    - Erster Start
    - Befehlszeilen-Schnittstelle im Uberblick
+   - xfetch aktualisieren
    - Umgebungsvariablen
 
 2. [Konfigurationsgenerierung](gen-config.md)
@@ -69,14 +70,15 @@ Ein plattformunabhangiges Systeminformations-Tool geschrieben in Rust.
      - theme-detection
      - chocolatey
      - temperature
+     - theme-manager
      - wasm-crypto
      - wasm-ip-geo
      - wasm-pacman
      - wasm-proc
    - WebAssembly-Plugins (Manifest-Fahigkeiten und Host-Aufrufe)
-     - theme-manager
    - Eigene Plugins schreiben
    - Plugin-API-Crate
+   - WebAssembly guests ([wasm.md](wasm.md))
 
 7. [Erweiterungen](extensions.md)
    - Erweiterungsarchitektur im Uberblick

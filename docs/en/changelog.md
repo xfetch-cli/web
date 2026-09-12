@@ -10,6 +10,8 @@
 - **Useful examples in four languages:** crypto prices, IP geolocation, pacman package counts and `/proc` stats, plus night mode, update footer and localized labels extensions
 - Fixed the `swap` glyph in generated configs and removed the remaining emoji from presets and weather docs
 - Guest logs are filtered by default (only `warn`/`error` print); `XFETCH_WASM_LOG_LEVEL` (`off`..`debug`) controls the threshold
+- New `xfetch update` command: checks GitHub releases, verifies prebuilt downloads with SHA256 and only replaces recognized prebuilt installs (`cargo install` and package-manager installs are never touched)
+- Wiki pages for the WebAssembly runtime and the new guests in English, Spanish and German
 - 195 tests plus CLI end-to-end wasm tests, clippy clean
 
 ## v0.8.0 · Crates.io Install, Slimmer Dependencies & HTTPS Public IP · 2026-08-21

@@ -15,6 +15,7 @@ Una herramienta de obtención de información del sistema multiplataforma escrit
    - Métodos de instalación (instalación rápida, manual, gestores de paquetes)
    - Primera ejecución
    - Resumen de la interfaz de línea de comandos
+   - Actualización de xfetch
    - Variables de entorno
 
 2. [Generación de Configuración](gen-config.md)
@@ -69,14 +70,15 @@ Una herramienta de obtención de información del sistema multiplataforma escrit
      - theme-detection
      - chocolatey
      - temperature
+     - theme-manager
      - wasm-crypto
      - wasm-ip-geo
      - wasm-pacman
      - wasm-proc
    - Plugins WebAssembly (capacidades del manifiesto y llamadas al host)
-     - theme-manager
    - Escritura de plugins personalizados
    - Crate de API para plugins
+   - WebAssembly guests ([wasm.md](wasm.md))
 
 7. [Extensiones](extensions.md)
    - Resumen de la arquitectura de extensiones

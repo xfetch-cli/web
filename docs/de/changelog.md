@@ -10,6 +10,8 @@
 - **Nuetzliche Beispiele in vier Sprachen:** Krypto-Preise, IP-Geolokation, Pacman-Paketzahlen und `/proc`-Werte, dazu die Erweiterungen Nachtmodus, Update-Fusszeile und lokalisierte Labels
 - Der `swap`-Glyph generierter Konfigurationen wurde korrigiert und restliche Emojis aus Presets und Wetter-Dokumentation entfernt
 - Gast-Logs werden standardmäßig gefiltert (nur `warn`/`error` werden gezeigt); `XFETCH_WASM_LOG_LEVEL` (`off`..`debug`) steuert die Schwelle
+- Neuer Befehl `xfetch update`: prueft GitHub-Releases, verifiziert Prebuilt-Downloads per SHA256 und ersetzt nur erkannte Prebuilt-Installationen (`cargo install` und Paketmanager bleiben unberuehrt)
+- Wiki-Seiten fuer die WebAssembly-Runtime und die neuen Gaeste auf Englisch, Spanisch und Deutsch
 - 195 Tests plus CLI-End-to-End-Wasm-Tests, clippy sauber
 
 ## v0.8.0 · Crates.io-Installation, schlankere Abhängigkeiten und HTTPS-Public-IP · 2026-08-21

@@ -10,6 +10,8 @@
 - **Ejemplos utiles en cuatro lenguajes:** precios de cripto, geolocalización de IP, conteo de paquetes pacman y estadisticas de `/proc`, además de las extensiones de modo nocturno, footer de actualizaciones y etiquetas localizadas
 - Corregido el glifo `swap` de las configs generadas y eliminados los emojis restantes de presets y docs del clima
 - Los logs de los invitados se filtran por defecto (solo se muestran `warn`/`error`); `XFETCH_WASM_LOG_LEVEL` (`off`..`debug`) controla el umbral
+- Nuevo comando `xfetch update`: comprueba los releases de GitHub, verifica las descargas prebuilt con SHA256 y solo sustituye instalaciones prebuilt reconocidas (las de `cargo install` y gestores de paquetes no se tocan)
+- Paginas de wiki para el runtime WebAssembly y los nuevos invitados en ingles, espanol y aleman
 - 195 tests mas pruebas e2e del CLI para wasm, clippy limpio
 
 ## v0.8.0 · Instalación con crates.io, Dependencias más Ligeras e IP Pública por HTTPS · 2026-08-21

@@ -15,6 +15,7 @@ A cross-platform system information fetching tool written in Rust.
    - Installation methods (quick install, manual, package managers)
    - First run
    - Command-line interface overview
+   - Updating xfetch
    - Environment variables
 
 2. [Config Generation](gen-config.md)
@@ -69,14 +70,15 @@ A cross-platform system information fetching tool written in Rust.
      - theme-detection
      - chocolatey
      - temperature
+     - theme-manager
      - wasm-crypto
      - wasm-ip-geo
      - wasm-pacman
      - wasm-proc
    - WebAssembly plugins (manifest capabilities and host calls)
-     - theme-manager
    - Writing custom plugins
    - Plugin API crate
+   - WebAssembly guests ([wasm.md](wasm.md))
 
 7. [Extensions](extensions.md)
    - Extension architecture overview
