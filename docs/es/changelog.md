@@ -11,6 +11,7 @@
 - Corregido el glifo `swap` de las configs generadas y eliminados los emojis restantes de presets y docs del clima
 - Los logs de los invitados se filtran por defecto (solo se muestran `warn`/`error`); `XFETCH_WASM_LOG_LEVEL` (`off`..`debug`) controla el umbral
 - Nuevo comando `xfetch update`: comprueba los releases de GitHub, verifica las descargas prebuilt con SHA256 y solo sustituye instalaciones prebuilt reconocidas (las de `cargo install` y gestores de paquetes no se tocan)
+- Instalador prebuilt para Windows (`install-prebuilt.ps1`): descarga el ZIP del release, verifica SHA256 y lo instala por usuario
 - Paginas de wiki para el runtime WebAssembly y los nuevos invitados en ingles, espanol y aleman
 - 195 tests mas pruebas e2e del CLI para wasm, clippy limpio
 
