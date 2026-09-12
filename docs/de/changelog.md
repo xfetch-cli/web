@@ -11,6 +11,7 @@
 - Der `swap`-Glyph generierter Konfigurationen wurde korrigiert und restliche Emojis aus Presets und Wetter-Dokumentation entfernt
 - Gast-Logs werden standardmäßig gefiltert (nur `warn`/`error` werden gezeigt); `XFETCH_WASM_LOG_LEVEL` (`off`..`debug`) steuert die Schwelle
 - Neuer Befehl `xfetch update`: prueft GitHub-Releases, verifiziert Prebuilt-Downloads per SHA256 und ersetzt nur erkannte Prebuilt-Installationen (`cargo install` und Paketmanager bleiben unberuehrt)
+- Windows-Prebuilt-Installer (`install-prebuilt.ps1`): laedt das Release-ZIP, prueft SHA256 und installiert es pro Benutzer
 - Wiki-Seiten fuer die WebAssembly-Runtime und die neuen Gaeste auf Englisch, Spanisch und Deutsch
 - 195 Tests plus CLI-End-to-End-Wasm-Tests, clippy sauber
 

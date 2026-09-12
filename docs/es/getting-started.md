@@ -34,6 +34,14 @@ Banderas:
 
 ### Windows (PowerShell)
 
+Prebuilt binary (no Rust needed):
+
+```powershell
+irm https://raw.githubusercontent.com/xfetch-cli/xfetch/main/install-prebuilt.ps1 | iex
+```
+
+From source:
+
 ```powershell
 irm https://raw.githubusercontent.com/xfetch-cli/xfetch/main/install.ps1 | iex
 ```

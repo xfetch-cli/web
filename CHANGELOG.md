@@ -5,6 +5,7 @@
 - Added wiki pages for the WebAssembly runtime, the four wasm plugins and the three wasm extensions in English, Spanish and German; plugin index, presets and summary updated
 - Fixed the home page demo: the GIF was rendered inside a `<video>` element, which never plays it; it is now an `<img>` with the GitHub Pages base path applied
 - Documented the new `xfetch update` command in Getting Started (English, Spanish and German)
+- Documented the Windows prebuilt installer (`install-prebuilt.ps1`) in the install instructions
 
 
 ## 2026-09-12 — weather docs glyphs
