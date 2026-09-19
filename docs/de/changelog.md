@@ -1,6 +1,20 @@
 # Anderungsprotokoll
 # Anderungsprotokoll
 
+## v1.0.0 · Native Windows-Probes, Daemons unter Windows und Abhängigkeits-Refresh · 2026-09-18
+
+- **Native Windows-Probes:** CPU, Datum, Akku und GPU werden über die Win32-API (`platform/windows/`) gelesen statt über sysinfos PDH-Zähler und PowerShell/`wmic`-Subprozesse — der Standard-Fetch ging auf einem 16-Thread-Rechner von ~575 ms auf ~33 ms (warm), mit identischen Werten
+- **Daemons unter Windows:** Logo-Animations- und Live-Statistik-Daemon sind jetzt implementiert (`ui/win_daemon.rs`); der Worker teilt die Konsole, `--daemon-stop`/`--daemon-live-stop` signalisieren sein Stop-Event und er beendet sich selbst, wenn die Shell die Konsole verlässt
+- **Daemons beenden sich beim Schließen des Terminals** auf allen Plattformen: sie pollen stdout auf den Pty-Hangup statt als Waisen in ein totes Pty zu rendern, stellen das Terminal wieder her und entfernen ihre PID-/Zeilen-Dateien
+- **Disk-Modul im Live-Daemon korrigiert** auf allen Plattformen: die Standardlisten sagten `"disks"`, während Probe und Renderer nur `"disk"` kennen
+- **`xfetch | head` stürzt nicht mehr ab:** Schreibfehler auf stdout werden im statischen Renderpfad ignoriert, wie bei Daemons und Animation
+- **Sicherheitsnetz für Gäste:** native und wasm-Plugins, -Effekte und -Erweiterungen nutzen 30 s Timeout, wenn `timeout_secs` fehlt (`0` deaktiviert das Limit)
+- **Modulfarben:** akzeptieren jetzt Namen, 256-Farben-Indizes (`"196"`) und Hex-RGB (`"#FF8800"`), dieselben Formate wie die Logofarbe
+- **Konfigurationen mit UTF-8-BOM werden jetzt geparst** (PowerShell 5.1 `Set-Content -Encoding UTF8` und Notepad schreiben eins), statt still auf die Standardwerte zurückzufallen
+- **Atomare Installer-Schreibvorgänge:** Binaries und Manifeste werden gestaged und über das Ziel umbenannt; `install-prebuilt.sh` wählt den musl-Build auf musl-Distributionen (Alpine)
+- **Abhängigkeits-Refresh:** `rustls` 0.23.43 → 0.23.45 behebt RUSTSEC-2026-0285; Major-Updates ohne Codeänderungen für `base64` 0.23, `sha2` 0.11, `dirs` 7 und `sysinfo` 0.39; `ureq` bleibt auf 2.x (v3 braucht eine Migration)
+- 218 Tests plus 6 wasm-End-to-End-Tests, Clippy sauber, null Hinweise in der Lockfile
+
 ## v0.9.0 · WebAssembly-Gaeste, Host-Aufrufe und nützliche Beispiele · 2026-09-12
 
 - **Sandboxed WebAssembly Runtime:** Plugins, Effekte und Erweiterungen können `.wasm`-Artefakte (Core-Module und Komponenten) sein, ausgeführt von wasmtime mit im Manifest deklarierten, standardmäßig verweigerten Fähigkeiten (HTTP, Exec, Dateisystem, Umgebung) und Limits für Zeit, Speicher und Ausgabe
