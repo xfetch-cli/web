@@ -1,6 +1,20 @@
 # Registro de Cambios
 # Registro de Cambios
 
+## v1.0.0 · Sondas nativas en Windows, daemons en Windows y actualización de dependencias · 2026-09-18
+
+- **Sondas nativas en Windows:** CPU, fecha, batería y GPU se leen por la API Win32 (`platform/windows/`) en vez de los contadores PDH de sysinfo y los subprocesos de PowerShell/`wmic` — el fetch por defecto pasó de ~575 ms a ~33 ms en caliente en una máquina de 16 hilos, con valores idénticos
+- **Daemons en Windows:** los daemons de logo animado y de estadísticas en vivo ya están implementados (`ui/win_daemon.rs`); el worker comparte la consola, `--daemon-stop`/`--daemon-live-stop` señalan su evento de parada y sale solo cuando la shell abandona la consola
+- **Los daemons salen al cerrar la terminal** en todas las plataformas: sondean stdout para detectar el cierre del pty en vez de quedarse huérfanos renderizando en un pty muerto, restauran la terminal y borran sus archivos PID/filas
+- **Corregido el módulo disk en el daemon en vivo** en todas las plataformas: las listas por defecto decían `"disks"` y la sonda y el renderizador solo conocen `"disk"`
+- **`xfetch | head` ya no entra en pánico:** los errores de escritura en stdout se ignoran en la ruta de render estático, igual que en los daemons y la animación
+- **Red de seguridad para invitados:** plugins, efectos y extensiones (nativos y wasm) usan 30 s de timeout por defecto si no se define `timeout_secs` (`0` desactiva el límite)
+- **Colores de módulos:** ahora aceptan nombres, índices de 256 colores (`"196"`) y RGB hexadecimal (`"#FF8800"`), los mismos formatos que el color del logo
+- **Las configs con BOM UTF-8 ya se parsean** (PowerShell 5.1 `Set-Content -Encoding UTF8` y Notepad lo escriben) en vez de caer silenciosamente a los valores por defecto
+- **Escrituras atómicas en los instaladores:** binarios y manifiestos se preparan y renombran sobre el destino en ambos instaladores; `install-prebuilt.sh` elige el build musl en distribuciones musl (Alpine)
+- **Actualización de dependencias:** `rustls` 0.23.43 → 0.23.45 corrige RUSTSEC-2026-0285; subidas mayores sin cambios de código en `base64` 0.23, `sha2` 0.11, `dirs` 7 y `sysinfo` 0.39; `ureq` se queda en 2.x (v3 requiere migración)
+- 218 tests más 6 e2e de wasm, clippy limpio, cero avisos en el lockfile
+
 ## v0.9.0 · Invitados WebAssembly, llamadas al host y ejemplos utiles · 2026-09-12
 
 - **Runtime WebAssembly con sandbox:** plugins, efectos y extensiones pueden ser artefactos `.wasm` (módulos core y componentes) ejecutados por wasmtime con capacidades declaradas en el manifiesto y denegadas por defecto (HTTP, ejecución, sistema de archivos, entorno) y limites de tiempo, memoria y salida

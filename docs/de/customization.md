@@ -291,7 +291,8 @@ Die Farbausgabe kann vollstandig deaktiviert werden:
 ```jsonc
 {
     "show_colors": false
-
+}
+```
 
 ### Schlussel (Labels)
 

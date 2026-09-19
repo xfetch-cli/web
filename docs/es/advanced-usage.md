@@ -131,7 +131,7 @@ xfetch --daemon-stop # detenerlo
 
 La animación solo se ejecuta en terminales TTY; en pipes o redirecciones se muestra el logo estático. El modo daemon requiere un bloque `logo_animation` con un plugin (p. ej. `animate-logo`). En modo daemon la animación se repite indefinidamente: `duration_ms` y `loop` se ignoran. Para una animación finita que se detenga sola, mantenga el modo daemon desactivado.
 
-> **Nota:** Tanto el daemon animado como el daemon de estadísticas en vivo son **solo Unix** (Linux/macOS). En Windows no son compatibles y muestran un mensaje de error.
+> **Nota:** Tanto el daemon animado como el daemon de estadísticas en vivo funcionan en Linux, macOS y Windows. En Windows el proceso padre renderiza el primer frame y lanza un worker que comparte la consola; `--daemon-stop`/`--daemon-live-stop` lo señalan y sale solo cuando la shell abandona la consola.
 
 ### Daemon de Estadísticas en Vivo
 
@@ -217,4 +217,5 @@ Los conteos de paquetes y las consultas de IP pública se almacenan en caché co
 | `XFETCH_PLUGIN_REPO` | URL del repositorio de plugins | Instalación de plugins |
 | `XFETCH_PLUGIN_DEV_DIR` | Directorio de desarrollo de plugins | Descubrimiento de plugins |
 | `GITHUB_USER` | Nombre de usuario de GitHub | Plugin github-stats |
+| `GH_TOKEN` / `GITHUB_TOKEN` | Token de GitHub para elevar el límite de la API de actualizaciones | `xfetch update` |
 | `CARGO_NET_GIT_FETCH_WITH_CLI` | Forzar git CLI fetch | Compilaciones de plugins |

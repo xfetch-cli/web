@@ -83,9 +83,13 @@ Core-Module rufen `xfetch.host_call` mit einer JSON-Operation auf; Komponenten n
 
 ```bash
 xfetch wasm inspect ./plugin.wasm                  # Kopfzeile, Manifest, Faehigkeiten
+xfetch wasm inspect ./plugin.wasm --json           # derselbe Bericht als JSON
 xfetch wasm run ./plugin.wasm --request '{"version":1,"kind":"info_provider"}'
+xfetch wasm run ./plugin.wasm --request-file req.json --kind plugin --timeout 30
 xfetch wasm wit                                    # Komponenten-Vertrag
 ```
+
+`wasm run` akzeptiert `--request` oder `--request-file`, ein optionales `--kind` (`plugin`, `effect` oder `extension`, Standard `plugin`) und ein `--timeout` in Sekunden, das das Manifest-Limit ueberschreibt.
 
 ## Logs
 

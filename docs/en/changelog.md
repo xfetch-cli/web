@@ -1,6 +1,20 @@
 # Changelog
 # Changelog
 
+## v1.0.0 · Windows Native Probes, Daemons on Windows & Dependency Refresh · 2026-09-18
+
+- **Windows native probes:** CPU, datetime, battery and GPU are read through the Win32 API (`platform/windows/`) instead of sysinfo's PDH counters and PowerShell/`wmic` subprocesses — the default fetch went from ~575 ms to ~33 ms warm on a 16-thread machine, with identical rendered values
+- **Daemons on Windows:** the animated-logo and live-stats daemons are now implemented (`ui/win_daemon.rs`); the worker shares the console, `--daemon-stop`/`--daemon-live-stop` signal its stop event and it exits on its own when the shell leaves the console
+- **Daemons exit when the terminal closes** on every platform: they poll stdout for the pty hangup instead of lingering as orphans rendering into a dead pty, restoring the terminal and removing their PID/rows files
+- **Fixed the live daemon losing the disk module** on every platform: the default module lists said `"disks"` while the probe gate and renderer only know `"disk"`
+- **`xfetch | head` no longer panics:** stdout write errors are ignored on the static render path, matching the daemon and animation paths
+- **Guest safety net:** native and wasm plugins, effects and extensions default to a 30 s timeout when `timeout_secs` is unset (`0` disables the cap)
+- **Module colors** now accept names, 256-color indexes (`"196"`) and hex RGB (`"#FF8800"`), the same formats as the logo color
+- **Configs starting with a UTF-8 BOM now parse** (PowerShell 5.1 `Set-Content -Encoding UTF8` and Notepad write one) instead of silently falling back to the defaults
+- **Atomic installer writes:** binaries and manifests are staged and renamed over the target in both installers; `install-prebuilt.sh` now picks the musl build on musl distributions (Alpine)
+- **Dependency refresh:** `rustls` 0.23.43 → 0.23.45 fixes RUSTSEC-2026-0285; major upgrades with no code changes for `base64` 0.23, `sha2` 0.11, `dirs` 7 and `sysinfo` 0.39; `ureq` stays on 2.x (v3 needs a migration)
+- 218 tests plus 6 wasm end-to-end tests, clippy clean, zero advisories in the lockfile
+
 ## v0.9.0 · WebAssembly Guests, Host Calls & Useful Examples · 2026-09-12
 
 - **Sandboxed WebAssembly runtime:** plugins, effects and extensions can be `.wasm` artifacts (core modules and components) executed by wasmtime with manifest-declared, deny-by-default capabilities (HTTP, exec, filesystem, environment) and limits for time, memory and output

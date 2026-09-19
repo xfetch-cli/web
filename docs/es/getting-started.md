@@ -32,15 +32,23 @@ Banderas:
 | `--no-cargo-install` | Usar un binario precompilado en lugar de compilar con Cargo |
 | `--install-deps` | Instalar dependencias del sistema faltantes automáticamente |
 
+Binario precompilado (no requiere toolchain de Rust):
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/xfetch-cli/xfetch/main/install-prebuilt.sh | bash
+```
+
+El instalador prebuilt acepta `--version <v>`, `--prefix <dir>`, `--bin-dir <dir>` y `--no-modify-path`.
+
 ### Windows (PowerShell)
 
-Prebuilt binary (no Rust needed):
+Binario precompilado (no requiere Rust):
 
 ```powershell
 irm https://raw.githubusercontent.com/xfetch-cli/xfetch/main/install-prebuilt.ps1 | iex
 ```
 
-From source:
+Desde el código fuente:
 
 ```powershell
 irm https://raw.githubusercontent.com/xfetch-cli/xfetch/main/install.ps1 | iex
@@ -57,13 +65,21 @@ cp target/release/xfetch ~/.local/bin/
 
 ### Arch Linux (AUR)
 
-xfetch está disponible en AUR como `xfetch-git`. Compile e instale con makepkg o su ayudante AUR preferido:
+xfetch está empaquetado en AUR como `xfetch-core-bin` (binario precompilado) y `xfetch-git` (compila desde el código fuente). Con un ayudante AUR como `yay`:
 
 ```bash
-git clone https://aur.archlinux.org/xfetch-git.git
-cd xfetch-git
+yay -S xfetch-core-bin   # binario precompilado
+yay -S xfetch-git        # compilar desde el código fuente
+```
+
+Sin un ayudante AUR:
+
+```bash
+git clone https://aur.archlinux.org/xfetch-core-bin.git
+cd xfetch-core-bin
 makepkg -si
 ```
+
 ### Gestores de Paquetes
 
 xfetch está disponible mediante Homebrew:
@@ -78,16 +94,6 @@ Desde crates.io:
 ```bash
 cargo install xfetch-cli
 ```
-
-Desde el PKGBUILD del repositorio:
-
-```bash
-git clone https://github.com/xfetch-cli/xfetch.git
-cd xfetch
-makepkg -si
-```
-
-
 
 ## Primera Ejecución
 
@@ -218,6 +224,7 @@ xfetch update
 | `XFETCH_EFFECT_REPO` | Sobrescribir la URL del repositorio git de efectos |
 | `XFETCH_WASM_LOG_LEVEL` | Umbral de logs de invitados WebAssembly: `off`, `error`, `warn` (por defecto), `info`, `debug` |
 | `XFETCH_UPDATE_API` | Sobrescribe el endpoint de la API de GitHub usado por `xfetch update` (mirrors) |
+| `GH_TOKEN` / `GITHUB_TOKEN` | Token de GitHub usado por `xfetch update` para elevar el límite de la API |
 | `CARGO_NET_GIT_FETCH_WITH_CLI` | Usar git CLI para la obtención (se establece automáticamente durante la instalación de plugins) |
 
 ## Actualización

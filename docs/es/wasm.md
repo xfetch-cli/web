@@ -83,9 +83,13 @@ Los modulos core llaman a `xfetch.host_call` con una operacion JSON; los compone
 
 ```bash
 xfetch wasm inspect ./plugin.wasm                  # cabecera, manifiesto, capacidades
+xfetch wasm inspect ./plugin.wasm --json           # el mismo informe en JSON
 xfetch wasm run ./plugin.wasm --request '{"version":1,"kind":"info_provider"}'
+xfetch wasm run ./plugin.wasm --request-file req.json --kind plugin --timeout 30
 xfetch wasm wit                                    # contrato de componentes
 ```
+
+`wasm run` acepta `--request` o `--request-file`, un `--kind` opcional (`plugin`, `effect` o `extension`, por defecto `plugin`) y un `--timeout` en segundos que sobrescribe el límite del manifiesto.
 
 ## Logs
 

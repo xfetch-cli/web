@@ -83,9 +83,13 @@ Core modules call `xfetch.host_call` with a JSON operation; components use the t
 
 ```bash
 xfetch wasm inspect ./plugin.wasm                  # header, manifest, capabilities
+xfetch wasm inspect ./plugin.wasm --json           # the same report as JSON
 xfetch wasm run ./plugin.wasm --request '{"version":1,"kind":"info_provider"}'
+xfetch wasm run ./plugin.wasm --request-file req.json --kind plugin --timeout 30
 xfetch wasm wit                                    # component contract
 ```
+
+`wasm run` accepts `--request` or `--request-file`, an optional `--kind` (`plugin`, `effect` or `extension`, default `plugin`) and a `--timeout` in seconds that overrides the manifest limit.
 
 ## Logging
 

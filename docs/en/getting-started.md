@@ -32,6 +32,14 @@ Flags:
 | `--no-cargo-install` | Use a pre-built binary instead of building with Cargo |
 | `--install-deps` | Install missing system dependencies automatically |
 
+Prebuilt binary (no Rust toolchain needed):
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/xfetch-cli/xfetch/main/install-prebuilt.sh | bash
+```
+
+The prebuilt installer accepts `--version <v>`, `--prefix <dir>`, `--bin-dir <dir>` and `--no-modify-path`.
+
 ### Windows (PowerShell)
 
 Prebuilt binary (no Rust needed):
@@ -57,13 +65,21 @@ cp target/release/xfetch ~/.local/bin/
 
 ### Arch Linux (AUR)
 
-xfetch is available in the AUR as `xfetch-git`. Build and install with makepkg or your preferred AUR helper:
+xfetch is packaged in the AUR as `xfetch-core-bin` (precompiled binary) and `xfetch-git` (builds from source). With an AUR helper such as `yay`:
 
 ```bash
-git clone https://aur.archlinux.org/xfetch-git.git
-cd xfetch-git
+yay -S xfetch-core-bin   # precompiled binary
+yay -S xfetch-git        # build from source
+```
+
+Without an AUR helper:
+
+```bash
+git clone https://aur.archlinux.org/xfetch-core-bin.git
+cd xfetch-core-bin
 makepkg -si
 ```
+
 ### Package Managers
 
 xfetch is available through Homebrew:
@@ -78,16 +94,6 @@ From crates.io:
 ```bash
 cargo install xfetch-cli
 ```
-
-From the repository PKGBUILD:
-
-```bash
-git clone https://github.com/xfetch-cli/xfetch.git
-cd xfetch
-makepkg -si
-```
-
-
 
 ## First Run
 
@@ -218,6 +224,7 @@ xfetch update
 | `XFETCH_EFFECT_REPO` | Override the effects git repository URL |
 | `XFETCH_WASM_LOG_LEVEL` | WebAssembly guest log threshold: `off`, `error`, `warn` (default), `info`, `debug` |
 | `XFETCH_UPDATE_API` | Override the GitHub API endpoint used by `xfetch update` (mirrors) |
+| `GH_TOKEN` / `GITHUB_TOKEN` | GitHub token used by `xfetch update` to raise the API rate limit |
 | `CARGO_NET_GIT_FETCH_WITH_CLI` | Use git CLI for fetching (set automatically during plugin install) |
 
 ## Updating
