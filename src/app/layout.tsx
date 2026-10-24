@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import "@xscriptor/xcomponents/styles.css";
 import "./globals.css";
+import "./landing.css";
 import BgPaths from "@/components/BgPaths";
 import SiteNav from "@/components/SiteNav";
 
@@ -19,13 +19,16 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`} data-theme="dark" suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{
-          __html: `(function(){try{var t=localStorage.getItem("xfetch-theme");if(t==="light")document.documentElement.removeAttribute("data-theme")}catch(e){}})();`
+          __html: `(function(){try{document.documentElement.classList.add("xf-js");var t=localStorage.getItem("xfetch-theme");if(t==="light")document.documentElement.removeAttribute("data-theme")}catch(e){}})();`
         }} />
       </head>
       <body className="font-sans antialiased relative">
+        <a className="xf-skip" href="#content">
+          Skip to content
+        </a>
         <BgPaths />
         <SiteNav />
-        <div className="relative z-10">
+        <div id="content" className="relative z-10" tabIndex={-1}>
           {children}
         </div>
       </body>

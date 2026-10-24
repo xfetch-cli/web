@@ -2,7 +2,7 @@
 
 Ein plattformunabhangiges Systeminformations-Tool geschrieben in Rust.
 
-- **Version:** 1.0.0
+- **Version:** 1.0.1
 - **Lizenz:** MIT
 - **Autor:** xscriptor
 - **Repository:** github.com/xfetch-cli/xfetch

@@ -1,6 +1,16 @@
 # Registro de Cambios
 # Registro de Cambios
 
+## v1.0.1 · Release de seguridad: dependencias parchadas, releases firmadas e instaladores más seguros · 2026-10-24
+
+- **Cerrados todos los avisos de RustSec del grafo de v1.0.0:** `wasmtime` y `wasmtime-wasi` 48.0.7, `rustls` 0.23.46, `rustls-webpki` 0.103.16, `webpki-roots` 1.0.11, `tokio` 1.54.1 y `yoke-derive` 0.8.4. `cargo audit --deny warnings` reporta 0 vulnerabilidades y 0 warnings.
+- **Los binarios de v1.0.0 siguen afectados por estos avisos; actualiza a v1.0.1.**
+- **Fijado de artefactos wasm:** los manifiestos aceptan un `sha256` opcional y los comandos de plugins, efectos y extensiones aceptan `--sha256`. El digest se verifica en artefactos descargados, versionados, generados por build y archivos locales; una discrepancia aborta antes de escribir nada. Las instalaciones remotas sin digest siguen funcionando, pero muestran un aviso claro.
+- **Endurecimiento de instalaciones remotas:** nombres de invitado validados, directorios temporales privados, `git clone --depth 1 -- <repo>` y avisos explícitos cuando un comando `build` del manifiesto o un plugin nativo se ejecuta sin sandbox.
+- **Instalador prebuilt:** SHA-256 portable con `sha256sum`, `shasum` u `openssl`; `SHA256SUMS` es obligatorio; desde v1.0.1 también se exige `SHA256SUMS.bundle` firmado. `--require-signature` hace obligatorio cosign, `--allow-unsigned` es una excepción explícita, y la versión y el asset se derivan del tag y del nombre exacto esperado.
+- **Releases firmadas:** firma keyless de cosign para `SHA256SUMS`, attestations de procedencia de GitHub y un gate que comprueba que el tag está en `main`, coincide con `Cargo.toml`, ejecuta tests y `cargo audit`, y re-verifica firma y checksums antes de publicar.
+- **Cadena de suministro:** CI con `cargo audit`/`npm audit`, Dependabot, GitHub Actions pineadas por SHA y builds de release con Rust 1.98.1 y `--locked`.
+
 ## v1.0.0 · Sondas nativas en Windows, daemons en Windows y actualización de dependencias · 2026-09-18
 
 - **Sondas nativas en Windows:** CPU, fecha, batería y GPU se leen por la API Win32 (`platform/windows/`) en vez de los contadores PDH de sysinfo y los subprocesos de PowerShell/`wmic` — el fetch por defecto pasó de ~575 ms a ~33 ms en caliente en una máquina de 16 hilos, con valores idénticos

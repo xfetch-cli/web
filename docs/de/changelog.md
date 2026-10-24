@@ -1,6 +1,16 @@
 # Anderungsprotokoll
 # Anderungsprotokoll
 
+## v1.0.1 · Sicherheitsrelease: gepatchte Abhängigkeiten, signierte Releases und sicherere Installer · 2026-10-24
+
+- **Alle RustSec-Hinweise im Abhängigkeitsgraph von v1.0.0 sind geschlossen:** `wasmtime` und `wasmtime-wasi` 48.0.7, `rustls` 0.23.46, `rustls-webpki` 0.103.16, `webpki-roots` 1.0.11, `tokio` 1.54.1 und `yoke-derive` 0.8.4. `cargo audit --deny warnings` meldet 0 Schwachstellen und 0 Warnungen.
+- **Die Binaries von v1.0.0 sind weiterhin betroffen; auf v1.0.1 aktualisieren.**
+- **Wasm-Artefakte pinnen:** Manifeste akzeptieren ein optionales `sha256`, und Plugins, Effekte und Erweiterungen akzeptieren `--sha256`. Der Digest wird bei heruntergeladenen, eingecheckten, gebauten und lokalen Artefakten geprüft; eine Abweichung bricht ab, bevor etwas geschrieben wird. Remote-Installationen ohne Digest funktionieren weiter, warnen aber deutlich.
+- **Härtung von Remote-Installationen:** validierte Guest-Namen, private temporäre Verzeichnisse, `git clone --depth 1 -- <repo>` und explizite Warnungen, wenn Manifest-`build`-Befehle oder native Gäste ohne Sandbox laufen.
+- **Prebuilt-Installer:** portables SHA-256 über `sha256sum`, `shasum` oder `openssl`; `SHA256SUMS` ist Pflicht; ab v1.0.1 wird zusätzlich ein signiertes `SHA256SUMS.bundle` verlangt. `--require-signature` macht cosign Pflicht, `--allow-unsigned` ist ein explizites Opt-out, und Version sowie Asset stammen aus dem Tag und dem exakten erwarteten Dateinamen.
+- **Signierte Releases:** Keyless-cosign-Signatur für `SHA256SUMS`, GitHub-Build-Provenance-Attestations und ein Gate, das prüft, dass der Tag auf `main` liegt, zu `Cargo.toml` passt, Tests und `cargo audit` ausführt und Signatur sowie Checksums vor dem Veröffentlichen erneut verifiziert.
+- **Supply Chain:** CI mit `cargo audit`/`npm audit`, Dependabot, per SHA gepinnte GitHub Actions und Release-Builds mit Rust 1.98.1 und `--locked`.
+
 ## v1.0.0 · Native Windows-Probes, Daemons unter Windows und Abhängigkeits-Refresh · 2026-09-18
 
 - **Native Windows-Probes:** CPU, Datum, Akku und GPU werden über die Win32-API (`platform/windows/`) gelesen statt über sysinfos PDH-Zähler und PowerShell/`wmic`-Subprozesse — der Standard-Fetch ging auf einem 16-Thread-Rechner von ~575 ms auf ~33 ms (warm), mit identischen Werten
