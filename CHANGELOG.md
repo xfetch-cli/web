@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-10-24 — Security update
+
+- Updated Next.js from 16.3.1 to 16.4.3 and aligned `eslint-config-next` to 16.4.3, closing the critical Next.js advisories (including the unauthenticated RCE and cache-poisoning/SSRF reports).
+- Updated the sharp override to 0.35.5 (libheif/librsvg fixes) and resolved the remaining transitive advisories: source-map-js 1.2.2, zod 4.6.7, js-yaml 4.3.2 and brace-expansion 1.1.21/5.0.12.
+- `npm audit` now reports 0 vulnerabilities, including with `--omit=dev`. The static export still builds successfully (142 pages) and no site content or layout changed.
+- Added `security-audit.yml` running `npm ci --ignore-scripts` and `npm audit --audit-level=high` on push, pull request and weekly schedules.
+- Added weekly Dependabot updates for npm and GitHub Actions, pinned all workflow actions by commit SHA, disabled persisted checkout credentials, and moved Pages write/OIDC permissions to the deploy job only.
+
 ## 2026-09-12 — WebAssembly docs and home demo fix
 
 - Added wiki pages for the WebAssembly runtime, the four wasm plugins and the three wasm extensions in English, Spanish and German; plugin index, presets and summary updated
