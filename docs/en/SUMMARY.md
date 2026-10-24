@@ -2,7 +2,7 @@
 
 A cross-platform system information fetching tool written in Rust.
 
-- **Version:** 1.0.0
+- **Version:** 1.0.1
 - **License:** MIT
 - **Author:** xscriptor
 - **Repository:** github.com/xfetch-cli/xfetch

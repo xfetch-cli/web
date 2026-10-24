@@ -1,6 +1,16 @@
 # Changelog
 # Changelog
 
+## v1.0.1 · Security release: patched dependencies, signed releases & safer installers · 2026-10-24
+
+- **Every RustSec advisory in the v1.0.0 dependency graph is closed:** `wasmtime` and `wasmtime-wasi` 48.0.7, `rustls` 0.23.46, `rustls-webpki` 0.103.16, `webpki-roots` 1.0.11, `tokio` 1.54.1 and `yoke-derive` 0.8.4. `cargo audit --deny warnings` reports 0 vulnerabilities and 0 warnings.
+- **v1.0.0 binaries remain affected by these advisories; upgrade to v1.0.1.**
+- **Wasm artifact pinning:** manifests accept an optional `sha256` and plugins, effects and extensions accept `--sha256`. The digest is enforced on downloaded, checked-in, built and direct-file artifacts; a mismatch aborts before anything is written. Remote installs without a digest still work but print a prominent warning.
+- **Remote install hardening:** validated guest names, private temporary directories, `git clone --depth 1 -- <repo>`, and explicit warnings when manifest build commands or native guests run unsandboxed.
+- **Prebuilt installer:** portable SHA-256 via `sha256sum`, `shasum` or `openssl`; `SHA256SUMS` is mandatory; v1.0.1+ also requires a signed `SHA256SUMS.bundle`. `--require-signature` makes cosign mandatory, `--allow-unsigned` is an explicit opt-out, and the version/assets come from the release tag and exact expected filename.
+- **Signed releases:** keyless cosign signature for `SHA256SUMS`, GitHub build provenance attestations, and a release gate that checks the tag is on `main`, matches `Cargo.toml`, runs the tests and `cargo audit`, and re-verifies the signature and checksums before publishing.
+- **Supply chain:** added `cargo audit`/`npm audit` CI, Dependabot, SHA-pinned GitHub Actions, and Rust 1.98.1 with `--locked` release builds.
+
 ## v1.0.0 · Windows Native Probes, Daemons on Windows & Dependency Refresh · 2026-09-18
 
 - **Windows native probes:** CPU, datetime, battery and GPU are read through the Win32 API (`platform/windows/`) instead of sysinfo's PDH counters and PowerShell/`wmic` subprocesses — the default fetch went from ~575 ms to ~33 ms warm on a 16-thread machine, with identical rendered values
