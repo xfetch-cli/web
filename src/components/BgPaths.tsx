@@ -1,98 +1,54 @@
-"use client";
-
+/**
+ * Ambient background: a hairline engineering grid, two restrained glows and a
+ * few slowly drifting isometric curves. Pure CSS/SVG, theme-aware through the
+ * existing `bg-paths-*` visibility rules in globals.css, and motion is disabled
+ * by `prefers-reduced-motion` in landing.css.
+ */
 export default function BgPaths() {
   return (
-    <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
-      <svg className="w-full h-full" fill="none" preserveAspectRatio="xMidYMid slice" viewBox="-2400 -800 4800 1600">
+    <div className="xf-bg" aria-hidden="true">
+      <div className="xf-bg-grid" />
+      <div className="xf-bg-glow xf-bg-glow--warm" />
+      <div className="xf-bg-glow xf-bg-glow--cool" />
+      <svg
+        className="xf-bg-lines"
+        viewBox="0 0 1600 1000"
+        fill="none"
+        preserveAspectRatio="xMidYMid slice"
+        focusable="false"
+      >
         <defs>
-          <linearGradient id="bgGradDark" x1="0%" x2="100%" y1="0%" y2="0%">
-            <stop offset="0%" stopColor="#fc618d" />
-            <stop offset="50%" stopColor="#948ae3" />
-            <stop offset="100%" stopColor="#5ad4e6" />
+          <linearGradient id="xfBgDark" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stopColor="#ffb27a" stopOpacity="0" />
+            <stop offset="42%" stopColor="#ffb27a" stopOpacity="0.55" />
+            <stop offset="70%" stopColor="#7dd3fc" stopOpacity="0.45" />
+            <stop offset="100%" stopColor="#a78bfa" stopOpacity="0" />
           </linearGradient>
-          <linearGradient id="bgGradLight" x1="0%" x2="100%" y1="0%" y2="0%">
-            <stop offset="0%" stopColor="#e85d7a" />
-            <stop offset="50%" stopColor="#7a6fc4" />
-            <stop offset="100%" stopColor="#4ab8c9" />
+          <linearGradient id="xfBgLight" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stopColor="#b85c2a" stopOpacity="0" />
+            <stop offset="45%" stopColor="#b85c2a" stopOpacity="0.4" />
+            <stop offset="72%" stopColor="#0e7490" stopOpacity="0.32" />
+            <stop offset="100%" stopColor="#6d28d9" stopOpacity="0" />
           </linearGradient>
         </defs>
-        <g className="bg-paths-dark" data-theme-vis="dark">
-          {Array.from({ length: 12 }).map((_, i) => (
-            <path
-              key={`pd-${i}`}
-              d={`M 2400 800 C 1200 ${400 - i * 30}, 600 ${1200 - i * 20}, -2400 ${-800 + i * 25}`}
-              stroke="url(#bgGradDark)"
-              strokeLinecap="round"
-              strokeWidth={4 + i * 0.3}
-              style={{ opacity: 0.15 + i * 0.02 }}
-            >
-              <animateTransform attributeName="transform" type="translate" values="0,0; 0,-15; 0,0" dur={`${8 + i * 0.2}s`} repeatCount="indefinite" />
-            </path>
-          ))}
-          {Array.from({ length: 15 }).map((_, i) => (
-            <path
-              key={`sd-${i}`}
-              d={`M 2400 900 C 1300 ${500 - i * 25}, 500 ${1300 - i * 15}, -2400 ${-700 + i * 20}`}
-              stroke="url(#bgGradDark)"
-              strokeLinecap="round"
-              strokeWidth={3 + i * 0.25}
-              style={{ opacity: 0.12 + i * 0.015 }}
-            >
-              <animateTransform attributeName="transform" type="translate" values="0,0; 0,-10; 0,0" dur={`${6 + i * 0.15}s`} repeatCount="indefinite" />
-            </path>
-          ))}
-          {Array.from({ length: 10 }).map((_, i) => (
-            <path
-              key={`ad-${i}`}
-              d={`M 2200 1000 C 1400 ${600 - i * 20}, 400 ${1400 - i * 10}, -2000 ${-600 + i * 30}`}
-              stroke="url(#bgGradDark)"
-              strokeLinecap="round"
-              strokeWidth={2 + i * 0.2}
-              style={{ opacity: 0.08 + i * 0.12 }}
-            >
-              <animateTransform attributeName="transform" type="translate" values="0,0; 0,-5; 0,0" dur={`${4 + i * 0.1}s`} repeatCount="indefinite" />
-            </path>
-          ))}
+
+        <g className="bg-paths-dark xf-bg-drift">
+          <path d="M-120 760 C 240 560 420 880 760 700 S 1260 420 1720 560" stroke="url(#xfBgDark)" strokeWidth="1.1" />
+          <path d="M-120 820 C 270 620 460 940 800 760 S 1300 480 1720 620" stroke="url(#xfBgDark)" strokeWidth="0.8" opacity="0.7" />
+          <path d="M-160 640 C 220 470 380 720 720 600 S 1200 330 1680 430" stroke="url(#xfBgDark)" strokeWidth="0.7" opacity="0.55" />
+          <path d="M260 1040 L 720 300 L 1180 1040" stroke="url(#xfBgDark)" strokeWidth="0.6" opacity="0.28" />
+          <path d="M520 1040 L 980 300 L 1440 1040" stroke="url(#xfBgDark)" strokeWidth="0.6" opacity="0.2" />
         </g>
-        <g className="bg-paths-light" data-theme-vis="light">
-          {Array.from({ length: 12 }).map((_, i) => (
-            <path
-              key={`pl-${i}`}
-              d={`M 2400 800 C 1200 ${400 - i * 30}, 600 ${1200 - i * 20}, -2400 ${-800 + i * 25}`}
-              stroke="url(#bgGradLight)"
-              strokeLinecap="round"
-              strokeWidth={4 + i * 0.3}
-              style={{ opacity: 0.08 + i * 0.015 }}
-            >
-              <animateTransform attributeName="transform" type="translate" values="0,0; 0,-15; 0,0" dur={`${8 + i * 0.2}s`} repeatCount="indefinite" />
-            </path>
-          ))}
-          {Array.from({ length: 15 }).map((_, i) => (
-            <path
-              key={`sl-${i}`}
-              d={`M 2400 900 C 1300 ${500 - i * 25}, 500 ${1300 - i * 15}, -2400 ${-700 + i * 20}`}
-              stroke="url(#bgGradLight)"
-              strokeLinecap="round"
-              strokeWidth={3 + i * 0.25}
-              style={{ opacity: 0.06 + i * 0.01 }}
-            >
-              <animateTransform attributeName="transform" type="translate" values="0,0; 0,-10; 0,0" dur={`${6 + i * 0.15}s`} repeatCount="indefinite" />
-            </path>
-          ))}
-          {Array.from({ length: 10 }).map((_, i) => (
-            <path
-              key={`al-${i}`}
-              d={`M 2200 1000 C 1400 ${600 - i * 20}, 400 ${1400 - i * 10}, -2000 ${-600 + i * 30}`}
-              stroke="url(#bgGradLight)"
-              strokeLinecap="round"
-              strokeWidth={2 + i * 0.2}
-              style={{ opacity: 0.04 + i * 0.08 }}
-            >
-              <animateTransform attributeName="transform" type="translate" values="0,0; 0,-5; 0,0" dur={`${4 + i * 0.1}s`} repeatCount="indefinite" />
-            </path>
-          ))}
+
+        <g className="bg-paths-light xf-bg-drift">
+          <path d="M-120 760 C 240 560 420 880 760 700 S 1260 420 1720 560" stroke="url(#xfBgLight)" strokeWidth="1.1" />
+          <path d="M-120 820 C 270 620 460 940 800 760 S 1300 480 1720 620" stroke="url(#xfBgLight)" strokeWidth="0.8" opacity="0.6" />
+          <path d="M-160 640 C 220 470 380 720 720 600 S 1200 330 1680 430" stroke="url(#xfBgLight)" strokeWidth="0.7" opacity="0.5" />
+          <path d="M260 1040 L 720 300 L 1180 1040" stroke="url(#xfBgLight)" strokeWidth="0.6" opacity="0.22" />
+          <path d="M520 1040 L 980 300 L 1440 1040" stroke="url(#xfBgLight)" strokeWidth="0.6" opacity="0.16" />
         </g>
       </svg>
+      <div className="xf-bg-noise" />
     </div>
   );
 }

@@ -8,6 +8,19 @@ export const metadata: Metadata = {
 
 const base = process.env.NEXT_PUBLIC_BASE_PATH || "";
 
+const IMAGE_DIMENSIONS: Record<string, { width: number; height: number }> = {
+  "preview-linux-2.webp": { width: 971, height: 576 },
+  "preview-linux-3.webp": { width: 968, height: 591 },
+  "preview-linux-4.webp": { width: 960, height: 518 },
+  "preview-linux-5.webp": { width: 977, height: 549 },
+  "preview-linux-6.webp": { width: 1919, height: 1079 },
+  "macos-preview-2.webp": { width: 1272, height: 589 },
+  "macos-preview-3.webp": { width: 2048, height: 1332 },
+  "preview-windows-1.webp": { width: 2871, height: 1619 },
+  "preview-windows-2.webp": { width: 2871, height: 1619 },
+  "preview-windows-3.webp": { width: 2559, height: 1439 },
+};
+
 const LINUX_STILLS = [
   {
     src: "preview-linux-2.webp",
@@ -64,11 +77,15 @@ const WINDOWS_STILLS = [
 ];
 
 function PreviewImage({ src, alt }: { src: string; alt: string }) {
+  const dimensions = IMAGE_DIMENSIONS[src] ?? { width: 1200, height: 800 };
   return (
     <img
       src={`${base}/previews/${src}`}
       alt={alt}
+      width={dimensions.width}
+      height={dimensions.height}
       loading="lazy"
+      decoding="async"
       className="h-auto w-full rounded-lg border border-bg3/60 bg-bg/90"
     />
   );
@@ -103,6 +120,10 @@ export default function PreviewsPage() {
               <img
                 src={`${base}/previews/xfetch-demo.gif`}
                 alt="xfetch main demo"
+                width={1280}
+                height={720}
+                loading="lazy"
+                decoding="async"
                 className="block h-auto w-full"
               />
             </div>
@@ -120,6 +141,10 @@ export default function PreviewsPage() {
               <img
                 src={`${base}/previews/preview-linux-1.gif`}
                 alt="xfetch on Linux, animated demo"
+                width={800}
+                height={450}
+                loading="lazy"
+                decoding="async"
                 className="block h-auto w-full"
               />
             </div>
@@ -178,6 +203,10 @@ export default function PreviewsPage() {
               <img
                 src={`${base}/previews/macos-preview-1.gif`}
                 alt="xfetch on macOS, animated demo"
+                width={768}
+                height={432}
+                loading="lazy"
+                decoding="async"
                 className="block h-auto w-full"
               />
             </div>

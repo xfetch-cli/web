@@ -6,7 +6,7 @@
   --color-bg3: #22263a;
   --color-fg: #e1e4ed;
   --color-fg2: #8b91a8;
-  --color-accent: #dea584;
+  --color-accent: #ffb27a;
   --color-accent2: #ffa500;
   --color-green: #78dba9;
   --color-cyan: #78dce8;
@@ -30,7 +30,7 @@
   --border: #22263a;
   --text: #e1e4ed;
   --text-muted: #8b91a8;
-  --accent: #dea584;
+  --accent: #ffb27a;
 }
 
 html:not([data-theme="dark"]) {
@@ -40,7 +40,7 @@ html:not([data-theme="dark"]) {
   --color-bg3: #e0ddd5;
   --color-fg: #1e1e1e;
   --color-fg2: #6b7280;
-  --color-accent: #c8763a;
+  --color-accent: #a85122;
   --color-accent2: #ffa500;
   --color-green: #2ea043;
   --color-cyan: #0e8a9e;
@@ -54,7 +54,7 @@ html:not([data-theme="dark"]) {
   --border: #e0ddd5;
   --text: #1e1e1e;
   --text-muted: #6b7280;
-  --accent: #c8763a;
+  --accent: #a85122;
 }
 
 body {
@@ -107,18 +107,6 @@ body {
 .placeholder-fg2::placeholder { color: var(--color-fg2) !important; }
 .\[\&\:checked\:\:after\]\:text-bg:checked:after { color: var(--color-bg) !important; }
 
-.xfetch-nav a,
-.xfetch-nav button,
-.XGlassNavbar_overlay a,
-.XGlassNavbar_overlay button {
-  font-family: "Geist", ui-sans-serif, system-ui, sans-serif;
-}
-
-header.XGlassNavbar_nav .XGlassNavbar_sectionLeft,
-header.XGlassNavbar_nav .XGlassNavbar_sectionRight {
-  width: auto;
-  flex: 0 0 auto;
-}
 
 .bg-paths-dark { display: block; }
 .bg-paths-light { display: none; }
