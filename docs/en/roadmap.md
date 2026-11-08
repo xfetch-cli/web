@@ -149,3 +149,14 @@
 - [/] Create comparison guide with similar tools
 - [ ] Setup Discord/Slack community channel
 - [x] Create contribution program
+
+## Phase 14 · CLI, Automation & Addon Lifecycle
+
+- [x] Machine-readable output (`--json`, `--get`, stable JSON schema version)
+- [x] Runtime overrides for layout, theme, modules, colors, caching and offline mode
+- [x] `doctor`, `config` management, `schema`, `paths`, `env` and `build-info`
+- [x] Config backup and restore with compression, encryption and addon artifacts
+- [x] Addon install receipts, `update`, `rollback` and `install --all`
+- [x] Command addons and `xfetch run --render`
+- [x] Structured logging and stable exit codes
+- [x] Shell completions, man page and CLI sandbox tests

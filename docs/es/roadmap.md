@@ -149,3 +149,14 @@
 - [/] Crear guía comparativa con herramientas similares
 - [ ] Configurar canal comunitario Discord/Slack
 - [x] Crear programa de contribución
+
+## Fase 14 · CLI, Automatización y Ciclo de Addons
+
+- [x] Salida legible por máquina (`--json`, `--get`, versión de esquema JSON estable)
+- [x] Overrides de layout, tema, módulos, colores, caché y modo offline
+- [x] `doctor`, gestión con `config`, `schema`, `paths`, `env` y `build-info`
+- [x] Backup y restauración de configuración con compresión, cifrado y artefactos de addons
+- [x] Recibos de instalación de addons, `update`, `rollback` e `install --all`
+- [x] Addons de comandos y `xfetch run --render`
+- [x] Logging estructurado y códigos de salida estables
+- [x] Completions de shell, página de manual y pruebas sandbox de la CLI

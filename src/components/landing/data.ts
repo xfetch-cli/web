@@ -22,7 +22,7 @@ export const FEATURES: Feature[] = [
     key: "layouts",
     icon: "layouts-icon",
     title: "Multiple layouts",
-    desc: "Classic side-by-side, Pac-Man, tree, section, side-block, box, lines, dots, and bottom-line.",
+    desc: "Classic side-by-side, right, Pac-Man, tree, section, side-block, box, lines, dots, and bottom-line.",
   },
   {
     key: "jsonc",
@@ -162,8 +162,10 @@ export type InstallContent = Record<string, { lines: InstallLine[] }>;
 export const INSTALL_TABS: InstallTab[] = [
   { id: "linux", label: "Linux / macOS" },
   { id: "windows", label: "Windows" },
+  { id: "arch", label: "Arch Linux" },
+  { id: "xlinux", label: "X Linux" },
+  { id: "cargo", label: "Cargo" },
   { id: "source", label: "Build from source" },
-  { id: "arch", label: "Arch/X Linux" },
 ];
 
 export const INSTALL_CONTENT: InstallContent = {
@@ -181,7 +183,16 @@ export const INSTALL_CONTENT: InstallContent = {
   },
   windows: {
     lines: [
-      { text: "# PowerShell one-liner", comment: true },
+      { text: "# Official package (WinGet)", comment: true },
+      { text: "winget install xfetch", comment: false },
+      { text: "", comment: false },
+      { text: "# Prebuilt binary (no Rust toolchain)", comment: true },
+      {
+        text: "irm https://raw.githubusercontent.com/xfetch-cli/xfetch/main/install-prebuilt.ps1 | iex",
+        comment: false,
+      },
+      { text: "", comment: false },
+      { text: "# From source (requires Rust)", comment: true },
       {
         text: "irm https://raw.githubusercontent.com/xfetch-cli/xfetch/main/install.ps1 | iex",
         comment: false,
@@ -205,13 +216,31 @@ export const INSTALL_CONTENT: InstallContent = {
   },
   arch: {
     lines: [
-      { text: "# Using the PKGBUILD in the repo", comment: true },
-      { text: "git clone https://github.com/xfetch-cli/xfetch.git", comment: false },
-      { text: "cd xfetch", comment: false },
-      { text: "makepkg -si", comment: false },
+      { text: "# AUR (precompiled binary)", comment: true },
+      { text: "yay -S xfetch-core-bin", comment: false },
       { text: "", comment: false },
-      { text: "# Installed to /usr/bin/xfetch", comment: true },
-      { text: "pacman -R xfetch-git   # to uninstall", comment: false },
+      { text: "# AUR (build from source)", comment: true },
+      { text: "yay -S xfetch-git", comment: false },
+      { text: "", comment: false },
+      { text: "# Without an AUR helper", comment: true },
+      { text: "git clone https://aur.archlinux.org/xfetch-core-bin.git", comment: false },
+      { text: "cd xfetch-core-bin", comment: false },
+      { text: "makepkg -si", comment: false },
+    ],
+  },
+  xlinux: {
+    lines: [
+      { text: "# Official X Linux package", comment: true },
+      { text: "xpm-aur install xfetch-core-bin", comment: false },
+    ],
+  },
+  cargo: {
+    lines: [
+      { text: "# From crates.io", comment: true },
+      { text: "cargo install xfetch-cli", comment: false },
+      { text: "", comment: false },
+      { text: "# Update an existing install", comment: true },
+      { text: "cargo install xfetch-cli --force", comment: false },
     ],
   },
 };
@@ -239,14 +268,20 @@ export const ALL_MODULES = [
 
 export const LAYOUT_OPTIONS = [
   { value: "null", label: "Default (classic)" },
+  { value: "right", label: "Right (logo on the right)" },
   { value: "pacman", label: "Pac-Man" },
   { value: "box", label: "Box" },
   { value: "section", label: "Section" },
+  { value: "section-box", label: "Section Box" },
   { value: "tree", label: "Tree" },
   { value: "side-block", label: "Side Block" },
   { value: "line", label: "Line" },
   { value: "dots", label: "Dots" },
   { value: "bottom_line", label: "Bottom Line" },
+  { value: "compact", label: "Compact" },
+  { value: "minimal", label: "Minimal" },
+  { value: "horizontal", label: "Horizontal" },
+  { value: "bottom", label: "Bottom" },
 ];
 
 export const DEFAULT_MODULES = [
@@ -329,17 +364,22 @@ export const PHASES: Phase[] = [
   {
     title: "Phase 11 — Testing & QA",
     desc: "Unit/integration tests, clippy, rustfmt, platform-specific tests, cross-platform suite, coverage.",
-    status: "partial",
+    status: "done",
   },
   {
     title: "Phase 12 — Advanced features",
-    desc: "Daemon mode, custom scripting, conditional modules, theme variables, telemetry (opt-in); pending: real-time stats in daemon mode, config hot-reload, animations, accessibility.",
-    status: "partial",
+    desc: "Daemon mode, live stats, config hot-reload, conditional modules, theme variables, logo animations and accessibility.",
+    status: "done",
   },
   {
     title: "Phase 13 — Marketing",
     desc: "User manual, video tutorials, project website, blog posts, comparison guide, community channel.",
     status: "partial",
+  },
+  {
+    title: "Phase 14 — CLI & automation",
+    desc: "Machine-readable JSON, runtime overrides, doctor, config backup/restore, shell completions, man page and command addons.",
+    status: "done",
   },
 ];
 

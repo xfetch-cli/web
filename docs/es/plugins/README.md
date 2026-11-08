@@ -4,8 +4,11 @@ xfetch proporciona un conjunto de plugins oficiales para funcionalidad adicional
 
 ## Plugins de Proveedor de Información
 
+- [banner-text](banner-text) — Líneas de texto desde un archivo o argumento literal
 - [docker](docker) — Estadísticas de contenedores Docker
+- [gauges](gauges) — Memoria, swap, disco y batería como barras de progreso
 - [github-stats](github-stats) — Estadísticas de usuario de GitHub
+- [langs](langs) — Lenguajes de un repositorio de GitHub o agregados de un owner/org con colores de marca
 - [music-player](music-player) — Música reproduciéndose actualmente (MPD / Spotify)
 - [weather](weather) — Condiciones climáticas actuales vía wttr.in
 - [timezone](timezone) — Zona horaria, fecha y offset UTC
@@ -19,6 +22,7 @@ xfetch proporciona un conjunto de plugins oficiales para funcionalidad adicional
 ## Plugins de Animación de Logo
 
 - [animate-logo](animate-logo) — Logos ASCII animados con efectos de color
+- [banner](banner) — Banner de proverbio chino/japonés debajo o encima del logo ASCII
 
 ## Plugins WebAssembly
 

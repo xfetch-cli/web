@@ -2,7 +2,7 @@
 
 Una herramienta de obtención de información del sistema multiplataforma escrita en Rust.
 
-- **Versión:** 1.0.1
+- **Versión:** 1.0.4
 - **Licencia:** MIT
 - **Autor:** xscriptor
 - **Repositorio:** github.com/xfetch-cli/xfetch
@@ -169,3 +169,9 @@ Una herramienta de obtención de información del sistema multiplataforma escrit
 
 20. [Licencia](license.md)
     - Términos de la licencia MIT
+
+21. [Referencia de la CLI](cli.md)
+    - Opciones globales y overrides en tiempo de ejecución
+    - JSON, `--get` y plantillas
+    - Comandos de addons, config, doctor y update
+    - Códigos de salida, logging y variables de entorno

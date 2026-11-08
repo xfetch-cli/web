@@ -7,6 +7,7 @@ xfetch unterstutzt mehrere visuelle Layouts zur Anzeige von Systeminformationen.
 | Konfigurationswert | Beschreibung |
 |--------------|-------------|
 | `null` oder `"default"` | Klassisch nebeneinander: Logo links, Info rechts |
+| `"right"` | Spiegelt das klassische Layout: Info links, Logo rechts |
 | `"section"` | Gruppierte Informationen mit Abschnittsuberschriften |
 | `"pacman"` | Gerahmtes Layout mit dekorativer Kopf- und Fuzeile |
 | `"side-block"` | Zwei Spalten: Icons links, Werte rechts |
@@ -307,3 +308,15 @@ Varianten, die die Position des Logos relativ zum Inhalt andern:
 - **Unten:** Inhalt oben, Logo unten (wie Standard, aber vertikal gestapelt)
 
 Diese Layouts zeigen das Logo nicht nebeneinander an. Stattdessen stapeln sie das Logo und den Inhalt vertikal.
+
+## Rechts-Layout
+
+Spiegelt das klassische Layout: Die Info-Spalte bleibt links und das ASCII- oder Bildlogo wird rechts gerendert. Bildlogos nutzen dieselben Breiten- und Abstandseinstellungen wie das klassische Layout.
+
+```jsonc
+{
+    "layout": "right",
+    "logo_path": "~/.config/xfetch/logo.png",
+    "logo_width": 24
+}
+```

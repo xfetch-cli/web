@@ -7,6 +7,7 @@ xfetch admite múltiples diseños visuales para mostrar información del sistema
 | Valor de Configuración | Descripción |
 |------------------------|-------------|
 | `null` o `"default"` | Clásico lado a lado: logo a la izquierda, información a la derecha |
+| `"right"` | Espeja el diseño clásico: información a la izquierda, logo a la derecha |
 | `"section"` | Información agrupada con encabezados de sección |
 | `"pacman"` | Diseño encuadrado con cabecera y pie decorativos |
 | `"side-block"` | Dos columnas: iconos a la izquierda, valores a la derecha |
@@ -307,3 +308,15 @@ Variantes que cambian la posición del logo en relación al contenido:
 - **Inferior:** Contenido mostrado arriba, logo abajo (igual que el predeterminado pero apilado verticalmente)
 
 Estos diseños no muestran el logo lado a lado. En su lugar, apilan el logo y el contenido verticalmente.
+
+## Diseño Derecho
+
+Espeja el diseño clásico: la columna de información queda a la izquierda y el logo ASCII o de imagen se renderiza a la derecha. Los logos de imagen usan el mismo ancho y separación que el diseño clásico.
+
+```jsonc
+{
+    "layout": "right",
+    "logo_path": "~/.config/xfetch/logo.png",
+    "logo_width": 24
+}
+```

@@ -121,6 +121,8 @@ __  __                               OS: Arch Linux x86_64
 
 ## Befehlszeilen-Schnittstelle
 
+Die vollständige Referenz steht in [CLI-Referenz](cli.md). Dieser Abschnitt listet die wichtigsten Flags und Befehle.
+
 ### Globale Flags
 
 | Flag | Beschreibung |
@@ -129,6 +131,18 @@ __  __                               OS: Arch Linux x86_64
 | `--gen-config` | Standardkonfigurationsdatei am Standard-Konfigurationspfad generieren |
 | `--layout <name>` | Layout fur `--gen-config` (Standard: `section`) |
 | `--logo <id>` | Logo-Id (z. B. `arch`, `windows-11`) fur `--gen-config` (erfordert Netzwerkzugriff auf den Logo-Katalog) |
+| `--list-layouts` / `--list-modules` | Akzeptierte Layout- und Modulnamen ausgeben |
+| `--json` | Maschinenlesbare Ausgabe mit `schema_version: 1` |
+| `--get <keys>` | Nur die angegebenen Modulschlüssel ausgeben |
+| `--modules <list>` / `--only <list>` | Gerenderte Modulliste zur Laufzeit überschreiben |
+| `--theme <name>` | Theme zur Laufzeit überschreiben |
+| `--color <mode>` / `--no-color` | ANSI-Farben steuern (`auto`, `always`, `never`) |
+| `--offline` | Netzwerk deaktivieren (öffentliche IP, Kataloge, Updates, Remote-Installationen) |
+| `--no-cache` | Paket- und Public-IP-Cache für diesen Lauf umgehen |
+| `--quiet` / `--verbose` | Informative Ausgabe reduzieren oder erweitern |
+| `--log-level <level>` / `--log-json` | Strukturiertes Logging auf stderr |
+| `--template <file>` / `--format <string>` | Fetch mit einer Vorlage rendern |
+| `--backup` / `--restore` | Aktive Konfiguration sichern oder wiederherstellen |
 | `--clean-cache` | Die Cache-Datenbank leeren |
 | `--benchmark` | Zeitinformationen fur parallele Proben anzeigen |
 | `--daemon` | Den animierten Daemon starten |
@@ -175,9 +189,43 @@ xfetch effects remove <name>      Einen Effekt entfernen
 ```
 xfetch update                     Nach neuerer Version suchen und installieren
 xfetch update --check             Nur melden; Exit 1 bei neuerer Version
-xfetch update --prebuilt          In-Place-Prebuilt-Update erzwingen (Unix)
+xfetch update --check --json      Maschinenlesbare Update-Prüfung
+xfetch update --prebuilt          In-Place-Prebuilt-Update erzwingen
 xfetch update --bin-dir <dir>     Verzeichnis des Binaries mit --prebuilt
+xfetch update --rollback          Vorheriges Binary wiederherstellen
 xfetch update --yes               Bestätigung überspringen
+```
+
+### Konfiguration, Diagnose und Command-Addons
+
+```
+xfetch doctor                     Installation, Config, Terminal und Addons diagnostizieren
+xfetch doctor --fix --bench       Sichere Fixes anwenden und Benchmark ausführen
+xfetch config validate            Konfiguration und aktives Theme validieren
+xfetch config print               Aufgelöste Konfiguration ausgeben
+xfetch config set layout right    Einen Wert setzen und Kommentare bewahren
+xfetch config backup --compress   Config, Themes und Routen sichern
+xfetch config restore --dry-run   Wiederherstellung testen
+xfetch modules                    Modulschlüssel auflisten
+xfetch paths / env / build-info   Pfade, Umgebung und Build-Details ausgeben
+xfetch schema                     JSON-Schemas für Maschinenausgabe ausgeben
+xfetch completions <shell>        Shell-Completions erzeugen
+xfetch man                        Manpage rendern
+xfetch command install <name>     Ein Command-Addon installieren
+xfetch run <name> [--] <args>     Ein Command-Addon ausführen (--render nutzt das Layout)
+xfetch addon <kind> <action>      Einheitliche Plugin/Effect/Extension/Command-Aktion
+xfetch self-uninstall [--purge]   Binary und optional Daten entfernen
+```
+
+### Addon-Verwaltung
+
+```
+xfetch plugin install <name> --all   Jeden Katalogeintrag installieren
+xfetch plugin update --all --check   Nach Addon-Updates suchen
+xfetch plugin rollback <name>        Vorheriges Artefakt wiederherstellen
+xfetch plugin info <name>            Fähigkeiten, Limits und Config anzeigen
+xfetch plugin search <query>         Remote-Katalog durchsuchen
+xfetch plugin list --verbose         Installierte Addons mit Details auflisten
 ```
 
 ### Nutzungsbeispiele

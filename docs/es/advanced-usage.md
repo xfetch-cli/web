@@ -175,6 +175,33 @@ xfetch effects remove <nombre>    # eliminar un efecto
 
 Consulte la página [Efectos](effects.md) para conocer el protocolo completo, los campos de configuración y cómo escribir efectos personalizados.
 
+## Automatización de la CLI
+
+La referencia completa de comandos está en [Referencia de la CLI](cli.md). Los puntos de entrada más útiles para automatizar:
+
+```bash
+# Salida legible por máquina
+xfetch --json
+xfetch --json --modules os,kernel,cpu
+xfetch --get os,cpu,memory
+xfetch --format '{{os}} | {{kernel}} | {{uptime}}'
+
+# Overrides en tiempo de ejecución
+xfetch --layout right --theme dracula --no-color
+xfetch --offline --no-cache
+
+# Diagnóstico
+xfetch doctor --network --json
+xfetch config validate
+xfetch config set layout right
+
+# Backups
+xfetch config backup --compress
+xfetch config restore --dry-run
+```
+
+`--json` siempre usa `schema_version: 1`. Con `--format`, las plantillas admiten `{{clave}}`, los filtros `upper`/`lower`/`trim`/`count`/`join`/`default` y bloques `{{#if}}`, `{{#unless}}` y `{{#each}}`. `--quiet`, `--verbose` y `--log-level` controlan stderr; `--log-json` emite líneas JSON para que stdout quede limpio para los resultados.
+
 ## Optimización de Rendimiento
 
 xfetch emplea varias optimizaciones de rendimiento:

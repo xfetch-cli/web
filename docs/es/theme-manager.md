@@ -108,7 +108,7 @@ Después de la instalación, active el tema con `xfetch theme set <nombre>` o a�
 ### Salida de list
 
 ```
-Theme Manager -- 17 themes available
+Theme Manager -- 83 themes available
 
   dracula  xscriptor  section  (#dark #dracula #popular)
        Dark magenta, red, and cyan palette inspired by the Dracula color scheme.

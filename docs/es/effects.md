@@ -34,6 +34,22 @@ xfetch effects remove glitch
 
 Los efectos se compilan con `cargo build --release` y se instalan en `~/.config/xfetch/effects/xfetch-effect-<nombre>` (o `%APPDATA%\xfetch\effects\` en Windows). El repositorio predeterminado es `https://github.com/xfetch-cli/effects.git`, que se puede sobrescribir con la variable de entorno `XFETCH_EFFECT_REPO`.
 
+### Ciclo de vida de addons
+
+Las instalaciones escriben un recibo `.install.json` con la versión, fuente, repositorio, ruta, versión del SDK y SHA-256 del artefacto.
+
+```bash
+xfetch effects update --all --check
+xfetch effects update <nombre>
+xfetch effects rollback <nombre>
+xfetch effects install --all --force
+xfetch effects info <nombre>
+xfetch effects search <consulta>
+xfetch effects list --verbose
+```
+
+Los catálogos pueden declarar `repo`, `ref`, `sdk_version` y `min_xfetch_version`. Todas las acciones aceptan `--json`.
+
 ## Configuración
 
 La clave de configuración `effects` acepta un solo efecto o una lista de efectos que se reproducen en secuencia:

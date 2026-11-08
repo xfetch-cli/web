@@ -1,5 +1,29 @@
 # Anderungsprotokoll
-# Anderungsprotokoll
+
+## v1.0.4 · Layout-Fix für breite Zeichen · 2026-11-07
+
+- Die Layouts klassische Box, Section-Box und Side-Block messen die sichtbare Terminalbreite jetzt mit `console::measure_text_width` statt Unicode-Skalarwerte zu zählen. CJK- und Emoji-Werte (zum Beispiel aus `banner-text`) halten die rechten Ränder ohne unsichtbares Padding bündig.
+
+## v1.0.3 · CLI, JSON-Ausgabe, Backups und Command-Addons · 2026-11-06
+
+- **Maschinenlesbare Ausgabe:** `--json` (`schema_version: 1`), `--get`, `--list-modules`, der Befehl `modules` und JSON für Addon-, Theme- und Update-Abfragen.
+- **Laufzeit-Overrides:** `--layout`, `--theme`, `--modules`/`--only`, `--color`/`--no-color`, `--offline`, `--no-cache`, `--quiet`, `--verbose`, `--template` und `--format`.
+- **Diagnose und Konfiguration:** `doctor` (mit `--fix`, `--bench`, `--image`, `--network`), `config validate|print|get|set|unset|reset|edit|backups|prune`, `paths`, `env`, `build-info`, `schema`, `completions` und `man`.
+- **Backup und Wiederherstellung:** `--backup`/`--restore` und `config backup|restore` mit aktivem Theme, config-roulette-Routen, Logo-Assets, Addon-Artefakten, gzip-Kompression, Passphrase-Verschlüsselung (Argon2id + XChaCha20-Poly1305) und Root-Remapping.
+- **Addon-Lebenszyklus:** Install-Receipts (`.install.json`), `update`, `rollback` und `install --all` für Plugins, Effekte und Erweiterungen; Kataloge akzeptieren `repo`, `ref`, `sdk_version` und `min_xfetch_version`.
+- **Command-Addons:** die neue `command`-Familie und `xfetch run`, mit `--render` für die Ausgabe durch das Core-Layout, plus separater Command-Katalog.
+- **Layouts:** `layout: "right"` hinzugefügt (Info links, Logo rechts).
+- **SDK:** xfetch SDK 0.3.1 übernommen; JSON-Protokoll bleibt `1`, WIT bleibt `0.1.0`.
+- **Windows-Updater:** `xfetch update` ersetzt Prebuilt-Installationen mit `self-replace`, delegiert winget-Installationen und baut Source-Checkouts neu. `winget install xfetch` ist dokumentiert.
+- Stabile Exit-Codes, strukturiertes Logging (`--log-level`, `--log-json`), Help-/Output-Snapshots und ein CLI-Sandbox-Test wurden ergänzt.
+
+## v1.0.2 · Sicherheitsupdate, Paketzählung und Katalog-Tooling · 2026-11-03
+
+- `wasmtime`/`wasmtime-wasi` auf 50.0.1 und `zstd` auf 0.13.4 aktualisiert; die RustSec-Hinweise von 2026 sind geschlossen. Binaries aus v1.0.1 bleiben betroffen.
+- `sysinfo` 0.40 und `ureq` 3.5.1 aktualisiert, ohne sichtbare Ausgabeänderungen.
+- Die Linux-Paketzählung erhielt `xpm`, `xp` und `xpm-aur`-Labels, die lokale Datenbanken lesen und keine Remote-Kataloge abfragen.
+- `xfetch --list-layouts` hinzugefügt und die `--layout`-Hilfe korrigiert (Standard `section`).
+- Addon-Installationen zeigen das nötige Config-Snippet, Fähigkeiten und Limits; `list --verbose`, `info`, `search`/`available`, `--name`/`--manifest` für Wasm-Quellen und Befehlsaliase wurden ergänzt.
 
 ## v1.0.1 · Sicherheitsrelease: gepatchte Abhängigkeiten, signierte Releases und sicherere Installer · 2026-10-24
 

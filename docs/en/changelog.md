@@ -1,5 +1,29 @@
 # Changelog
-# Changelog
+
+## v1.0.4 · Wide-character layout fix · 2026-11-07
+
+- The classic box, section-box and side-block layouts now measure visible terminal width with `console::measure_text_width` instead of counting Unicode scalar values. CJK and emoji values (for example from `banner-text`) keep right borders aligned without invisible padding.
+
+## v1.0.3 · CLI, JSON output, backups and command addons · 2026-11-06
+
+- **Machine output:** `--json` (`schema_version: 1`), `--get`, `--list-modules`, the `modules` command and JSON for addon, theme and update queries.
+- **Runtime overrides:** `--layout`, `--theme`, `--modules`/`--only`, `--color`/`--no-color`, `--offline`, `--no-cache`, `--quiet`, `--verbose`, `--template` and `--format`.
+- **Diagnostics and config:** `doctor` (with `--fix`, `--bench`, `--image`, `--network`), `config validate|print|get|set|unset|reset|edit|backups|prune`, `paths`, `env`, `build-info`, `schema`, `completions` and `man`.
+- **Backup and restore:** `--backup`/`--restore` and `config backup|restore` with the active theme, config-roulette routes, logo assets, addon artifacts, gzip compression, passphrase encryption (Argon2id + XChaCha20-Poly1305) and root remapping.
+- **Addon lifecycle:** install receipts (`.install.json`), `update`, `rollback` and `install --all` for plugins, effects and extensions; catalogs accept `repo`, `ref`, `sdk_version` and `min_xfetch_version`.
+- **Command addons:** the new `command` family and `xfetch run`, with `--render` to pass output through the core layout, plus a separate command catalog.
+- **Layouts:** added `layout: "right"` (info on the left, logo flush right).
+- **SDK:** adopted xfetch SDK 0.3.1; JSON protocol remains `1` and WIT remains `0.1.0`.
+- **Windows updater:** `xfetch update` now replaces prebuilt installs with `self-replace`, delegates winget installs and rebuilds source checkouts. `winget install xfetch` is documented.
+- Added stable exit codes, structured logging (`--log-level`, `--log-json`), help/output snapshots and a CLI sandbox test.
+
+## v1.0.2 · Security refresh, package counts and catalog tooling · 2026-11-03
+
+- Updated `wasmtime`/`wasmtime-wasi` to 50.0.1 and `zstd` to 0.13.4, closing the 2026 RustSec advisories. Binaries from v1.0.1 remain affected.
+- Updated `sysinfo` 0.40 and migrated `ureq` to 3.5.1 without user-visible output changes.
+- Linux package counts gained `xpm`, `xp` and `xpm-aur` labels that read local databases and never query remote catalogs.
+- Added `xfetch --list-layouts` and corrected the `--layout` help (default `section`).
+- Addon installs print the required config snippet, capabilities and limits; added `list --verbose`, `info`, `search`/`available`, `--name`/`--manifest` for wasm sources and command aliases.
 
 ## v1.0.1 · Security release: patched dependencies, signed releases & safer installers · 2026-10-24
 

@@ -16,10 +16,10 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`} data-theme="dark" suppressHydrationWarning>
+    <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`} suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{
-          __html: `(function(){try{document.documentElement.classList.add("xf-js");var t=localStorage.getItem("xfetch-theme");if(t==="light")document.documentElement.removeAttribute("data-theme")}catch(e){}})();`
+          __html: `(function(){try{document.documentElement.classList.add("xf-js");var t=localStorage.getItem("xfetch-theme");if(t==="dark")document.documentElement.setAttribute("data-theme","dark");else document.documentElement.removeAttribute("data-theme")}catch(e){}})();`
         }} />
       </head>
       <body className="font-sans antialiased relative">

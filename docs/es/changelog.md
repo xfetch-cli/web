@@ -1,5 +1,29 @@
 # Registro de Cambios
-# Registro de Cambios
+
+## v1.0.4 · Corrección de layouts con caracteres anchos · 2026-11-07
+
+- Los layouts clásico con recuadro, section-box y side-block ahora miden el ancho visible en terminal con `console::measure_text_width` en lugar de contar valores escalares Unicode. Los valores CJK y emojis (por ejemplo de `banner-text`) mantienen alineados los bordes derechos sin relleno invisible.
+
+## v1.0.3 · CLI, salida JSON, backups y addons de comandos · 2026-11-06
+
+- **Salida legible por máquina:** `--json` (`schema_version: 1`), `--get`, `--list-modules`, el comando `modules` y JSON para consultas de addons, temas y update.
+- **Overrides en tiempo de ejecución:** `--layout`, `--theme`, `--modules`/`--only`, `--color`/`--no-color`, `--offline`, `--no-cache`, `--quiet`, `--verbose`, `--template` y `--format`.
+- **Diagnóstico y configuración:** `doctor` (con `--fix`, `--bench`, `--image`, `--network`), `config validate|print|get|set|unset|reset|edit|backups|prune`, `paths`, `env`, `build-info`, `schema`, `completions` y `man`.
+- **Backup y restauración:** `--backup`/`--restore` y `config backup|restore` con el tema activo, rutas de config-roulette, assets de logo, artefactos de addons, compresión gzip, cifrado con passphrase (Argon2id + XChaCha20-Poly1305) y remapeo de raíz.
+- **Ciclo de vida de addons:** recibos de instalación (`.install.json`), `update`, `rollback` e `install --all` para plugins, efectos y extensiones; los catálogos aceptan `repo`, `ref`, `sdk_version` y `min_xfetch_version`.
+- **Addons de comandos:** la nueva familia `command` y `xfetch run`, con `--render` para pasar la salida por el layout del core, más un catálogo separado de comandos.
+- **Layouts:** se agregó `layout: "right"` (información a la izquierda, logo a la derecha).
+- **SDK:** se adoptó xfetch SDK 0.3.1; el protocolo JSON sigue en `1` y el WIT en `0.1.0`.
+- **Updater de Windows:** `xfetch update` ahora reemplaza instalaciones prebuilt con `self-replace`, delega instalaciones de winget y recompila checkouts. Se documentó `winget install xfetch`.
+- Se agregaron códigos de salida estables, logging estructurado (`--log-level`, `--log-json`), snapshots de ayuda/salida y una prueba sandbox de la CLI.
+
+## v1.0.2 · Actualización de seguridad, conteo de paquetes y herramientas de catálogo · 2026-11-03
+
+- Se actualizaron `wasmtime`/`wasmtime-wasi` a 50.0.1 y `zstd` a 0.13.4, cerrando los avisos de RustSec de 2026. Los binarios de v1.0.1 siguen afectados.
+- Se actualizaron `sysinfo` 0.40 y `ureq` 3.5.1 sin cambios visibles en la salida.
+- El conteo de paquetes en Linux incorpora `xpm`, `xp` y `xpm-aur`, leyendo bases de datos locales y sin consultar catálogos remotos.
+- Se agregó `xfetch --list-layouts` y se corrigió la ayuda de `--layout` (por defecto `section`).
+- Las instalaciones de addons muestran el snippet de configuración, capacidades y límites; se agregaron `list --verbose`, `info`, `search`/`available`, `--name`/`--manifest` para orígenes wasm y alias de comandos.
 
 ## v1.0.1 · Release de seguridad: dependencias parchadas, releases firmadas e instaladores más seguros · 2026-10-24
 

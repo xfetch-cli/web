@@ -37,6 +37,22 @@ xfetch extension remove <name>
 
 Extension binaries follow the naming convention `xfetch-extension-<name>` (`.exe` on Windows).
 
+### Addon Lifecycle
+
+Installs write an `.install.json` receipt with the version, source, repository, path, SDK version and artifact SHA-256.
+
+```bash
+xfetch extension update --all --check
+xfetch extension update <name>
+xfetch extension rollback <name>
+xfetch extension install --all --force
+xfetch extension info <name>
+xfetch extension search <query>
+xfetch extension list --verbose
+```
+
+Catalogs may declare `repo`, `ref`, `sdk_version` and `min_xfetch_version`. Every action accepts `--json`.
+
 ## Configuration
 
 Add extensions to your config via the `config_providers` field:

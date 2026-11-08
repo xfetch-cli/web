@@ -142,6 +142,22 @@ xfetch plugin list
 xfetch plugin remove animate-logo
 ```
 
+### Ciclo de vida de addons
+
+Cada instalación escribe un recibo `.install.json` junto al plugin con la versión instalada, fuente, repositorio, ruta, referencia de catálogo, versión del SDK y SHA-256 del artefacto. Las mismas acciones existen para plugins, efectos, extensiones y addons de comandos.
+
+```bash
+xfetch plugin update --all --check   # informa actualizaciones disponibles
+xfetch plugin update <nombre>        # recompila desde la fuente registrada
+xfetch plugin rollback <nombre>      # restaura el artefacto anterior
+xfetch plugin install --all --force  # instala/recompila todo el catálogo
+xfetch plugin info <nombre>          # capacidades, límites y snippet de config
+xfetch plugin search banner          # busca en el catálogo remoto
+xfetch plugin list --verbose         # addons instalados con detalle
+```
+
+Los catálogos pueden declarar los campos opcionales `repo`, `ref`, `sdk_version` y `min_xfetch_version`. Todas las acciones aceptan `--json` con `schema_version: 1`.
+
 ## Plugins Oficiales
 
 Cada plugin tiene su propia página de referencia con detalles completos de configuración, argumentos y ejemplos de salida.
@@ -149,8 +165,12 @@ Cada plugin tiene su propia página de referencia con detalles completos de conf
 | Plugin | Tipo | Descripción |
 |--------|------|-------------|
 | [animate-logo](plugins/animate-logo) | `logo_animation` | Logos ASCII animados con efectos de color (sweep, wave, rainbow, sparkle, breathing, frame) |
+| [banner](plugins/banner) | `logo_animation` | Banner de proverbio chino/japonés debajo o encima del logo ASCII |
+| [banner-text](plugins/banner-text) | `info_provider` | Líneas de texto desde un archivo o argumento literal; funciona con logos de imagen |
 | [docker](plugins/docker) | `info_provider` | Estadísticas de contenedores Docker (total, running, paused, stopped) |
+| [gauges](plugins/gauges) | `info_provider` | Memoria, swap, disco y batería como barras de progreso de texto |
 | [github-stats](plugins/github-stats) | `info_provider` | Estadísticas de perfil de GitHub (stars, repos, PRs, issues, followers) |
+| [langs](plugins/langs) | `info_provider` | Lenguajes de un repositorio de GitHub o agregados de un usuario/org con colores de marca |
 | [music-player](plugins/music-player) | `info_provider` | Música reproduciéndose actualmente desde MPD y/o Spotify |
 | [weather](plugins/weather) | `info_provider` | Clima actual vía wttr.in (condición, temp, viento, humedad) |
 | [timezone](plugins/timezone) | `info_provider` | Hora local, fecha, zona horaria y offset UTC |
@@ -178,6 +198,19 @@ host (HTTP, procesos, archivos, entorno) y límites por invitado. Consulta la
 referencia de invitados WebAssembly en el repositorio xfetch
 (`docs/WASM.md`) para el esquema del manifiesto y las herramientas
 `xfetch wasm`.
+
+### Addons de Comandos
+
+Los addons de comandos extienden la CLI de xfetch con nuevos subcomandos. Usan el mismo ciclo de instalación, update, rollback, list, info, search y remove, y se ejecutan bajo demanda:
+
+```bash
+xfetch command install github
+xfetch run github -- rust-lang/rust
+xfetch --json run github -- rust-lang/rust
+xfetch --layout right run github --render -- rust-lang/rust
+```
+
+Los addons de comandos oficiales viven en `xfetch-cli/commands`; el catálogo está en `main/index.json` (`XFETCH_COMMAND_INDEX` lo sobrescribe). `--offline` bloquea el catálogo y las instalaciones remotas. Consulta la [Referencia de la CLI](cli.md).
 
 ## Escritura de Plugins Personalizados
 
