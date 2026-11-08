@@ -174,4 +174,5 @@ Una herramienta de obtención de información del sistema multiplataforma escrit
     - Opciones globales y overrides en tiempo de ejecución
     - JSON, `--get` y plantillas
     - Comandos de addons, config, doctor y update
+    - WebAssembly, diagnóstico y self-uninstall
     - Códigos de salida, logging y variables de entorno

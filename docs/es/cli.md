@@ -1,6 +1,6 @@
 # Referencia de la CLI
 
-Esta página resume la línea de comandos de xfetch: opciones globales, modos de salida, overrides en tiempo de ejecución, ciclo de vida de addons, gestión de configuración, diagnóstico y códigos de salida. La ayuda completa siempre está disponible con `xfetch --help` y `xfetch <comando> --help`.
+Esta página es la referencia de la línea de comandos de xfetch: opciones globales, modos de salida, overrides en tiempo de ejecución, todos los subcomandos, gestión de configuración, diagnóstico, códigos de salida y variables de entorno. La ayuda completa siempre está disponible con `xfetch --help` y `xfetch <comando> --help`.
 
 ## Sinopsis
 
@@ -71,7 +71,7 @@ xfetch --get version,name
 xfetch --json --get os,cpu
 ```
 
-Una clave imprime el valor crudo; varias claves imprimen líneas `clave=valor`. Con `--json` la salida es `{ "schema_version": 1, "values": { ... } }`. Las claves desconocidas terminan con código `7`.
+Una clave imprime el valor crudo; varias claves imprimen líneas `clave=valor`. Con `--json` la salida es `{ "schema_version": 1, "values": { ... } }`. Las claves soportadas son las claves de módulo de `--list-modules`, más `version`, `name`, `packages:<manager>` y `plugin:<name>`. Las claves desconocidas terminan con código `7`.
 
 ### Plantillas
 
@@ -80,7 +80,7 @@ xfetch --format 'os={{os}} kernel={{kernel}}'
 xfetch --template ~/.config/xfetch/my.tmpl
 ```
 
-Las plantillas admiten `{{clave}}`, los filtros `upper`, `lower`, `trim`, `count`, `join:" / "` y `default:"..."`, además de bloques `{{#if}}`, `{{#unless}}` y `{{#each}}`. `--get`, `--template` y `--format` solo aplican al fetch por defecto y no se combinan con un subcomando ni con el modo daemon.
+Las plantillas admiten `{{clave}}`, los filtros `upper`, `lower`, `trim`, `count`, `join:" / "` y `default:"..."`, además de bloques `{{#if}}`, `{{#unless}}` y `{{#each}}`. Los placeholders cubren todas las claves de módulo, `packages:<manager>`, `plugin:<name>`, `palette`, `header`, `sep`, `name` y `version`. `--get`, `--template` y `--format` solo aplican al fetch por defecto y no se combinan con un subcomando ni con el modo daemon.
 
 ### Overrides en tiempo de ejecución
 
@@ -104,7 +104,7 @@ Precedencia, de mayor a menor:
 | `run <name> [--] <args>` | Ejecuta un addon de comando; `--render` usa el layout del core |
 | `theme` | Busca, instala, actualiza, lista, activa, elimina o exporta temas |
 | `logo` | Lista y previsualiza logos del catálogo ASCII |
-| `wasm` | Inspecciona y ejecuta invitados WebAssembly |
+| `wasm` | Inspecciona, ejecuta o exporta WIT para invitados WebAssembly |
 | `doctor` | Diagnostica instalación, configuración, terminal y addons (`--fix`, `--bench`, `--image`, `--network`) |
 | `modules` | Lista las claves de módulo |
 | `config` | Valida, imprime, obtiene, define, elimina, resetea, edita, respalda o restaura |
@@ -120,6 +120,10 @@ Precedencia, de mayor a menor:
 `plugin`, `effects`, `extension` y `command` comparten las mismas acciones. La forma unificada es equivalente:
 
 ```bash
+xfetch plugin install banner
+xfetch effects install decrypt
+xfetch extension install config-roulette
+xfetch command install github
 xfetch addon plugin install banner
 xfetch addon effect install decrypt
 xfetch addon extension install config-roulette
@@ -155,10 +159,16 @@ Los addons de comandos devuelven texto plano, un campo por línea. `--render` pa
 xfetch theme search dark
 xfetch theme info nord
 xfetch theme install nord
-xfetch theme update --all --check
-xfetch theme list --json
+xfetch theme install nord --force
+xfetch theme update nord --check
+xfetch theme update nord --force
+xfetch theme update --all
+xfetch theme list
 xfetch theme set dracula
+xfetch theme remove dracula
+xfetch theme export my-theme
 xfetch logo list
+xfetch logo list arch
 xfetch logo preview arch
 ```
 
@@ -169,6 +179,7 @@ El registro de temas es `xfetch-cli/themes` (`XFETCH_THEME_INDEX` lo sobrescribe
 ```bash
 xfetch config validate
 xfetch config print
+xfetch config print --raw
 xfetch config get layout
 xfetch config get colors.cpu
 xfetch config set layout right
@@ -178,6 +189,7 @@ xfetch config reset --yes
 xfetch config edit
 xfetch config backups
 xfetch config prune --keep 5
+xfetch config prune --keep 5 --dry-run
 ```
 
 `set` y `unset` admiten claves con puntos e índices de array, conservan los comentarios circundantes cuando es posible y validan el resultado antes de escribir. `edit` usa `$VISUAL` o `$EDITOR` después de un backup de seguridad.
@@ -191,6 +203,7 @@ xfetch config backup --output ~/backups
 xfetch config backup --with-addons --compress
 xfetch config backup --encrypt --passphrase-file ~/.config/xfetch/backup.pass
 xfetch config restore --from ~/backups --dry-run
+xfetch config restore --from ~/backups --passphrase-file ~/.config/xfetch/backup.pass
 xfetch config restore --root ~/restored
 ```
 
@@ -209,14 +222,42 @@ xfetch doctor --image
 
 `doctor` revisa el binario, la configuración, el tema, el layout, el tamaño de terminal, el protocolo de imagen, los directorios de addons, los recibos de instalación y la caché. `--fix` genera una configuración faltante y elimina una caché inválida. Termina con código `1` cuando falla alguna comprobación.
 
+## WebAssembly
+
+```bash
+xfetch wasm inspect ./plugin.wasm
+xfetch wasm run ./plugin.wasm --request '{"version":1,"kind":"info_provider"}'
+xfetch wasm run ./plugin.wasm --request-file request.json --timeout 5 --kind plugin
+xfetch wasm wit
+```
+
+`wasm inspect` imprime el tipo resuelto, el manifiesto, las capacidades y los límites sin ejecutar el invitado. `wasm run` ejecuta un invitado con una petición JSON cruda (o `--request-file`) e imprime su respuesta; `--timeout` sobrescribe el timeout del manifiesto y `--kind` selecciona el mundo del componente (`plugin`, `effect`, `extension` o `command`). `wasm wit` imprime el paquete WIT para invitados de componente.
+
+## Diagnóstico y utilidades
+
+```bash
+xfetch modules
+xfetch modules --json
+xfetch paths
+xfetch env
+xfetch build-info
+xfetch schema fetch
+xfetch schema all
+xfetch self-uninstall
+xfetch self-uninstall --purge --yes
+```
+
+`modules` lista las claves de módulo aceptadas; con `--json` devuelve objetos con `key`, `description` y `platforms`. `paths` imprime las rutas resueltas de configuración, addons, caché y datos; `env` imprime plataforma, terminal, entorno y ajustes de ejecución; `build-info` imprime la versión del build y las features habilitadas. `schema [fetch|backup|addon|update|doctor|config|all]` imprime el JSON Schema de las salidas legibles por máquina. `self-uninstall` elimina el binario; `--purge` elimina también configuración, caché y datos, y `--yes` omite la confirmación.
+
 ## Integración con el shell
 
 ```bash
 xfetch completions bash > ~/.local/share/bash-completion/completions/xfetch
 xfetch completions zsh > ~/.zfunc/_xfetch
 xfetch completions fish > ~/.config/fish/completions/xfetch.fish
+xfetch completions elvish > xfetch.elv
+xfetch completions powershell > xfetch.ps1
 xfetch man --output ~/.local/share/man/man1/xfetch.1
-xfetch schema fetch
 ```
 
 ## Actualización
@@ -225,6 +266,7 @@ xfetch schema fetch
 xfetch update --check
 xfetch update --check --json
 xfetch update
+xfetch update --yes
 xfetch update --prebuilt --bin-dir ~/.local/bin
 xfetch update --rollback
 ```
@@ -268,6 +310,10 @@ xfetch --log-level warn --quiet
 | `XFETCH_WASM_LOG_LEVEL` | Umbral de logs de invitados wasm (`off`..`debug`) |
 | `XFETCH_UPDATE_API` | Endpoint de la API de GitHub usado por `xfetch update` |
 | `GH_TOKEN` / `GITHUB_TOKEN` | Token de GitHub para el límite de la API de update |
+| `XFETCH_PLUGIN_DEV_DIR`, `XFETCH_COMMAND_DEV_DIR` | Directorios de desarrollo extra para buscar addons |
+| `XPM_AUR_STATE` | Sobrescribe el archivo de estado de xpm-aur usado para contar paquetes |
+| `KITTY_WINDOW_ID` | Activa el protocolo gráfico de Kitty cuando está definido |
+| `TERM_PROGRAM`, `LC_TERMINAL` | Seleccionan imágenes inline compatibles con iTerm cuando es posible |
 
 ## Notas de seguridad
 
