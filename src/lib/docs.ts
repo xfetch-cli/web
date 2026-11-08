@@ -77,6 +77,7 @@ const GROUP_BY_SLUG: Record<string, GroupKey> = {
   "getting-started": "start",
   "gen-config": "start",
   configuration: "reference",
+  cli: "reference",
   modules: "reference",
   layouts: "reference",
   "custom-x": "reference",

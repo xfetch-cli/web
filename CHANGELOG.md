@@ -1,5 +1,14 @@
 # Changelog
 
+## 2026-11-07 — 3D landing visuals and v1.0.4 docs
+
+- Rebuilt the hero as an interactive 3D keyboard: a procedural mechanical keyboard on a lit desk, a holographic terminal rendered to a canvas texture, keys that depress and glow on hover, and the typed characters appearing on the terminal screen in real time. The old DOM terminal is kept only as the no-WebGL fallback.
+- Reworked the home banner as a live 3D surface built from the official SVG (canvas texture) with depth particles, a subtle tilt and the original image as fallback when WebGL, CORS or the network is unavailable.
+- Replaced the isometric SVG architecture map with an interactive 3D scene: four stacked layers, glowing data-flow connectors, a WASM sandbox plane and clickable slabs that drive the existing detail panel. The SVG remains the fallback and the mobile layer list is unchanged.
+- All scenes respect `prefers-reduced-motion`, pause when offscreen, cap DPR and follow the light/dark CSS palette.
+- Docs synced with xfetch v1.0.4: all three changelogs (v1.0.2, v1.0.3, v1.0.4), a new CLI reference in English, Spanish and German, the `right` layout, addon install/update/rollback lifecycle, backup/restore, doctor and structured logging.
+- Updated the landing version, layout options, roadmap phases and the theme sample to the current registry size.
+
 ## 2026-10-24 — Security update
 
 - Updated Next.js from 16.3.1 to 16.4.3 and aligned `eslint-config-next` to 16.4.3, closing the critical Next.js advisories (including the unauthenticated RCE and cache-poisoning/SSRF reports).

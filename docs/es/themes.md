@@ -109,7 +109,16 @@ xfetch theme remove nord
 
 # Exportar la configuración visual actual como archivo de tema
 xfetch theme export my-theme
+
+# Registro remoto
+xfetch theme search dark
+xfetch theme info nord
+xfetch theme install nord
+xfetch theme update --all --check
+xfetch theme list --json
 ```
+
+El registro vive en `xfetch-cli/themes`; se puede sobrescribir con `XFETCH_THEME_INDEX`. Los temas instalados escriben un sidecar `.xfetch-meta.json` con la versión y la fuente. `theme search`, `theme info`, `theme install` y `theme update` quedan bloqueados con `--offline`. Todos aceptan `--json`.
 
 ### Comportamiento de exportación
 

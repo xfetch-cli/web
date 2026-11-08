@@ -109,7 +109,16 @@ xfetch theme remove nord
 
 # Aktuelle visuelle Konfiguration als Theme-Datei exportieren
 xfetch theme export my-theme
+
+# Remote-Registry
+xfetch theme search dark
+xfetch theme info nord
+xfetch theme install nord
+xfetch theme update --all --check
+xfetch theme list --json
 ```
+
+Die Registry liegt in `xfetch-cli/themes`; sie lässt sich mit `XFETCH_THEME_INDEX` überschreiben. Installierte Themes schreiben ein `.xfetch-meta.json`-Sidecar mit Version und Quelle. `theme search`, `theme info`, `theme install` und `theme update` sind mit `--offline` blockiert. Alle akzeptieren `--json`.
 
 ### Exportverhalten
 

@@ -9,10 +9,14 @@
 
 <ul>
   <li><a href="docs/en/getting-started.md">Getting Started</a></li>
+  <li><a href="docs/en/cli.md">CLI Reference</a></li>
   <li><a href="docs/en/configuration.md">Configuration</a></li>
   <li><a href="docs/en/layouts.md">Layouts</a></li>
   <li><a href="docs/en/modules.md">Modules</a></li>
   <li><a href="docs/en/plugins.md">Plugins</a></li>
+  <li><a href="docs/en/extensions.md">Extensions</a></li>
+  <li><a href="docs/en/effects.md">Effects</a></li>
+  <li><a href="docs/en/wasm.md">WebAssembly Guests</a></li>
   <li><a href="docs/en/themes.md">Themes</a></li>
   <li><a href="docs/en/presets.md">Presets</a></li>
   <li><a href="docs/en/advanced-usage.md">Advanced Usage</a></li>

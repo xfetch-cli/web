@@ -149,3 +149,14 @@
 - [/] Vergleichsleitfaden mit ahnlichen Tools erstellen
 - [ ] Discord/Slack-Community-Kanal einrichten
 - [x] Beitragsprogramm erstellen
+
+## Phase 14 · CLI, Automatisierung und Addon-Lebenszyklus
+
+- [x] Maschinenlesbare Ausgabe (`--json`, `--get`, stabile JSON-Schema-Version)
+- [x] Laufzeit-Overrides für Layout, Theme, Module, Farben, Cache und Offline-Modus
+- [x] `doctor`, Konfigurationsverwaltung, `schema`, `paths`, `env` und `build-info`
+- [x] Config-Backup und -Wiederherstellung mit Kompression, Verschlüsselung und Addon-Artefakten
+- [x] Install-Receipts, `update`, `rollback` und `install --all` für Addons
+- [x] Command-Addons und `xfetch run --render`
+- [x] Strukturiertes Logging und stabile Exit-Codes
+- [x] Shell-Completions, Manpage und CLI-Sandbox-Tests

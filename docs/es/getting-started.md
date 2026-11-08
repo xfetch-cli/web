@@ -121,6 +121,8 @@ __  __                               OS: Arch Linux x86_64
 
 ## Interfaz de Línea de Comandos
 
+La referencia completa está en [Referencia de la CLI](cli.md). Esta sección lista las banderas y comandos más comunes.
+
 ### Banderas Globales
 
 | Bandera | Descripción |
@@ -129,6 +131,18 @@ __  __                               OS: Arch Linux x86_64
 | `--gen-config` | Generar un archivo de configuración predeterminado en la ruta de configuración estándar |
 | `--layout <nombre>` | Diseño a usar con `--gen-config` (predeterminado: `section`) |
 | `--logo <id>` | Id del logo (ej., `arch`, `windows-11`) a usar con `--gen-config` (requiere acceso de red al catálogo de logos) |
+| `--list-layouts` / `--list-modules` | Mostrar layouts y claves de módulo aceptados |
+| `--json` | Salida legible por máquina con `schema_version: 1` |
+| `--get <claves>` | Mostrar solo las claves de módulo indicadas |
+| `--modules <lista>` / `--only <lista>` | Sobrescribir la lista de módulos renderizados |
+| `--theme <nombre>` | Sobrescribir el tema en tiempo de ejecución |
+| `--color <modo>` / `--no-color` | Controlar colores ANSI (`auto`, `always`, `never`) |
+| `--offline` | Desactivar la red (IP pública, catálogos, updates, instalaciones remotas) |
+| `--no-cache` | Ignorar la caché de paquetes e IP pública en esta ejecución |
+| `--quiet` / `--verbose` | Reducir o ampliar la salida informativa |
+| `--log-level <nivel>` / `--log-json` | Logging estructurado en stderr |
+| `--template <archivo>` / `--format <cadena>` | Renderizar el fetch con una plantilla |
+| `--backup` / `--restore` | Respaldar o restaurar la configuración activa |
 | `--clean-cache` | Limpiar la base de datos de caché |
 | `--benchmark` | Mostrar información de tiempo para sondeos paralelos |
 | `--daemon` | Iniciar el daemon animado |
@@ -175,9 +189,43 @@ xfetch effects remove <nombre>     Eliminar un efecto
 ```
 xfetch update                     Comprueba e instala una versión nueva
 xfetch update --check             Solo informa; sale 1 si hay versión nueva
-xfetch update --prebuilt          Fuerza la actualización prebuilt in-place (Unix)
+xfetch update --check --json      Comprobación legible por máquina
+xfetch update --prebuilt          Fuerza la actualización prebuilt in-place
 xfetch update --bin-dir <dir>     Directorio del binario junto a --prebuilt
+xfetch update --rollback          Restaura el binario anterior
 xfetch update --yes               Omite la confirmación
+```
+
+### Configuración, Diagnóstico y Addons de Comandos
+
+```
+xfetch doctor                     Diagnostica instalación, config, terminal y addons
+xfetch doctor --fix --bench       Aplica arreglos seguros y ejecuta el benchmark
+xfetch config validate            Valida la configuración y el tema activo
+xfetch config print               Imprime la configuración resuelta
+xfetch config set layout right    Edita un valor conservando comentarios
+xfetch config backup --compress   Respalda config, temas y rutas
+xfetch config restore --dry-run   Previsualiza una restauración
+xfetch modules                    Lista las claves de módulo
+xfetch paths / env / build-info   Imprime rutas, entorno y detalles del build
+xfetch schema                     Imprime los JSON Schema de salida máquina
+xfetch completions <shell>        Genera autocompletado de shell
+xfetch man                        Renderiza la página de manual
+xfetch command install <nombre>   Instala un addon de comando
+xfetch run <nombre> [--] <args>   Ejecuta un addon de comando (--render usa el layout)
+xfetch addon <kind> <action>      Acción unificada plugin/effect/extension/command
+xfetch self-uninstall [--purge]   Elimina el binario y opcionalmente sus datos
+```
+
+### Gestión de Addons
+
+```
+xfetch plugin install <nombre> --all   Instala todas las entradas del catálogo
+xfetch plugin update --all --check     Busca actualizaciones de addons
+xfetch plugin rollback <nombre>        Restaura el artefacto anterior
+xfetch plugin info <nombre>            Muestra capacidades, límites y config
+xfetch plugin search <consulta>        Busca en el catálogo remoto
+xfetch plugin list --verbose           Lista addons instalados con detalle
 ```
 
 ### Ejemplos de Uso

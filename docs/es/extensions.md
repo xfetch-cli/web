@@ -37,6 +37,22 @@ xfetch extension remove <nombre>
 
 Los binarios de extensión siguen la convención `xfetch-extension-<nombre>` (`.exe` en Windows).
 
+### Ciclo de vida de addons
+
+Las instalaciones escriben un recibo `.install.json` con la versión, fuente, repositorio, ruta, versión del SDK y SHA-256 del artefacto.
+
+```bash
+xfetch extension update --all --check
+xfetch extension update <nombre>
+xfetch extension rollback <nombre>
+xfetch extension install --all --force
+xfetch extension info <nombre>
+xfetch extension search <consulta>
+xfetch extension list --verbose
+```
+
+Los catálogos pueden declarar `repo`, `ref`, `sdk_version` y `min_xfetch_version`. Todas las acciones aceptan `--json`.
+
 ## Configuración
 
 Agregue extensiones a su configuración mediante el campo `config_providers`:

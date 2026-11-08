@@ -7,6 +7,7 @@ xfetch supports multiple visual layouts for displaying system information. Each 
 | Config Value | Description |
 |--------------|-------------|
 | `null` or `"default"` | Classic side-by-side: logo left, info right |
+| `"right"` | Mirrors the classic layout: info left, logo right |
 | `"section"` | Grouped information with section headers |
 | `"pacman"` | Boxed layout with decorative header and footer |
 | `"side-block"` | Two-column: icons on left, values on right |
@@ -307,3 +308,15 @@ Variants that change the logo position relative to content:
 - **Bottom:** Content displayed on top, logo below (same as default but stacked vertically)
 
 These layouts do not display the logo side-by-side. Instead, they stack the logo and content vertically.
+
+## Right Layout
+
+Mirrors the classic layout: the info column stays on the left and the ASCII or image logo is rendered on the right. Image logos use the same width and gap settings as the classic layout.
+
+```jsonc
+{
+    "layout": "right",
+    "logo_path": "~/.config/xfetch/logo.png",
+    "logo_width": 24
+}
+```

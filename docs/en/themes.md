@@ -109,7 +109,16 @@ xfetch theme remove nord
 
 # Export current visual config as a theme file
 xfetch theme export my-theme
+
+# Remote registry
+xfetch theme search dark
+xfetch theme info nord
+xfetch theme install nord
+xfetch theme update --all --check
+xfetch theme list --json
 ```
+
+The registry lives at `xfetch-cli/themes`; override it with `XFETCH_THEME_INDEX`. Installed themes write a `.xfetch-meta.json` sidecar with the version and source. `theme search`, `theme info`, `theme install` and `theme update` are blocked by `--offline`. All of them accept `--json`.
 
 ### Export Behavior
 

@@ -121,6 +121,8 @@ __  __                               OS: Arch Linux x86_64
 
 ## Command-Line Interface
 
+The complete reference is in [CLI Reference](cli.md). This section lists the most common flags and commands.
+
 ### Global Flags
 
 | Flag | Description |
@@ -129,6 +131,18 @@ __  __                               OS: Arch Linux x86_64
 | `--gen-config` | Generate a default configuration file at the standard config path |
 | `--layout <name>` | Layout to use with `--gen-config` (default: `section`) |
 | `--logo <id>` | Logo id (e.g. `arch`, `windows-11`) to use with `--gen-config` (requires network access to the logos catalog) |
+| `--list-layouts` / `--list-modules` | Print accepted layout and module names |
+| `--json` | Machine-readable output with `schema_version: 1` |
+| `--get <keys>` | Print only the given module keys |
+| `--modules <list>` / `--only <list>` | Override the rendered module list at runtime |
+| `--theme <name>` | Override the theme at runtime |
+| `--color <mode>` / `--no-color` | Control ANSI colors (`auto`, `always`, `never`) |
+| `--offline` | Disable network access (public IP, catalogs, updates, remote installs) |
+| `--no-cache` | Bypass the package and public-IP cache for this run |
+| `--quiet` / `--verbose` | Reduce or increase informational output |
+| `--log-level <level>` / `--log-json` | Structured logging on stderr |
+| `--template <file>` / `--format <string>` | Render the fetch with a template |
+| `--backup` / `--restore` | Back up or restore the active configuration |
 | `--clean-cache` | Clear the cache database |
 | `--benchmark` | Print timing information for parallel probes |
 | `--daemon` | Start the animated daemon |
@@ -175,9 +189,43 @@ xfetch effects remove <name>      Remove an effect
 ```
 xfetch update                     Check for and install a newer release
 xfetch update --check             Only report; exit 1 when an update exists
-xfetch update --prebuilt          Force the in-place prebuilt update (Unix)
+xfetch update --check --json      Machine-readable update check
+xfetch update --prebuilt          Force the in-place prebuilt update
 xfetch update --bin-dir <dir>     Directory holding the binary with --prebuilt
+xfetch update --rollback          Restore the previous binary
 xfetch update --yes               Skip the confirmation prompt
+```
+
+### Configuration, Diagnostics and Command Addons
+
+```
+xfetch doctor                     Diagnose install, config, terminal and addons
+xfetch doctor --fix --bench       Apply safe fixes and run the benchmark
+xfetch config validate            Validate the configuration and active theme
+xfetch config print               Print the resolved configuration
+xfetch config set layout right    Edit one value, preserving comments
+xfetch config backup --compress   Back up config, themes and routes
+xfetch config restore --dry-run   Preview a restore
+xfetch modules                    List module keys
+xfetch paths / env / build-info   Print paths, environment and build details
+xfetch schema                     Print JSON Schemas for machine output
+xfetch completions <shell>        Generate shell completions
+xfetch man                        Render the man page
+xfetch command install <name>     Install a command addon
+xfetch run <name> [--] <args>     Run a command addon (--render uses the layout)
+xfetch addon <kind> <action>      Unified plugin/effect/extension/command action
+xfetch self-uninstall [--purge]   Remove the binary and optionally its data
+```
+
+### Addon Management
+
+```
+xfetch plugin install <name> --all   Install every catalog entry
+xfetch plugin update --all --check   Check for addon updates
+xfetch plugin rollback <name>        Restore the previous artifact
+xfetch plugin info <name>            Show capabilities, limits and config
+xfetch plugin search <query>         Search the remote catalog
+xfetch plugin list --verbose         List installed addons with details
 ```
 
 ### Usage Examples

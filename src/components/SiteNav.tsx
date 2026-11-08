@@ -41,7 +41,7 @@ function getThemeSnapshot(): Theme {
 }
 
 function getThemeServerSnapshot(): Theme {
-  return "dark";
+  return "light";
 }
 
 function applyTheme(next: Theme) {
@@ -254,10 +254,16 @@ export default function SiteNav() {
     <header className={`xf-nav${scrolled ? " is-scrolled" : ""}`}>
       <div className="xf-nav-inner">
         <Link href="/" className="xf-brand" aria-label="xfetch home">
-          <span className="xf-brand-mark" aria-hidden="true">
-            xf
-          </span>
-          <span className="xf-brand-word">xfetch</span>
+          {/* eslint-disable-next-line @next/next/no-img-element -- local SVG wordmark; next/image would need dangerouslyAllowSVG */}
+          <img
+            src={`${base}/brand/xfetch-logo.svg`}
+            alt=""
+            width={800}
+            height={144}
+            className="xf-brand-logo"
+            aria-hidden="true"
+            draggable={false}
+          />
         </Link>
 
         <nav className="xf-nav-links" aria-label="Main navigation">

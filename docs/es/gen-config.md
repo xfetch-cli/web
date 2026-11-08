@@ -68,7 +68,7 @@ xfetch --gen-config --layout tree
 xfetch --gen-config --layout compact
 ```
 
-Nombres disponibles: `default`, `side-block`, `tree`, `section`, `section-box`, `custom-x`, `compact`, `minimal`, `pacman`, `box`, `line`, `dots`, `bottom_line`, `horizontal`, `bottom`. Un nombre desconocido avisa y mantiene `section`.
+Nombres disponibles: `default`, `right`, `side-block`, `tree`, `section`, `section-box`, `custom-x`, `compact`, `minimal`, `pacman`, `box`, `line`, `dots`, `bottom_line`, `horizontal`, `bottom`. Ejecuta `xfetch --list-layouts` para la lista autoritativa y `xfetch --list-modules` para las claves de módulo. Un nombre desconocido avisa y mantiene `section`.
 
 ## Ejemplo Combinado
 

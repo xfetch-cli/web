@@ -8,20 +8,24 @@ const LINKS = [
   { href: `${REPO_URL}/blob/main/CONTRIBUTING.md`, label: "Contributing" },
 ];
 
+const base = process.env.NEXT_PUBLIC_BASE_PATH || "";
+
 export default function Footer() {
   return (
     <footer className="xf-footer">
       <div className="xf-container xf-footer-inner">
         <div className="xf-footer-brand">
-          <span className="xf-footer-mark" aria-hidden="true">
-            xf
-          </span>
-          <div>
-            <p className="xf-footer-title">xfetch</p>
-            <p className="xf-footer-made">
-              Made with Rust &amp; passion by <strong>X</strong>
-            </p>
-          </div>
+          {/* eslint-disable-next-line @next/next/no-img-element -- local SVG wordmark; next/image would need dangerouslyAllowSVG */}
+          <img
+            src={`${base}/brand/xfetch-logo.svg`}
+            alt="xfetch"
+            width={800}
+            height={144}
+            className="xf-footer-logo"
+          />
+          <p className="xf-footer-made">
+            Made with Rust &amp; passion by <strong>X</strong>
+          </p>
         </div>
 
         <nav className="xf-footer-links" aria-label="Footer navigation">
