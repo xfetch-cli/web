@@ -174,4 +174,5 @@ Ein plattformunabhangiges Systeminformations-Tool geschrieben in Rust.
     - Globale Optionen und Laufzeit-Overrides
     - JSON, `--get` und Templates
     - Addon-, Config-, Doctor- und Update-Befehle
+    - WebAssembly, Diagnose und self-uninstall
     - Exit-Codes, Logging und Umgebungsvariablen

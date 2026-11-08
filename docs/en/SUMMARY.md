@@ -174,4 +174,5 @@ A cross-platform system information fetching tool written in Rust.
     - Global options and runtime overrides
     - JSON, `--get` and templates
     - Addon, config, doctor and update commands
+    - WebAssembly, diagnostics and self-uninstall
     - Exit codes, logging and environment variables
