@@ -13,8 +13,8 @@
     "@react-three/drei": "^10.7.9",
     "@react-three/fiber": "^9.8.2",
     "@xscriptor/xcomponents": "^0.2.3",
-    "framer-motion": "^14.10.1",
-    "next": "^16.4.5",
+    "framer-motion": "^14.12.0",
+    "next": "^16.4.6",
     "react": "^19.3.1",
     "react-dom": "^19.3.1",
     "react-markdown": "^10.1.0",
@@ -40,7 +40,7 @@
     "@types/react": "^19.3.0",
     "@types/react-dom": "^19.3.0",
     "eslint": "^10.14.0",
-    "eslint-config-next": "^16.4.5",
+    "eslint-config-next": "^16.4.6",
     "tailwindcss": "^4.3.5",
     "typescript": "^6.0.3"
   }
