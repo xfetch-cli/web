@@ -7,7 +7,7 @@ export default function FinalCta() {
     <section className="xf-cta" aria-labelledby="cta-title">
       <div className="xf-cta-grid" aria-hidden="true" />
       <div className="xf-container xf-cta-inner" data-reveal>
-        <p className="xf-eyebrow">Open source · MIT</p>
+        <p className="xf-eyebrow">Open source · GPL-3.0-only</p>
         <h2 id="cta-title">
           Build it, theme it,
           <br />

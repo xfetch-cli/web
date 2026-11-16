@@ -4,7 +4,7 @@ const LINKS = [
   { href: REPO_URL, label: "GitHub" },
   { href: "https://dev.xscriptor.com", label: "Dev" },
   { href: "https://www.xscriptor.com", label: "Xscriptor" },
-  { href: `${REPO_URL}/blob/main/LICENSE`, label: "MIT License" },
+  { href: `${REPO_URL}/blob/main/LICENSE`, label: "GPL-3.0-only" },
   { href: `${REPO_URL}/blob/main/CONTRIBUTING.md`, label: "Contributing" },
 ];
 
