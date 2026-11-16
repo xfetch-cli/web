@@ -246,4 +246,4 @@ xfetch-plugin-api = { git = "https://github.com/xfetch-cli/api", package = "xfet
 
 ## Lizenz
 
-xfetch ist unter der MIT-Lizenz lizenziert. Durch Ihren Beitrag stimmen Sie zu, dass Ihre Beitrage unter derselben Lizenz lizenziert werden.
+Der xfetch-Kern ist unter GPL-3.0-only lizenziert. Mit Ihrem Beitrag stimmen Sie zu, dass Ihre Beitrage zum Kern unter GPL-3.0-only lizenziert werden. Addons von Drittanbietern konnen ihre eigenen Lizenzen unter der Addon-Ausnahme verwenden.

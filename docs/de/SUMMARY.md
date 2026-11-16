@@ -3,7 +3,7 @@
 Ein plattformunabhangiges Systeminformations-Tool geschrieben in Rust.
 
 - **Version:** 1.0.4
-- **Lizenz:** MIT
+- **Lizenz:** GPL-3.0-only
 - **Autor:** xscriptor
 - **Repository:** github.com/xfetch-cli/xfetch
 
@@ -168,7 +168,7 @@ Ein plattformunabhangiges Systeminformations-Tool geschrieben in Rust.
     - Melden
 
 20. [Lizenz](license.md)
-    - MIT-Lizenzbestimmungen
+    - GPL-3.0-only und Addon-Ausnahme
 
 21. [CLI-Referenz](cli.md)
     - Globale Optionen und Laufzeit-Overrides
